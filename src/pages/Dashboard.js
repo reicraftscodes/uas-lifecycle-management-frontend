@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 
-import CTA from '../components/CTA'
 import InfoCard from '../components/Cards/InfoCard'
 import ChartCard from '../components/Chart/ChartCard'
 import { Doughnut, Line } from 'react-chartjs-2'
@@ -23,9 +22,7 @@ import {
 } from '@windmill/react-ui'
 
 import {
-  doughnutOptions,
   lineOptions,
-  doughnutLegends,
   lineLegends,
 } from '../utils/demo/chartsData'
 
@@ -52,7 +49,6 @@ function Dashboard() {
     <>
       <PageTitle>Dashboard</PageTitle>
 
-      <CTA />
 
       {/* <!-- Cards --> */}
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -77,12 +73,12 @@ function Dashboard() {
 
       <PageTitle>Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
-        <ChartCard title="Revenue">
-          <Doughnut {...doughnutOptions} />
-          <ChartLegend legends={doughnutLegends} />
+        <ChartCard title="Platform 1">
+          <Line {...lineOptions} />
+          <ChartLegend legends={lineLegends} />
         </ChartCard>
 
-        <ChartCard title="Traffic">
+        <ChartCard title="Platform 2">
           <Line {...lineOptions} />
           <ChartLegend legends={lineLegends} />
         </ChartCard>

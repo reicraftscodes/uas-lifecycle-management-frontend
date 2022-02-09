@@ -12,9 +12,9 @@ const routes = [
     name: 'Dashboard', // name that appear in Sidebar
   },
   {
-    path: '/app/forms',
+    path: '/app/locations',
     icon: 'FormsIcon',
-    name: 'Forms',
+    name: 'Locations',
   },
   {
     path: '/app/cards',
