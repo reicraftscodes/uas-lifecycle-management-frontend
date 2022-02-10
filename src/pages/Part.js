@@ -8,12 +8,12 @@ function Part(props) {
     //Make location equal to the location passed via route
     const partId = props.match.params.partId
 
-    const dronePart = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Propeller', partId: 1, units: 12, cost: 0, status: 'Awaiting repair'}
-    const dronePart2 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Gimbal', partId: 2, units: 10, cost: 0, status: 'Being repaired'}
-    const dronePart3 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Tail', partId: 3, units: 10, cost: 0, status: 'Operational'}
-    const dronePart4 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Payload Electro Optical', partId: 4, units: 10, cost: 0, status: 'Awaiting repair'}
-    const dronePart5 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Motor', partId: 5, units: 10, cost: 0, status: 'Awaiting repair'}
-    const dronePart6 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Fuselage', partId: 6, units: 10, cost: 0, status: 'Beyond repair'}
+    const dronePart = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Propeller', partId: 1, units: 80, cost: 0, status: 'Awaiting repair'}
+    const dronePart2 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Gimbal', partId: 2, units: 52, cost: 0, status: 'Being repaired'}
+    const dronePart3 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Tail', partId: 3, units: 40, cost: 0, status: 'Operational'}
+    const dronePart4 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Payload Electro Optical', partId: 4, units: 24, cost: 0, status: 'Awaiting repair'}
+    const dronePart5 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Motor', partId: 5, units: 21, cost: 0, status: 'Awaiting repair'}
+    const dronePart6 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Fuselage', partId: 6, units: 30, cost: 0, status: 'Beyond repair'}
 
     const parts = [dronePart, dronePart2, dronePart3, dronePart4, dronePart5, dronePart6]
 

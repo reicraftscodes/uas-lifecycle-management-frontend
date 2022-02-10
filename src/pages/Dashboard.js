@@ -2,17 +2,16 @@ import React, { useState, useEffect } from 'react'
 
 import InfoCard from '../components/Cards/InfoCard'
 import ChartCard from '../components/Chart/ChartCard'
-import { Doughnut, Line } from 'react-chartjs-2'
+import {Bar} from 'react-chartjs-2'
 import ChartLegend from '../components/Chart/ChartLegend'
 import PageTitle from '../components/Typography/PageTitle'
-import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon } from '../icons'
+import { MoneyIcon, PeopleIcon } from '../icons'
 import RoundIcon from '../components/RoundIcon'
-import response from '../utils/demo/tableData'
 import StockPopup from "../components/StockPopup";
 
 import {
-  lineOptions,
-  lineLegends,
+  barOptions,
+  barLegends,
 } from '../utils/demo/chartsData'
 
 function Dashboard() {
@@ -46,13 +45,13 @@ function Dashboard() {
       <PageTitle>Stock Level Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
         <ChartCard title="Platform 1">
-          <Line {...lineOptions} />
-          <ChartLegend legends={lineLegends} />
+          <Bar {...barOptions} />
+          <ChartLegend legends={barLegends} />
         </ChartCard>
 
         <ChartCard title="Platform 2">
-          <Line {...lineOptions} />
-          <ChartLegend legends={lineLegends} />
+          <Bar {...barOptions} />
+          <ChartLegend legends={barLegends} />
         </ChartCard>
       </div>
 

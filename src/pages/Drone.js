@@ -8,15 +8,12 @@ import {Link} from "react-router-dom";
 
 function Drone(props) {
 
-    //Make location equal to the location passed via route
-    const droneId = props.match.params.droneId
-
-    const dronePart = {name: 'Propeller', partId: 1, units: 12, cost: 0, status: 'Awaiting repair'}
-    const dronePart2 = {name: 'Gimbal', partId: 2, units: 10, cost: 0, status: 'Being repaired'}
-    const dronePart3 = {name: 'Tail', partId: 3, units: 10, cost: 0, status: 'Operational'}
-    const dronePart4 = {name: 'Payload Electro Optical', partId: 4, units: 10, cost: 0, status: 'Awaiting repair'}
-    const dronePart5 = {name: 'Motor', partId: 5, units: 10, cost: 0, status: 'Awaiting repair'}
-    const dronePart6 = {name: 'Fuselage', partId: 6, units: 10, cost: 0, status: 'Beyond repair'}
+    const dronePart = {name: 'Propeller', partId: 1, units: 80, cost: 0, status: 'Awaiting repair'}
+    const dronePart2 = {name: 'Gimbal', partId: 2, units: 52, cost: 0, status: 'Being repaired'}
+    const dronePart3 = {name: 'Tail', partId: 3, units: 40, cost: 0, status: 'Operational'}
+    const dronePart4 = {name: 'Payload Electro Optical', partId: 4, units: 24, cost: 0, status: 'Awaiting repair'}
+    const dronePart5 = {name: 'Motor', partId: 5, units: 21, cost: 0, status: 'Awaiting repair'}
+    const dronePart6 = {name: 'Fuselage', partId: 6, units: 30, cost: 0, status: 'Beyond repair'}
 
     const parts = [dronePart, dronePart2, dronePart3, dronePart4, dronePart5, dronePart6]
 
