@@ -2,45 +2,30 @@ import React from 'react'
 
 
 import PageTitle from '../components/Typography/PageTitle'
-import SectionTitle from '../components/Typography/SectionTitle'
-import { Input, HelperText, Label, Select, Textarea } from '@windmill/react-ui'
+import {Card, CardTitle} from "reactstrap";
 
-import { MailIcon } from '../icons'
-import ChartCard from "../components/Chart/ChartCard";
-import {Bar, Doughnut, Line} from "react-chartjs-2";
-import {
-  barLegends,
-  barOptions,
-  doughnutLegends,
-  doughnutOptions,
-  lineLegends,
-  lineOptions
-} from "../utils/demo/chartsData";
-import ChartLegend from "../components/Chart/ChartLegend";
 
 function Locations() {
-  return (
-    <>
-      <PageTitle>Locations</PageTitle>
 
-      <div className="grid gap-6 mb-8 md:grid-cols-2">
-        <ChartCard title="Doughnut">
-          <Doughnut {...doughnutOptions} />
-          <ChartLegend legends={doughnutLegends} />
-        </ChartCard>
+    const locations = ["St. Athan, Cardiff", "location2", "location3", "location4", "location5", "location6", "location7", "location8"]
 
-        <ChartCard title="Lines">
-          <Line {...lineOptions} />
-          <ChartLegend legends={lineLegends} />
-        </ChartCard>
+    const locationList = locations.map(location => {
+        return <div className="location-container">
+            <Card className="location-card">
+                <CardTitle>{location}</CardTitle>
+            </Card>
+        </div>
+    })
 
-        <ChartCard title="Bars">
-          <Bar {...barOptions} />
-          <ChartLegend legends={barLegends} />
-        </ChartCard>
-      </div>
-    </>
-  )
+    return (
+        <>
+          <PageTitle>Locations</PageTitle>
+
+            {locationList}
+
+
+        </>
+    )
 }
 
 export default Locations

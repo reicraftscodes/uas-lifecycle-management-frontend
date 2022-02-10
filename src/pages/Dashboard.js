@@ -8,6 +8,7 @@ import PageTitle from '../components/Typography/PageTitle'
 import { ChatIcon, CartIcon, MoneyIcon, PeopleIcon } from '../icons'
 import RoundIcon from '../components/RoundIcon'
 import response from '../utils/demo/tableData'
+import StockPopup from "../components/StockPopup";
 import {
   TableBody,
   TableContainer,
@@ -47,8 +48,8 @@ function Dashboard() {
 
   return (
     <>
+      <StockPopup />
       <PageTitle>Dashboard</PageTitle>
-
 
       {/* <!-- Cards --> */}
       <div className="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
@@ -71,7 +72,7 @@ function Dashboard() {
         </InfoCard>
       </div>
 
-      <PageTitle>Charts</PageTitle>
+      <PageTitle>Stock Level Charts</PageTitle>
       <div className="grid gap-6 mb-8 md:grid-cols-2">
         <ChartCard title="Platform 1">
           <Line {...lineOptions} />
