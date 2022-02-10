@@ -6,11 +6,7 @@ const Dashboard = lazy(() => import('../pages/Dashboard'))
 const Locations = lazy(() => import('../pages/Locations'))
 const Location = lazy(() => import('../pages/Location'))
 const Drone = lazy(() => import("../pages/Drone"))
-const Cards = lazy(() => import('../pages/Cards'))
-const Charts = lazy(() => import('../pages/Charts'))
-const Buttons = lazy(() => import('../pages/Buttons'))
-const Modals = lazy(() => import('../pages/Modals'))
-const Tables = lazy(() => import('../pages/Tables'))
+const Part = lazy(() => import("../pages/Part"))
 const Page404 = lazy(() => import('../pages/404'))
 const Blank = lazy(() => import('../pages/Blank'))
 
@@ -42,24 +38,8 @@ const routes = [
     component: Drone,
   },
   {
-    path: '/cards',
-    component: Cards,
-  },
-  {
-    path: '/charts',
-    component: Charts,
-  },
-  {
-    path: '/buttons',
-    component: Buttons,
-  },
-  {
-    path: '/modals',
-    component: Modals,
-  },
-  {
-    path: '/tables',
-    component: Tables,
+    path: '/parts/:partId',
+    component: Part,
   },
   {
     path: '/404',

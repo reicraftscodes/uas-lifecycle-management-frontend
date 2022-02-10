@@ -3,6 +3,7 @@ import '../Location.css'
 import '../Drone.css'
 import PageTitle from '../components/Typography/PageTitle'
 import {Card, CardText, CardTitle} from "reactstrap";
+import {Link} from "react-router-dom";
 
 
 function Drone(props) {
@@ -22,7 +23,7 @@ function Drone(props) {
     const drone = {droneId: 1, dronePlatform: 1, parts}
 
     const droneList = parts.map(part => {
-        return <div className="part-container">
+        return <Link to={`/app/parts/${part.partId}`}><div className="part-container">
             <Card className="part-card">
                 <CardTitle id="title">{part.name}</CardTitle>
                 <CardText>ID: {part.partId}</CardText>
@@ -31,6 +32,7 @@ function Drone(props) {
                 <CardText>Status: {part.status}</CardText>
             </Card>
         </div>
+        </Link>
     })
 
 
