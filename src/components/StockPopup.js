@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function StockPopup() {
     return (
         <UncontrolledAlert color="danger">
-            <a href="/stock-levels">4 Low Stock Levels!</a>
+            <a href="/app/stocklevels">3 Low Stock Levels!</a>
         </UncontrolledAlert>
     );
 }

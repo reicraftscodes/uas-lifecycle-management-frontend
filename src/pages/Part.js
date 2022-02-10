@@ -5,7 +5,6 @@ import '../Location.css'
 
 function Part(props) {
 
-    //Make location equal to the location passed via route
     const partId = props.match.params.partId
 
     const dronePart = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Propeller', partId: 1, units: 80, cost: 0, status: 'Awaiting repair'}

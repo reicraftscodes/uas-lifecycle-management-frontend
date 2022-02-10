@@ -9,7 +9,7 @@ const Drone = lazy(() => import("../pages/Drone"))
 const Part = lazy(() => import("../pages/Part"))
 const Page404 = lazy(() => import('../pages/404'))
 const Blank = lazy(() => import('../pages/Blank'))
-
+const StockLevels = lazy(() => import("../pages/StockLevels"))
 /**
  * ⚠ These are internal routes!
  * They will be rendered inside the app, using the default `containers/Layout`.
@@ -40,6 +40,10 @@ const routes = [
   {
     path: '/parts/:partId',
     component: Part,
+  },
+  {
+    path: '/stocklevels',
+    component: StockLevels,
   },
   {
     path: '/404',

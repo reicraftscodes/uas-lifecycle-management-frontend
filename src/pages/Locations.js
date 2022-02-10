@@ -25,7 +25,6 @@ function Locations() {
 
             {locationList}
 
-
         </>
     )
 }

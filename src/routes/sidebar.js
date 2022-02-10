@@ -17,6 +17,11 @@ const routes = [
     name: 'Locations',
   },
   {
+    path: '/app/stocklevels',
+    icon: 'FormsIcon',
+    name: 'StockLevels',
+  },
+  {
     icon: 'PagesIcon',
     name: 'Pages',
     routes: [
