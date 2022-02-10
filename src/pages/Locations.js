@@ -3,6 +3,7 @@ import React from 'react'
 
 import PageTitle from '../components/Typography/PageTitle'
 import {Card, CardTitle} from "reactstrap";
+import {Link} from "react-router-dom";
 
 
 function Locations() {
@@ -12,7 +13,8 @@ function Locations() {
     const locationList = locations.map(location => {
         return <div className="location-container">
             <Card className="location-card">
-                <CardTitle>{location}</CardTitle>
+
+                <CardTitle><Link to={`/app/locations/${location}`}>{location}</Link></CardTitle>
             </Card>
         </div>
     })

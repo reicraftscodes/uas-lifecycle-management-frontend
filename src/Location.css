@@ -1,0 +1,27 @@
+.drone-container {
+    display: flex;
+    background-color: #f8f8f8;
+}
+
+.drone-card {
+    margin: 10px 0;
+    background-color: white;
+    width: 100%;
+}
+
+#id {
+
+}
+
+#platform {
+
+}
+
+#title {
+    font-weight: bold;
+    font-size: 150%;
+}
+
+#title, #id, #platform {
+    margin: 10px 0;
+}
