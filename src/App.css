@@ -2,4 +2,19 @@
   text-align: center;
 }
 
+#name {
 
+}
+
+#value {
+
+}
+
+#details-container {
+  display: flex;
+  width: 80%;
+}
+
+#card {
+  width: 25%;
+}

@@ -11,20 +11,12 @@ export default class AppNavbar extends React.Component {
     constructor(props) {
         super(props);
 
-        this.toggle = this.toggle.bind(this);
-        this.state = {
-            isOpen: false
-        };
     }
-    toggle() {
-        this.setState({
-            isOpen: !this.state.isOpen
-        });
-    }
+
     render() {
         return (
             <div>
-                <Navbar color="dark" light expand="md">
+                <Navbar color="dark" dark expand="md">
                     <NavbarBrand href="/">Sierra Nevada Corporation</NavbarBrand>
                         <Nav className="ml-auto" navbar>
                             <NavItem>

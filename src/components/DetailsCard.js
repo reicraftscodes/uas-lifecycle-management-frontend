@@ -1,13 +1,12 @@
 import {Card, CardBody} from "reactstrap";
 
-function DetailsCard({ name, value, children: icon }) {
+function DetailsCard({ name, value}) {
     return (
-        <Card>
+        <Card id="card">
             <CardBody>
-                {icon}
                 <div>
-                    <p>{name}</p>
-                    <p>{value}</p>
+                    <p id="name">{name}</p>
+                    <p id="value">{value}</p>
                 </div>
             </CardBody>
         </Card>
