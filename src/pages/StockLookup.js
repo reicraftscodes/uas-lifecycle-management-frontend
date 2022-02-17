@@ -1,6 +1,7 @@
 import '../StockLookup.css'
 import React from "react";
 import {Link} from "react-router-dom";
+import {Container, Table } from 'reactstrap';
 
 
 const ALL_PARTS_URL = 'http://localhost:8080/parts/search-parts'
@@ -91,17 +92,14 @@ export default class StockLookup extends React.Component {
         const {parts} = this.state;
 
         const partList = parts.map(part => {
-            return <Link to={`/app/parts/${part.partId}`}>
-                <div id="part-div">
+            return (
                     <tr key={part.partId}>
-                        <td style={{whiteSpace: 'nowrap'}} class="part-list-key-text">{part.name}</td>
-                        <td class="part-list-key-text">{part.supplier}</td>
-                        <td class="part-list-key-text">{part.location}</td>
+                        <td style={{whiteSpace: 'nowrap'}} id="partName" className="partText">{part.name}</td>
+                        <td id="partSupplier" className="partText">{part.supplier}</td>
+                        <td id="partLocation" className="partText">{part.location}</td>
                     </tr>
-                </div>
-            </Link>
+            )
         });
-
 
         return (
             <>
@@ -123,18 +121,24 @@ export default class StockLookup extends React.Component {
                     <input type="submit" value="Search"/>
                 </form>
 
-                <table className="mt-4">
-                    <thead>
-                    <tr id="player-list-row">
-                        <th className="player-list-data-text">Name</th>
-                        <th className="player-list-data-text">Supplier</th>
-                        <th className="player-list-data-text">Location</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {partList}
-                    </tbody>
-                </table>
+                <div>
+                    <div>
+                        <Container fluid>
+                            <Table>
+                                <thead>
+                                <tr id="player-list-row">
+                                    <th id="name">Name</th>
+                                    <th id="supplier">Supplier</th>
+                                    <th id="location">Location</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {partList}
+                                </tbody>
+                            </Table>
+                        </Container>
+                    </div>
+                </div>
             </>
         )
     }
