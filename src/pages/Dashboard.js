@@ -10,10 +10,8 @@ export default class Dashboard extends React.Component {
     }
 
     render() {
-
         return (
             <Container>
-                <AppNavbar />
                 <div id="details-container">
                     <DetailsCard name="Low Stocks" value="3" />
                     <DetailsCard name="Repairs Needed" value="3" />
