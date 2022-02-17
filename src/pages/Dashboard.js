@@ -1,5 +1,4 @@
 import React from "react";
-import AppNavbar from "../components/AppNavbar";
 import {Container} from "reactstrap";
 import DetailsCard from "../components/DetailsCard";
 

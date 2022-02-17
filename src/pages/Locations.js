@@ -1,7 +1,6 @@
 import React from 'react'
 
 
-import PageTitle from '../components/Typography/PageTitle'
 import {Card, CardTitle} from "reactstrap";
 import {Link} from "react-router-dom";
 
@@ -14,14 +13,14 @@ function Locations() {
         return <div className="location-container">
             <Card className="location-card">
 
-                <CardTitle><Link to={`/app/locations/${location}`}>{location}</Link></CardTitle>
+                <CardTitle><Link to={`/locations/${location}`}>{location}</Link></CardTitle>
             </Card>
         </div>
     })
 
     return (
         <>
-          <PageTitle>Locations</PageTitle>
+          <h1>Locations</h1>
 
             {locationList}
 

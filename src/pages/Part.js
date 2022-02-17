@@ -1,12 +1,10 @@
 import {Card, CardText, CardTitle} from "reactstrap";
-import PageTitle from "../components/Typography/PageTitle";
 import React from "react";
-import '../Location.css'
+import {useParams} from "react-router-dom";
 
-function Part(props) {
+function Part() {
 
-    const partId = props.match.params.partId
-
+    const { partId } = useParams()
     const dronePart = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Propeller', partId: 1, units: 80, cost: 0, status: 'Awaiting repair'}
     const dronePart2 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Gimbal', partId: 2, units: 52, cost: 0, status: 'Being repaired'}
     const dronePart3 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Tail', partId: 3, units: 40, cost: 0, status: 'Operational'}
@@ -45,7 +43,7 @@ function Part(props) {
 
     return (
         <>
-            <PageTitle>Part</PageTitle>
+            <h1>Part</h1>
 
             {part()}
 
