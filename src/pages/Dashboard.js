@@ -1,7 +1,7 @@
 import React from "react";
-import AppNavbar from "../components/AppNavbar";
 import {Container} from "reactstrap";
 import DetailsCard from "../components/DetailsCard";
+import StockPopup from "../components/StockPopup";
 
 export default class Dashboard extends React.Component {
 
@@ -12,6 +12,7 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <Container>
+                <StockPopup />
                 <div id="details-container">
                     <DetailsCard name="Low Stocks" value="3" />
                     <DetailsCard name="Repairs Needed" value="3" />
