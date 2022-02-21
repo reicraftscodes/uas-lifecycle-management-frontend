@@ -7,12 +7,14 @@ function StockLevels() {
     const dronePart = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Payload Electro Optical', partId: 4, units: 24, cost: 0, status: 'Awaiting repair'}
     const dronePart2 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Motor', partId: 5, units: 21, cost: 0, status: 'Awaiting repair'}
     const dronePart3 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'Fuselage', partId: 6, units: 30, cost: 0, status: 'Beyond repair'}
-    const dronePart4 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Cardiff', name: 'FictionalPart', partId: 6, units: 8, cost: 0, status: 'Beyond repair'}
+    const dronePart4 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Location2', name: 'FictionalPart', partId: 6, units: 8, cost: 0, status: 'Beyond repair'}
+    const dronePart5 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Location3', name: 'FictionalPart', partId: 6, units: 8, cost: 0, status: 'Awaiting repair'}
+    const dronePart6 = {failurePeriodTime: 100, failureTime: 100, weight: 2, location: 'Location3', name: 'FictionalPart', partId: 6, units: 8, cost: 0, status: 'Awaiting repair'}
 
-    const parts = [dronePart, dronePart2, dronePart3, dronePart4]
+    const parts = [dronePart, dronePart2, dronePart3, dronePart4, dronePart5, dronePart6]
 
     const partList = parts.map(part => {
-        return <Link to={`/app/parts/${part.partId}`} id="stockLink">
+        return <Link to={`/parts/${part.partId}`} id="stockLink">
             <Card id="partCard">
                 <CardTitle id="cardTitle">{part.name}</CardTitle>
                 <CardText id="cardText">Stock Percentage</CardText>

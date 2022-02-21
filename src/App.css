@@ -9,6 +9,9 @@
 #value {
 
 }
+#alertText {
+  font-size: 1.4em;
+}
 
 #stockLink {
   text-decoration: none;
@@ -32,6 +35,20 @@
   color: red;
   font-size: 1.5em;
 }
+#icon {
+  font-size: 2em;
+}
+
+#name {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+#value {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 10px;
+}
 
 #flex-container {
   display: flex;
@@ -42,10 +59,27 @@
   justify-content: center;
 }
 
+.chartDiv {
+  margin-top: 20px;
+  margin-right: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.chartsContainer {
+  display: flex;
+}
+
+.chartTitle {
+  font-size: 1.5em;
+  font-weight: bold;
+}
 
 #details-container {
   display: flex;
   width: 80%;
+  margin: 10px 20px;
+  padding: 10px;
 }
 
 #card {
