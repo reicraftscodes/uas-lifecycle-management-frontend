@@ -31,6 +31,9 @@ export default class AppNavbar extends React.Component {
                             <NavItem>
                                 <NavLink href="/stock-lookup">Stock Lookup</NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink href="/add-part">Add Part</NavLink>
+                            </NavItem>
                         </Nav>
                 </Navbar>
             </div>
