@@ -9,6 +9,9 @@
 #value {
 
 }
+#alertText {
+  font-size: 1.4em;
+}
 
 #stockLink {
   text-decoration: none;
