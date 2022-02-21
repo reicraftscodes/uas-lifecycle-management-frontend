@@ -21,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="25FRvniP4ky8wst3ISVhCNKUgGR" />
+  <component name="ProjectId" id="25QA0eC0Dcnt78Rc8C1l2ThooWr" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -30,18 +30,12 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="nodejs_package_manager_path" value="npm" />
-  </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\c1947381\OneDrive - Cardiff University\Pictures\UAS\Alert\uas-lifecycle-management-frontend\src\components" />
-    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="" />
-      <created>1645121083532</created>
+      <changelist id="623622f7-c0ed-4bda-a273-27b6ca783419" name="Changes" comment="" />
+      <created>1645448718164</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1645121083532</updated>
@@ -49,8 +43,5 @@
       <workItem from="1645448630848" duration="593000" />
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="3" />
   </component>
 </project>
