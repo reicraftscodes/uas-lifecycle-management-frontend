@@ -6,6 +6,11 @@ import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
 import { Chart as ChartJS } from 'chart.js/auto'
 import { Chart }            from 'react-chartjs-2'
+import Locations from "./pages/Locations";
+import Location from "./pages/Location";
+import Drone from "./pages/Drone";
+import Part from "./pages/Part";
+
 
 class App extends React.Component {
 
@@ -16,8 +21,11 @@ class App extends React.Component {
                 <AppNavbar />
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/stock-levels" element={<StockLevels />}>
-                </Route>
+                    <Route path="/stock-levels" element={<StockLevels />} />
+                    <Route path="/locations" exact={true} element={<Locations />} />
+                    <Route path="/locations/:location" element={<Location />} />
+                    <Route path="/drones/:droneId" element={<Drone />} />
+                    <Route path="/parts/:partId" element={<Part />} />
                 </Routes>
             </div>
         )
