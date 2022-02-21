@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="623622f7-c0ed-4bda-a273-27b6ca783419" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/uas-lifecycle-management-frontend.iml" beforeDir="false" />
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Drone.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/StockLookup.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Drone.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Location.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Locations.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Part.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/StockLookup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,8 +38,9 @@
       <created>1645448718164</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1645448718164</updated>
-      <workItem from="1645448721975" duration="2000" />
+      <updated>1645121083532</updated>
+      <workItem from="1645121085651" duration="10414000" />
+      <workItem from="1645448630848" duration="593000" />
     </task>
     <servers />
   </component>

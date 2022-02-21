@@ -4,6 +4,8 @@ import {Route, Routes} from 'react-router-dom';
 import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
+import { Chart as ChartJS } from 'chart.js/auto'
+import { Chart }            from 'react-chartjs-2'
 import Locations from "./pages/Locations";
 import Location from "./pages/Location";
 import Drone from "./pages/Drone";
@@ -12,6 +14,7 @@ import StockLookup from "./pages/StockLookup";
 
 
 class App extends React.Component {
+
 
     render() {
         return (
