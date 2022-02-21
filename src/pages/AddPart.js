@@ -5,10 +5,19 @@ const AddPart = () => {
     const [partType, setPartType] = useState('');
     const [aircraft, setAircraft] = useState('');
     const [location, setLocation] = useState('');
+    const manufacture = "";
     const [partStatus, setPartStatus] = useState('');
+    
 
-    const handleSubmission = () => {
-        console.log("test" + partType);
+    const handleSubmission = (e) => {
+        e.preventDefault();
+        const part = {partType, aircraft, location, manufacture, partStatus};
+
+        fetch('http://localhost:8080/parts/add', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json" },
+            body: JSON.stringify(part)
+        }).then(response => response.json()).then(data => console.log(data))
     }
 
     return (
