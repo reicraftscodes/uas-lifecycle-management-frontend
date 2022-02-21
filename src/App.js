@@ -4,6 +4,7 @@ import {Route, Routes} from 'react-router-dom';
 import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
+import StockLookup from "./pages/StockLookup";
 
 
 class App extends React.Component {
@@ -14,8 +15,8 @@ class App extends React.Component {
                 <AppNavbar />
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path="/stock-levels" element={<StockLevels />}>
-                </Route>
+                    <Route path="/stock-levels" element={<StockLevels />} />
+                    <Route path="/stock-lookup" element={<StockLookup />} />
                 </Routes>
             </div>
         )
