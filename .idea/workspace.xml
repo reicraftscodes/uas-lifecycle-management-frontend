@@ -2,12 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/chartsData.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StockPopup.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/StockPopup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/StockPopup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/DetailsCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DetailsCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/StockLevels.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/StockLevels.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +45,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1645121083532</updated>
-      <workItem from="1645121085651" duration="1109000" />
+      <workItem from="1645121085651" duration="10414000" />
+      <workItem from="1645448630848" duration="312000" />
     </task>
     <servers />
   </component>
