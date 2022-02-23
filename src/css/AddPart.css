@@ -1,0 +1,48 @@
+.addPart {
+    margin: auto;
+    width: 60%;
+}
+
+.radioButton {
+    display:inline;
+}
+
+.statusGroup {
+    width:100%;
+    
+}
+
+.statusGroup ul {
+    display: flex;
+    justify-content: space-around;
+    padding: 0;
+    list-style: none;
+}
+
+.statusGroup li{
+    display: inline-block;
+    padding: 1.2%;
+    margin-bottom: 5%;
+    color: white;
+    font-size: 0.8em;
+    width: 25%;
+    background-color: black;
+}
+
+#operationalOption {
+    border-top-left-radius: 2%;
+    border-bottom-left-radius: 2%;
+    
+}
+
+#beingRepairedOption {
+    border-top-right-radius: 2%;
+    border-bottom-right-radius: 2%;
+}
+
+.statusGroup li:hover {
+    color: lightgray;
+}
+
+
+
