@@ -5,7 +5,7 @@ import {Form, FormGroup, Label, Input,Button, ButtonGroup} from "reactstrap";
 import '../css/AddPart.css'
 
 const AddPart = () => {
-    const [partType, setPartType] = useState('');
+    const [partType, setPartType] = useState('1');
     const [aircraft, setAircraft] = useState('');
     const [location, setLocation] = useState('');
     const manufacture = "";
@@ -16,11 +16,13 @@ const AddPart = () => {
         e.preventDefault();
         const part = {partType, aircraft, location, manufacture, partStatus};
 
-        fetch('http://localhost:8080/parts/add', {
-            method: 'POST',
-            headers: {"Content-Type": "application/json" },
-            body: JSON.stringify(part)
-        }).then(response => response.json()).then(data => console.log(data))
+         fetch('http://localhost:8080/parts/add', {
+             method: 'POST',
+             headers: {"Content-Type": "application/json" },
+             body: JSON.stringify(part)
+         }).then(response => response.json()).then(data => console.log(data))
+
+        
 
         
     }
@@ -75,12 +77,18 @@ const AddPart = () => {
                     <Label check>Beyond Repair</Label>
                     
                 </FormGroup>
+
+                <Button onClick={handleSubmission}>Submit</Button>
             </Form>
         </div>
 
+        
+
 
     );
+
 }
+
 
 
 export default AddPart
