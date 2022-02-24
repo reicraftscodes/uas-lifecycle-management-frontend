@@ -1,10 +1,20 @@
 .addPart {
-    margin: auto;
-    width: 60%;
+    background-color: lightgray;
+
+}
+
+.addPart h1{
+    text-align: left;
+    padding-left: 10%;
 }
 
 .radioButton {
     display:inline;
+}
+
+.form {
+    width: 50%;
+    margin: auto;
 }
 
 
