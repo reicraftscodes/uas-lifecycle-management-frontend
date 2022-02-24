@@ -1,36 +1,82 @@
-import { faBold } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
-import ReactDOM from "react-dom";
 import {Form, FormGroup, Label, Input,Button, ButtonGroup, Col, Container,Alert} from "reactstrap";
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import '../css/AddPart.css'
+import { FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 
 const AddPart = () => {
+    const [partTypeName, setPartTypeName] = useState('Wing A');
     const [partType, setPartType] = useState('1');
     const [aircraft, setAircraft] = useState('');
     const [location, setLocation] = useState('');
     const manufacture = "";
     const [partStatus, setPartStatus] = useState('');
-    
 
+    const locations = ["Ankara", "Cardiff","Dublin","Edinburgh","London","Nevada","St Athen"];
+
+    const partTypes = [
+        {label:"Wing A", id:1},
+        {label:"Wing B", id:2},
+        {label:"Fuselage", id:3},
+        {label:"Tail", id:4},
+        {label:"Propeller", id:5},
+        {label:"Motor", id:6},
+        {label:"Communications Radio", id:7},
+        {label:"Payload Electo Optical", id:8},
+        {label:"Payload Infra-Red", id:9},
+        {label:"Quad Arm", id:10},
+        {label:"Gimble", id:11}];
+        
+    
     const handleSubmission = (e) => {
         e.preventDefault();
+        setPartType(partTypeName.id);
         const part = {partType, aircraft, location, manufacture, partStatus};
 
-         fetch('http://localhost:8080/parts/add', {
-             method: 'POST',
-             headers: {"Content-Type": "application/json" },
-             body: JSON.stringify(part)
-         }).then(response => response.json()).then(data => console.log(data))
+            fetch('http://localhost:8080/parts/add', {
+                method: 'POST',
+                headers: {"Content-Type": "application/json" },
+                body: JSON.stringify(part)
+            }).then(response => response.json()).then(data => console.log(data))
+
         
+
     }
 
 
+
     return (
+
         <div className="addPart">
 
-            <div class="heading">
+            <br/>
+            <FormControl>
+                <Autocomplete value={partTypeName} onChange={(event, newValue) => {setPartTypeName(newValue);}} diablePortal id="partTypeSearchField" options={partTypes} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
+                <br/>
+                <TextField label="Aircraft Tailnumber" onChange={(e) => setAircraft(e.target.value)}/>
+                <br/>
+                <Autocomplete value={location} onChange={(event, newValue) => {setLocation(newValue);}} disablePortal id="locationSearchField" options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/> 
+                <br/>
+                <RadioGroup row value={partStatus} onChange={(e) => setPartStatus(e.target.value)}>
+                    <FormControlLabel value="OPERATIONAL" control={<Radio color="success"/>} label="Operational"/>
+                    <FormControlLabel value="AWAITING_REPAIR" control={<Radio color="success"/>} label="Awaiting Repair"/>
+                    <FormControlLabel value="BEING_REPAIRED" control={<Radio color="success"/>} label="Being Repaired"/>
+                    <FormControlLabel value="BEYOND_REPAIR" control={<Radio color="success"/>} label="Beyond Repair"/>
+                </RadioGroup>
+                <br/>
+                <Button varient="contained" color="primary" size="small" onClick={handleSubmission}>Contained</Button>
+
+            </FormControl>
+
+                
+
+
+            {/* <div class="heading">
                <h1>Add Part</h1> 
             </div>
+
+            <Autocomplete disablePortal id="locationSearchField" options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/>
 
             <div class="form">
             <Form>
@@ -54,13 +100,18 @@ const AddPart = () => {
                     </Col>
                 </FormGroup>
 
+                <hr class="solid"></hr>
+
                 <FormGroup row>
                     <Label for="aircraftForm" sm={2}>Aircraft</Label>
 
                     <Col sm={10}>
-                        <Input w-25 id="aircraftForm" name="Aircraft" type="text" value={aircraft} onChange={(e) => setAircraft(e.target.value)}/>
+                        <Input id="aircraftForm" name="Aircraft" type="text" value={aircraft} onChange={(e) => setAircraft(e.target.value)}/>
+                        
                     </Col>
                 </FormGroup>
+
+                <hr class="solid"></hr>
 
                 <FormGroup row>
                     <Label for="locationForm" sm={2}>Location</Label>
@@ -69,6 +120,8 @@ const AddPart = () => {
                         <Input id="locationForm" name="Location" type="text" value={location} onChange={(e) => setLocation(e.target.value)}/>
                     </Col>
                 </FormGroup>
+
+                <hr class="solid"></hr>
 
                 <FormGroup row class="radioButton" tag="fieldset" value={partStatus} checked={partStatus}>
                     <Label sm={2}>Part status</Label>
@@ -96,11 +149,13 @@ const AddPart = () => {
                     </Col>
                 </FormGroup>
 
+                <hr class="solid"></hr>
+
                 <Col sm={{offset: 2, size: 10}}>
                     <Button onClick={handleSubmission}>Submit</Button>
                 </Col>
             </Form>
-            </div>
+            </div> */}
 
         </div>
 
