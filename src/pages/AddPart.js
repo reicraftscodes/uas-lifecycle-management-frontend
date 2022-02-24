@@ -75,16 +75,24 @@ const AddPart = () => {
 
                     <Col sm={10}>
                         <Input value="OPERATIONAL" name="partStatusForm" type="radio" onChange={(e) => setPartStatus(e.target.value)}/>
-                        <Label class="radioLabel" check>Operational</Label>
+                        <div class="radioLabel">
+                            <Label check>Operational</Label>
+                        </div>
 
                         <Input value="AWAITING_REPAIR" name="partStatusForm" type="radio" onChange={(e) => setPartStatus(e.target.value)}/>
-                        <Label class="radioLabel" check>Awaiting Repair</Label>
-
+                        <div class="radioLabel">
+                            <Label check class="radioLabel" >Awaiting Repair</Label>
+                        </div>
+                        
                         <Input value="BEING_REPAIRED" name="partStatusForm" type="radio" onChange={(e) => setPartStatus(e.target.value)}/>
-                        <Label class="radioLabel" check>Being Repaired</Label>
+                        <div class="radioLabel">
+                            <Label check class="radioLabel" >Being Repaired</Label>
+                        </div>
                         
                         <Input value="BEYOND_REPAIR" name="partStatusForm" type="radio" onChange={(e) => setPartStatus(e.target.value)}/>
-                        <Label class="radioLabel" check>Beyond Repair</Label>
+                        <div class="radioLabel">
+                            <Label check class="radioLabel" >Beyond Repair</Label>
+                        </div>
                     </Col>
                 </FormGroup>
 
