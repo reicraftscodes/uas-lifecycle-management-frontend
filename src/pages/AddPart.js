@@ -1,22 +1,25 @@
 import { useState } from "react";
-import {Form, FormGroup, Label, Input,Button, ButtonGroup, Col, Container,Alert} from "reactstrap";
+import {Form, FormGroup, Label, Input,Button, ButtonGroup, Col, Container} from "reactstrap";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import '../css/AddPart.css'
-import { FormControl, RadioGroup, FormControlLabel, Radio } from "@mui/material";
+import { FormControl, RadioGroup, FormControlLabel, Radio, Alert, Fade, Snackbar } from "@mui/material";
 
 const AddPart = () => {
-    const [partTypeName, setPartTypeName] = useState('Wing A');
+    const [partTypeName, setPartTypeName] = useState('');
     const [partType, setPartType] = useState('1');
     const [aircraft, setAircraft] = useState('');
     const [location, setLocation] = useState('');
     const manufacture = "";
-    const [partStatus, setPartStatus] = useState('');
+    const [partStatus, setPartStatus] = useState('OPERATIONAL');
+    const [alert, setAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertSeverity, setAlertSeverity] = useState('success');
 
     const locations = ["Ankara", "Cardiff","Dublin","Edinburgh","London","Nevada","St Athen"];
 
     const partTypes = [
-        {label:"Wing A", id:1},
+        {label:'Wing A', id:1},
         {label:"Wing B", id:2},
         {label:"Fuselage", id:3},
         {label:"Tail", id:4},
@@ -38,21 +41,36 @@ const AddPart = () => {
                 method: 'POST',
                 headers: {"Content-Type": "application/json" },
                 body: JSON.stringify(part)
-            }).then(response => response.json()).then(data => console.log(data))
-
-        
-
+            }).then(response => response.json()).then(data => {
+                if(data["response"] === "Success") {
+                    setAlertMessage("Part added successfully!");
+                    setAlertSeverity("success");
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                
+                } else {
+                    setAlertMessage(data["response"]);
+                    setAlertSeverity("error");
+                    setAlert(true);
+                }
+            }).catch(error => {
+                setAlertMessage("Error communicating with server, part not saved");
+                setAlertSeverity("error");
+                setAlert(true);
+            })
     }
-
 
 
     return (
 
-        <div className="addPart">
+        <div className="addPart">   
+            <div class="alertPos">
+                {alert ? <Alert severity={alertSeverity}>{alertMessage}</Alert> : <></> }
+            </div> 
+            
 
-            <br/>
             <FormControl>
-                <Autocomplete value={partTypeName} onChange={(event, newValue) => {setPartTypeName(newValue);}} diablePortal id="partTypeSearchField" options={partTypes} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
+                <Autocomplete isOptionEqualToValue={(option, value) => option.id === value.id} value={partTypeName} onChange={(event, newValue) => {setPartTypeName(newValue);}} diablePortal id="partTypeSearchField" options={partTypes} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
                 <br/>
                 <TextField label="Aircraft Tailnumber" onChange={(e) => setAircraft(e.target.value)}/>
                 <br/>
@@ -69,98 +87,7 @@ const AddPart = () => {
 
             </FormControl>
 
-                
-
-
-            {/* <div class="heading">
-               <h1>Add Part</h1> 
-            </div>
-
-            <Autocomplete disablePortal id="locationSearchField" options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/>
-
-            <div class="form">
-            <Form>
-                <FormGroup row>
-                    <Label for="partTypeForm" sm={2}>Part Type</Label>
-
-                    <Col sm={10}>
-                        <Input id="partTypeForm" name="Part Type" type="select" value={partType} onChange={(e) => setPartType(e.target.value)}>
-                            <option value="1">Wing A</option>
-                            <option value="2">Wing B</option>             
-                            <option value="3">Fuselage</option>
-                            <option value="4">Tail</option>
-                            <option value="5">Propeller</option>
-                            <option value="6">Motor</option>
-                            <option value="7">Communications Radio</option>
-                            <option value="8">Payload Electo Optical</option>
-                            <option value="9">Payload Infra-Red</option>
-                            <option value="10">Quad Arm</option>
-                            <option value="11">Gimble</option>
-                        </Input>
-                    </Col>
-                </FormGroup>
-
-                <hr class="solid"></hr>
-
-                <FormGroup row>
-                    <Label for="aircraftForm" sm={2}>Aircraft</Label>
-
-                    <Col sm={10}>
-                        <Input id="aircraftForm" name="Aircraft" type="text" value={aircraft} onChange={(e) => setAircraft(e.target.value)}/>
-                        
-                    </Col>
-                </FormGroup>
-
-                <hr class="solid"></hr>
-
-                <FormGroup row>
-                    <Label for="locationForm" sm={2}>Location</Label>
-
-                    <Col sm={10}>
-                        <Input id="locationForm" name="Location" type="text" value={location} onChange={(e) => setLocation(e.target.value)}/>
-                    </Col>
-                </FormGroup>
-
-                <hr class="solid"></hr>
-
-                <FormGroup row class="radioButton" tag="fieldset" value={partStatus} checked={partStatus}>
-                    <Label sm={2}>Part status</Label>
-
-                    <Col sm={10}>
-                        <Input value="OPERATIONAL" name="partStatusForm" type="radio" onChange={(e) => setPartStatus(e.target.value)}/>
-                        <div class="radioLabel">
-                            <Label check>Operational</Label>
-                        </div>
-
-                        <Input value="AWAITING_REPAIR" name="partStatusForm" type="radio" onChange={(e) => setPartStatus(e.target.value)}/>
-                        <div class="radioLabel">
-                            <Label check class="radioLabel" >Awaiting Repair</Label>
-                        </div>
-                        
-                        <Input value="BEING_REPAIRED" name="partStatusForm" type="radio" onChange={(e) => setPartStatus(e.target.value)}/>
-                        <div class="radioLabel">
-                            <Label check class="radioLabel" >Being Repaired</Label>
-                        </div>
-                        
-                        <Input value="BEYOND_REPAIR" name="partStatusForm" type="radio" onChange={(e) => setPartStatus(e.target.value)}/>
-                        <div class="radioLabel">
-                            <Label check class="radioLabel" >Beyond Repair</Label>
-                        </div>
-                    </Col>
-                </FormGroup>
-
-                <hr class="solid"></hr>
-
-                <Col sm={{offset: 2, size: 10}}>
-                    <Button onClick={handleSubmission}>Submit</Button>
-                </Col>
-            </Form>
-            </div> */}
-
         </div>
-
-        
-
 
     );
 

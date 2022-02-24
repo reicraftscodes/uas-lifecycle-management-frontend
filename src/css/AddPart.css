@@ -1,4 +1,11 @@
-
+.alertPos {
+    position: absolute;
+    padding-left: 10%;
+    padding-right: 10%;
+    width: 100%;
+    margin: auto;
+    
+}
 
 
 
