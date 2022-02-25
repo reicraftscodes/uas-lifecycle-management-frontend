@@ -12,6 +12,7 @@ import Drone from "./pages/Drone";
 import Part from "./pages/Part";
 import StockLookup from "./pages/StockLookup";
 import AddPart from './pages/AddPart';
+import AddAircraft from './pages/AddAircraft';
 
 
 class App extends React.Component {
@@ -30,6 +31,7 @@ class App extends React.Component {
                     <Route path="/parts/:partId" element={<Part />} />
                     <Route path="/stock-lookup" element={<StockLookup/>} />
                     <Route path="/add-part" element={<AddPart/>} />
+                    <Route path="/add-aircraft" element={<AddAircraft/>} />
                 </Routes>
             </div>
         )
