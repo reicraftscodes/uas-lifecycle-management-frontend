@@ -74,7 +74,7 @@ const AddPart = () => {
         <div className="addPart">   
             <div class="formBody">
                 {/*paper is used to contain the input form to display it*/}
-                <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%" }}>
+                <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%" }}>
                     <div class="alertPos">
                         {alert ? <Alert severity={alertSeverity}>{alertMessage}</Alert> : <></> }
                     </div> 
