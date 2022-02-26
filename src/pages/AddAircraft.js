@@ -1,7 +1,21 @@
 import { FormControl, RadioGroup, FormControlLabel, Radio, Alert, Divider, Paper, FormLabel, Button,TextField, Autocomplete} from "@mui/material";
+import { useState } from "react";
 
 const AddAircraft = () => {
     const locations = ["Ankara", "Cardiff","Dublin","Edinburgh","London","Nevada","St Athen"];
+
+    const [tailNumber, setTailNumber] = useState("");
+    const [location, setLocation] = useState("");
+    const [platformStatus, setPlatformStatus] = useState("");
+    const [platformType, setPlatformType] = useState("");
+
+    const handleSubmission = (e) => {
+
+        const aircraft = {tailNumber, location, platformStatus, platformType};
+
+        console.log(JSON.stringify(aircraft));
+
+    }
 
     return(
         <div class="main">
@@ -14,19 +28,19 @@ const AddAircraft = () => {
             
             
                 <FormControl>
-                    <TextField label="Aircraft tailnumber"></TextField>
+                    <TextField label="Aircraft tailnumber" onChange={(e) => setTailNumber(e.target.value)}></TextField>
                     <br/>
                     <Divider/>
                     <br/>
 
-                    <Autocomplete options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/> 
+                    <Autocomplete options={locations} onChange={(event, newValue) => {setLocation(newValue);}} renderInput={(params) => <TextField {...params} label="Location" />}/> 
 
                     <br/>
                     <Divider/>
                     <br/>
 
                     <FormLabel sx={{textAlign: "left", p: "1%"}}>Aircraft Status</FormLabel>
-                    <RadioGroup row>
+                    <RadioGroup row onChange={(e) => setPlatformStatus(e.target.value)}>
                         <FormControlLabel value="DESIGN" control={<Radio color="primary"/>} label="Design"/>
                         <FormControlLabel value="PRODUCTION" control={<Radio color="primary"/>} label="Production"/>
                         <FormControlLabel value="OPERATION" control={<Radio color="primary"/>} label="Operation"/>
@@ -38,12 +52,12 @@ const AddAircraft = () => {
                     <br/>
 
                     <FormLabel sx={{textAlign: "left", p: "1%", pt: "0%"}}>Aircraft Type</FormLabel>
-                    <RadioGroup sx={{m: "auto", p: "2%"}} row>
+                    <RadioGroup sx={{m: "auto", p: "2%"}} row onChange={(e) => setPlatformType(e.target.value)}>
                         <FormControlLabel value="Platform_A" control={<Radio color="primary"/>} label="Platform A"/>
                         <FormControlLabel value="Platform_B" control={<Radio color="primary"/>} label="Platform B"/>
                     </RadioGroup>
 
-                    <Button variant="contained">Submit</Button>
+                    <Button variant="contained" onClick={handleSubmission}>Submit</Button>
                 </FormControl>
 
 
