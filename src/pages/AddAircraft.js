@@ -13,12 +13,21 @@ const AddAircraft = () => {
 
         const aircraft = {tailNumber, location, platformStatus, platformType};
 
+        fetch("http://localhost:8080/aircraft/add" , {
+            method: "POST",
+            headers: {"Content-Type":"application/json" },
+            body: JSON.stringify(aircraft)
+        }).then(response => response.json()).then(data => {
+            console.log(data);
+        })
+
+
         console.log(JSON.stringify(aircraft));
 
     }
 
     return(
-        <div class="main">
+        <div className="main">
             {/* json takes tailNumber, location, platform status, platformType */}
             <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%" }}>
                 <h1>Add Aircraft</h1>
