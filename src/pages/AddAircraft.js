@@ -73,7 +73,7 @@ const AddAircraft = () => {
                 if (data["response"] == "Success"){
                     //If the response returns a success json body then an alert is sent to the user saying the aircraft has been added.
                     setAlertSeverity("success");
-                    setAlertMessage(data["response"]+"fully added part!");
+                    setAlertMessage(data["response"]+"fully added aircraft!");
                     setAlert(true);
                     setTimeout(() => { setAlert(false) }, 3000);
                 } else {
