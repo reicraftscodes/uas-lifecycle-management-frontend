@@ -16,6 +16,7 @@ const AddAircraft = () => {
 
     const [errorTailNumber, setErrorTailNumber] = useState(false);
     const [errorLocation, setErrorLocation] = useState(false);
+    const [errors, setErrors] = useState(false);
 
     const validateFields = () => {
 
@@ -25,9 +26,11 @@ const AddAircraft = () => {
             setAlertMessage("Location must be selected.");
             setAlertSeverity("error");
             setAlert(true);
+            setErrors(true);
             setTimeout(() => { setAlert(false) }, 3000);
         } else {
             setErrorLocation(false);
+            setErrors(false);
         }
 
         //One or two character prefix indicating the country of registration (e.g. "N" for the United States, "VH" for Australia
@@ -41,9 +44,11 @@ const AddAircraft = () => {
             setAlertMessage("Tail number must be in the form <Country identifier>-<Aircraft suffix> all uppercase.");
             setAlertSeverity("error");
             setAlert(true);
+            setErrors(true);
             setTimeout(() => { setAlert(false) }, 3000);
         } else {
             setErrorTailNumber(false);
+            setErrors(false);
         }
 
     }
@@ -54,18 +59,35 @@ const AddAircraft = () => {
 
         validateFields()
 
+        console.log(errors)
+        if(errors == false){
+            fetch("http://localhost:8080/aircraft/add" , {
+                method: "POST",
+                headers: {"Content-Type":"application/json" },
+                body: JSON.stringify(aircraft)
+            }).then(response => response.json()).then(data => {
+                if (data["response"] == "Success"){
+                    setAlertSeverity("success");
+                    setAlertMessage(data["response"]+"fully added part!");
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                } else {
+                    setAlertSeverity("error");
+                    setAlertMessage(data["response"]);
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                }
+            }).catch(error => { 
+                //catches error for not being able to communicate with the server and displays an alert to the user.
+                setAlertMessage("Error communicating with server, part not saved");
+                setAlertSeverity("error");
+                setAlert(true);
+                setTimeout(() => { setAlert(false) }, 3000);
+            })
+        }
 
+        setErrors(false);
 
-
-
-        // fetch("http://localhost:8080/aircraft/add" , {
-        //     method: "POST",
-        //     headers: {"Content-Type":"application/json" },
-        //     body: JSON.stringify(aircraft)
-        // }).then(response => response.json()).then(data => {
-        //     setAlert(true);
-        //     setAlertMessage(data["response"]);
-        // })
 
 
         console.log(JSON.stringify(aircraft));
