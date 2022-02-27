@@ -32,6 +32,7 @@ const AddPart = () => {
         {label:"Payload Infra-Red", id:9},
         {label:"Quad Arm", id:10},
         {label:"Gimble", id:11}];
+
     
     //when submit button is pressed this method is called, it adds the part to the database using a post request and displays a result alert. 
     const handleSubmission = (e) => {
@@ -72,10 +73,10 @@ const AddPart = () => {
 
     return (
         <div className="addPart">   
-            <div class="formBody">
+            <div className="formBody">
                 {/*paper is used to contain the input form to display it*/}
-                <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%" }}>
-                    <div class="alertPos">
+                <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%" }}>
+                    <div className="alertPos">
                         {alert ? <Alert severity={alertSeverity}>{alertMessage}</Alert> : <></> }
                     </div> 
                     <h1>Add Part</h1>
@@ -83,7 +84,7 @@ const AddPart = () => {
                     <FormControl>
                         <br/>
                         {/*Part Type autocomplete text field */}
-                        <Autocomplete isOptionEqualToValue={(option, value) => option.id === value.id} value={partTypeName.id} onChange={(event, newValue) => {setPartType(newValue.id);}} diablePortal id="partTypeSearchField" options={partTypes} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
+                        <Autocomplete isOptionEqualToValue={(option, value) => option.id === value.id}  onChange={(event, newValue) => {setPartType(newValue.id);}} id="partTypeSearchField" options={partTypes} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
                         <br/>
                         <Divider/>
                         <br/>
@@ -93,7 +94,7 @@ const AddPart = () => {
                         <Divider/>            
                         <br/>
                         {/*Location autocomplete text field */}
-                        <Autocomplete value={location} onChange={(event, newValue) => {setLocation(newValue);}} disablePortal id="locationSearchField" options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/> 
+                        <Autocomplete onChange={(event, newValue) => {setLocation(newValue);}} id="locationSearchField" options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/> 
                         <br/>
                         <Divider/>
                         <br/>
