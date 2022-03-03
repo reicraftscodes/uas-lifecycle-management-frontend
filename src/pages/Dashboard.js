@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import {Container} from "reactstrap";
 import DetailsCard from "../components/DetailsCard";
 import StockPopup from "../components/StockPopup";
@@ -10,20 +10,29 @@ import {
     barOptions,
     barLegends,
 } from '../components/chartsData'
-export default class Dashboard extends React.Component {
+import AvgFailingPartsBarCharts from "./dashboard/AvgFailingPartsBarChart";
+import AvgBar from "./dashboard/AvgBar";
 
-    constructor(props) {
-        super(props)
-    }
+function Dashboard() {
 
-    render() {
-        return (
-            <Container>
-                <StockPopup />
+    const [barChartData, setBarChartData] = useState({});
+    const [isBarChartLoading, setIsBarChartLoading] = useState(true);
+
+    useEffect(() => {
+        fetch(`http://localhost:8080/parts/failuretime`)
+            .then(response => response.json())
+            .then(data => {
+                setBarChartData(data)
+                setIsBarChartLoading(false);
+            });
+    });
+
+    return (
+        <Container>
+            <StockPopup />
                 <div id="details-container">
                     <DetailsCard className="iconCard" id="lowStocks" name="Low Stocks" value="6" icon={faArrowTrendDown}/>
-                    <DetailsCard className="iconCard" id="repairsNeeded" name="Repairs Needed" value="12" icon={faHammer}/>
-                </div>
+                    <DetailsCard className="iconCard" id="repairsNeeded" name="Repairs Needed" value="12" icon={faHammer}/></div>
                 <div>
                     <h1>Stock Level Charts</h1>
                     <div className="chartsContainer">
@@ -31,14 +40,21 @@ export default class Dashboard extends React.Component {
                             <Bar {...barOptions} />
                             <ChartLegend legends={barLegends} />
                         </ChartCard>
-
                         <ChartCard title="Platform 2">
                             <Bar {...barOptions} />
                             <ChartLegend legends={barLegends} />
                         </ChartCard>
                     </div>
                 </div>
+                <div className="">
+                    <h1>Average Time </h1>
+                    {!isBarChartLoading &&
+                    <AvgBar categories={barChartData.categories} data={barChartData.data} seriesName="failureTime"
+                         chartId="apex-pie-chart"/>}
+                    <AvgFailingPartsBarCharts/>
+            </div>
             </Container>
-        )
-    }
+    )
+
 }
+export default Dashboard
