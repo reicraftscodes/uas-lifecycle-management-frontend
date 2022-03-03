@@ -1,7 +1,19 @@
 import React, {useEffect} from 'react';
-import {Card, Stack, Paper, ListItem, ListItemText, List} from '@mui/material';
+import {
+    Card,
+    Stack,
+    Paper,
+    ListItem,
+    ListItemText,
+    List,
+    Divider,
+    Box,
+    CardHeader,
+    Typography,
+    CardContent
+} from '@mui/material';
 import { styled } from '@mui/material/styles';
-import {ListGroupItem} from "reactstrap";
+import {CardTitle, ListGroupItem} from "reactstrap";
 
 const UserAircraft = () => {
 
@@ -42,27 +54,38 @@ const UserAircraft = () => {
     }));
 
     return (
-        <Stack>
+        <div sx={{ bgcolor: 'grey'}}>
+            <Stack direction="row" spacing={5} justifyContent="flex-start" sx={{ margin: 10, alignItems: 'center'}}>
                 {userAircraftList.map(row => (
-                    <List>
-                        <ListItem>
-                            <ListItemText>Tail number:</ListItemText>
-                            <ListItemText>{row.tailNumber}</ListItemText>
-                        </ListItem>
+                    <Card sx={{ width: '40%', maxWidth: 360, minWidth: 380, bgcolor: 'background.paper', marginVertical: 5}}>
+                        <CardContent>
+                            <Typography sx={{ fontWeight: 'bold', marginTop: '10px', fontSize: '1.5rem'}}>Assigned Aircraft</Typography>
+                            <List sx={{ maxWidth: 360, bgcolor: 'background.paper'}}>
+                                <ListItem>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Tail number:</ListItemText>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{row.tailNumber}</ListItemText>
+                                </ListItem>
+                                <Divider />
+                                <ListItem>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Location:</ListItemText>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{row.location}</ListItemText>
+                                </ListItem>
+                                <Divider />
+                                <ListItem>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform:</ListItemText>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{row.platformType}</ListItemText>
+                                </ListItem>
 
-                        <ListItem>
-                            <ListItemText>Location:</ListItemText>
-                            <ListItemText>{row.location}</ListItemText>
-                        </ListItem>
-                        <ListItem>
-                            <ListItemText>Platform:</ListItemText>
-                            <ListItemText>{row.platformType}</ListItemText>
-                        </ListItem>
+                            </List>
+                        </CardContent>
 
-                    </List>
+                    </Card>
+
 
                 ))}
-        </Stack>
+            </Stack>
+        </div>
+
     );
 
 
