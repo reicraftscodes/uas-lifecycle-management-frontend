@@ -114,6 +114,7 @@ const AddAircraft = () => {
                     <Autocomplete options={locations} onChange={(event, newValue) => {setLocation(newValue);}} renderInput={(params) => <TextField error={errorLocation} {...params} label="Location" />}/> 
                     <br/>
                     <Divider/>
+                    <Divider/>
                     <br/>
                     {/*Input for the aircraft status */}
                     <FormLabel sx={{textAlign: "left", p: "1%"}}>Aircraft Status</FormLabel>
