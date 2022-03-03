@@ -19,17 +19,18 @@ function AvgBar(props) {
             data: []
         }]
     });
-
+    // fetch failure times API
     useEffect(() => {
         fetch(`http://localhost:8080/parts/failuretime`)
             .then(response => response.json())
             .then(data => {
+                //display failure time and partTypes arraylist here's the reference https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
                 setFailureTimes(data.map(x => x.failureTime));
                 setPartTypes(data.map(x => x.partType));                
                 
             });
     }, [])
-
+    // render charts
     useEffect(() => {
         setChartState({
             options: {

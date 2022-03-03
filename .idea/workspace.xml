@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="refactor: issue #2 get rid of duplication">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/AvgFailingPartsBarChart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/dashboard/AvgBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/dashboard/AvgBar.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,7 +46,7 @@
       <updated>1645121083532</updated>
       <workItem from="1645121085651" duration="10414000" />
       <workItem from="1645448630848" duration="593000" />
-      <workItem from="1646323640546" duration="2269000" />
+      <workItem from="1646323640546" duration="3920000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -70,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646325836251</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="refactor: issue #2 get rid of duplication">
+      <created>1646325973017</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1646325973017</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -80,6 +86,7 @@
     <MESSAGE value="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files" />
     <MESSAGE value="fix: issue #2 update User Dashboard, displaying the avg failure times bar chart" />
     <MESSAGE value="fix: issue #2 fix Chart typo issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: issue #2 fix Chart typo issues" />
+    <MESSAGE value="refactor: issue #2 get rid of duplication" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: issue #2 get rid of duplication" />
   </component>
 </project>
