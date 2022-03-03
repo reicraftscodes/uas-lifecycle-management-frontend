@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import Chanrt from 'react-apexcharts'
+import Chart from 'react-apexcharts'
 
 function AvgBar(props) {
 
