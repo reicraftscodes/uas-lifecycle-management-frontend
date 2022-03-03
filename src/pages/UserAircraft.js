@@ -2,18 +2,14 @@ import React, {useEffect} from 'react';
 import {
     Card,
     Stack,
-    Paper,
     ListItem,
     ListItemText,
     List,
     Divider,
-    Box,
-    CardHeader,
     Typography,
     CardContent
 } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import {CardTitle, ListGroupItem} from "reactstrap";
+
 
 const UserAircraft = () => {
 
@@ -45,21 +41,14 @@ const UserAircraft = () => {
         setUserAircraftList(aircraftData);
     }
 
-    const Item = styled(Paper)(({ theme }) => ({
-        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-        ...theme.typography.body2,
-        padding: theme.spacing(1),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-    }));
 
     return (
-        <div sx={{ bgcolor: 'grey'}}>
+        <div id="userAircraft">
             <Stack direction="row" spacing={5} justifyContent="flex-start" sx={{ margin: 10, alignItems: 'center'}}>
-                {userAircraftList.map(row => (
+                {userAircraftList.map((row, index) => (
                     <Card sx={{ width: '40%', maxWidth: 360, minWidth: 380, bgcolor: 'background.paper', marginVertical: 5}}>
                         <CardContent>
-                            <Typography sx={{ fontWeight: 'bold', marginTop: '10px', fontSize: '1.5rem'}}>Assigned Aircraft</Typography>
+                            <Typography sx={{ fontWeight: 'bold', marginTop: '10px', fontSize: '1.5rem'}}>Assigned Aircraft {index+1}</Typography>
                             <List sx={{ maxWidth: 360, bgcolor: 'background.paper'}}>
                                 <ListItem>
                                     <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Tail number:</ListItemText>
@@ -90,14 +79,9 @@ const UserAircraft = () => {
                                     <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Your flight time:</ListItemText>
                                     <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{row.userAircraftFlyingHours}h</ListItemText>
                                 </ListItem>
-
-
                             </List>
                         </CardContent>
-
                     </Card>
-
-
                 ))}
             </Stack>
         </div>
