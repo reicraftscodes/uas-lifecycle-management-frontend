@@ -75,6 +75,22 @@ const UserAircraft = () => {
                                     <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform:</ListItemText>
                                     <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{row.platformType}</ListItemText>
                                 </ListItem>
+                                <Divider />
+                                <ListItem>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform status:</ListItemText>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{row.platformStatus}</ListItemText>
+                                </ListItem>
+                                <Divider />
+                                <ListItem>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Total flight time:</ListItemText>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{row.totalAircraftFlyingHours}h</ListItemText>
+                                </ListItem>
+                                <Divider />
+                                <ListItem>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Your flight time:</ListItemText>
+                                    <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{row.userAircraftFlyingHours}h</ListItemText>
+                                </ListItem>
+
 
                             </List>
                         </CardContent>
