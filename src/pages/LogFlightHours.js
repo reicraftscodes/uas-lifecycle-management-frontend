@@ -1,9 +1,8 @@
-import {Autocomplete, Button, Select,TextField, FormControl, Paper, Alert, Divider} from "@mui/material";
+import {Autocomplete, Button,TextField, FormControl, Paper, Alert, Divider} from "@mui/material";
 import React, { useEffect, useState } from 'react';
 import '../css/AddPart.css'
 
 const LogFlightHours = () => {
-    //const aircrafts = [];
     const [aircrafts, setAircrafts] = useState([]);
     const [aircraft, setAircraft] = useState("");
     const [flyTime, setFlightHours] = useState("");
@@ -26,7 +25,7 @@ const LogFlightHours = () => {
     const onSubmit = () => {
 
         const request = {aircraft,flyTime};
-
+        //validates fields to ensure they arent blank or negative
         if (aircraft == ""){
             setAlertMessage("Aircraft field cannot be blank.");
             setAlertSeverity("error");
@@ -51,7 +50,7 @@ const LogFlightHours = () => {
                 setTimeout(() => { setAlert(false) }, 3000);
             }).catch(error => { 
                 //catches error for not being able to communicate with the server and displays an alert to the user.
-                setAlertMessage("Error communicating with server, part not saved");
+                setAlertMessage("Error communicating with server, hours not logged");
                 setAlertSeverity("error");
                 setAlert(true);
                 setTimeout(() => { setAlert(false) }, 3000);
@@ -83,21 +82,8 @@ const LogFlightHours = () => {
                     <Button variant="contained" onClick={onSubmit}>Submit</Button>
                 </FormControl>
             </Paper>
-            
-
-
-
-            
-
-
-
-        </div>
-
-        
+        </div>     
     )  
 }
-
-
-
 
 export default LogFlightHours
