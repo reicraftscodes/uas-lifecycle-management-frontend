@@ -10,7 +10,6 @@ import {
     barOptions,
     barLegends,
 } from '../components/chartsData'
-import AvgFailingPartsBarCharts from "./dashboard/AvgFailingPartsBarChart";
 import AvgBar from "./dashboard/AvgBar";
 
 function Dashboard() {
@@ -51,7 +50,6 @@ function Dashboard() {
                     {!isBarChartLoading &&
                     <AvgBar categories={barChartData.categories} data={barChartData.data} seriesName="failureTime"
                          chartId="apex-pie-chart"/>}
-                    <AvgFailingPartsBarCharts/>
             </div>
             </Container>
     )
