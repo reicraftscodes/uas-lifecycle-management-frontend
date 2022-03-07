@@ -3,8 +3,10 @@ import {
     Box,
     Grid,
     styled,
-    Paper
+    Paper, Typography
 } from '@mui/material';
+import PartsFailureTable from "../components/PartsFailureTable";
+import {TitleOutlined} from "@mui/icons-material";
 
 
 const PartsFailure = () => {
@@ -13,9 +15,11 @@ const PartsFailure = () => {
 
     useEffect(() => {
         getPartsFailure();
-    });
+        console.log("use effect");
+    }, []);
 
     const getPartsFailure = () => {
+
         const partsFailureData = [
             {
                 partNumber: 67,
@@ -73,7 +77,10 @@ const PartsFailure = () => {
                         <Item>Item 1</Item>
                     </Grid>
                     <Grid item xs={6}>
-                        <Item>Item 2</Item>
+                        <Item>
+                            <Typography>Most Common Failing Parts</Typography>
+                            <PartsFailureTable data={partsFailureList}/>
+                        </Item>
                     </Grid>
                 </Grid>
             </Box>
