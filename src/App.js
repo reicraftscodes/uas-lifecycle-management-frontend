@@ -13,7 +13,8 @@ import Part from "./pages/Part";
 import StockLookup from "./pages/StockLookup";
 import AddPart from './pages/AddPart';
 import AddAircraft from './pages/AddAircraft';
-
+import UserAircraft from './pages/UserAircraft';
+import LogFlightHours from './pages/LogFlightHours';
 
 class App extends React.Component {
 
@@ -32,6 +33,8 @@ class App extends React.Component {
                     <Route path="/stock-lookup" element={<StockLookup/>} />
                     <Route path="/add-part" element={<AddPart/>} />
                     <Route path="/add-aircraft" element={<AddAircraft/>} />
+                    <Route path="/user-aircraft" element={<UserAircraft/>} />
+                    <Route path="/log-flight" element={<LogFlightHours/>} />
                 </Routes>
             </div>
         )
