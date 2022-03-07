@@ -43,6 +43,9 @@ export default class AppNavbar extends React.Component {
                             <NavItem>
                                 <NavLink href="/log-flight">Log Flight Time</NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink href="/parts-failure">Parts Failure</NavLink>
+                            </NavItem>
                         </Nav>
                 </Navbar>
             </div>
