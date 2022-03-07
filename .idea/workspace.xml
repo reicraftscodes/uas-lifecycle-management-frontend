@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="refactor: issue #2 get rid of duplication">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/UserLogin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -9,10 +10,17 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="dev" />
+        <entry key="$PROJECT_DIR$" value="2-as_a_cto_I_would_like_to_know_the_average_failure_time_of_all_the_parts_through_a_chart" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,7 +83,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646325973017</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix: issue #2 update repo, pulled dev branch to this branch">
+      <created>1646648033451</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1646648033451</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,6 +101,7 @@
     <MESSAGE value="fix: issue #2 update User Dashboard, displaying the avg failure times bar chart" />
     <MESSAGE value="fix: issue #2 fix Chart typo issues" />
     <MESSAGE value="refactor: issue #2 get rid of duplication" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor: issue #2 get rid of duplication" />
+    <MESSAGE value="fix: issue #2 update repo, pulled dev branch to this branch" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: issue #2 update repo, pulled dev branch to this branch" />
   </component>
 </project>
