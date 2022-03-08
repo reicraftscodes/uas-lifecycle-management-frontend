@@ -78,7 +78,7 @@ const PartsFailure = () => {
                     </Grid>
                     <Grid item xs={6}>
                         <Item>
-                            <Typography>Most Common Failing Parts</Typography>
+                            <Typography fontWeight="bold" marginBottom="10px">Most Common Failing Parts</Typography>
                             <PartsFailureTable data={partsFailureList}/>
                         </Item>
                     </Grid>
