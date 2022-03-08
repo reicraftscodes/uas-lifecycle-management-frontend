@@ -8,9 +8,9 @@ import {
     TableBody,
     TableCell,
     TableContainer,
-    TableFooter,
+    TableFooter, TableHead,
     TablePagination,
-    TableRow
+    TableRow,
 } from "@mui/material";
 import FirstPageIcon from '@mui/icons-material/FirstPage';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
@@ -80,9 +80,34 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
+const headCells = [
+    {
+        id: 'partNumber',
+        align: "left",
+        label: 'Part number',
+    },
+    {
+        id: 'partType',
+        align: "right",
+        label: 'Part Type',
+    },
+    {
+        id: 'repairsCount',
+        align: "right",
+        label: 'Number of repairs',
+    },
+    {
+        id: 'totalRepairsCost',
+        align: "right",
+        label: 'Total Repairs Cost',
+    },
+];
+
 export default function PartsFailureTable({data}) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [order, setOrder] = React.useState('asc');
+    const [orderBy, setOrderBy] = React.useState('repairsCount');
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
@@ -102,13 +127,25 @@ export default function PartsFailureTable({data}) {
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+                <TableHead>
+                    <TableRow>
+                        {headCells.map((headCell) => (
+                            <TableCell
+                                key={headCell.id}
+                                align={headCell.align}
+                            >
+                                {headCell.label}
+                            </TableCell>
+                        ))}
+                    </TableRow>
+                </TableHead>
                 <TableBody>
                     {(rowsPerPage > 0
                             ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             : data
                     ).map((data) => (
                         <TableRow key={data.partNumber}>
-                            <TableCell component="th" scope="row">
+                            <TableCell style={{ width: 160 }}>
                                 {data.partNumber}
                             </TableCell>
                             <TableCell style={{ width: 160 }} align="right">
