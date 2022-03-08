@@ -106,8 +106,6 @@ const headCells = [
 export default function PartsFailureTable({data}) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
-    const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('repairsCount');
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
