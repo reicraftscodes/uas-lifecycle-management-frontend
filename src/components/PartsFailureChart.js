@@ -42,8 +42,8 @@ export default function PartsFailureChart({data}) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            minWidth: "500px",
-            minHeight: "400px"}}>
+            width: "100%",
+            height: "100%"}}>
             <ChartCard title="Most Common Failing Parts">
                 <Bar {...barOptions} />
                 <ChartLegend legends={barLegends} />
