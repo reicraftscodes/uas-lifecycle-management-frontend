@@ -59,7 +59,21 @@ const PartsFailure = () => {
                 totalRepairsCost: 230.50,
             }
         ]
-        setPartsFailureList(partsFailureData);
+
+        fetch("http://localhost:8080/parts/most-failing/5" , {
+            method: "GET",
+            headers: {"Content-Type":"application/json" },
+        })
+            .then(response => response.json())
+            .then(data => {
+               console.log("Successfully retrieved most common failing parts: ", data);
+               setPartsFailureList(data);
+            })
+            .catch(error => {
+                console.log("Error when retrieving most common failing parts: ", error);
+        })
+
+        //setPartsFailureList(partsFailureData);
     }
 
     const Item = styled(Paper)(({ theme }) => ({

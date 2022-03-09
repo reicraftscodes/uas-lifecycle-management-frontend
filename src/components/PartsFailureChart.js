@@ -13,7 +13,7 @@ export default function PartsFailureChart({data}) {
         data: {
             labels: data.map((partRepairs) => {
                 return (
-                    partRepairs.partType + " (#" + partRepairs.partNumber + ")"
+                    partRepairs.partName + " (#" + partRepairs.partNumber + ")"
                 );
             }),
             datasets: [
