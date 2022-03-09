@@ -1,7 +1,6 @@
 import React from 'react'
 import {Bar} from 'react-chartjs-2'
 import ChartLegend from "./ChartLegend";
-import ChartCard from "./ChartCard";
 
 export default function PartsFailureChart({data}) {
 

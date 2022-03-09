@@ -99,7 +99,7 @@ const headCells = [
     {
         id: 'totalRepairsCost',
         align: "right",
-        label: 'Total Repairs Cost',
+        label: 'Total Repairs Cost (£)',
     },
 ];
 
