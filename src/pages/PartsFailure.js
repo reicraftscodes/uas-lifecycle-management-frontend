@@ -6,9 +6,8 @@ import {
     Paper, Typography
 } from '@mui/material';
 import PartsFailureTable from "../components/PartsFailureTable";
-import {TitleOutlined} from "@mui/icons-material";
 import PartsFailureChart from "../components/PartsFailureChart";
-
+import PartsService from "../services/PartsService";
 
 const PartsFailure = () => {
 
@@ -20,60 +19,15 @@ const PartsFailure = () => {
     }, []);
 
     const getPartsFailure = () => {
-
-        const partsFailureData = [
-            {
-                partNumber: 67,
-                partType: "Wing A",
-                repairsCount: 17,
-                totalRepairsCost: 750.20,
-            },
-            {
-                partNumber: 35,
-                partType: "Motor",
-                repairsCount: 15,
-                totalRepairsCost: 620.00,
-            },
-            {
-                partNumber: 88,
-                partType: "Fuselage",
-                repairsCount: 13,
-                totalRepairsCost: 478.00,
-            },
-            {
-                partNumber: 25,
-                partType: "Gimble",
-                repairsCount: 11,
-                totalRepairsCost: 340.00,
-            },
-            {
-                partNumber: 59,
-                partType: "Propeller",
-                repairsCount: 9,
-                totalRepairsCost: 290.00,
-            },
-            {
-                partNumber: 13,
-                partType: "Wing B",
-                repairsCount: 8,
-                totalRepairsCost: 230.50,
-            }
-        ]
-
-        fetch("http://localhost:8080/parts/most-failing/5" , {
-            method: "GET",
-            headers: {"Content-Type":"application/json" },
-        })
+        PartsService.getMostCommonFailingParts()
             .then(response => response.json())
             .then(data => {
-               console.log("Successfully retrieved most common failing parts: ", data);
-               setPartsFailureList(data);
+                console.log("Successfully retrieved most common failing parts: ", data);
+                setPartsFailureList(data);
             })
             .catch(error => {
                 console.log("Error when retrieving most common failing parts: ", error);
-        })
-
-        //setPartsFailureList(partsFailureData);
+            })
     }
 
     const Item = styled(Paper)(({ theme }) => ({
