@@ -147,7 +147,7 @@ export default function PartsFailureTable({data}) {
                                 {data.partNumber}
                             </TableCell>
                             <TableCell style={{ width: 160 }} align="right">
-                                {data.partType}
+                                {data.partName}
                             </TableCell>
                             <TableCell style={{ width: 160 }} align="right">
                                 {data.repairsCount}

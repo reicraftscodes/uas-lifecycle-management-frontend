@@ -44,10 +44,10 @@ export default function PartsFailureChart({data}) {
             justifyContent: "center",
             width: "100%",
             height: "100%"}}>
-            <ChartCard title="Most Common Failing Parts">
+            <div style={{width: "90%"}}>
                 <Bar {...barOptions} />
                 <ChartLegend legends={barLegends} />
-            </ChartCard>
+            </div>
         </div>
     )
 }
