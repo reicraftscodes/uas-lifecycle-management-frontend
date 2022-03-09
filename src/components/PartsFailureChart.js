@@ -38,7 +38,12 @@ export default function PartsFailureChart({data}) {
     }
 
     return (
-        <div>
+        <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            minWidth: "500px",
+            minHeight: "400px"}}>
             <ChartCard title="Most Common Failing Parts">
                 <Bar {...barOptions} />
                 <ChartLegend legends={barLegends} />

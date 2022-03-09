@@ -75,7 +75,7 @@ const PartsFailure = () => {
             <Box sx={{ flexGrow: 1 }} margin="10px">
                 <Grid container spacing={{ xs: 2, md: 3 }} rows={{  xs: 1, sm: 2, md: 3 }}>
                     <Grid item xs={6} >
-                        <Item>Item 1
+                        <Item>
                             <PartsFailureChart data={partsFailureList}/>
                         </Item>
                     </Grid>
