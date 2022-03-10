@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="feat: issue #14 added authorisation header.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/auth.service.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/auth.service.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/authHeader.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authHeader.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
       <workItem from="1645448630848" duration="593000" />
       <workItem from="1646323640546" duration="3920000" />
       <workItem from="1646653535055" duration="2394000" />
-      <workItem from="1646908694536" duration="6229000" />
+      <workItem from="1646908694536" duration="7999000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -101,7 +102,21 @@
       <option name="project" value="LOCAL" />
       <updated>1646655249071</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="fix: issue #14 implemented auth service for login">
+      <created>1646915102959</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1646915102959</updated>
+    </task>
+    <task id="LOCAL-00008" summary="feat: issue #14 added authorisation header.">
+      <created>1646915328456</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1646915328456</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +129,8 @@
     <MESSAGE value="refactor: issue #2 get rid of duplication" />
     <MESSAGE value="fix: issue #2 update repo, pulled dev branch to this branch" />
     <MESSAGE value="fix: issue #14 fix user login form" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: issue #14 fix user login form" />
+    <MESSAGE value="fix: issue #14 implemented auth service for login" />
+    <MESSAGE value="feat: issue #14 added authorisation header." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: issue #14 added authorisation header." />
   </component>
 </project>
