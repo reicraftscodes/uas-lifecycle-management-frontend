@@ -28,14 +28,14 @@ export default class Repairs extends React.Component {
         const objectValue = Object.values(repairMessage);
 
         return (
-            <div id="rep-flex-container">
+
             <Card>
                 <CardTitle id="repairTitle">Repair</CardTitle>
                 <CardText>There are {objectValue} aircraft with parts that are in need of repair</CardText>
                 <Button id="view-aircraft">View Aircraft</Button>
                 <HandymanIcon id="handymanIcon"></HandymanIcon>
             </Card>
-            </div>
+
         );
     }
 }

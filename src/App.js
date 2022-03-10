@@ -16,6 +16,7 @@ import AddAircraft from './pages/AddAircraft';
 import UserAircraft from './pages/UserAircraft';
 import LogFlightHours from './pages/LogFlightHours';
 import PartsFailure from "./pages/PartsFailure";
+import LODashboard from "./pages/LODashboard";
 
 class App extends React.Component {
 
@@ -37,10 +38,11 @@ class App extends React.Component {
                     <Route path="/user-aircraft" element={<UserAircraft/>} />
                     <Route path="/log-flight" element={<LogFlightHours/>} />
                     <Route path="/parts-failure" element={<PartsFailure/>} />
+                    <Route path="/logistics-officer/dashboard" element={<LODashboard/>} />
                 </Routes>
             </div>
         )
     }
-}
+}export default App;
 
-export default App;
+

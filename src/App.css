@@ -52,7 +52,15 @@
   font-weight: bold;
   margin-top: 10px;
 }
-
+#loDashboardFlexContainer {
+  display: flex;
+}
+#repairs {
+  width: 50%;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 15px 0px rgba(215, 215, 215, 0.35);
+  margin-top: 10%;
+}
 #flex-container {
   display: flex;
   width: 800px;
@@ -92,6 +100,8 @@
 #repairTitle {
   font-weight: 700;
   text-align: center;
+  padding-top: 4%;
+  font-size: 1.5em;
 }
 
 #view-aircraft {
@@ -110,7 +120,8 @@
 }
 
 #handymanIcon {
-  width: 50%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
   margin: 0 auto;
+  padding-bottom: 4%;
 }
