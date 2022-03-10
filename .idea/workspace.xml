@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment=": issue #2 update repo, pulled dev branch to this branch">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.js" afterDir="false" />
     </list>
@@ -37,6 +37,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assests" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2021.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -55,7 +56,8 @@
       <workItem from="1645121085651" duration="10414000" />
       <workItem from="1645448630848" duration="593000" />
       <workItem from="1646323640546" duration="3920000" />
-      <workItem from="1646653535055" duration="1665000" />
+      <workItem from="1646653535055" duration="2394000" />
+      <workItem from="1646908694536" duration="6229000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -92,7 +94,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646648033451</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="fix: issue #14 fix user login form">
+      <created>1646655249070</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1646655249071</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,6 +113,7 @@
     <MESSAGE value="fix: issue #2 fix Chart typo issues" />
     <MESSAGE value="refactor: issue #2 get rid of duplication" />
     <MESSAGE value="fix: issue #2 update repo, pulled dev branch to this branch" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix: issue #2 update repo, pulled dev branch to this branch" />
+    <MESSAGE value="fix: issue #14 fix user login form" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: issue #14 fix user login form" />
   </component>
 </project>
