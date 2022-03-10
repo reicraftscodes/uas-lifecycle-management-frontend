@@ -1,6 +1,7 @@
 import {Autocomplete, Button,TextField, FormControl, Paper, Alert, Divider} from "@mui/material";
 import React, { useEffect, useState } from 'react';
 import '../css/AddPart.css'
+import AircraftService from "../services/AircraftService";
 
 const LogFlightHours = () => {
     const [aircrafts, setAircrafts] = useState([]);
@@ -12,15 +13,16 @@ const LogFlightHours = () => {
     const [alertSeverity, setAlertSeverity] = useState('success');
 
     useEffect(() => {
-        fetch('http://localhost:8080/aircraft/user/2', {
-            method: 'GET',
-            headers: {"Content-Type": "application/json" }
-        }).then(response => response.json()).then(data => {
+        getUserAircraft();
+    }, []);
+
+    const getUserAircraft = () => {
+        AircraftService.logFlightHours(1).then(response => response.json()).then(data => {
             for(let i = 0; i < data.length; i++){
                 aircrafts[i] = data[i].tailNumber;
             }
         });
-    }, []);
+    }
 
     const onSubmit = () => {
 
