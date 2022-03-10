@@ -16,6 +16,7 @@ import AddAircraft from './pages/AddAircraft';
 import UserAircraft from './pages/UserAircraft';
 import LogFlightHours from './pages/LogFlightHours';
 import PartsFailure from "./pages/PartsFailure";
+import UserLogin from "./components/UserLogin";
 
 class App extends React.Component {
 
@@ -37,6 +38,7 @@ class App extends React.Component {
                     <Route path="/user-aircraft" element={<UserAircraft/>} />
                     <Route path="/log-flight" element={<LogFlightHours/>} />
                     <Route path="/parts-failure" element={<PartsFailure/>} />
+                    <Route path="/login" element={<UserLogin/>} />
                 </Routes>
             </div>
         )
