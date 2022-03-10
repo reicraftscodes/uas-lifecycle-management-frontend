@@ -10,6 +10,7 @@ import {
     barOptions,
     barLegends,
 } from '../components/chartsData'
+import Repairs from "../components/Repairs";
 export default class Dashboard extends React.Component {
 
     constructor(props) {
@@ -20,6 +21,7 @@ export default class Dashboard extends React.Component {
         return (
             <Container>
                 <StockPopup />
+                <Repairs />
                 <div id="details-container">
                     <DetailsCard className="iconCard" id="lowStocks" name="Low Stocks" value="6" icon={faArrowTrendDown}/>
                     <DetailsCard className="iconCard" id="repairsNeeded" name="Repairs Needed" value="12" icon={faHammer}/>

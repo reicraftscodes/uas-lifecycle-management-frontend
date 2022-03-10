@@ -9,6 +9,9 @@
 #value {
 
 }
+#rep-flex-container {
+  display: flex;
+}
 #alertText {
   font-size: 1.4em;
 }
@@ -84,4 +87,30 @@
 
 #card {
   width: 25%;
+}
+
+#repairTitle {
+  font-weight: 700;
+  text-align: center;
+}
+
+#view-aircraft {
+  width: 200px;
+  height: 30px;
+  padding: 2px 2px 2px 2px;
+  border-radius: 5px;
+  border: none;
+  background-color: #1e98d7;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  line-height: normal;
+  margin: 0 auto;
+}
+
+#handymanIcon {
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
 }
