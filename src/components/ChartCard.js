@@ -1,8 +1,7 @@
 import React from 'react'
-import { Chart as ChartJS } from 'react-chartjs-2'
 function Chart({ children, title }) {
   return (
-    <div className="chartDiv">
+    <div className="chartDiv" style={{width: "90%"}}>
       <p className="chartTitle">{title}</p>
       {children}
     </div>

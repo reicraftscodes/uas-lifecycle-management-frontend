@@ -4,6 +4,8 @@ import {Route, Routes} from 'react-router-dom';
 import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
+import { Chart as ChartJS } from 'chart.js/auto'
+import { Chart }            from 'react-chartjs-2'
 import Locations from "./pages/Locations";
 import Location from "./pages/Location";
 import Drone from "./pages/Drone";
@@ -13,7 +15,7 @@ import AddPart from './pages/AddPart';
 import AddAircraft from './pages/AddAircraft';
 import UserAircraft from './pages/UserAircraft';
 import LogFlightHours from './pages/LogFlightHours';
-import UserLogin from "./components/UserLogin";
+import PartsFailure from "./pages/PartsFailure";
 
 class App extends React.Component {
 
@@ -24,7 +26,6 @@ class App extends React.Component {
                 <AppNavbar />
                 <Routes>
                     <Route path="/" element={<Dashboard />} />
-                    <Route path ="/login" element={<UserLogin/>}/>
                     <Route path="/stock-levels" element={<StockLevels />} />
                     <Route path="/locations" exact={true} element={<Locations />} />
                     <Route path="/locations/:location" element={<Location />} />
@@ -35,6 +36,7 @@ class App extends React.Component {
                     <Route path="/add-aircraft" element={<AddAircraft/>} />
                     <Route path="/user-aircraft" element={<UserAircraft/>} />
                     <Route path="/log-flight" element={<LogFlightHours/>} />
+                    <Route path="/parts-failure" element={<PartsFailure/>} />
                 </Routes>
             </div>
         )
