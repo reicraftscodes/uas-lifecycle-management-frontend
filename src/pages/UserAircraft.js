@@ -16,13 +16,10 @@ import {
     Grid,
     Alert
 } from '@mui/material';
-
 import AircraftService from "../services/AircraftService";
 import '../css/alertStyling.css'
 
-
 const UserAircraft = () => {
-
     const [userAircraftList, setUserAircraftList] = useState([
         {
             tailNumber: "G-001",
@@ -51,18 +48,19 @@ const UserAircraft = () => {
     const [aircraft, setAircraft] = useState("");
     const [flyTime, setFlightHours] = useState("");
 
+    //used for alearts. alert is for toggling alert visibility, alert message for message, alert severity for colour of alert.
     const [alert, setAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
     const [alertSeverity, setAlertSeverity] = useState('success');
 
-
+    //runs on render
     useEffect(() => {
         getUserAircraft();
     });
 
     const getUserAircraft = () => {
+        //gets the user aircraft and stores them in variables, the getUserAircraft() takes an id that would later need to be added when login is finished but currently is hardcoded.
          AircraftService.getUserAircraft(2).then(response => response.json()).then(data => {
-             
              for(let i = 0; i < data.length; i++){
                 aircraftTailNumbers[i] = data[i].tailNumber;
                 aircrafts[i] = data[i];
@@ -71,7 +69,7 @@ const UserAircraft = () => {
 
         //Had to comment this out of the getUserAircraft function as it was calling useEffect which was changing your state variable, 
         // on changing your state variable it was causing use effect to be called again creating a loop which if looked at in the 
-        // browser console would show an error message and sometimes crashing the page. 
+        // browser console would show an error message looping and sometimes crashing the page. 
 
         //  const aircraftData = [
         //     {
@@ -96,13 +94,15 @@ const UserAircraft = () => {
     }
 
     const onFlightHoursSubmit = () => {
+        //takes user inputs and makes them into json for the post request. 
         const request = {aircraft,flyTime};
-        console.log(request);
 
+        //This block validates the fields and if any are empty of invalid shows an alert message 
         if (aircraft == ""){
             setAlertMessage("Aircraft field cannot be blank.");
             setAlertSeverity("error");
             setAlert(true);
+            //hides the alert message after 3 seconds
             setTimeout(() => { setAlert(false) }, 3000);
         } else if (flyTime == "" || flyTime < 0){
             setAlertMessage("Flight hours cannot be blank or negative.");
@@ -133,19 +133,16 @@ const UserAircraft = () => {
             <div className="alertPos">
                 {alert ? <Alert severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             </div>
-            
+
             <Grid container spacing={2}>
                 <Grid item xs={4}>
                     <Paper elevation={3} sx={{width: "100%",height: "90%", m: 2, p: "1%", pt: "2%" }}>
                         <Typography sx={{ fontWeight: 'bold', marginTop: '10px', fontSize: '1.5rem', pt: 3}}>Log Flight Hours</Typography>
-                        
-                        
                         <br/>
                         <FormControl>
                             <Autocomplete options={aircraftTailNumbers} onChange={(event, newValue) => {setAircraft(newValue)}} renderInput={(params) => (
                                 <TextField {...params} label="Aircraft" variant="outlined" />
                             )} />
-
                             <br/>
                             <Divider/>
                             <br/>
@@ -154,7 +151,6 @@ const UserAircraft = () => {
                             <Divider/>
                             <br/>
                             <Button variant="contained" onClick={onFlightHoursSubmit}>Submit</Button>
-
                         </FormControl>
                     </Paper>
                 </Grid>
@@ -203,22 +199,9 @@ const UserAircraft = () => {
                         </Stack>  
                     </Paper>
                 </Grid>
-                    
-
-
-
-
             </Grid>
-            
-                
-            
-            
         </div>
 
-    );
-
-
-}
-
+    );}
 export default UserAircraft;
 
