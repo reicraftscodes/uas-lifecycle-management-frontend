@@ -1,6 +1,6 @@
 import { FormControl, RadioGroup, FormControlLabel, Radio, Alert, Divider, Paper, FormLabel, Button,TextField, Autocomplete} from "@mui/material";
 import { useState } from "react";
-import '../css/AddPart.css'
+import '../css/AddPart.css';
 
 const AddAircraft = () => {
     //locations for the autocomplete field.
@@ -95,12 +95,14 @@ const AddAircraft = () => {
 
     return(
         <div className="main">
+            {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             {/* json takes tailNumber, location, platform status, platformType */}
-            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%" }}>
+            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%", mt: 0 }}>
+                
+                
+                
                 {/*Alert to display to the user. By default it is hidden. */}
-                <div className="alertPos">
-                    {alert ? <Alert severity={alertSeverity}>{alertMessage}</Alert> : <></> }
-                </div> 
+
                 <h1>Add Aircraft</h1>
                 <Divider/>
                 <br/>
