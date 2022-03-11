@@ -29,6 +29,8 @@ function UserLogin() {
         login(email, password, (data) => {
             if(data.status === "BAD_REQUEST") {
                 setMessage(data.message)
+            } else {
+
             }
         });
 
