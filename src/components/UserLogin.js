@@ -1,9 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Button, Divider, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
 import Logo from '../assets/logo.png';
-import AuthService from '../services/auth.service';
-
-
+import {login} from '../services/authService';
 // Login Page functionality
 function UserLogin() {
 
@@ -11,25 +9,28 @@ function UserLogin() {
     const paperStyle={padding :20,height:'70vh',width:380, margin:"20px auto"}
 
     // user input state variables
-    const [username, setUsername] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
 
 
     const onChangeUsername = (e) => {
-        const username = e.target.value;
-        setUsername(username);
+        const email = e.target.value;
+        setEmail(email);
     };
     const onChangePassword = (e) => {
         const password = e.target.value;
         setPassword(password);
     };
-    const handleLogin = (e) => {
-        e.preventDefault();
-        setMessage("");
-        setLoading(true);
-    //    Auth service will go here:
+    const handleLogin = () => {
+
+
+        login(email, password, (data) => {
+            if(data.status === "BAD_REQUEST") {
+                setMessage(data.message)
+            }
+        });
 
     };
     return(
@@ -40,11 +41,12 @@ function UserLogin() {
                     <h4>Sign In</h4>
                 </Grid>
                 <FormControl>
-                <TextField label='Email' placeholder='Enter your email'/>
+                <TextField label='Email' placeholder='Enter your email' onChange={onChangeUsername} value={email}/>
                 <br/>
-                <TextField label='Password' placeholder='Enter your password' type='password'/>
+                <TextField label='Password' placeholder='Enter your password' type='password' onChange={onChangePassword} value={password}/>
                 <br/>
-                <Button type='submit' color='primary' variant="contained" > Login </Button><br/>
+                <Button type='submit' color='primary' variant="contained" onClick={handleLogin}> Login </Button><br/>
+                    {message && <Typography color="red">{message}</Typography>}
                 <Typography >
                     <Link href="#" >
                         Forgot password ?
