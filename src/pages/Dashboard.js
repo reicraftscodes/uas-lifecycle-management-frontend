@@ -10,7 +10,7 @@ import {
     barOptions,
     barLegends,
 } from '../components/chartsData'
-import AvgBar from "./dashboard/AvgBar";
+import AvgBar from "./dashboard/cto/AvgBar";
 
 function Dashboard() {
 
