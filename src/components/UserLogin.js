@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import {Box, Button, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
 import Logo from '../assets/logo.png';
 import {login} from '../services/authService';
-
+import {useDispatch} from 'react-redux'
+import {loginSuccess} from "../actions";
 
 // Login Page functionality
 function UserLogin() {
@@ -16,6 +17,8 @@ function UserLogin() {
     const [message, setMessage] = useState("");
     const [isEmailInvalid, setIsEmailInvalid] = useState(false)
     const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
+
+    const dispatch = useDispatch();
 
     const onChangeUsername = (e) => {
         const email = e.target.value;
@@ -48,7 +51,8 @@ function UserLogin() {
                 if (data.status === "BAD_REQUEST") {
                     setMessage(data.message)
                 } else {
-
+                    //dispatch
+                    dispatch(loginSuccess(data))
                 }
             });
         }
