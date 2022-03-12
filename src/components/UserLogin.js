@@ -16,7 +16,7 @@ function UserLogin() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
-
+    const [isError, setIsError] = useState(false);
 
     const onChangeUsername = (e) => {
         const email = e.target.value;
@@ -47,10 +47,25 @@ function UserLogin() {
                     <h4>Sign In</h4>
                 </Grid>
                 <FormControl>
-                    <TextField label='Email' placeholder='Enter your email' onChange={onChangeUsername} value={email}/>
+                    <TextField
+                        label='Email'
+                        placeholder='Enter your email'
+                        onChange={onChangeUsername}
+                        value={email}
+                        error
+                        id="outlined-error"
+                        label="Please enter your email again."
+                    />
                     <br/>
-                    <TextField label='Password' placeholder='Enter your password' type='password'
-                               onChange={onChangePassword} value={password}/>
+                    <TextField label='Password'
+                               placeholder='Enter your password'
+                               type='password'
+                               onChange={onChangePassword}
+                               value={password}
+                               error
+                               id="outlined-error"
+                               label="Enter your password again."
+                    />
                     <br/>
                     <Button type='submit' _disabled={loading} color='primary' variant="contained" onClick={handleLogin}
                             isLoading={loading}> Login </Button><br/>
