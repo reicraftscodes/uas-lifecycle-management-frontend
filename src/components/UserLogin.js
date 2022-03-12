@@ -1,13 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {Box, Button, Divider, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
+import React, {useState} from 'react';
+import {Box, Button, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
 import Logo from '../assets/logo.png';
 import {login} from '../services/authService';
-import CheckButton from "react-validation/build/button";
 
 
 // Login Page functionality
 function UserLogin() {
-
     //custom paper style
     const paperStyle = {padding: 20, height: '70vh', width: 380, margin: "20px auto"}
 
@@ -16,7 +14,8 @@ function UserLogin() {
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState("");
-    const [isError, setIsError] = useState(false);
+    const [isEmailInvalid, setIsEmailInvalid] = useState(false)
+    const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
 
     const onChangeUsername = (e) => {
         const email = e.target.value;
@@ -26,18 +25,34 @@ function UserLogin() {
         const password = e.target.value;
         setPassword(password);
     };
+
+    const validate = () => {
+        let isOkay = true;
+        if (email.length === 0) {
+            setIsEmailInvalid(true)
+        }
+
+        if (password.length === 0) {
+            setIsPasswordInvalid(true)
+            isOkay = false;
+        }
+        return isOkay;
+    }
+
     const handleLogin = (e) => {
         e.preventDefault();
-        setLoading(true);
+        if (validate()) {
+            setLoading(true);
+            login(email, password, (data) => {
+                setLoading(false);
+                if (data.status === "BAD_REQUEST") {
+                    setMessage(data.message)
+                } else {
 
-        login(email, password, (data) => {
-            if (data.status === "BAD_REQUEST") {
-                setMessage(data.message)
-            } else {
-
-            }
-        });
-
+                }
+            });
+        }
+        ;
     };
     return (
         <Grid>
@@ -48,30 +63,33 @@ function UserLogin() {
                 </Grid>
                 <FormControl>
                     <TextField
+                        required
                         label='Email'
                         placeholder='Enter your email'
                         onChange={onChangeUsername}
                         value={email}
-                        error
                         id="outlined-error"
-                        label="Please enter your email again."
+                        error={isEmailInvalid}
+                        helperText={isEmailInvalid && "Email is required."}
                     />
                     <br/>
-                    <TextField label='Password'
-                               placeholder='Enter your password'
-                               type='password'
-                               onChange={onChangePassword}
-                               value={password}
-                               error
-                               id="outlined-error"
-                               label="Enter your password again."
+                    <TextField
+                        required
+                        label='Password'
+                        placeholder='Enter your password'
+                        type='password'
+                        onChange={onChangePassword}
+                        value={password}
+                        id="outlined-error"
+                        error={isPasswordInvalid}
+                        helperText={isPasswordInvalid && "Password is required."}
                     />
                     <br/>
                     <Button type='submit' _disabled={loading} color='primary' variant="contained" onClick={handleLogin}
                             isLoading={loading}> Login </Button><br/>
                     {message && (
                         <Box
-                            sx={{ width: 1 }}
+                            sx={{width: 1}}
                             className="alert alert-danger uas"
                             role="alert"
                         >
