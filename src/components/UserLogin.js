@@ -5,12 +5,10 @@ import {login} from '../services/authService';
 import {useDispatch} from 'react-redux'
 import {loginSuccess} from "../actions";
 
-// Login Page functionality
-function UserLogin() {
-    //custom paper style
-    const paperStyle = {padding: 20, height: '70vh', width: 380, margin: "20px auto"}
 
-    // user input state variables
+function UserLogin() {
+    
+    const paperStyle = {padding: 20, height: '70vh', width: 380, margin: "20px auto"}
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
