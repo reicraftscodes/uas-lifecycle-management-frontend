@@ -1,60 +1,51 @@
 import React, {useEffect, useState} from "react";
-import {Container} from "reactstrap";
-import DetailsCard from "../components/DetailsCard";
-import StockPopup from "../components/StockPopup";
-import {faHammer, faArrowTrendDown} from "@fortawesome/free-solid-svg-icons";
-import ChartCard from "../components/ChartCard";
-import ChartLegend from "../components/ChartLegend";
-import {Bar} from 'react-chartjs-2'
-import {
-    barOptions,
-    barLegends,
-} from '../components/chartsData'
-import AvgBar from "./Cto/AvgBar";
+import * as AuthService from "../services/authService";
+import CtoDashboard from "./Cto/CtoDashboard";
 
 function Dashboard() {
 
-    // const [barChartData, setBarChartData] = useState({});
-    // const [isBarChartLoading, setIsBarChartLoading] = useState(true);
-    //
-    // useEffect(() => {
-    //     fetch(`http://localhost:8080/parts/failuretime`)
-    //         .then(response => response.json())
-    //         .then(data => {
-    //             setBarChartData(data)
-    //             setIsBarChartLoading(false);
-    //         });
-    // });
+    const [showUserDashboard, setUserDashboard] = useState(false);
+    const [showLogisticDashboard, setLogisticDashboard] = useState(false);
+    const [showCooDashboard, setCooDashboard] = useState(false);
+    const [showCeoDashboard, setCeoDashboard] = useState(false);
+    const [showCtoDashboard, setCtoDashboard] = useState(false);
+
+    const [error, setError] = useState(null)
+    const [currentUser, setCurrentUser] = useState(undefined);
+
+    useEffect(() => {
+        const user = AuthService.getCurrentUser();
+        setCurrentUser(user)
+
+        if (user) {
+            if (user.roles.includes("ROLE_USER")) {
+                setUserDashboard(true)
+            } else if (user.roles.includes('ROLE_USER_LOGISTIC')) {
+                setLogisticDashboard(true)
+            } else if (user.roles.includes('ROLE_USER_CTO')) {
+                setCtoDashboard(true)
+            } else if (user.roles.includes('ROLE_USER_COO')) {
+                setCooDashboard(true)
+            } else if (user.roles.includes('ROLE_USER_CEO')) {
+                setCeoDashboard(true)
+            } else {
+                setError('')
+            }
+        }
+    }, []);
 
     return (
-        <Container>
-            <StockPopup/>
-            <div id="details-container">
-                <DetailsCard className="iconCard" id="lowStocks" name="Low Stocks" value="6" icon={faArrowTrendDown}/>
-                <DetailsCard className="iconCard" id="repairsNeeded" name="Repairs Needed" value="12" icon={faHammer}/>
-            </div>
-            <div>
-                <h1>Stock Level Charts</h1>
-                <div className="chartsContainer">
-                    <ChartCard title="Platform 1">
-                        <Bar {...barOptions} />
-                        <ChartLegend legends={barLegends}/>
-                    </ChartCard>
-                    <ChartCard title="Platform 2">
-                        <Bar {...barOptions} />
-                        <ChartLegend legends={barLegends}/>
-                    </ChartCard>
+        <div>
+            {currentUser ? (
+                <div>
+                    {showCtoDashboard && <CtoDashboard/>}
+                    {error ? error : ''}
                 </div>
-            </div>
-            {/*<div className="">*/}
-            {/*    <h1>Average Time </h1>*/}
-            {/*    {!isBarChartLoading &&*/}
-            {/*    <AvgBar categories={barChartData.categories} data={barChartData.data} seriesName="failureTime"*/}
-            {/*            chartId="apex-pie-chart"/>}*/}
-            {/*</div>*/}
-        </Container>
-    )
-
-}
+            ) : (
+                <div>Not Logged in</div>
+            )}
+        </div>
+    );
+};
 
 export default Dashboard

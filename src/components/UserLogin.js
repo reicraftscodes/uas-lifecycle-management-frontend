@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
-import {Button, Divider, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
+import {Box, Button, Divider, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
 import Logo from '../assets/logo.png';
 import {login} from '../services/authService';
+import CheckButton from "react-validation/build/button";
+
+
 // Login Page functionality
 function UserLogin() {
 
     //custom paper style
-    const paperStyle={padding :20,height:'70vh',width:380, margin:"20px auto"}
+    const paperStyle = {padding: 20, height: '70vh', width: 380, margin: "20px auto"}
 
     // user input state variables
     const [email, setEmail] = useState('');
@@ -23,11 +26,12 @@ function UserLogin() {
         const password = e.target.value;
         setPassword(password);
     };
-    const handleLogin = () => {
-
+    const handleLogin = (e) => {
+        e.preventDefault();
+        setLoading(true);
 
         login(email, password, (data) => {
-            if(data.status === "BAD_REQUEST") {
+            if (data.status === "BAD_REQUEST") {
                 setMessage(data.message)
             } else {
 
@@ -35,25 +39,35 @@ function UserLogin() {
         });
 
     };
-    return(
+    return (
         <Grid>
             <Paper elevation={4} style={paperStyle}>
                 <Grid align='center'>
-                    <img src={Logo} id="sncLogo" height="50px" width="150px" />
+                    <img src={Logo} id="sncLogo" height="50px" width="160px" margin="20px"/>
                     <h4>Sign In</h4>
                 </Grid>
                 <FormControl>
-                <TextField label='Email' placeholder='Enter your email' onChange={onChangeUsername} value={email}/>
-                <br/>
-                <TextField label='Password' placeholder='Enter your password' type='password' onChange={onChangePassword} value={password}/>
-                <br/>
-                <Button type='submit' color='primary' variant="contained" onClick={handleLogin}> Login </Button><br/>
-                    {message && <Typography color="red">{message}</Typography>}
-                <Typography >
-                    <Link href="#" >
-                        Forgot password ?
-                    </Link>
-                </Typography>
+                    <TextField label='Email' placeholder='Enter your email' onChange={onChangeUsername} value={email}/>
+                    <br/>
+                    <TextField label='Password' placeholder='Enter your password' type='password'
+                               onChange={onChangePassword} value={password}/>
+                    <br/>
+                    <Button type='submit' _disabled={loading} color='primary' variant="contained" onClick={handleLogin}
+                            isLoading={loading}> Login </Button><br/>
+                    {message && (
+                        <Box
+                            sx={{ width: 1 }}
+                            className="alert alert-danger uas"
+                            role="alert"
+                        >
+                            <b>{message}</b>
+                        </Box>
+                    )}
+                    <Typography>
+                        <Link href="#">
+                            Forgot password ?
+                        </Link>
+                    </Typography>
                 </FormControl>
             </Paper>
         </Grid>
