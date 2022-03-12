@@ -38,7 +38,7 @@ function App() {
                 <Route path="/user-aircraft" element={<UserAircraft/>}/>
                 <Route path="/parts-failure" element={<PartsFailure/>}/>
                 <Route path="/login" element={<UserLogin/>}/>
-                <Route path="/cto-dashboard" element={<CtoDashboard/>}/>
+                <Route path="/cto-dashboard" element={<ProtectedRoute user={user}><CtoDashboard/></ProtectedRoute>}/>
             </Routes>
         </div>
     )

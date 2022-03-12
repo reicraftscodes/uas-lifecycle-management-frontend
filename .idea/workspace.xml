@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="feat : issue #14 implemented user reducer">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AppNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AppNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/UserLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +73,7 @@
       <workItem from="1646971493027" duration="672000" />
       <workItem from="1646972602193" duration="2433000" />
       <workItem from="1647096568850" duration="4356000" />
-      <workItem from="1647111735271" duration="4842000" />
+      <workItem from="1647111735271" duration="5859000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -157,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647105175661</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="feat : issue #14 implemented login with redux">
+      <created>1647116780318</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1647116780319</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -175,7 +177,8 @@
     <MESSAGE value="fix : issue #14 created a ctoDashboard.js and moved avg bar chart functionality in the cto dashboard" />
     <MESSAGE value="fix : issue #14 added form validation" />
     <MESSAGE value="feat : issue #14 Form validation done" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : issue #14 Form validation done" />
+    <MESSAGE value="feat : issue #14 implemented login with redux" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat : issue #14 implemented login with redux" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
