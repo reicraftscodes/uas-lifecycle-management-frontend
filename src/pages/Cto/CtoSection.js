@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import {Container} from "reactstrap";
 import AvgBar from "./AvgBar";
+import {Card, Paper} from "@mui/material";
 
 function CtoSection() {
 
@@ -17,14 +18,15 @@ function CtoSection() {
     });
 
     return (
-        <Container>
-            <div className="">
+        <Container maxWidth="lg">
+            <Card>
                 <h1>Average Time </h1>
                 {!isBarChartLoading &&
                 <AvgBar categories={barChartData.categories} data={barChartData.data} seriesName="failureTime"
                         chartId="apex-pie-chart"/>}
-            </div>
+            </Card>
         </Container>
     )
 }
+
 export default CtoSection

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="refactor : issue #14 removed unnecessary comments from UserLogin.js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Cto/CtoSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Cto/CtoSection.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +74,8 @@
       <workItem from="1646971493027" duration="672000" />
       <workItem from="1646972602193" duration="2433000" />
       <workItem from="1647096568850" duration="4356000" />
-      <workItem from="1647111735271" duration="5859000" />
+      <workItem from="1647111735271" duration="6225000" />
+      <workItem from="1647136909395" duration="2533000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -159,11 +161,37 @@
       <option name="project" value="LOCAL" />
       <updated>1647116780319</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="fixed : issue #14 Cto dashboard and route is secured">
+      <created>1647117704647</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1647117704647</updated>
+    </task>
+    <task id="LOCAL-00014" summary="refactor : issue #14 removed unnecessary comments from UserLogin.js">
+      <created>1647117921667</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1647117921667</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files" />
@@ -178,14 +206,16 @@
     <MESSAGE value="fix : issue #14 added form validation" />
     <MESSAGE value="feat : issue #14 Form validation done" />
     <MESSAGE value="feat : issue #14 implemented login with redux" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : issue #14 implemented login with redux" />
+    <MESSAGE value="fixed : issue #14 Cto dashboard and route is secured" />
+    <MESSAGE value="refactor : issue #14 removed unnecessary comments from UserLogin.js" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor : issue #14 removed unnecessary comments from UserLogin.js" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/src/components/UserLogin.js</url>
-          <line>20</line>
+          <url>file://$PROJECT_DIR$/src/components/PartsFailureTable.js</url>
+          <line>60</line>
           <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="1" />
         </line-breakpoint>
