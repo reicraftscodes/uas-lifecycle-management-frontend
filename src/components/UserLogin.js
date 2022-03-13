@@ -3,7 +3,7 @@ import {Box, Button, FormControl, Grid, Link, Paper, TextField, Typography} from
 import Logo from '../assets/logo.png';
 import {login} from '../services/authService';
 import {useDispatch} from 'react-redux'
-import {loginSuccess} from "../actions";
+import {loginSuccess} from "../actions/actions";
 
 
 function UserLogin() {
