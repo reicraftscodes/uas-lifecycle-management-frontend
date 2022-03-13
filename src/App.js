@@ -1,6 +1,6 @@
 import './App.css';
 import React from "react";
-import {Navigate, Route, Routes} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";

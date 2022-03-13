@@ -51,7 +51,7 @@ function AvgBar(props) {
     return (
         <Chart options={chartState.options}
                series={chartState.series}
-               type="bar" width={700} height={320}/>
+               type="bar" width={1100} height={420}/>
     );
 }
 
