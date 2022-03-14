@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {Box, Button, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
 import Logo from '../assets/logo.png';
-import {login} from '../services/authService';
+import AuthService from '../services/AuthService';
 import {useDispatch} from 'react-redux'
-import {loginSuccess} from "../actions/actions";
 import {useNavigate} from "react-router-dom";
+import {loginSuccess} from "../actions/actions";
 import {getUserDashboard} from "../util/util";
 
 
@@ -47,15 +47,22 @@ function UserLogin() {
         e.preventDefault();
         if (validate()) {
             setLoading(true);
-            login(email, password, (data) => {
-                setLoading(false);
-                if (data.status === "BAD_REQUEST") {
-                    setMessage(data.message)
-                } else {
-                    dispatch(loginSuccess(data))
-                    navigate(getUserDashboard(data.roles[0]));
-                }
-            });
+
+            AuthService.login(email, password)
+                .then((response) => response.json())
+                .then(data => {
+                    setLoading(false);
+                    if (data.token) {
+                        localStorage.setItem("user", JSON.stringify(data));
+                    }
+
+                    if (data.status === "BAD_REQUEST") {
+                        setMessage(data.message)
+                    } else {
+                        dispatch(loginSuccess(data))
+                        navigate(getUserDashboard(data.roles[0]));
+                    }
+                });
         }
 
     };

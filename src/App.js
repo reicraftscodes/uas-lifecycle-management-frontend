@@ -17,10 +17,9 @@ import UserLogin from "./components/UserLogin";
 import CtoDashboard from "./pages/Cto/CtoDashboard";
 import {useDispatch, useSelector} from "react-redux";
 import ProtectedRoute from "./components/Authentication/ProtectedRoute";
-import configData from "./config/ApiConfig.json";
-import {user} from "./reducers/userReducer";
 import {fetchJwtTokenError, fetchJwtTokenSuccess} from "./actions/actions";
 import {getUserDashboard} from "./util/util";
+import AuthService from "./services/AuthService";
 
 function App() {
 
@@ -29,15 +28,9 @@ function App() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const jwtInfo = JSON.parse(localStorage.getItem("user"));
+        const jwtInfo = AuthService.getCurrentUser();
         if (jwtInfo) {
-            fetch(configData.API_URL + "/api/auth/getJwtInfo", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": "Bearer " + jwtInfo.token
-                },
-            })
+            AuthService.getJwtInfo()
                 .then(response => response.json())
                 .then(data => {
                     dispatch(fetchJwtTokenSuccess(data));
@@ -46,9 +39,7 @@ function App() {
                 dispatch(fetchJwtTokenError())
                 navigate('/login')
             });
-
         }
-
     }, []);
 
     return (
