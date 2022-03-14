@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AppNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AppNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Cto/CtoSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Cto/CtoSection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/AuthService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/AuthService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +79,7 @@
       <workItem from="1647136909395" duration="3263000" />
       <workItem from="1647140220654" duration="8000" />
       <workItem from="1647177795566" duration="9986000" />
-      <workItem from="1647257241507" duration="18904000" />
+      <workItem from="1647257241507" duration="19331000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -245,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647278506999</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="refactor : issue #14 fixed navlink and added user route">
+      <created>1647282910429</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1647282910429</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -287,6 +291,7 @@
     <MESSAGE value="fix : issue #14 created getUserDashboard method and redirect upon login." />
     <MESSAGE value="fix : issue #14 login, logout implemented, refactored authService.js" />
     <MESSAGE value="refactor : issue #14 refactored AuthService.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor : issue #14 refactored AuthService.js" />
+    <MESSAGE value="refactor : issue #14 fixed navlink and added user route" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor : issue #14 fixed navlink and added user route" />
   </component>
 </project>

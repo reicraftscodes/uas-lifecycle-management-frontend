@@ -18,7 +18,7 @@ class AuthService {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization' : `Bearer ${this.getCurrentUser()}`
+                'Authorization' : `Bearer ${this.getCurrentUser().token}`
             }
         })
     }
