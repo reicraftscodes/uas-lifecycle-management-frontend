@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {Paper, Typography} from "@mui/material";
+import {Divider, Grid, Paper, Typography} from "@mui/material";
 import PlatformsTable from "../components/PlatformsTable";
 
 export const Platforms = () => {
@@ -67,8 +67,25 @@ export const Platforms = () => {
     return (
         <div>
             <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%"}}>
-                <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem'}}>Platforms</Typography>
-                <PlatformsTable data={platformList}/>
+                <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem', paddingBottom: "10px"}}>Platforms</Typography>
+                <Divider/>
+                <Grid container>
+                    <Grid item xs={9}>
+                        <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%", flexGrow: 1}}>
+                            <PlatformsTable data={platformList} style={{alignSelf: "center"}}/>
+                        </Paper>
+
+                    </Grid>
+                    <Grid item xs={3}>
+                        <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%"}}>
+
+                        </Paper>
+                    </Grid>
+                </Grid>
+
+
+
+
             </Paper>
 
 

@@ -1,12 +1,12 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import { useTheme } from '@mui/material/styles';
+import { useTheme, styled } from '@mui/material/styles';
 import {
     Box,
     IconButton, Paper,
     Table,
     TableBody,
-    TableCell,
+    TableCell, tableCellClasses,
     TableContainer,
     TableFooter, TableHead,
     TablePagination,
@@ -79,6 +79,18 @@ TablePaginationActions.propTypes = {
     rowsPerPage: PropTypes.number.isRequired,
 };
 
+const StyledTableCell = styled(TableCell)(({ theme }) => ({
+    [`&.${tableCellClasses.head}`]: {
+        backgroundColor: "grey",
+        color: theme.palette.common.white,
+        fontWeight: "bold",
+
+    },
+    [`&.${tableCellClasses.body}`]: {
+        fontSize: 14,
+    },
+}));
+
 const headCells = [
     {
         id: 'location',
@@ -148,17 +160,23 @@ export default function PlatformsTable({data}) {
     };
 
     return (
-        <TableContainer component={Paper}>
-            <Table sx={{ minWidth: 500 }} aria-label="custom pagination table">
+        <TableContainer sx={{width: "auto"}} style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center"}}>
+            <Table style={{ width: "auto", tableLayout: "auto" }}>
                 <TableHead>
                     <TableRow>
                         {headCells.map((headCell) => (
-                            <TableCell
-                                key={headCell.id}
-                                align={headCell.align}
-                            >
-                                {headCell.label}
-                            </TableCell>
+
+                                <StyledTableCell
+                                    key={headCell.id}
+                                    align={headCell.align}
+                                >
+                                    {headCell.label}
+                                </StyledTableCell>
+
+
                         ))}
                     </TableRow>
                 </TableHead>
