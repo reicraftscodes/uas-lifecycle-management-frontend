@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AppNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AppNavbar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Authentication/ProtectedRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/ProtectedRoute.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +78,7 @@
       <workItem from="1647136909395" duration="3263000" />
       <workItem from="1647140220654" duration="8000" />
       <workItem from="1647177795566" duration="9986000" />
-      <workItem from="1647257241507" duration="20445000" />
+      <workItem from="1647257241507" duration="21799000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -258,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647283371642</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fix : issue #14 tested and fixed no other user's can access the content.">
+      <created>1647284439163</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1647284439163</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -277,7 +281,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files" />
     <MESSAGE value="fix: issue #2 update User Dashboard, displaying the avg failure times bar chart" />
     <MESSAGE value="fix: issue #2 fix Chart typo issues" />
     <MESSAGE value="refactor: issue #2 get rid of duplication" />
@@ -302,6 +305,7 @@
     <MESSAGE value="refactor : issue #14 refactored AuthService.js" />
     <MESSAGE value="refactor : issue #14 fixed navlink and added user route" />
     <MESSAGE value="fix : issue #14 fixed refresh page issue" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix : issue #14 fixed refresh page issue" />
+    <MESSAGE value="fix : issue #14 tested and fixed no other user's can access the content." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : issue #14 tested and fixed no other user's can access the content." />
   </component>
 </project>
