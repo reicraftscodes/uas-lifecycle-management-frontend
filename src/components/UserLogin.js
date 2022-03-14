@@ -4,10 +4,11 @@ import Logo from '../assets/logo.png';
 import {login} from '../services/authService';
 import {useDispatch} from 'react-redux'
 import {loginSuccess} from "../actions/actions";
+import {useNavigate} from "react-router-dom";
 
 
 function UserLogin() {
-    
+
     const paperStyle = {padding: 20, height: '70vh', width: 380, margin: "20px auto"}
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,6 +18,7 @@ function UserLogin() {
     const [isPasswordInvalid, setIsPasswordInvalid] = useState(false)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const onChangeUsername = (e) => {
         const email = e.target.value;
@@ -40,6 +42,20 @@ function UserLogin() {
         return isOkay;
     }
 
+    const getUserDashboard = (role) => {
+        switch (role) {
+            case "ROLE_USER_LOGISTIC":
+                return '/logistic-dashboard';
+            case "ROLE_USER":
+                return '/user-dashboard';
+            case "ROLE_USER_CTO":
+                return '/cto-dashboard';
+            case 'ROLE_USER_CEO':
+                return '/ceo-dashboard'
+            case 'ROLE_USER_COO':
+                return '/coo-dashboard'
+        }
+    }
     const handleLogin = (e) => {
         e.preventDefault();
         if (validate()) {
@@ -49,12 +65,12 @@ function UserLogin() {
                 if (data.status === "BAD_REQUEST") {
                     setMessage(data.message)
                 } else {
-                    //dispatch
                     dispatch(loginSuccess(data))
+                    navigate(getUserDashboard(data.roles[0]));
                 }
             });
         }
-        ;
+
     };
     return (
         <Grid>

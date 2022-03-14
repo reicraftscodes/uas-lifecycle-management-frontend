@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {Route, Routes} from 'react-router-dom';
 import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
@@ -15,9 +15,12 @@ import UserAircraft from './pages/UserAircraft';
 import PartsFailure from "./pages/PartsFailure";
 import UserLogin from "./components/UserLogin";
 import CtoDashboard from "./pages/Cto/CtoDashboard";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import ProtectedRoute from "./components/Authentication/ProtectedRoute";
 import configData from "./config/ApiConfig.json";
+import {fetchJwtTokenError, fetchJwtTokenSuccess, fetchUserInfo} from "./actions/actions";
+import {getJwtInfo, getUserInfo} from "./services/authService";
+import {user} from "./reducers/userReducer";
 
 function App() {
 
@@ -31,6 +34,27 @@ function App() {
         });
     }, []);
 
+    // const [loading, setLoading] = useState(true)
+    // const dispatch = useDispatch();
+    // const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
+    //
+    // useEffect(() => {
+    //     setLoading(true);
+    //     getJwtInfo().then(response => {
+    //         localStorage.setItem("token", response.data.token);
+    //         dispatch(fetchJwtTokenSuccess(response.data));
+    //         getUserInfo().then(response => {
+    //             dispatch(fetchUserInfo(response.data))
+    //             setLoading(false);
+    //         }).catch(error => {
+    //             setLoading(false);
+    //         })
+    //     }).catch(error => {
+    //         dispatch(fetchJwtTokenError());
+    //         setLoading(false);
+    //     })
+    //
+    // }, [isLoggedIn, dispatch]);
 
     return (
         <div className="App">

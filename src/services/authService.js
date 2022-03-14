@@ -1,9 +1,11 @@
-import configData from "../config/ApiConfig.json";
+import configData from "../config/ApiConfig.json"
 
-const AUTH_API_URL = "http://localhost:8080/api/auth/signin";
+import {user} from "../reducers/userReducer";
+
+// const BASE_API_URL = "http://localhost:8080";
 
 export const login = (email, password, callback) => {
-    fetch(AUTH_API_URL,{
+    fetch(configData.API_URL + '/api/auth/signin',{
         method: 'POST',
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify({ email, password })
@@ -27,7 +29,7 @@ export const getCurrentUser = () => {
 
 
 export const getUserInfo = () => {
-    fetch(AUTH_API_URL + '/api/auth/getUserInfo', {
+    fetch(configData.API_URL + '/getUserInfo', {
         method: "GET",
         headers: {
             "Content-Type":"application/json" },
@@ -38,22 +40,23 @@ export const getUserInfo = () => {
         });
 };
 
-// export const getJwtInfo = () => {
-//     fetch(AUTH_API_URL + '/api/auth/getJwtInfo',{
-//         method: 'POST',
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(newItems),
-//     })
-//         .then(response => response.json())
-//         .then(data => {
-//             console.log('Success:', data);
-//         })
-//         .catch((error) => {
-//             console.error('Error:', error);
-//         });
-// };
+
+export const getJwtInfo = () => {
+    fetch(configData.API_URL + '/api/auth/getJwtInfo',{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + localStorage.getItem(user) ? JSON.parse(localStorage.getItem(user)).token : ""
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+};
 
 
 

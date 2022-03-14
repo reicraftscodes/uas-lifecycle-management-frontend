@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="fix : issue #14 added redux actions and service - fetchJwtTokens, fetchJwtTokenError, fetchUserInfo and also added userInfo reducer">
+      <change afterPath="$PROJECT_DIR$/src/pages/Coo/CooDashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Logistic/LogisticDashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Users/UserDashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/UserLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -82,7 +84,7 @@
       <workItem from="1647136909395" duration="3263000" />
       <workItem from="1647140220654" duration="8000" />
       <workItem from="1647177795566" duration="9986000" />
-      <workItem from="1647257241507" duration="5001000" />
+      <workItem from="1647257241507" duration="10401000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -217,7 +219,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647262353007</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fix : issue #14 added redux actions and service - fetchJwtTokens, fetchJwtTokenError, fetchUserInfo and also added userInfo reducer">
+      <created>1647264275766</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1647264275767</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -255,6 +264,7 @@
     <MESSAGE value="refactor : issue #14 moved actions.js, reducers, and userReducers to appropriate folder." />
     <MESSAGE value="refactor : issue #14 add user jwt, log in eeror reducers. users should now able to see session tokens from the local storage." />
     <MESSAGE value="style : issue #14 created Ceo dashboard" />
-    <option name="LAST_COMMIT_MESSAGE" value="style : issue #14 created Ceo dashboard" />
+    <MESSAGE value="fix : issue #14 added redux actions and service - fetchJwtTokens, fetchJwtTokenError, fetchUserInfo and also added userInfo reducer" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : issue #14 added redux actions and service - fetchJwtTokens, fetchJwtTokenError, fetchUserInfo and also added userInfo reducer" />
   </component>
 </project>
