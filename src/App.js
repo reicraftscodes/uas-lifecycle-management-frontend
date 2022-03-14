@@ -15,6 +15,7 @@ import AddPart from './pages/AddPart';
 import AddAircraft from './pages/AddAircraft';
 import UserAircraft from './pages/UserAircraft';
 import PartsFailure from "./pages/PartsFailure";
+import {Platforms} from "./pages/Platforms";
 
 class App extends React.Component {
 
@@ -35,6 +36,7 @@ class App extends React.Component {
                     <Route path="/add-aircraft" element={<AddAircraft/>} />
                     <Route path="/user-aircraft" element={<UserAircraft/>} />
                     <Route path="/parts-failure" element={<PartsFailure/>} />
+                    <Route path="/platforms" element={<Platforms/>} />
                 </Routes>
             </div>
         )
