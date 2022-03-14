@@ -23,7 +23,7 @@ function CtoSection() {
             <Typography variant="h5" align="left">Dashboard</Typography>
             <br/>
             <Card elevation={6}>
-                <Typography m={2}>Average Time </Typography>
+                <Typography m={2} id="partsfailure">Average Time </Typography>
                 {!isBarChartLoading &&
                 <AvgBar categories={barChartData.categories} data={barChartData.data} seriesName="failureTime"
                         chartId="apex-pie-chart"/>}
@@ -31,7 +31,7 @@ function CtoSection() {
             <br/>
             <br/>
             <Card elavation={6}>
-                <Typography m={2}>Platform status</Typography>
+                <Typography m={2} id="platform-stats">Platform status</Typography>
                 <p> display table here...</p>
             </Card>
         </Container>

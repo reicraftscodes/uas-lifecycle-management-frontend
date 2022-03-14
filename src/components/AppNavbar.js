@@ -4,7 +4,7 @@ import {
     Nav,
     NavItem,
     NavLink,
-    } from 'reactstrap';
+} from 'reactstrap';
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {logOut} from "../actions/actions";
@@ -21,37 +21,71 @@ const AppNavbar = () => {
         localStorage.removeItem("user");
         dispatch(logOut());
         navigate('/login');
-
     }
 
-    const redirectToLogin = () =>{
-        navigate('/login');
 
+    const userRoute = [
+        {
+            title: "Parts Failure",
+            path: "/cto-dashboard",
+            role: "ROLE_USER_CTO",
+            id: "partsfailure",
+            type: "anchor"
+        },
+        {
+            title: "Platform status",
+            path: "/cto-dashboard",
+            role: "ROLE_USER_CTO",
+            id: "platform-stats",
+            type: "anchor"
+        }
+    ]
+
+    const onNavigate = (route) => {
+        if(route.type === "anchor") {
+            const anchor = document.querySelector("#" + route.id);
+            anchor.scrollIntoView({behavior: 'smooth', block: 'center'});
+        } else if (route.type === "page"){
+            navigate(route.path)
+        }
     }
+
+    const links = user.isLoggedIn ? userRoute
+        .filter(route => route.role === user.info.roles[0])
+        .map(route => {
+            return <NavItem>
+                <NavLink onClick={() => onNavigate(route)}>{route.title}</NavLink>
+            </NavItem>
+        }) : <></>;
+
     return (
         <div>
             <Navbar color="dark" dark expand="md">
                 <NavbarBrand href="/">Sierra Nevada Corporation</NavbarBrand>
-                    <Nav className="ml-auto" navbar>
-                        {
-                            user.isLoggedIn &&
-                                <>
-                                    <NavItem>
-                                        <NavLink>{user.info.username}</NavLink>
-                                    </NavItem>
-                                    <NavItem>
-                                        <NavLink onClick={logout}>Logout</NavLink>
-                                    </NavItem>
-                                </>
+                <Nav className="ml-auto" navbar>
+                    {
+                        user.isLoggedIn &&
+                        <NavItem>
+                            <NavLink>{user.info.username}</NavLink>
+                        </NavItem>
+                    }
+                    {
+                        !user.isLoggedIn &&
+                        <NavItem>
+                            <NavLink onClick={() => navigate("/login")}>Login</NavLink>
+                        </NavItem>
+                    }
 
-                        }
-                        {
-                            !user.isLoggedIn &&
-                            <NavItem>
-                                <NavLink onClick={redirectToLogin}>Login</NavLink>
-                            </NavItem>
-                        }
-                    </Nav>
+                    {links}
+
+                    {
+                        user.isLoggedIn &&
+                        <NavItem>
+                            <NavLink onClick={logout}>Logout</NavLink>
+                        </NavItem>
+                    }
+
+                </Nav>
             </Navbar>
         </div>
     );
