@@ -5,6 +5,7 @@ import {login} from '../services/authService';
 import {useDispatch} from 'react-redux'
 import {loginSuccess} from "../actions/actions";
 import {useNavigate} from "react-router-dom";
+import {getUserDashboard} from "../util/util";
 
 
 function UserLogin() {
@@ -42,20 +43,6 @@ function UserLogin() {
         return isOkay;
     }
 
-    const getUserDashboard = (role) => {
-        switch (role) {
-            case "ROLE_USER_LOGISTIC":
-                return '/logistic-dashboard';
-            case "ROLE_USER":
-                return '/user-dashboard';
-            case "ROLE_USER_CTO":
-                return '/cto-dashboard';
-            case 'ROLE_USER_CEO':
-                return '/ceo-dashboard'
-            case 'ROLE_USER_COO':
-                return '/coo-dashboard'
-        }
-    }
     const handleLogin = (e) => {
         e.preventDefault();
         if (validate()) {

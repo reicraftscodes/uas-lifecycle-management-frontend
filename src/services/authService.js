@@ -1,8 +1,4 @@
-import configData from "../config/ApiConfig.json"
-
-import {user} from "../reducers/userReducer";
-
-// const BASE_API_URL = "http://localhost:8080";
+import configData from "../config/ApiConfig.json";
 
 export const login = (email, password, callback) => {
     fetch(configData.API_URL + '/api/auth/signin',{
@@ -27,26 +23,11 @@ export const getCurrentUser = () => {
     return JSON.parse(localStorage.getItem("user"));
 };
 
-
-export const getUserInfo = () => {
-    fetch(configData.API_URL + '/getUserInfo', {
-        method: "GET",
-        headers: {
-            "Content-Type":"application/json" },
-    })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-        });
-};
-
-
 export const getJwtInfo = () => {
     fetch(configData.API_URL + '/api/auth/getJwtInfo',{
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + localStorage.getItem(user) ? JSON.parse(localStorage.getItem(user)).token : ""
         }
     })
         .then(response => response.json())

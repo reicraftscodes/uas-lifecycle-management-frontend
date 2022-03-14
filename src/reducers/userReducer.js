@@ -27,7 +27,9 @@ export const user = (state = initialState, action) => {
             }
         case "FETCH_JWT_TOKEN_ERROR":
             return {
-                isLoggedIn: false}
+                isLoggedIn: false,
+                info: initialState.info
+            }
 
         case "LOGOUT":
             return initialState
@@ -37,11 +39,3 @@ export const user = (state = initialState, action) => {
 
 }
 
-export const userInfo = (state = {}, action) => {
-    switch (action.type) {
-        case "FETCH_USER_INFO":
-            return action.payload
-        default:
-            return state;
-    }
-}

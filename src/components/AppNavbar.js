@@ -8,19 +8,26 @@ import {
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {logOut} from "../actions/actions";
-import {Link} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 
 const AppNavbar = () => {
 
     const user = useSelector((state) => state.user)
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const logout = () => {
-        localStorage.removeItem("user")
-        dispatch(logOut())
+        localStorage.removeItem("user");
+        dispatch(logOut());
+        navigate('/login');
+
     }
 
+    const redirectToLogin = () =>{
+        navigate('/login');
+
+    }
     return (
         <div>
             <Navbar color="dark" dark expand="md">
@@ -41,7 +48,7 @@ const AppNavbar = () => {
                         {
                             !user.isLoggedIn &&
                             <NavItem>
-                                <NavLink href="/login">Login</NavLink>
+                                <NavLink onClick={redirectToLogin}>Login</NavLink>
                             </NavItem>
                         }
                     </Nav>

@@ -1,6 +1,6 @@
 import './App.css';
-import React, {useEffect, useState} from "react";
-import {Route, Routes} from 'react-router-dom';
+import React, {useEffect} from "react";
+import {Route, Routes, useNavigate} from 'react-router-dom';
 import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
@@ -18,50 +18,45 @@ import CtoDashboard from "./pages/Cto/CtoDashboard";
 import {useDispatch, useSelector} from "react-redux";
 import ProtectedRoute from "./components/Authentication/ProtectedRoute";
 import configData from "./config/ApiConfig.json";
-import {fetchJwtTokenError, fetchJwtTokenSuccess, fetchUserInfo} from "./actions/actions";
-import {getJwtInfo, getUserInfo} from "./services/authService";
 import {user} from "./reducers/userReducer";
+import {fetchJwtTokenError, fetchJwtTokenSuccess} from "./actions/actions";
+import {getUserDashboard} from "./util/util";
 
 function App() {
 
-    const user = useSelector((state) => state.user)
-    useEffect(()=> {
-        const userInfo = JSON.parse(localStorage.getItem("user"));
-        fetch(configData.API_URL + "/api/auth/getUserInfo", {
-            method: "GET",
-            headers: {"Content-Type": "application/json",
-                        "Authorization": "Bearer " + userInfo.token},
-        });
-    }, []);
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
-    // const [loading, setLoading] = useState(true)
-    // const dispatch = useDispatch();
-    // const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
-    //
-    // useEffect(() => {
-    //     setLoading(true);
-    //     getJwtInfo().then(response => {
-    //         localStorage.setItem("token", response.data.token);
-    //         dispatch(fetchJwtTokenSuccess(response.data));
-    //         getUserInfo().then(response => {
-    //             dispatch(fetchUserInfo(response.data))
-    //             setLoading(false);
-    //         }).catch(error => {
-    //             setLoading(false);
-    //         })
-    //     }).catch(error => {
-    //         dispatch(fetchJwtTokenError());
-    //         setLoading(false);
-    //     })
-    //
-    // }, [isLoggedIn, dispatch]);
+    useEffect(() => {
+        const jwtInfo = JSON.parse(localStorage.getItem("user"));
+        if (jwtInfo) {
+            fetch(configData.API_URL + "/api/auth/getJwtInfo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer " + jwtInfo.token
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    dispatch(fetchJwtTokenSuccess(data));
+                    navigate(getUserDashboard(data.roles[0]))
+                }).catch((error) => {
+                dispatch(fetchJwtTokenError())
+                navigate('/login')
+            });
+
+        }
+
+    }, []);
 
     return (
         <div className="App">
             <AppNavbar/>
             <Routes>
                 <Route path="/" element={<Dashboard/>}/>
-                <Route path="/stock-levels" element={<ProtectedRoute user={user}><StockLevels /></ProtectedRoute>}/>
+                <Route path="/stock-levels" element={<ProtectedRoute user={user}><StockLevels/></ProtectedRoute>}/>
                 <Route path="/locations" exact={true} element={<Locations/>}/>
                 <Route path="/locations/:location" element={<Location/>}/>
                 <Route path="/drones/:droneId" element={<Drone/>}/>
@@ -72,7 +67,7 @@ function App() {
                 <Route path="/user-aircraft" element={<UserAircraft/>}/>
                 <Route path="/parts-failure" element={<PartsFailure/>}/>
                 <Route path="/login" element={<UserLogin/>}/>
-                <Route path="/cto-dashboard" element={<CtoDashboard/>} />
+                <Route path="/cto-dashboard" element={<CtoDashboard/>}/>
                 {/*<Route path="/cto-dashboard" element={<ProtectedRoute user={user}><CtoDashboard/></ProtectedRoute>}/>*/}
             </Routes>
         </div>

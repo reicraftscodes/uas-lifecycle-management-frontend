@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="fix : issue #14 added redux actions and service - fetchJwtTokens, fetchJwtTokenError, fetchUserInfo and also added userInfo reducer">
-      <change afterPath="$PROJECT_DIR$/src/pages/Coo/CooDashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Logistic/LogisticDashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pages/Users/UserDashboard.js" afterDir="false" />
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="fix : issue #14 implement login and logout functionality.">
+      <change afterPath="$PROJECT_DIR$/src/util/util.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/actions/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AppNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AppNavbar.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/UserLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/UserLogin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/authService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/authService.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -84,7 +86,7 @@
       <workItem from="1647136909395" duration="3263000" />
       <workItem from="1647140220654" duration="8000" />
       <workItem from="1647177795566" duration="9986000" />
-      <workItem from="1647257241507" duration="10401000" />
+      <workItem from="1647257241507" duration="13194000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -226,7 +228,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647264275767</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="fix : issue #14 created getUserDashboard method and redirect upon login.">
+      <created>1647274294912</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1647274294912</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -265,6 +274,7 @@
     <MESSAGE value="refactor : issue #14 add user jwt, log in eeror reducers. users should now able to see session tokens from the local storage." />
     <MESSAGE value="style : issue #14 created Ceo dashboard" />
     <MESSAGE value="fix : issue #14 added redux actions and service - fetchJwtTokens, fetchJwtTokenError, fetchUserInfo and also added userInfo reducer" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix : issue #14 added redux actions and service - fetchJwtTokens, fetchJwtTokenError, fetchUserInfo and also added userInfo reducer" />
+    <MESSAGE value="fix : issue #14 created getUserDashboard method and redirect upon login." />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : issue #14 created getUserDashboard method and redirect upon login." />
   </component>
 </project>
