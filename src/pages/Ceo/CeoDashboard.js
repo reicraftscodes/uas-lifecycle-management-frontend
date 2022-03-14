@@ -1,9 +1,11 @@
+import {Container} from "@mui/material";
+import CeoSection from "./CeoSection";
 
 const CeoDashboard = () =>{
     return(
-       <div>
-           <h2> CEO dashboard</h2>
-       </div>
+       <Container>
+           <CeoSection/>
+       </Container>
     );
 }
 

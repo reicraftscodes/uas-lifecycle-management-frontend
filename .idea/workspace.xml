@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="refactor : issue #14 created an empty dashboard">
       <change afterPath="$PROJECT_DIR$/src/pages/Ceo/CeoSection.js" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/pages/Ceo/TotalRepairCost.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Ceo/CeoDashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Ceo/CeoDashboard.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducers.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
     </list>
@@ -83,7 +84,7 @@
       <workItem from="1647136909395" duration="3263000" />
       <workItem from="1647140220654" duration="8000" />
       <workItem from="1647177795566" duration="9986000" />
-      <workItem from="1647257241507" duration="2774000" />
+      <workItem from="1647257241507" duration="3150000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -204,7 +205,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647181365730</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="refactor : issue #14 add user jwt, log in eeror reducers. users should now able to see session tokens from the local storage.">
+      <created>1647262271152</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1647262271152</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +248,7 @@
     <MESSAGE value="fix : issue #14 adjusted cto chart layout" />
     <MESSAGE value="fix : issue #14 fix barchart sizing, cto dashboard platform status, and added an empty ceoDashboard." />
     <MESSAGE value="refactor : issue #14 moved actions.js, reducers, and userReducers to appropriate folder." />
-    <option name="LAST_COMMIT_MESSAGE" value="refactor : issue #14 moved actions.js, reducers, and userReducers to appropriate folder." />
+    <MESSAGE value="refactor : issue #14 add user jwt, log in eeror reducers. users should now able to see session tokens from the local storage." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor : issue #14 add user jwt, log in eeror reducers. users should now able to see session tokens from the local storage." />
   </component>
 </project>
