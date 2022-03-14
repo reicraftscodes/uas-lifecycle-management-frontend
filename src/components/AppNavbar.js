@@ -39,6 +39,15 @@ const AppNavbar = () => {
             id: "platform-stats",
             type: "anchor"
         }
+
+        // unauthorised test if user can access other page
+        // {
+        //     title: "Platform status",
+        //     path: "/cto-dashboard",
+        //     role: "ROLE_USER_CEO",
+        //     id: "platform-stats",
+        //     type: "page"
+        // }
     ]
 
     const onNavigate = (route) => {
