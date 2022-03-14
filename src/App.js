@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, {useEffect} from "react";
 import {Route, Routes} from 'react-router-dom';
 import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
@@ -17,10 +17,26 @@ import UserLogin from "./components/UserLogin";
 import CtoDashboard from "./pages/Cto/CtoDashboard";
 import {useSelector} from "react-redux";
 import ProtectedRoute from "./components/Authentication/ProtectedRoute";
+import configData from "./config/ApiConfig.json";
 
 function App() {
 
+
+
     const user = useSelector((state) => state.user)
+
+
+    useEffect(()=> {
+        const userInfo = JSON.parse(localStorage.getItem("user"));
+
+
+        fetch(configData.API_URL + "/api/auth/getUserInfo", {
+            method: "GET",
+            headers: {"Content-Type": "application/json",
+                        "Authorization": "Bearer " + userInfo.token},
+        });
+    }, []);
+
 
     return (
         <div className="App">

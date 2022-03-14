@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/pages/Ceo/CeoDashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Ceo/CeoSection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pages/Ceo/TotalRepairCost.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Cto/AvgBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Cto/AvgBar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pages/Cto/CtoSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Cto/CtoSection.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/reducers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducers.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/reducers/userReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/userReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +47,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/Zaiko/zaiko-project-main (1)/zaiko-project-main/zaiko-frontend" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files (x86)\JetBrains\IntelliJ IDEA 2021.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
@@ -56,6 +57,8 @@
       <recent name="C:\Users\c1623793\OneDrive - Cardiff University\Documents\UAS Lifecycle Management\uas-lifecycle-management-frontend\src\pages\dashboard" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\c1623793\Documents\Large Team Project\uas-lifecycle-management-frontend\src\reducers" />
+      <recent name="C:\Users\c1623793\Documents\Large Team Project\uas-lifecycle-management-frontend\src\actions" />
       <recent name="C:\Users\c1623793\Documents\Large Team Project\uas-lifecycle-management-frontend\src\pages" />
     </key>
   </component>
@@ -79,7 +82,8 @@
       <workItem from="1647111735271" duration="6225000" />
       <workItem from="1647136909395" duration="3263000" />
       <workItem from="1647140220654" duration="8000" />
-      <workItem from="1647177795566" duration="3154000" />
+      <workItem from="1647177795566" duration="9986000" />
+      <workItem from="1647257241507" duration="2774000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -186,7 +190,21 @@
       <option name="project" value="LOCAL" />
       <updated>1647139521354</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="fix : issue #14 fix barchart sizing, cto dashboard platform status, and added an empty ceoDashboard.">
+      <created>1647181214290</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1647181214290</updated>
+    </task>
+    <task id="LOCAL-00017" summary="refactor : issue #14 moved actions.js, reducers, and userReducers to appropriate folder.">
+      <created>1647181365730</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1647181365730</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -220,6 +238,8 @@
     <MESSAGE value="fixed : issue #14 Cto dashboard and route is secured" />
     <MESSAGE value="refactor : issue #14 removed unnecessary comments from UserLogin.js" />
     <MESSAGE value="fix : issue #14 adjusted cto chart layout" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix : issue #14 adjusted cto chart layout" />
+    <MESSAGE value="fix : issue #14 fix barchart sizing, cto dashboard platform status, and added an empty ceoDashboard." />
+    <MESSAGE value="refactor : issue #14 moved actions.js, reducers, and userReducers to appropriate folder." />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor : issue #14 moved actions.js, reducers, and userReducers to appropriate folder." />
   </component>
 </project>
