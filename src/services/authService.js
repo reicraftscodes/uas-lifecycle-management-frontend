@@ -1,3 +1,5 @@
+import configData from "../config/ApiConfig.json";
+
 const AUTH_API_URL = "http://localhost:8080/api/auth/signin";
 
 export const login = (email, password, callback) => {
@@ -24,10 +26,34 @@ export const getCurrentUser = () => {
 };
 
 
+export const getUserInfo = () => {
+    fetch(AUTH_API_URL + '/api/auth/getUserInfo', {
+        method: "GET",
+        headers: {
+            "Content-Type":"application/json" },
+    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        });
+};
 
-
-
-
+// export const getJwtInfo = () => {
+//     fetch(AUTH_API_URL + '/api/auth/getJwtInfo',{
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(newItems),
+//     })
+//         .then(response => response.json())
+//         .then(data => {
+//             console.log('Success:', data);
+//         })
+//         .catch((error) => {
+//             console.error('Error:', error);
+//         });
+// };
 
 
 

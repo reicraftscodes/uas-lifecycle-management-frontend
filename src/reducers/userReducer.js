@@ -37,7 +37,7 @@ export const user = (state = initialState, action) => {
 
 }
 
-const userInfo = (state = {}, action) => {
+export const userInfo = (state = {}, action) => {
     switch (action.type) {
         case "FETCH_USER_INFO":
             return action.payload

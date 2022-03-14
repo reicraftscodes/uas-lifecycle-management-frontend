@@ -21,15 +21,9 @@ import configData from "./config/ApiConfig.json";
 
 function App() {
 
-
-
     const user = useSelector((state) => state.user)
-
-
     useEffect(()=> {
         const userInfo = JSON.parse(localStorage.getItem("user"));
-
-
         fetch(configData.API_URL + "/api/auth/getUserInfo", {
             method: "GET",
             headers: {"Content-Type": "application/json",
