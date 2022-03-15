@@ -38,7 +38,7 @@ const AppNavbar = () => {
             title: "Common Failing Parts ",
             path: "/parts-failure",
             roles: ["ROLE_USER_CTO"],
-            id: "platform-stats",
+            id: "",
             type: "page"
         },
 
@@ -58,13 +58,6 @@ const AppNavbar = () => {
             type: "page"
         },
 
-        {
-            title: "Sample test",
-            path: "/parts-failure",
-            roles: ["ROLE_USER_CEO"],
-            id: "locations",
-            type: "page"
-        }
 
     ]
 

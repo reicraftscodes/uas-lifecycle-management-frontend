@@ -4,6 +4,8 @@ import ChartLegend from "./ChartLegend";
 
 export default function PartsFailureChart({data}) {
 
+    console.log(data)
+
     const barLegends = [
         { title: 'Parts', color: 'bg-teal-600' },
     ]

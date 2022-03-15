@@ -15,10 +15,10 @@ function CtoSection() {
                 setBarChartData(data)
                 setIsBarChartLoading(false);
             });
-    });
+    }, []);
 
     return (
-        <Container maxWidth="lg">
+        <Container>
             <br/>
             <Typography variant="h5" align="left">Dashboard</Typography>
             <br/>

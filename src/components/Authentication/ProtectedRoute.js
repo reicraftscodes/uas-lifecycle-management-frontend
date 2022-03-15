@@ -7,7 +7,6 @@ const ProtectedRoute = ({user, roles, children}) => {
     }
 
     const userMatch = user.info.roles.some((role) => roles.includes(role));
-
     if (!userMatch) {
         return <Navigate to="/unauthorized" replace/>
 
