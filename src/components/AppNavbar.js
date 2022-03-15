@@ -56,7 +56,15 @@ const AppNavbar = () => {
             roles: ["ROLE_USER_LOGISTIC","ROLE_USER_CTO", "ROLE_USER_COO"],
             id: "locations",
             type: "page"
-        }
+        },
+
+        // {
+        //     title: "Sample test",
+        //     path: "/parts-failure",
+        //     roles: ["ROLE_USER_CEO"],
+        //     id: "locations",
+        //     type: "page"
+        // }
 
     ]
 

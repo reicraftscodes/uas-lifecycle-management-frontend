@@ -18,6 +18,7 @@ import {fetchJwtTokenError, fetchJwtTokenSuccess} from "./actions/actions";
 import {getUserDashboard} from "./util/util";
 import AuthService from "./services/AuthService";
 import Spinner from "./components/Spinner";
+import Unauthorized from "./components/Unauthorized";
 
 function App() {
 
@@ -68,6 +69,7 @@ function App() {
                     <Route path="/cto-dashboard"
                            element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
                     {/*<Route path="/cto-dashboard" element={<ProtectedRoute user={user}><CtoDashboard/></ProtectedRoute>}/>*/}
+                    <Route path="/unauthorized" element={<Unauthorized/>}/>
                 </Routes>
             </div>
         )
