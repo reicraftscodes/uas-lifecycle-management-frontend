@@ -11,64 +11,46 @@ import {
 } from "@mui/material";
 import {visuallyHidden} from "@mui/utils";
 import {TablePaginationActions} from "./TablePaginationActions";
+import {SortTableHead} from "./SortTableHead";
 
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-        backgroundColor: "grey",
-        color: theme.palette.common.white,
-        fontWeight: "bold",
 
-    },
-    [`&.${tableCellClasses.body}`]: {
-        fontSize: 14,
-    },
-}));
 
 const headCells = [
     {
         id: 'location',
-        align: "left",
         label: 'Location',
     },
     {
         id: 'platformType',
-        align: "right",
         label: 'Platform',
     },
     {
         id: 'platformStatus',
-        align: "right",
         label: 'Status',
     },
     {
         id: 'aircraft',
-        align: "right",
         label: 'Aircraft',
     },
     {
         id: 'flightHours',
-        align: "right",
         label: 'Flight time (hrs)',
     },
     {
         id: 'totalPartsCost',
-        align: "right",
         label: 'Parts Cost',
     },
     {
         id: 'totalRepairs',
-        align: "right",
         label: 'Total Repairs',
     },
     {
         id: 'totalRepairsCost',
-        align: "right",
         label: 'Total Repairs Cost',
     },
     {
         id: 'totalCost',
-        align: "right",
         label: 'Total Cost',
     },
 
@@ -77,6 +59,8 @@ const headCells = [
 export default function PlatformsTable({data}) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
+    const [order, setOrder] = React.useState('asc');
+    const [orderBy, setOrderBy] = React.useState('location');
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
@@ -91,27 +75,24 @@ export default function PlatformsTable({data}) {
         setPage(0);
     };
 
+    const handleRequestSort = (event, property) => {
+        const isAsc = orderBy === property && order === 'asc';
+        setOrder(isAsc ? 'desc' : 'asc');
+        setOrderBy(property);
+    };
+
     return (
         <TableContainer sx={{width: "auto"}} style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center"}}>
             <Table style={{ width: "auto", tableLayout: "auto" }}>
-                <TableHead>
-                    <TableRow>
-                        {headCells.map((headCell) => (
-
-                                <StyledTableCell
-                                    key={headCell.id}
-                                    align={headCell.align}
-                                >
-                                    {headCell.label}
-                                </StyledTableCell>
-
-
-                        ))}
-                    </TableRow>
-                </TableHead>
+                <SortTableHead
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={handleRequestSort}
+                    headCells={headCells}
+                />
                 <TableBody>
                     {(rowsPerPage > 0
                             ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -121,28 +102,28 @@ export default function PlatformsTable({data}) {
                             <TableCell style={{ width: 160 }}>
                                 {data.location}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }}>
                                 {data.platformType}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }}>
                                 {data.platformStatus}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }}>
                                 {data.aircraft}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }}>
                                 {data.flightHours}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }}>
                                 {data.totalPartsCost}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }}>
                                 {data.totalRepairs}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }}>
                                 {data.totalRepairsCost}
                             </TableCell>
-                            <TableCell style={{ width: 160 }} align="right">
+                            <TableCell style={{ width: 160 }}>
                                 {data.totalCost}
                             </TableCell>
                         </TableRow>

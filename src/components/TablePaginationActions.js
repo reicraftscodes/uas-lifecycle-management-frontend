@@ -7,7 +7,7 @@ import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import PropTypes from "prop-types";
 import * as React from "react";
 
-// Ref - altered from: https://mui.com/components/tables/
+// Ref: https://mui.com/components/tables/
 export function TablePaginationActions(props) {
     const theme = useTheme();
     const { count, page, rowsPerPage, onPageChange } = props;
