@@ -23,7 +23,7 @@ function CtoSection() {
             <Typography variant="h5" align="left">Dashboard</Typography>
             <br/>
             <Card elevation={6}>
-                <Typography m={2} id="partsfailure">Average Time </Typography>
+                <Typography m={2} id="partsfailuretime">Average Time </Typography>
                 {!isBarChartLoading &&
                 <AvgBar categories={barChartData.categories} data={barChartData.data} seriesName="failureTime"
                         chartId="apex-pie-chart"/>}

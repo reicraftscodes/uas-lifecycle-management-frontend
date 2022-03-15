@@ -26,10 +26,10 @@ const AppNavbar = () => {
 
     const userRoute = [
         {
-            title: "Parts Failure",
+            title: "Parts Failure Time",
             path: "/cto-dashboard",
             role: "ROLE_USER_CTO",
-            id: "partsfailure",
+            id: "partsfailuretime",
             type: "anchor"
         },
         {
@@ -38,6 +38,41 @@ const AppNavbar = () => {
             role: "ROLE_USER_CTO",
             id: "platform-stats",
             type: "anchor"
+        },
+
+        {
+            title: "Common Failing Parts ",
+            path: "/parts-failure",
+            role: "ROLE_USER_CTO",
+            id: "platform-stats",
+            type: "page"
+        },
+
+        // CTO, COO, LOO
+        {
+            title: "Stock Levels",
+            path: "/stock-levels",
+            role: "ROLE_USER_CTO",
+            id: "stock-levels",
+            type: "page"
+        },
+
+        //*CTO COO LO*/
+        {
+            title: "Locations",
+            path: "/locations",
+            role: "ROLE_USER_CTO",
+            id: "locations",
+            type: "page"
+        },
+
+
+        {
+            title: "",
+            path: "/locations/:location",
+            role: "ROLE_USER_CTO",
+            id: "locations",
+            type: "page"
         }
 
         // unauthorised test if user can access other page

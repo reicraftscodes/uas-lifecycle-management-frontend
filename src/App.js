@@ -20,6 +20,7 @@ import ProtectedRoute from "./components/Authentication/ProtectedRoute";
 import {fetchJwtTokenError, fetchJwtTokenSuccess} from "./actions/actions";
 import {getUserDashboard} from "./util/util";
 import AuthService from "./services/AuthService";
+import Spinner from "./components/Spinner";
 
 function App() {
 
@@ -46,26 +47,43 @@ function App() {
         }
     }, []);
 
-    if(loading) {
-        return <div>Loading...</div>
+    if (loading) {
+        return <Spinner/>
     } else {
         return (
             <div className="App">
                 <AppNavbar/>
                 <Routes>
                     <Route path="/" element={<Dashboard/>}/>
-                    <Route path="/stock-levels" element={<ProtectedRoute user={user}><StockLevels/></ProtectedRoute>}/>
-                    <Route path="/locations" exact={true} element={<Locations/>}/>
-                    <Route path="/locations/:location" element={<Location/>}/>
-                    <Route path="/drones/:droneId" element={<Drone/>}/>
-                    <Route path="/parts/:partId" element={<Part/>}/>
-                    <Route path="/stock-lookup" element={<StockLookup/>}/>
-                    <Route path="/add-part" element={<AddPart/>}/>
-                    <Route path="/add-aircraft" element={<AddAircraft/>}/>
-                    <Route path="/user-aircraft" element={<UserAircraft/>}/>
-                    <Route path="/parts-failure" element={<PartsFailure/>}/>
+                    {/*CTO COO LO*/}
+                    <Route path="/stock-levels" element={<ProtectedRoute user={user} role="ROLE_USER_LO"><StockLevels/></ProtectedRoute>}/>
+
+                    {/*CTO COO LO*/}
+                    <Route path="/locations" exact={true} element={<ProtectedRoute user={user} role="ROLE_USER_LO"><Locations/></ProtectedRoute>}/>
+
+                    {/*CTO COO LO*/}
+                    <Route path="/locations/:location" element={<ProtectedRoute user={user} role="ROLE_USER_LO"><Location/></ProtectedRoute>}/>
+
+                    {/*<Route path="/drones/:droneId" element={<Drone/>}/>*/}
+                    {/*<Route path="/parts/:partId" element={<Part/>}/>*/}
+                    {/*<Route path="/stock-lookup" element={<StockLookup/>}/>*/}
+
+                    {/*LO*/}
+                    <Route path="/add-part" element={<ProtectedRoute user={user} role="ROLE_USER_LO"><AddPart/></ProtectedRoute>}/>
+
+                    {/*LO*/}
+                    <Route path="/add-aircraft" element={<ProtectedRoute user={user} role="ROLE_USER_LO"><AddAircraft/></ProtectedRoute>}/>
+
+                    {/*USER*/}
+                    <Route path="/user-aircraft" element={<ProtectedRoute user={user} role="ROLE_USER"><UserAircraft/></ProtectedRoute>}/>
+
+                    {/*CTO*/}
+                    <Route path="/parts-failure" element={<ProtectedRoute user={user} role="ROLE_USER_CTO"><PartsFailure/></ProtectedRoute>}/>
+
                     <Route path="/login" element={<UserLogin/>}/>
-                    <Route path="/cto-dashboard" element={<ProtectedRoute user={user} role="ROLE_USER_CTO"><CtoDashboard/></ProtectedRoute>}/>
+                    {/*CTO*/}
+                    <Route path="/cto-dashboard"
+                           element={<ProtectedRoute user={user} role="ROLE_USER_CTO"><CtoDashboard/></ProtectedRoute>}/>
                     {/*<Route path="/cto-dashboard" element={<ProtectedRoute user={user}><CtoDashboard/></ProtectedRoute>}/>*/}
                 </Routes>
             </div>
