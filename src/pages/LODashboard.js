@@ -3,7 +3,7 @@ import {Container} from "reactstrap";
 import StockPopup from "../components/StockPopup";
 import Repairs from "../components/Repairs";
 
-export default class LODashboard extends React.Component {
+export default class npLODashboard extends React.Component {
 
     constructor(props) {
         super(props)

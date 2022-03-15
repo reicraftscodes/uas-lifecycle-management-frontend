@@ -19,6 +19,7 @@ import {getUserDashboard} from "./util/util";
 import AuthService from "./services/AuthService";
 import Spinner from "./components/Spinner";
 import Unauthorized from "./components/Unauthorized";
+import LODashboard from "./pages/LODashboard";
 
 function App() {
 
@@ -66,9 +67,8 @@ function App() {
                     <Route path="/user-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserAircraft/></ProtectedRoute>}/>
                     <Route path="/parts-failure" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><PartsFailure/></ProtectedRoute>}/>
                     <Route path="/login" element={<UserLogin/>}/>
-                    <Route path="/cto-dashboard"
-                           element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
-                    {/*<Route path="/cto-dashboard" element={<ProtectedRoute user={user}><CtoDashboard/></ProtectedRoute>}/>*/}
+                    <Route path="/cto-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
+                    <Route path="/logistics-officer/dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><LODashboard/></ProtectedRoute>}/>
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
                 </Routes>
             </div>
