@@ -44,6 +44,8 @@ function App() {
                     navigate('/login')
                     setLoading(false);
                 });
+        } else {
+            setLoading(false);
         }
     }, []);
 
