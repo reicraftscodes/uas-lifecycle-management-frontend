@@ -1,7 +1,7 @@
 import React from "react";
 import {Container} from "reactstrap";
 import DetailsCard from "../components/DetailsCard";
-import StockPopup from "../components/StockPopup";
+import StockPopup from "../components/StockAlert";
 import {faHammer, faArrowTrendDown} from "@fortawesome/free-solid-svg-icons";
 import ChartCard from "../components/ChartCard";
 import ChartLegend from "../components/ChartLegend";

@@ -2,7 +2,7 @@ import React from 'react';
 import {Button, Card, CardText, CardTitle} from 'reactstrap';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 
-export default class StockPopup extends React.Component {
+export default class StockAlert extends React.Component {
 
 
     constructor(props) {
