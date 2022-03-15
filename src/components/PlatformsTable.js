@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import {visuallyHidden} from "@mui/utils";
 import {TablePaginationActions} from "./TablePaginationActions";
-import {SortTableHead} from "./SortTableHead";
+import {getComparator, SortTableHead, stableSort} from "./SortTableHead";
 
 
 
@@ -94,40 +94,42 @@ export default function PlatformsTable({data}) {
                     headCells={headCells}
                 />
                 <TableBody>
-                    {(rowsPerPage > 0
-                            ? data.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            : data
-                    ).map((data) => (
-                        <TableRow>
-                            <TableCell style={{ width: 160 }}>
-                                {data.location}
-                            </TableCell>
-                            <TableCell style={{ width: 160 }}>
-                                {data.platformType}
-                            </TableCell>
-                            <TableCell style={{ width: 160 }}>
-                                {data.platformStatus}
-                            </TableCell>
-                            <TableCell style={{ width: 160 }}>
-                                {data.aircraft}
-                            </TableCell>
-                            <TableCell style={{ width: 160 }}>
-                                {data.flightHours}
-                            </TableCell>
-                            <TableCell style={{ width: 160 }}>
-                                {data.totalPartsCost}
-                            </TableCell>
-                            <TableCell style={{ width: 160 }}>
-                                {data.totalRepairs}
-                            </TableCell>
-                            <TableCell style={{ width: 160 }}>
-                                {data.totalRepairsCost}
-                            </TableCell>
-                            <TableCell style={{ width: 160 }}>
-                                {data.totalCost}
-                            </TableCell>
-                        </TableRow>
-                    ))}
+                    {stableSort(data, getComparator(order, orderBy))
+                        .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                        .map((data) => {
+
+                            return (
+                                <TableRow>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.location}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.platformType}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.platformStatus}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.aircraft}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.flightHours}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.totalPartsCost}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.totalRepairs}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.totalRepairsCost}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
+                                        {data.totalCost}
+                                    </TableCell>
+                                </TableRow>
+                            );
+                        })}
 
                     {emptyRows > 0 && (
                         <TableRow style={{ height: 53 * emptyRows }}>
