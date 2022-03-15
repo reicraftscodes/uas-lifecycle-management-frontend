@@ -58,13 +58,13 @@ const AppNavbar = () => {
             type: "page"
         },
 
-        // {
-        //     title: "Sample test",
-        //     path: "/parts-failure",
-        //     roles: ["ROLE_USER_CEO"],
-        //     id: "locations",
-        //     type: "page"
-        // }
+        {
+            title: "Sample test",
+            path: "/parts-failure",
+            roles: ["ROLE_USER_CEO"],
+            id: "locations",
+            type: "page"
+        }
 
     ]
 

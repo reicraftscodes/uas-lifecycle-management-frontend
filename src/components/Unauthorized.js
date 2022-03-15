@@ -36,7 +36,7 @@ const Unauthorized = () => {
             style={{minHeight: '100vh'}}
         >
             <img src={unAuthImg} alt="unauthorised" height="250" width="300"></img>
-            <Typography style={textStyle} variant="h3"> 404 Page not found</Typography>
+            <Typography style={textStyle} variant="h3">Unauthorised Access</Typography>
             <Typography variant="h5"> We are sorry...</Typography>
             <Typography variant="body1"> The page you are trying has restricted access. Please try again.</Typography>
             <button style={buttonStyle} variant="outlined" onClick={backToDashboardPage}> Go back</button>
