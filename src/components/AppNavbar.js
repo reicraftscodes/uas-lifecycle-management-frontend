@@ -1,10 +1,4 @@
-import {
-    Navbar,
-    NavbarBrand,
-    Nav,
-    NavItem,
-    NavLink,
-} from 'reactstrap';
+import {Nav, Navbar, NavbarBrand, NavItem, NavLink,} from 'reactstrap';
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {logOut} from "../actions/actions";
@@ -28,14 +22,14 @@ const AppNavbar = () => {
         {
             title: "Parts Failure Time",
             path: "/cto-dashboard",
-            role: "ROLE_USER_CTO",
+            roles: ["ROLE_USER_CTO"],
             id: "partsfailuretime",
             type: "anchor"
         },
         {
             title: "Platform status",
             path: "/cto-dashboard",
-            role: "ROLE_USER_CTO",
+            roles: ["ROLE_USER_CTO"],
             id: "platform-stats",
             type: "anchor"
         },
@@ -43,46 +37,27 @@ const AppNavbar = () => {
         {
             title: "Common Failing Parts ",
             path: "/parts-failure",
-            role: "ROLE_USER_CTO",
+            roles: ["ROLE_USER_CTO"],
             id: "platform-stats",
             type: "page"
         },
 
-        // CTO, COO, LOO
         {
             title: "Stock Levels",
             path: "/stock-levels",
-            role: "ROLE_USER_CTO",
+            roles: ["ROLE_USER_LOGISTIC","ROLE_USER_CTO", "ROLE_USER_COO"],
             id: "stock-levels",
             type: "page"
         },
 
-        //*CTO COO LO*/
         {
             title: "Locations",
             path: "/locations",
-            role: "ROLE_USER_CTO",
-            id: "locations",
-            type: "page"
-        },
-
-
-        {
-            title: "",
-            path: "/locations/:location",
-            role: "ROLE_USER_CTO",
+            roles: ["ROLE_USER_LOGISTIC","ROLE_USER_CTO", "ROLE_USER_COO"],
             id: "locations",
             type: "page"
         }
 
-        // unauthorised test if user can access other page
-        // {
-        //     title: "Platform status",
-        //     path: "/cto-dashboard",
-        //     role: "ROLE_USER_CEO",
-        //     id: "platform-stats",
-        //     type: "page"
-        // }
     ]
 
     const onNavigate = (route) => {
@@ -95,7 +70,7 @@ const AppNavbar = () => {
     }
 
     const links = user.isLoggedIn ? userRoute
-        .filter(route => route.role === user.info.roles[0])
+        .filter(route => user.info.roles.some((role) => route.roles.includes(role)))
         .map(route => {
             return <NavItem>
                 <NavLink onClick={() => onNavigate(route)}>{route.title}</NavLink>

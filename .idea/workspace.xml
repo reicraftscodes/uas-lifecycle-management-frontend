@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="">
+    <list default="true" id="c1944c76-3468-4f40-b1a4-27d915ba3848" name="Changes" comment="fix : issue #14 added setLoading spinner">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AppNavbar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AppNavbar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Authentication/ProtectedRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Authentication/ProtectedRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pages/Locations.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/pages/Locations.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +86,7 @@
       <workItem from="1647177795566" duration="9986000" />
       <workItem from="1647257241507" duration="21799000" />
       <workItem from="1647343397283" duration="629000" />
-      <workItem from="1647351482155" duration="1515000" />
+      <workItem from="1647351482155" duration="5563000" />
     </task>
     <task id="LOCAL-00001" summary="feat: issue #2 Add Average Bar Chart to display failure times using React APEX chart and updated json files">
       <created>1646325618867</created>
@@ -281,7 +284,14 @@
       <option name="project" value="LOCAL" />
       <updated>1647352746524</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="fix : issue #14 added setLoading spinner">
+      <created>1647353102457</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1647353102458</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +310,6 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="refactor: issue #2 get rid of duplication" />
     <MESSAGE value="fix: issue #2 update repo, pulled dev branch to this branch" />
     <MESSAGE value="fix: issue #14 fix user login form" />
     <MESSAGE value="fix: issue #14 implemented auth service for login" />
@@ -325,6 +334,7 @@
     <MESSAGE value="fix : issue #14 tested and fixed no other user's can access the content." />
     <MESSAGE value="feat : issue #14 issue #29 implemented 403 Page" />
     <MESSAGE value="feat : issue #14 implemented Spinner" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat : issue #14 implemented Spinner" />
+    <MESSAGE value="fix : issue #14 added setLoading spinner" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix : issue #14 added setLoading spinner" />
   </component>
 </project>

@@ -6,9 +6,6 @@ import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
 import Locations from "./pages/Locations";
 import Location from "./pages/Location";
-import Drone from "./pages/Drone";
-import Part from "./pages/Part";
-import StockLookup from "./pages/StockLookup";
 import AddPart from './pages/AddPart';
 import AddAircraft from './pages/AddAircraft';
 import UserAircraft from './pages/UserAircraft';
@@ -57,35 +54,19 @@ function App() {
                 <AppNavbar/>
                 <Routes>
                     <Route path="/" element={<Dashboard/>}/>
-                    {/*CTO COO LO*/}
-                    <Route path="/stock-levels" element={<ProtectedRoute user={user} role="ROLE_USER_LO"><StockLevels/></ProtectedRoute>}/>
-
-                    {/*CTO COO LO*/}
-                    <Route path="/locations" exact={true} element={<ProtectedRoute user={user} role="ROLE_USER_LO"><Locations/></ProtectedRoute>}/>
-
-                    {/*CTO COO LO*/}
-                    <Route path="/locations/:location" element={<ProtectedRoute user={user} role="ROLE_USER_LO"><Location/></ProtectedRoute>}/>
-
+                    <Route path="/stock-levels" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC", "ROLE_USER_COO", "ROLE_USER_CTO"]}><StockLevels/></ProtectedRoute>}/>
+                    <Route path="/locations" exact={true} element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Locations/></ProtectedRoute>}/>
+                    <Route path="/locations/:location" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Location/></ProtectedRoute>}/>
                     {/*<Route path="/drones/:droneId" element={<Drone/>}/>*/}
                     {/*<Route path="/parts/:partId" element={<Part/>}/>*/}
                     {/*<Route path="/stock-lookup" element={<StockLookup/>}/>*/}
-
-                    {/*LO*/}
-                    <Route path="/add-part" element={<ProtectedRoute user={user} role="ROLE_USER_LO"><AddPart/></ProtectedRoute>}/>
-
-                    {/*LO*/}
-                    <Route path="/add-aircraft" element={<ProtectedRoute user={user} role="ROLE_USER_LO"><AddAircraft/></ProtectedRoute>}/>
-
-                    {/*USER*/}
-                    <Route path="/user-aircraft" element={<ProtectedRoute user={user} role="ROLE_USER"><UserAircraft/></ProtectedRoute>}/>
-
-                    {/*CTO*/}
-                    <Route path="/parts-failure" element={<ProtectedRoute user={user} role="ROLE_USER_CTO"><PartsFailure/></ProtectedRoute>}/>
-
+                    <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
+                    <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
+                    <Route path="/user-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserAircraft/></ProtectedRoute>}/>
+                    <Route path="/parts-failure" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><PartsFailure/></ProtectedRoute>}/>
                     <Route path="/login" element={<UserLogin/>}/>
-                    {/*CTO*/}
                     <Route path="/cto-dashboard"
-                           element={<ProtectedRoute user={user} role="ROLE_USER_CTO"><CtoDashboard/></ProtectedRoute>}/>
+                           element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
                     {/*<Route path="/cto-dashboard" element={<ProtectedRoute user={user}><CtoDashboard/></ProtectedRoute>}/>*/}
                 </Routes>
             </div>
