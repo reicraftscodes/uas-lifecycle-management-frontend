@@ -36,7 +36,6 @@ function App() {
                 .then(response => response.json())
                 .then(data => {
                     dispatch(fetchJwtTokenSuccess(data));
-                    navigate(getUserDashboard(data.roles[0]))
                     setLoading(false);
                 })
                 .catch((error) => {
