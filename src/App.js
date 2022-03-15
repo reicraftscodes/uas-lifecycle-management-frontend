@@ -20,6 +20,7 @@ import AuthService from "./services/AuthService";
 import Spinner from "./components/Spinner";
 import Unauthorized from "./components/Unauthorized";
 import LODashboard from "./pages/LODashboard";
+import { Chart as ChartJS } from 'chart.js/auto'
 
 function App() {
 
