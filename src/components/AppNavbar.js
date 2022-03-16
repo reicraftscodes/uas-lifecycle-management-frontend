@@ -44,8 +44,16 @@ const AppNavbar = () => {
         },
 
         {
-            title: 'Parts',
+            title: 'Aircraft',
             path: "/add-aircraft",
+            roles: ["ROLE_USER_LOGISTIC"],
+            id: "aircraft",
+            type: "page"
+        },
+
+        {
+            title: 'Parts',
+            path: "/add-part",
             roles: ["ROLE_USER_LOGISTIC"],
             id: "aircraft",
             type: "page"
