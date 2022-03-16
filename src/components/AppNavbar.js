@@ -66,6 +66,16 @@ const AppNavbar = () => {
             type: "page"
         },
 
+        {
+            title: "Aircraft",
+            path: "/user-aircraft",
+            roles: ["ROLE_USER"],
+            id: "locations",
+            type: "page"
+        },
+
+
+
         // You can also change the type to anchor. An example of scenario is when a user click nav link,
         // it will NOT direct to the new page, it stays on the same page and scroll it down for yo and direct you the "id" of a specific thing like
         // for an example an id tag for a specific chart, then it will take you to that chart. 
