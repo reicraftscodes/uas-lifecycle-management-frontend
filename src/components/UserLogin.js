@@ -70,7 +70,7 @@ function UserLogin() {
         <Grid>
             <Paper elevation={4} style={paperStyle}>
                 <Grid align='center'>
-                    <img src={Logo} id="sncLogo" height="50px" width="160px" margin="20px"/>
+                    <img src={Logo} id="sncLogo" height="50px" width="160px" margin="20px" alt="Sierra Nevada Corporation Logo"/>
                     <h4>Sign In</h4>
                 </Grid>
                 <FormControl>
