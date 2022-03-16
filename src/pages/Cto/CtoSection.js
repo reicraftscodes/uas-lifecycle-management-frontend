@@ -27,10 +27,7 @@ function CtoSection() {
             </Card>
             <br/>
             <br/>
-            <Card elavation={6}>
-                <Typography m={2} id="platform-stats">Platform status</Typography>
-                <p> display table here...</p>
-            </Card>
+
         </Container>
     )
 }

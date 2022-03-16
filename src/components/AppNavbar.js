@@ -20,17 +20,10 @@ const AppNavbar = () => {
 
     const userRoute = [
         {
-            title: "Parts Failure Time",
-            path: "/cto-dashboard",
-            roles: ["ROLE_USER_CTO"],
-            id: "partsfailuretime",
-            type: "page"
-        },
-        {
             title: "",
             path: "/cto-dashboard",
             roles: ["ROLE_USER_CTO"],
-            id: "platform-stats",
+            id: "partsfailuretime",
             type: "page"
         },
 
@@ -71,6 +64,14 @@ const AppNavbar = () => {
             path: "/add-aircraft",
             roles: ["ROLE_USER_LOGISTIC"],
             id: "aircraft",
+            type: "page"
+        },
+
+        {
+            title: 'Platform Status',
+            path: "/platform-status",
+            roles: ["ROLE_USER_CTO"],
+            id: "platform-stats",
             type: "page"
         },
 
