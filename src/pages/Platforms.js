@@ -16,19 +16,23 @@ import AircraftService from "../services/AircraftService";
 
 export const Platforms = () => {
 
+    const [isLoading, setLoading] = React.useState(true);
     const [platformList, setPlatformList] = React.useState([]);
     //const [locationList, setLocationList] = React.useState([]);
     const [locationFilterList, setLocationFilterList] = React.useState({});
 
     useEffect(() => {
-        getPlatforms();
-        getLocations();
         console.log("use effect");
+        getPlatforms().then(() => {
+            setLoading(false);
+        });
+        getLocations();
+       ;
     }, []);
 
-    const getPlatforms = () => {
-
-        AircraftService.getPlatformStatus()
+    const getPlatforms = async () => {
+        console.log("get platforms");
+        const res = await AircraftService.getPlatformStatus()
             .then(response => response.json())
             .then(data => {
                 console.log("Successfully retrieved platform statuses: ", data);
@@ -56,6 +60,11 @@ export const Platforms = () => {
         });
     };
 
+    if (isLoading) {
+        return (
+            <div>Loading</div>
+        )
+    }
     return (
         <div>
             <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%"}}>
@@ -75,6 +84,7 @@ export const Platforms = () => {
                                 <FormGroup>
                                     {Object.keys(locationFilterList).map((key, i) => (
                                         <FormControlLabel
+                                            key={key}
                                             control={
                                                 <Checkbox checked={locationFilterList[key]} onChange={handleChangeFilter} name={key} />
                                             }

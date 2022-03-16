@@ -100,7 +100,7 @@ export default function PlatformsTable({data}) {
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((row) => {
                             return (
-                                <TableRow>
+                                <TableRow key={row.tailNumber}>
                                     <TableCell style={{ width: 160 }}>
                                         {row.location}
                                     </TableCell>
