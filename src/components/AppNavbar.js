@@ -74,15 +74,7 @@ const AppNavbar = () => {
             id: "locations",
             type: "page"
         },
-
-        {
-            title: 'Platform Status',
-            path: "/platform-status",
-            roles: ["ROLE_USER_CTO"],
-            id: "platform-stats",
-            type: "page"
-        },
-
+        
         {
             title: 'Platform Status',
             path: "",
