@@ -1,58 +1,44 @@
-import React, {useEffect, useState} from 'react';
-import Chart from 'react-apexcharts'
-import PartsService from "../../services/PartsService";
+import React from 'react'
+import {Bar} from 'react-chartjs-2'
+import ChartLegend from "../../components/ChartLegend";
 
-function AvgFailureTimesBarChart(props) {
+export default function AvgFailureTimesBarChart({data}) {
 
-    const [partTypes, setPartTypes] = useState([]);
-    const [failureTimes, setFailureTimes] = useState([]);
-    const [chartState, setChartState] = useState({
-        options: {
-            chart: {
-                id: 'chart'
-            },
-            xaxis: {
-                categories: [],
-            }
-        },
-        series: [{
-            name: '',
-            data: []
-        }]
-    });
-    // fetch failure times API
-    useEffect(() => {
-        PartsService.getFailingTime()
-            .then(response => response.json())
-            .then(data => {
-                setFailureTimes(data.map(x => x.failureTime));
-                setPartTypes(data.map(x => x.partType));
+    const barLegends = [
+        { title: 'Average Failure Times', color: 'bg-teal-600' },
+    ]
 
-            });
-    }, [])
-    // render charts
-    useEffect(() => {
-        setChartState({
-            options: {
-                chart: {
-                    id: 'chart'
+    const barOptions = {
+        data: {
+            labels: data.map(x => x.partType),
+            datasets: [
+                {
+                    label: 'Failure Time Hours',
+                    backgroundColor: '#0694a2',
+                    borderWidth: 1,
+                    data: data.map(x => x.failureTime),
                 },
-                xaxis: {
-                    categories: partTypes,
-                }
-            },
-            series: [{
-                name: '',
-                data: failureTimes
-            }]
-        })
-    }, [failureTimes, partTypes])
+            ],
+        },
+        options: {
+            responsive: true,
+        },
+        legend: {
+            display: false,
+        },
+    }
 
     return (
-        <Chart options={chartState.options}
-               series={chartState.series}
-               type="bar" width={1100} height={420}/>
-    );
+        <div style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            width: "100%",
+            height: "100%"}}>
+            <div style={{width: "90%"}}>
+                <ChartLegend legends={barLegends} />
+                <Bar {...barOptions} />
+            </div>
+        </div>
+    )
 }
-
-export default AvgFailureTimesBarChart;
