@@ -1,3 +1,4 @@
+// this is where the user redirect after logging in. You can change the route path here:
 export const getUserDashboard = (role) => {
     switch (role) {
         case "ROLE_USER_LOGISTIC":
