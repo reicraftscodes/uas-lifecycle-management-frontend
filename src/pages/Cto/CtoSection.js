@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {Container} from "reactstrap";
 import AvgBar from "./AvgBar";
 import {Card, Typography} from "@mui/material";
+import PartsService from "../../services/PartsService";
 
 function CtoSection() {
 
@@ -9,7 +10,7 @@ function CtoSection() {
     const [isBarChartLoading, setIsBarChartLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`http://localhost:8080/parts/failuretime`)
+        PartsService.getFailingTime()
             .then(response => response.json())
             .then(data => {
                 setBarChartData(data)
