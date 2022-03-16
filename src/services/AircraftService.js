@@ -23,5 +23,13 @@ class AircraftService {
             headers: {"Content-Type": "application/json" },
         });
     }
+
+    getFilterPlatformStatus(request){
+        return fetch(configData.API_URL+'/aircraft/platform-status/filter', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json" },
+            body: JSON.stringify(request),
+        });
+    }
 }
 export default new AircraftService();

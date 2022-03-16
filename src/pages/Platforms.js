@@ -47,7 +47,7 @@ export const Platforms = () => {
     const getLocations = () => {
 
         const locations = ["Ankara", "Cardiff", "Dublin", "Edinburgh", "London", "Nevada", "St Athen", "Manchester"];
-        const locationFilter = locations.reduce((o, key) => ({ ...o, [key]: false}), {})
+        const locationFilter = locations.reduce((o, key) => ({ ...o, [key]: true}), {})
         console.log(locationFilter);
 
         setLocationFilterList(locationFilter);
@@ -58,6 +58,34 @@ export const Platforms = () => {
             ...locationFilterList,
             [event.target.name]: event.target.checked,
         });
+    };
+
+    const filter = () => {
+        const locations = [];
+        Object.keys(locationFilterList).forEach(function(locationKey, i) {
+            if(locationFilterList[locationKey]){
+                locations.push(locationKey);
+            }
+        })
+        console.log("locations: " + locations);
+        let request = {
+            locations: locations,
+            platformStatuses: ["Design"]
+        }
+        postPlatformStatusFilterRequest(request);
+    };
+
+    const postPlatformStatusFilterRequest = (myData) => {
+        console.log("post filter platforms");
+        AircraftService.getFilterPlatformStatus(myData)
+            .then(response => response.json())
+            .then(data => {
+                console.log("Successfully retrieved filtered platform statuses: ", data);
+                setPlatformList(data);
+            })
+            .catch(error => {
+                console.log("Error when retrieving filtered platform statuses: ", error);
+            })
     };
 
     if (isLoading) {
@@ -94,7 +122,7 @@ export const Platforms = () => {
 
                                 </FormGroup>
                             </FormControl>
-                            <Button>Filter</Button>
+                            <Button variant="contained" onClick={() => filter()}>Filter</Button>
                         </Paper>
                     </Grid>
                 </Grid>
