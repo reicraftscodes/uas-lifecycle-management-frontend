@@ -101,7 +101,7 @@ const AppNavbar = () => {
     return (
         <div>
             <Navbar color="dark" dark expand="md">
-                <NavbarBrand href="/">Sierra Nevada Corporation</NavbarBrand>
+                <NavbarBrand>Sierra Nevada Corporation</NavbarBrand>
                 <Nav className="ml-auto" navbar>
                     {
                         user.isLoggedIn &&
