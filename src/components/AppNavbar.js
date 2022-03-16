@@ -27,7 +27,7 @@ const AppNavbar = () => {
             type: "page"
         },
         {
-            title: "Platform status",
+            title: "",
             path: "/cto-dashboard",
             roles: ["ROLE_USER_CTO"],
             id: "platform-stats",
@@ -45,7 +45,7 @@ const AppNavbar = () => {
         {
             title: "Stock Levels",
             path: "/stock-levels",
-            roles: ["ROLE_USER_LOGISTIC","ROLE_USER_CTO", "ROLE_USER_COO"],
+            roles: ["ROLE_USER_LOGISTIC", "ROLE_USER_COO"],
             id: "stock-levels",
             type: "page"
         },
@@ -53,13 +53,14 @@ const AppNavbar = () => {
         {
             title: "Locations",
             path: "/locations",
-            roles: ["ROLE_USER_LOGISTIC","ROLE_USER_CTO", "ROLE_USER_COO"],
+            roles: ["ROLE_USER_LOGISTIC", "ROLE_USER_COO"],
             id: "locations",
             type: "page"
         },
 
+
         {
-            title: "Aircraft",
+            title: "Log hours",
             path: "/user-aircraft",
             roles: ["ROLE_USER"],
             id: "locations",
