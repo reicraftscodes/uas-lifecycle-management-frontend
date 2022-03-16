@@ -1,68 +1,60 @@
 import React, {useEffect} from 'react';
-import {Divider, Grid, Paper, Typography} from "@mui/material";
+import {
+    Button,
+    Checkbox,
+    Divider,
+    FormControl,
+    FormControlLabel,
+    FormGroup,
+    FormLabel,
+    Grid,
+    Paper,
+    Typography
+} from "@mui/material";
 import PlatformsTable from "../components/PlatformsTable";
+import AircraftService from "../services/AircraftService";
 
 export const Platforms = () => {
 
     const [platformList, setPlatformList] = React.useState([]);
+    //const [locationList, setLocationList] = React.useState([]);
+    const [locationFilterList, setLocationFilterList] = React.useState({});
 
     useEffect(() => {
         getPlatforms();
+        getLocations();
         console.log("use effect");
     }, []);
 
     const getPlatforms = () => {
 
-        const platformData = [
-            {
-                location: "Cardiff",
-                platformType: "Platform A",
-                platformStatus: "Operational",
-                aircraft: "G-001",
-                flightHours: 340,
-                totalPartsCost: 1500,
-                totalRepairs: 13,
-                totalRepairsCost: 750.20,
-                totalCost: 2250.20
-            },
-            {
-                location: "Cardiff",
-                platformType: "Platform B",
-                platformStatus: "Operational",
-                aircraft: "G-002",
-                flightHours: 260,
-                totalPartsCost: 1800,
-                totalRepairs: 21,
-                totalRepairsCost: 700,
-                totalCost: 2500
-            },
-            {
-                location: "St Athen",
-                platformType: "Platform A",
-                platformStatus: "Repair",
-                aircraft: "G-003",
-                flightHours: 410,
-                totalPartsCost: 2000,
-                totalRepairs: 23,
-                totalRepairsCost: 850.50,
-                totalCost: 2850.50
-            },
-            {
-                location: "St Athen",
-                platformType: "Platform B",
-                platformStatus: "Operational",
-                aircraft: "G-004",
-                flightHours: 415,
-                totalPartsCost: 1700,
-                totalRepairs: 15,
-                totalRepairsCost: 800,
-                totalCost: 2500
-            }
-        ]
-
-        setPlatformList(platformData);
+        AircraftService.getPlatformStatus()
+            .then(response => response.json())
+            .then(data => {
+                console.log("Successfully retrieved platform statuses: ", data);
+                setPlatformList(data);
+            })
+            .catch(error => {
+                console.log("Error when retrieving platform statuses: ", error);
+            })
     }
 
+    //todo - get this from api
+    const getLocations = () => {
+
+        const locations = ["Ankara", "Cardiff", "Dublin", "Edinburgh", "London", "Nevada", "St Athen", "Manchester"];
+        const locationFilter = locations.reduce((o, key) => ({ ...o, [key]: false}), {})
+        console.log(locationFilter);
+
+        setLocationFilterList(locationFilter);
+    }
+
+    const handleChangeFilter = (event) => {
+        setLocationFilterList({
+            ...locationFilterList,
+            [event.target.name]: event.target.checked,
+        });
+    };
 
     return (
         <div>
@@ -70,25 +62,33 @@ export const Platforms = () => {
                 <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem', paddingBottom: "10px"}}>Platforms</Typography>
                 <Divider/>
                 <Grid container>
-                    <Grid item xs={9}>
+                    <Grid item xs={10}>
                         <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%", flexGrow: 1}}>
                             <PlatformsTable data={platformList} style={{alignSelf: "center"}}/>
                         </Paper>
 
                     </Grid>
-                    <Grid item xs={3}>
-                        <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%"}}>
+                    <Grid item xs={2}>
+                        <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%", display: 'flex', flexDirection: 'column'}}>
+                            <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+                                <FormLabel component="legend">Location</FormLabel>
+                                <FormGroup>
+                                    {Object.keys(locationFilterList).map((key, i) => (
+                                        <FormControlLabel
+                                            control={
+                                                <Checkbox checked={locationFilterList[key]} onChange={handleChangeFilter} name={key} />
+                                            }
+                                            label={key}
+                                        />
+                                    ))}
 
+                                </FormGroup>
+                            </FormControl>
+                            <Button>Filter</Button>
                         </Paper>
                     </Grid>
                 </Grid>
-
-
-
-
             </Paper>
-
-
         </div>
     )
 

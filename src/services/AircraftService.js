@@ -16,5 +16,12 @@ class AircraftService {
             body: JSON.stringify(request),
         });
     }
+
+    getPlatformStatus() {
+        return fetch(configData.API_URL +'/aircraft/platform-status/', {
+            method: 'GET',
+            headers: {"Content-Type": "application/json" },
+        });
+    }
 }
 export default new AircraftService();

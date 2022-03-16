@@ -35,7 +35,7 @@ const headCells = [
     },
     {
         id: 'flightHours',
-        label: 'Flight time (hrs)',
+        label: 'Flight hours',
     },
     {
         id: 'totalPartsCost',
@@ -61,6 +61,8 @@ export default function PlatformsTable({data}) {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('location');
+    const [originalRows, setOriginalRows] = React.useState(data);
+    const [rows, setRows] = React.useState(data);
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
@@ -94,38 +96,37 @@ export default function PlatformsTable({data}) {
                     headCells={headCells}
                 />
                 <TableBody>
-                    {stableSort(data, getComparator(order, orderBy))
+                    {stableSort(rows, getComparator(order, orderBy))
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                        .map((data) => {
-
+                        .map((row) => {
                             return (
                                 <TableRow>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.location}
+                                        {row.location}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.platformType}
+                                        {row.platformType}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.platformStatus}
+                                        {row.platformStatus}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.aircraft}
+                                        {row.tailNumber}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.flightHours}
+                                        {row.flyTimeHours}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.totalPartsCost}
+                                        {row.partsCost}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.totalRepairs}
+                                        {row.repairsCount}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.totalRepairsCost}
+                                        {row.repairsCost}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {data.totalCost}
+                                        {row.totalCost}
                                     </TableCell>
                                 </TableRow>
                             );
