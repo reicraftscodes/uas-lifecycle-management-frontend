@@ -59,14 +59,6 @@ const AppNavbar = () => {
         },
 
         {
-            title: "LO Dashboard",
-            path: "/logistics-officer/dashboard",
-            roles: ["ROLE_USER_LOGISTIC"],
-            id: "locations",
-            type: "page"
-        },
-
-        {
             title: "Aircraft",
             path: "/user-aircraft",
             roles: ["ROLE_USER"],

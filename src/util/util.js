@@ -1,7 +1,7 @@
 export const getUserDashboard = (role) => {
     switch (role) {
         case "ROLE_USER_LOGISTIC":
-            return '/logistics-officer/dashboard';
+            return '/logistic-dashboard';
         case "ROLE_USER":
             return '/user-aircraft';
         case "ROLE_USER_CTO":
