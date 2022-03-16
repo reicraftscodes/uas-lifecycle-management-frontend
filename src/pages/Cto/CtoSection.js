@@ -19,15 +19,10 @@ function CtoSection() {
 
     return (
         <Container>
-            <br/>
-            <Typography variant="h5" align="left">Dashboard</Typography>
-            <br/>
+            <Typography p={5} variant="h5" align="left">Dashboard</Typography>
             <Card elevation={6}>
                 <AvgFailureTimesBarChart data={failingTimeData}/>
             </Card>
-            <br/>
-            <br/>
-
         </Container>
     )
 }
