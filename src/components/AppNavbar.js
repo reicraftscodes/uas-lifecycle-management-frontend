@@ -24,14 +24,14 @@ const AppNavbar = () => {
             path: "/cto-dashboard",
             roles: ["ROLE_USER_CTO"],
             id: "partsfailuretime",
-            type: "anchor"
+            type: "page"
         },
         {
             title: "Platform status",
             path: "/cto-dashboard",
             roles: ["ROLE_USER_CTO"],
             id: "platform-stats",
-            type: "anchor"
+            type: "page"
         },
 
         {
@@ -66,6 +66,16 @@ const AppNavbar = () => {
             type: "page"
         },
 
+        // You can also change the type to anchor. An example of scenario is when a user click nav link,
+        // it will NOT direct to the new page, it stays on the same page and scroll it down for yo and direct you the "id" of a specific thing like
+        // for an example an id tag for a specific chart, then it will take you to that chart. 
+        // {
+        //     title: "",
+        //     path: "",
+        //     roles: ["ROLE_USER_LOGISTIC"],
+        //     id: "locations",
+        //     type: "anchor"
+        // },
     ]
 
     const onNavigate = (route) => {
