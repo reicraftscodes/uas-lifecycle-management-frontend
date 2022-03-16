@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Container} from "reactstrap";
-import AvgBar from "./AvgBar";
+import AvgFailureTimesBarChart from "./AvgFailureTimesBarChart";
 import {Card, Typography} from "@mui/material";
 import PartsService from "../../services/PartsService";
 
@@ -26,8 +26,8 @@ function CtoSection() {
             <Card elevation={6}>
                 <Typography m={2} id="partsfailuretime">Average Time </Typography>
                 {!isBarChartLoading &&
-                <AvgBar categories={barChartData.categories} data={barChartData.data} seriesName="failureTime"
-                        chartId="apex-pie-chart"/>}
+                <AvgFailureTimesBarChart categories={barChartData.categories} data={barChartData.data} seriesName="failureTime"
+                                         chartId="apex-pie-chart"/>}
             </Card>
             <br/>
             <br/>

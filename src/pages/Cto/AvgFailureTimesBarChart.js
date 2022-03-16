@@ -1,7 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import Chart from 'react-apexcharts'
+import PartsService from "../../services/PartsService";
 
-function AvgBar(props) {
+function AvgFailureTimesBarChart(props) {
 
     const [partTypes, setPartTypes] = useState([]);
     const [failureTimes, setFailureTimes] = useState([]);
@@ -21,13 +22,12 @@ function AvgBar(props) {
     });
     // fetch failure times API
     useEffect(() => {
-        fetch(`http://localhost:8080/parts/failuretime`)
+        PartsService.getFailingTime()
             .then(response => response.json())
             .then(data => {
-                //display failure time and partTypes arraylist here's the reference https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
                 setFailureTimes(data.map(x => x.failureTime));
-                setPartTypes(data.map(x => x.partType));                
-                
+                setPartTypes(data.map(x => x.partType));
+
             });
     }, [])
     // render charts
@@ -55,4 +55,4 @@ function AvgBar(props) {
     );
 }
 
-export default AvgBar;
+export default AvgFailureTimesBarChart;
