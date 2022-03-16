@@ -2,7 +2,7 @@ import {Grid, Typography} from "@mui/material";
 import {useNavigate} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {getUserDashboard} from "../util/util";
-import unAuthImg from "../assets/undraw_warning.png";
+import unAuthImg from "../assets/images/undraw_warning.png";
 
 const Unauthorized = () => {
 

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Box, Button, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
-import Logo from '../assets/logo.png';
+import Logo from '../assets/images/logo.png';
 import AuthService from '../services/AuthService';
 import {useDispatch} from 'react-redux'
 import {useNavigate} from "react-router-dom";
