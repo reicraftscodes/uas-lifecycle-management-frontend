@@ -9,9 +9,8 @@ const Locations = () => {
     return (
         <div>
             <Paper elevation={3} sx={{width: "50%", m: "auto", mt: "2%", mb: "2%"}}>
-                <Typography align="center" sx={{fontWeight: "bold", fontSize: '2rem', pt: 2}}>Locations</Typography>
+                <Typography align="center" sx={{fontWeight: "bold", fontSize: '2rem', pt: 2}}>Stock at Locations</Typography>
                 <Divider sx={{mt: 1, mb: 2}}/>
-
                 <Box sx={{width: "90%", m: "auto", pt: 0}}>
                     <List sx={{pt: 0}}>
                         <ListItem disablePadding sx={{

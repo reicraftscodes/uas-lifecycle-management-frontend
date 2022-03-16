@@ -36,22 +36,6 @@ const AppNavbar = () => {
         },
 
         {
-            title: "Stock Levels",
-            path: "/stock-levels",
-            roles: ["ROLE_USER_LOGISTIC", "ROLE_USER_COO"],
-            id: "stock-levels",
-            type: "page"
-        },
-
-        {
-            title: "Locations",
-            path: "/locations",
-            roles: ["ROLE_USER_LOGISTIC", "ROLE_USER_COO"],
-            id: "locations",
-            type: "page"
-        },
-
-        {
             title: "Log hours",
             path: "/user-aircraft",
             roles: ["ROLE_USER"],
@@ -60,10 +44,18 @@ const AppNavbar = () => {
         },
 
         {
-            title: 'Add Aircraft',
+            title: 'Parts',
             path: "/add-aircraft",
             roles: ["ROLE_USER_LOGISTIC"],
             id: "aircraft",
+            type: "page"
+        },
+
+        {
+            title: "Stock Levels",
+            path: "/locations",
+            roles: ["ROLE_USER_LOGISTIC", "ROLE_USER_COO"],
+            id: "locations",
             type: "page"
         },
 
