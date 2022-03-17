@@ -1,7 +1,6 @@
 import React from "react";
 import {Container} from "reactstrap";
 import DetailsCard from "../components/DetailsCard";
-import StockPopup from "../components/StockAlert";
 import {faHammer, faArrowTrendDown} from "@fortawesome/free-solid-svg-icons";
 import ChartCard from "../components/ChartCard";
 import ChartLegend from "../components/ChartLegend";
@@ -19,7 +18,6 @@ export default class Dashboard extends React.Component {
     render() {
         return (
             <Container>
-                <StockPopup />
                 <div id="details-container">
                     <DetailsCard className="iconCard" id="lowStocks" name="Low Stocks" value="6" icon={faArrowTrendDown}/>
                     <DetailsCard className="iconCard" id="repairsNeeded" name="Repairs Needed" value="12" icon={faHammer}/>

@@ -55,11 +55,14 @@
 #loDashboardFlexContainer {
   display: flex;
 }
-#repairs {
+#repairs, #alert {
   width: 50%;
   box-sizing: border-box;
   box-shadow: 3px 3px 15px 0px rgba(215, 215, 215, 0.35);
   margin-top: 10%;
+}
+#alertContainer {
+  box-shadow: 3px 3px 15px 0px rgba(215, 215, 215, 0.35);
 }
 #flex-container {
   display: flex;
@@ -70,15 +73,8 @@
   justify-content: center;
 }
 
-#alertTitle {
-  font-weight: 700;
-  text-align: center;
-  padding-top: 4%;
-  font-size: 1.5em;
-}
-
 #view-location {
-  width: 200px;
+  width: 120px;
   height: 30px;
   padding: 2px 2px 2px 2px;
   border-radius: 5px;
@@ -89,15 +85,32 @@
   color: #ffffff;
   text-align: center;
   line-height: normal;
-  margin: 0 auto;
+  float: right;
 }
 
-#warningIcon {
-  width: 40%;
-  height: 40%;
-  margin: 0 auto;
-  padding-bottom: 4%;
+#iconDiv {
+  margin-left: 10px;
 }
+#warningCard {
+  border: 2px solid black;
+  display: flex;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+#warningText {
+  padding-top: 1em;
+  font-size: 1.2em;
+}
+#buttonContainer {
+  margin-right: 10px;
+}
+#warningIcon {
+  height: 60px;
+  width: 60px;
+}
+
 .chartDiv {
   margin-top: 20px;
   margin-right: 10px;
@@ -131,6 +144,7 @@
   padding-top: 4%;
   font-size: 1.5em;
 }
+
 
 #view-aircraft {
   width: 200px;

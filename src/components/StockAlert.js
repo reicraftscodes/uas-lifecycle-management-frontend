@@ -1,5 +1,6 @@
 import React from 'react';
 import {Button, Card, CardText, CardTitle} from 'reactstrap';
+import {Link} from "react-router-dom";
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 
 export default class StockAlert extends React.Component {
@@ -23,23 +24,40 @@ export default class StockAlert extends React.Component {
 
     render() {
 
-        const {lowStockParts} = this.state;
-
-        //const alertMessage = lowStockParts.length;
+        let {lowStockParts} = this.state;
 
         //Using dummy data temporarily.
         const alertMessage = 12;
 
         console.log(lowStockParts);
 
-        return (
-            <Card>
-                <CardTitle id="alertTitle">Stock Level Warning</CardTitle>
-                <CardText>{alertMessage}</CardText>
-                <Button id="view-location">View Location</Button>
-                <WarningAmberIcon id="warningIcon"></WarningAmberIcon>
-            </Card>
+        const lowStock = {lowStockParts: 3, location: "Cardiff"}
+        const lowStock1 = {lowStockParts: 1, location: "Bristol"}
+        const lowStock2 = {lowStockParts: 2, location: "St Athen"}
 
+        lowStockParts = [lowStock, lowStock1, lowStock2]
+
+        const warningList = lowStockParts.map(count => {
+            return (
+                <div id="warningCard" key={count.location}>
+                    <div id="iconDiv">
+                        <WarningAmberIcon id="warningIcon"></WarningAmberIcon>
+                    </div>
+                    <div id="warningTextContainer">
+                    <p id="warningText">{count.lowStockParts} Low stock parts at the {count.location} location</p>
+                    </div>
+                    <div id="buttonContainer">
+                        <Link to={`/locations/${count.location}`}><Button id="view-location">View Location</Button></Link>
+                    </div>
+                </div>
+            )
+        });
+
+        return (
+            <div id="alertContainer">
+                <div><h3 id="alertTitle">Stock Level Warning</h3>
+                    {warningList}</div>
+            </div>
     );
     }
 }
