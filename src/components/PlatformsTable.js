@@ -30,23 +30,23 @@ const headCells = [
         label: 'Status',
     },
     {
-        id: 'aircraft',
+        id: 'tailNumber',
         label: 'Aircraft',
     },
     {
-        id: 'flightHours',
+        id: 'flyTimeHours',
         label: 'Flight hours',
     },
     {
-        id: 'totalPartsCost',
+        id: 'partsCost',
         label: 'Parts Cost',
     },
     {
-        id: 'totalRepairs',
+        id: 'repairsCount',
         label: 'Total Repairs',
     },
     {
-        id: 'totalRepairsCost',
+        id: 'repairsCost',
         label: 'Total Repairs Cost',
     },
     {
@@ -64,6 +64,10 @@ export default function PlatformsTable({data}) {
     const [originalRows, setOriginalRows] = React.useState(data);
     const [rows, setRows] = React.useState(data);
 
+    React.useEffect(() => {
+        setRows(data)
+    }, [data]);
+
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
         page > 0 ? Math.max(0, (1 + page) * rowsPerPage - data.length) : 0;
@@ -78,9 +82,11 @@ export default function PlatformsTable({data}) {
     };
 
     const handleRequestSort = (event, property) => {
+        console.log("handle request sort: event - " + event + ". property - " + property);
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
+        console.log("handle request sort: order - " + order + ". by - " + orderBy);
     };
 
     return (

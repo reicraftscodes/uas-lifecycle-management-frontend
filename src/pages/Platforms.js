@@ -66,7 +66,7 @@ export const Platforms = () => {
             if(locationFilterList[locationKey]){
                 locations.push(locationKey);
             }
-        })
+        });
         console.log("locations: " + locations);
         let request = {
             locations: locations,
