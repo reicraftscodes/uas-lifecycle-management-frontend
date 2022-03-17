@@ -56,13 +56,14 @@ export function SortTableHead(props) {
 
     return (
         <TableHead>
-            <TableRow>
+            <TableRow style={{border: "15px"}}>
                 {props.headCells.map((headCell) => (
                     <StyledTableCell
                         key={headCell.id}
                         align={'left'}
                         padding={'normal'}
                         sortDirection={orderBy === headCell.id ? order : false}
+
                     >
                         <TableSortLabel
                             active={orderBy === headCell.id}

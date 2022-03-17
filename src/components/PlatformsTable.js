@@ -103,7 +103,7 @@ export default function PlatformsTable({data}) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center"}}>
-            <Table style={{ width: "auto", tableLayout: "auto" }}>
+            <Table style={{ width: "auto", tableLayout: "auto"}}>
                 <SortTableHead
                     order={order}
                     orderBy={orderBy}

@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {
     Button,
-    Checkbox,
+    Checkbox, CircularProgress,
     Divider,
     FormControl,
     FormControlLabel,
@@ -115,14 +115,14 @@ export const Platforms = () => {
 
     if (isLoading) {
         return (
-            <div>Loading</div>
+            <CircularProgress style={{margin: "40px"}}/>
         )
     }
     return (
         <div>
             <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%"}}>
                 <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem', paddingBottom: "10px"}}>Platforms</Typography>
-                <Divider/>
+                <Divider style={{marginBottom: "10px"}}/>
                 <Grid container>
                     <Grid item xs={10}>
                         <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%", flexGrow: 1}}>
