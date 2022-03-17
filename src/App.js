@@ -70,7 +70,7 @@ function App() {
                     <Route path="/login" element={<UserLogin/>}/>
                     <Route path="/cto-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
                     <Route path="/logistic-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><LODashboard/></ProtectedRoute>}/>
-                    <Route path="/platforms" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Platforms/></ProtectedRoute>}/>
+                    <Route path="/platforms" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Platforms/></ProtectedRoute>}/>
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
                 </Routes>
             </div>
