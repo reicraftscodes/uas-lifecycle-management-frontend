@@ -157,7 +157,7 @@ const UserAircraft = () => {
                             <br/>
                             <Divider/>
                             <br/>
-                            <Button variant="contained" onClick={onFlightHoursSubmit}>Submit</Button>
+                            <Button style={{marginBottom: "25px"}} variant="contained" onClick={onFlightHoursSubmit}>Submit</Button>
                         </FormControl>
                     </Paper>
                 </Grid>
