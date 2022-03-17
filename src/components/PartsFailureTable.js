@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 import {TablePaginationActions} from "./TablePaginationActions";
 
+//Ref: https://mui.com/components/tables/
+
 const headCells = [
     {
         id: 'partNumber',

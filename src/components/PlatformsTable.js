@@ -3,17 +3,16 @@ import { styled } from '@mui/material/styles';
 import {
     Table,
     TableBody,
-    TableCell, tableCellClasses,
+    TableCell,
     TableContainer,
-    TableFooter, TableHead,
+    TableFooter,
     TablePagination,
-    TableRow, TableSortLabel,
+    TableRow,
 } from "@mui/material";
-import {visuallyHidden} from "@mui/utils";
 import {TablePaginationActions} from "./TablePaginationActions";
 import {getComparator, SortTableHead, stableSort} from "./SortTableHead";
 
-
+//Ref: https://mui.com/components/tables/
 
 
 const headCells = [
@@ -89,6 +88,16 @@ export default function PlatformsTable({data}) {
         console.log("handle request sort: order - " + order + ". by - " + orderBy);
     };
 
+    const StyledTableRow = styled(TableRow)(({ theme }) => ({
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+        // hide last border
+        '&:last-child td, &:last-child th': {
+            border: 0,
+        },
+    }));
+
     return (
         <TableContainer sx={{width: "auto"}} style={{
             display: "flex",
@@ -106,7 +115,7 @@ export default function PlatformsTable({data}) {
                         .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                         .map((row) => {
                             return (
-                                <TableRow key={row.tailNumber}>
+                                <StyledTableRow key={row.tailNumber}>
                                     <TableCell style={{ width: 160 }}>
                                         {row.location}
                                     </TableCell>
@@ -134,7 +143,7 @@ export default function PlatformsTable({data}) {
                                     <TableCell style={{ width: 160 }}>
                                         {row.totalCost}
                                     </TableCell>
-                                </TableRow>
+                                </StyledTableRow>
                             );
                         })}
 

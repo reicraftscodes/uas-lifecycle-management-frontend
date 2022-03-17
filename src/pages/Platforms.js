@@ -18,7 +18,6 @@ export const Platforms = () => {
 
     const [isLoading, setLoading] = React.useState(true);
     const [platformList, setPlatformList] = React.useState([]);
-    //const [locationList, setLocationList] = React.useState([]);
     const [locationFilterList, setLocationFilterList] = React.useState({});
     const [platformStatusFilterList, setPlatformFilterList] = React.useState({});
 
