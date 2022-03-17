@@ -6,10 +6,10 @@ export const getUserDashboard = (role) => {
         case "ROLE_USER":
             return '/user-aircraft';
         case "ROLE_USER_CTO":
-            return '/cto-dashboard';
+            return '/platforms';
         case 'ROLE_USER_CEO':
-            return '/ceo-dashboard'
+            return '/platforms';
         case 'ROLE_USER_COO':
-            return '/stock-levels'
+            return '/platforms';
     }
 }

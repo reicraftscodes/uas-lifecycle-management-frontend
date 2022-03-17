@@ -21,6 +21,7 @@ import Spinner from "./components/Spinner";
 import Unauthorized from "./components/Unauthorized";
 import LODashboard from "./pages/Logistic/LODashboard";
 import { Chart as ChartJS } from 'chart.js/auto'
+import {Platforms} from "./pages/Platforms";
 
 function App() {
 
@@ -69,6 +70,7 @@ function App() {
                     <Route path="/login" element={<UserLogin/>}/>
                     <Route path="/cto-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
                     <Route path="/logistic-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><LODashboard/></ProtectedRoute>}/>
+                    <Route path="/platforms" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Platforms/></ProtectedRoute>}/>
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
                 </Routes>
             </div>
