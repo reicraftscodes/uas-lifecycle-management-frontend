@@ -60,7 +60,7 @@ function App() {
             <div className="App">
                 <AppNavbar/>
                 <Routes>
-                    <Route path="/" element={<Dashboard/>}/>
+                    <Route path="/" element={<UserLogin/>}/>
                     <Route path="/stock-levels" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC", "ROLE_USER_COO", "ROLE_USER_CTO"]}><StockLevels/></ProtectedRoute>}/>
                     <Route path="/locations" exact={true} element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Locations/></ProtectedRoute>}/>
                     <Route path="/locations/:location" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Location/></ProtectedRoute>}/>

@@ -45,7 +45,7 @@ const AppNavbar = () => {
 
         {
             title: "View Aircraft",
-            path: "",
+            path: "/view-aircraft",
             roles: ["ROLE_USER"],
             id: "",
             type: "page"
