@@ -20,6 +20,7 @@ export const Platforms = () => {
     const [platformList, setPlatformList] = React.useState([]);
     //const [locationList, setLocationList] = React.useState([]);
     const [locationFilterList, setLocationFilterList] = React.useState({});
+    const [platformStatusFilterList, setPlatformFilterList] = React.useState({});
 
     useEffect(() => {
         console.log("use effect");
@@ -27,6 +28,7 @@ export const Platforms = () => {
             setLoading(false);
         });
         getLocations();
+        getPlatformStatusOptions();
        ;
     }, []);
 
@@ -51,6 +53,16 @@ export const Platforms = () => {
         console.log(locationFilter);
 
         setLocationFilterList(locationFilter);
+    }
+
+    //todo - get this from api
+    const getPlatformStatusOptions = () => {
+
+        const platformStatusOptions = ["Design", "Production", "Operational", "Repair"];
+        const platformStatusFilter = platformStatusOptions.reduce((o, key) => ({ ...o, [key]: true}), {})
+        console.log(platformStatusFilter);
+
+        setPlatformFilterList(platformStatusFilter);
     }
 
     const handleChangeFilter = (event) => {
@@ -106,23 +118,42 @@ export const Platforms = () => {
 
                     </Grid>
                     <Grid item xs={2}>
-                        <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%", display: 'flex', flexDirection: 'column'}}>
+                        <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%", display: 'flex', flexDirection: 'column', marginBottom: "25px"}}>
                             <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
                                 <FormLabel component="legend">Location</FormLabel>
                                 <FormGroup>
                                     {Object.keys(locationFilterList).map((key, i) => (
                                         <FormControlLabel
+                                            style={{fontSize: "10px"}}
                                             key={key}
                                             control={
                                                 <Checkbox checked={locationFilterList[key]} onChange={handleChangeFilter} name={key} />
                                             }
-                                            label={key}
+                                            label={<Typography style={{fontSize: "13px"}}>{key}</Typography>}
                                         />
                                     ))}
 
                                 </FormGroup>
                             </FormControl>
-                            <Button variant="contained" onClick={() => filter()}>Filter</Button>
+                            <Divider style={{marginLeft: "10px", marginRight: "5px"}}/>
+                            <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+                                <FormLabel component="legend">Platform Status</FormLabel>
+                                <FormGroup>
+                                    {Object.keys(platformStatusFilterList).map((key, i)  => (
+                                        <FormControlLabel
+                                            style={{fontSize: "10px"}}
+                                            key={key}
+                                            control={
+                                                <Checkbox checked={platformStatusFilterList[key]} onChange={handleChangeFilter} name={key} />
+                                            }
+                                            label={<Typography style={{fontSize: "13px"}}>{key}</Typography>}
+                                        />
+                                    ))}
+
+                                </FormGroup>
+                            </FormControl>
+                            <Divider style={{marginLeft: "10px", marginRight: "5px"}}/>
+                            <Button style={{margin: "20px"}} variant="contained" onClick={() => filter()}>Filter</Button>
                         </Paper>
                     </Grid>
                 </Grid>
