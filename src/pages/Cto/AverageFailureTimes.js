@@ -4,7 +4,7 @@ import {Card, Typography} from "@mui/material";
 import PartsService from "../../services/PartsService";
 import AvgFailureTimesBarChart from "./AvgFailureTimesBarChart";
 
-function CtoSection() {
+function AverageFailureTimes() {
 
     const [failingTimeData, setFailingTimeData] = useState([]);
 
@@ -19,7 +19,6 @@ function CtoSection() {
 
     return (
         <Container>
-            <Typography p={5} variant="h5" align="left">Dashboard</Typography>
             <Card elevation={6}>
                 <AvgFailureTimesBarChart data={failingTimeData}/>
             </Card>
@@ -27,4 +26,4 @@ function CtoSection() {
     )
 }
 
-export default CtoSection
+export default AverageFailureTimes

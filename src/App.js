@@ -24,6 +24,8 @@ import { Chart as ChartJS } from 'chart.js/auto'
 import {Platforms} from "./pages/Platforms";
 import CeoDashboard from "./pages/Ceo/CeoDashboard";
 import {CooDashboard} from "./pages/Coo/CooDashboard";
+import {UserDashboard} from "./pages/Users/UserDashboard";
+import AverageFailureTimes from "./pages/Cto/AverageFailureTimes";
 
 function App() {
 
@@ -69,8 +71,10 @@ function App() {
                     <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
                     <Route path="/user-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserAircraft/></ProtectedRoute>}/>
                     <Route path="/parts-failure" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><PartsFailure/></ProtectedRoute>}/>
+                    <Route path="/failing-times" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><AverageFailureTimes/></ProtectedRoute>}/>
                     <Route path="/platforms" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Platforms/></ProtectedRoute>}/>
 
+                    <Route path="/user-dashboard"element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserDashboard/></ProtectedRoute>}/>
                     <Route path="/coo-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_COO"]}><CooDashboard/></ProtectedRoute>}/>
                     <Route path="/ceo-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><CeoDashboard/></ProtectedRoute>}/>
                     <Route path="/cto-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>

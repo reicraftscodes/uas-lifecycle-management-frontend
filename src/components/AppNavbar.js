@@ -28,6 +28,14 @@ const AppNavbar = () => {
         },
 
         {
+            title: "Failure Hours",
+            path: "/failing-times",
+            roles: ["ROLE_USER_CTO"],
+            id: "failurehours",
+            type: "page"
+        },
+
+        {
             title: "Common Failing Parts ",
             path: "/parts-failure",
             roles: ["ROLE_USER_CTO"],

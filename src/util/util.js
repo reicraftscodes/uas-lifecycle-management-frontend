@@ -4,9 +4,9 @@ export const getUserDashboard = (role) => {
         case "ROLE_USER_LOGISTIC":
             return '/logistic-dashboard';
         case "ROLE_USER":
-            return '/user-aircraft';
+            return '/user-dashboard';
         case "ROLE_USER_CTO":
-            return '/platforms';
+            return '/cto-dashboard';
         case 'ROLE_USER_CEO':
             return '/ceo-dashboard';
         case 'ROLE_USER_COO':

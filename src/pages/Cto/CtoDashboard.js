@@ -1,13 +1,10 @@
 import React from "react";
-import CtoSection from "./CtoSection";
-import {Container} from "@mui/material";
+import {Platforms} from "../Platforms";
 
 const CtoDashboard = () => {
 
     return (
-        <Container>
-            <CtoSection/>
-        </Container>
+       <Platforms/>
     );
 
 

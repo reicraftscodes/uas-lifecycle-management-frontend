@@ -1,10 +1,9 @@
-import {Typography} from "@mui/material";
+import UserAircraft from "../UserAircraft";
+import React from "react";
 
 
 export const UserDashboard = () =>{
     return(
-        <div>
-            <Typography variant="h3">User Dashboard</Typography>
-        </div>
+        <UserAircraft/>
     );
 }
