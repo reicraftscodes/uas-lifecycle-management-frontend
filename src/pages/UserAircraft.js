@@ -14,32 +14,13 @@ import {
     FormControl,
     Button,
     Grid,
-    Alert, CircularProgress
+    Alert
 } from '@mui/material';
 import AircraftService from "../services/AircraftService";
 import AuthService from "../services/AuthService";
 import '../css/alertStyling.css'
 
 const UserAircraft = () => {
-    const [userAircraftList, setUserAircraftList] = useState([
-        {
-            tailNumber: "G-001",
-            location: "St Athen",
-            platformStatus: "Operational",
-            platformType: "Platform A",
-            userAircraftFlyingHours: 55,
-            totalAircraftFlyingHours: 250
-        },
-        {
-            tailNumber: "G-002",
-            location: "St Athen",
-            platformStatus: "Operational",
-            platformType: "Platform B",
-            userAircraftFlyingHours: 34,
-            totalAircraftFlyingHours: 175
-        }
-
-    ]);
 
     //array of aircraft fetched for a user.
     const [aircrafts, setAircrafts] = useState([]);
