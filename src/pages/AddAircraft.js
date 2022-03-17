@@ -1,6 +1,7 @@
 import { FormControl, RadioGroup, FormControlLabel, Radio, Alert, Divider, Paper, FormLabel, Button,TextField, Autocomplete} from "@mui/material";
 import { useState } from "react";
 import '../css/AddPart.css';
+import AircraftService from "../services/AircraftService";
 
 const AddAircraft = () => {
     //locations for the autocomplete field.
@@ -9,8 +10,8 @@ const AddAircraft = () => {
     //user input state variables
     const [tailNumber, setTailNumber] = useState("");
     const [location, setLocation] = useState("");
-    const [platformStatus, setPlatformStatus] = useState("DESIGN");
-    const [platformType, setPlatformType] = useState("Platform_A");
+    const [platformStatus, setPlatformStatus] = useState("Design");
+    const [platformType, setPlatformType] = useState("Platform A");
 
     //state variables used for changing the alert colour and message aswell as displaying it. 
     const [alert, setAlert] = useState(false);
@@ -65,11 +66,8 @@ const AddAircraft = () => {
         console.log(aircraft);
         //Checks for validation errors before sending the post request using fetch.
         if(result == true){
-            fetch("http://localhost:8080/aircraft/add" , {
-                method: "POST",
-                headers: {"Content-Type":"application/json" },
-                body: JSON.stringify(aircraft) 
-            }).then(response => response.json()).then(data => {
+            AircraftService.addAircraft(aircraft)
+                .then(response => response.json()).then(data => {
                 if (data["response"] == "Success"){
                     //If the response returns a success json body then an alert is sent to the user saying the aircraft has been added.
                     setAlertSeverity("success");
@@ -97,7 +95,7 @@ const AddAircraft = () => {
         <div className="main">
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             {/* json takes tailNumber, location, platform status, platformType */}
-            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%", mt: 0 }}>
+            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: 0 }}>
                 
                 
                 
@@ -121,10 +119,10 @@ const AddAircraft = () => {
                     {/*Input for the aircraft status */}
                     <FormLabel sx={{textAlign: "left", p: "1%"}}>Aircraft Status</FormLabel>
                     <RadioGroup value={platformStatus} row onChange={(e) => setPlatformStatus(e.target.value)}>
-                        <FormControlLabel value="DESIGN" control={<Radio color="primary"/>} label="Design"/>
-                        <FormControlLabel value="PRODUCTION" control={<Radio color="primary"/>} label="Production"/>
-                        <FormControlLabel value="OPERATION" control={<Radio color="primary"/>} label="Operation"/>
-                        <FormControlLabel value="REPAIR" control={<Radio color="primary"/>} label="Repair"/>
+                        <FormControlLabel value="Design" control={<Radio color="primary"/>} label="Design"/>
+                        <FormControlLabel value="Production" control={<Radio color="primary"/>} label="Production"/>
+                        <FormControlLabel value="Operation" control={<Radio color="primary"/>} label="Operation"/>
+                        <FormControlLabel value="Repair" control={<Radio color="primary"/>} label="Repair"/>
                     </RadioGroup>
                     <br/>
                     <Divider/>
@@ -132,8 +130,8 @@ const AddAircraft = () => {
                     {/*Input for the aircraft type */}
                     <FormLabel sx={{textAlign: "left", p: "1%", pt: "0%"}}>Aircraft Type</FormLabel>
                     <RadioGroup value={platformType} sx={{m: "auto", p: "2%"}} row onChange={(e) => setPlatformType(e.target.value)}>
-                        <FormControlLabel value="Platform_A" control={<Radio color="primary"/>} label="Platform A"/>
-                        <FormControlLabel value="Platform_B" control={<Radio color="primary"/>} label="Platform B"/>
+                        <FormControlLabel value="Platform A" control={<Radio color="primary"/>} label="Platform A"/>
+                        <FormControlLabel value="Platform B" control={<Radio color="primary"/>} label="Platform B"/>
                     </RadioGroup>
 
                     <Button variant="contained" onClick={handleSubmission}>Submit</Button>
