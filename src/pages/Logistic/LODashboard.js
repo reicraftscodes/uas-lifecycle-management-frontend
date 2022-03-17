@@ -1,8 +1,7 @@
 import React from "react";
 import {Container} from "reactstrap";
-import Repairs from "../components/Repairs";
-import StockAlert from "../components/StockAlert";
 import Repairs from "../../components/Repairs";
+import StockAlert from "../../components/StockAlert";
 
 export default class npLODashboard extends React.Component {
 
