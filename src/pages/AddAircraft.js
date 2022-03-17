@@ -1,6 +1,7 @@
 import { FormControl, RadioGroup, FormControlLabel, Radio, Alert, Divider, Paper, FormLabel, Button,TextField, Autocomplete} from "@mui/material";
 import { useState } from "react";
 import '../css/AddPart.css';
+import AircraftService from "../services/AircraftService";
 
 const AddAircraft = () => {
     //locations for the autocomplete field.
@@ -65,11 +66,8 @@ const AddAircraft = () => {
         console.log(aircraft);
         //Checks for validation errors before sending the post request using fetch.
         if(result == true){
-            fetch("http://localhost:8080/aircraft/add" , {
-                method: "POST",
-                headers: {"Content-Type":"application/json" },
-                body: JSON.stringify(aircraft) 
-            }).then(response => response.json()).then(data => {
+            AircraftService.addAircraft(aircraft)
+                .then(response => response.json()).then(data => {
                 if (data["response"] == "Success"){
                     //If the response returns a success json body then an alert is sent to the user saying the aircraft has been added.
                     setAlertSeverity("success");
@@ -97,7 +95,7 @@ const AddAircraft = () => {
         <div className="main">
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             {/* json takes tailNumber, location, platform status, platformType */}
-            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%", mt: 0 }}>
+            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: 0 }}>
                 
                 
                 
