@@ -1,32 +1,22 @@
 import React from 'react'
 import {Bar} from 'react-chartjs-2'
-import ChartLegend from "./ChartLegend";
+import ChartLegend from "../../components/ChartLegend";
 
-export default function PartsFailureChart({data}) {
-
-    console.log(data)
+export default function AvgFailureTimesBarChart({data}) {
 
     const barLegends = [
-        { title: 'Parts', color: 'bg-teal-600' },
+        { title: 'Average Failure Times', color: 'bg-teal-600' },
     ]
 
     const barOptions = {
         data: {
-            labels: data.map((partRepairs) => {
-                return (
-                    partRepairs.partName + " (#" + partRepairs.partNumber + ")"
-                );
-            }),
+            labels: data.map(x => x.partType),
             datasets: [
                 {
-                    label: 'Number of repairs',
+                    label: 'Failure Time Hours',
                     backgroundColor: '#0694a2',
                     borderWidth: 1,
-                    data: data.map((partRepairs) => {
-                        return (
-                            partRepairs.repairsCount
-                        );
-                    }),
+                    data: data.map(x => x.failureTime),
                 },
             ],
         },
@@ -46,8 +36,8 @@ export default function PartsFailureChart({data}) {
             width: "100%",
             height: "100%"}}>
             <div style={{width: "90%"}}>
-                <Bar {...barOptions} />
                 <ChartLegend legends={barLegends} />
+                <Bar {...barOptions} />
             </div>
         </div>
     )
