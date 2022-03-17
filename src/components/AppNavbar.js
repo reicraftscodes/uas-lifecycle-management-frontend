@@ -44,6 +44,9 @@ export default class AppNavbar extends React.Component {
                                 <NavLink href="/parts-failure">Parts Failure</NavLink>
                             </NavItem>
                             <NavItem>
+                                <NavLink href="/logistics-officer/dashboard">Logistics Officer Dashboard</NavLink>
+                            </NavItem>
+                            <NavItem>
                                 <NavLink href="/platforms">Platforms</NavLink>
                             </NavItem>
                         </Nav>

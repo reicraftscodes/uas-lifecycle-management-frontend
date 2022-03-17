@@ -9,6 +9,9 @@
 #value {
 
 }
+#rep-flex-container {
+  display: flex;
+}
 #alertText {
   font-size: 1.4em;
 }
@@ -49,7 +52,15 @@
   font-weight: bold;
   margin-top: 10px;
 }
-
+#loDashboardFlexContainer {
+  display: flex;
+}
+#repairs {
+  width: 50%;
+  box-sizing: border-box;
+  box-shadow: 3px 3px 15px 0px rgba(215, 215, 215, 0.35);
+  margin-top: 10%;
+}
 #flex-container {
   display: flex;
   width: 800px;
@@ -84,4 +95,33 @@
 
 #card {
   width: 25%;
+}
+
+#repairTitle {
+  font-weight: 700;
+  text-align: center;
+  padding-top: 4%;
+  font-size: 1.5em;
+}
+
+#view-aircraft {
+  width: 200px;
+  height: 30px;
+  padding: 2px 2px 2px 2px;
+  border-radius: 5px;
+  border: none;
+  background-color: #1e98d7;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  color: #ffffff;
+  text-align: center;
+  line-height: normal;
+  margin: 0 auto;
+}
+
+#handymanIcon {
+  width: 40%;
+  height: 40%;
+  margin: 0 auto;
+  padding-bottom: 4%;
 }
