@@ -22,6 +22,7 @@ import Unauthorized from "./components/Unauthorized";
 import LODashboard from "./pages/Logistic/LODashboard";
 import { Chart as ChartJS } from 'chart.js/auto'
 import {Platforms} from "./pages/Platforms";
+import CeoDashboard from "./pages/Ceo/CeoDashboard";
 
 function App() {
 
@@ -67,11 +68,12 @@ function App() {
                     <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
                     <Route path="/user-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserAircraft/></ProtectedRoute>}/>
                     <Route path="/parts-failure" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><PartsFailure/></ProtectedRoute>}/>
-                    <Route path="/login" element={<UserLogin/>}/>
+                    <Route path="/platforms" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Platforms/></ProtectedRoute>}/>
+                    <Route path="/ceo-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><CeoDashboard/></ProtectedRoute>}/>
                     <Route path="/cto-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
                     <Route path="/logistic-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><LODashboard/></ProtectedRoute>}/>
-                    <Route path="/platforms" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Platforms/></ProtectedRoute>}/>
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
+                    <Route path="/login" element={<UserLogin/>}/>
                 </Routes>
             </div>
         )

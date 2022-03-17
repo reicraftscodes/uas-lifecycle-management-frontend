@@ -1,11 +1,9 @@
 import {Container} from "@mui/material";
-import CeoSection from "./CeoSection";
+import {Platforms} from "../Platforms";
 
-const CeoDashboard = () =>{
-    return(
-       <Container>
-           <CeoSection/>
-       </Container>
+const CeoDashboard = () => {
+    return (
+        <Platforms/>
     );
 }
 

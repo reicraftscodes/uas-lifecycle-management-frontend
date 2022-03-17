@@ -8,7 +8,7 @@ export const getUserDashboard = (role) => {
         case "ROLE_USER_CTO":
             return '/platforms';
         case 'ROLE_USER_CEO':
-            return '/platforms';
+            return '/ceo-dashboard';
         case 'ROLE_USER_COO':
             return '/platforms';
     }
