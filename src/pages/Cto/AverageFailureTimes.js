@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Container} from "reactstrap";
-import {Card, Typography} from "@mui/material";
+import {Card} from "@mui/material";
 import PartsService from "../../services/PartsService";
 import AvgFailureTimesBarChart from "./AvgFailureTimesBarChart";
 
