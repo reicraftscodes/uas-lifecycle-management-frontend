@@ -16,6 +16,13 @@ class PartsService {
             headers: {"Content-Type":"application/json" },
         });
     }
+
+    getFailingTime(){
+        return fetch(configData.API_URL + "/parts/failuretime", {
+            method: "GET",
+            headers: {"Content-Type":"application/json" },
+        });
+    }
 }
 
 export default new PartsService();

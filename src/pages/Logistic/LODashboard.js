@@ -1,10 +1,10 @@
 import React from "react";
 import {Container} from "reactstrap";
-import StockPopup from "../components/StockAlert";
 import Repairs from "../components/Repairs";
 import StockAlert from "../components/StockAlert";
+import Repairs from "../../components/Repairs";
 
-export default class LODashboard extends React.Component {
+export default class npLODashboard extends React.Component {
 
     constructor(props) {
         super(props)

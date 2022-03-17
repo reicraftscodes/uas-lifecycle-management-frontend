@@ -1,4 +1,4 @@
-import '../StockLookup.css'
+import '../css/StockLookup.css'
 import React from "react";
 import {Link} from "react-router-dom";
 import {Container, Table } from 'reactstrap';

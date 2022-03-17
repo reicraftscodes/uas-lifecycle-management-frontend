@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Box,
     Grid,
@@ -15,7 +15,6 @@ const PartsFailure = () => {
 
     useEffect(() => {
         getPartsFailure();
-        console.log("use effect");
     }, []);
 
     const getPartsFailure = () => {

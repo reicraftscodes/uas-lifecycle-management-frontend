@@ -1,5 +1,5 @@
 import React from 'react'
-import '../Drone.css'
+import '../css/Drone.css'
 import {Card, CardText, CardTitle} from "reactstrap";
 import {Link} from "react-router-dom";
 
