@@ -65,24 +65,38 @@ export const Platforms = () => {
         setPlatformFilterList(platformStatusFilter);
     }
 
-    const handleChangeFilter = (event) => {
+    const handleChangeLocationFilter = (event) => {
         setLocationFilterList({
             ...locationFilterList,
             [event.target.name]: event.target.checked,
         });
     };
 
+    const handleChangePlatformStatusFilter = (event) => {
+        setPlatformFilterList({
+            ...platformStatusFilterList,
+            [event.target.name]: event.target.checked,
+        });
+    };
+
     const filter = () => {
         const locations = [];
+        const platformStatusOptions = []
         Object.keys(locationFilterList).forEach(function(locationKey, i) {
             if(locationFilterList[locationKey]){
                 locations.push(locationKey);
             }
         });
         console.log("locations: " + locations);
+        Object.keys(platformStatusFilterList).forEach(function(platformStatusKey, i) {
+            if(platformStatusFilterList[platformStatusKey]){
+                platformStatusOptions.push(platformStatusKey);
+            }
+        });
+        console.log("platform statuses: " + platformStatusOptions);
         let request = {
             locations: locations,
-            platformStatuses: ["Design"]
+            platformStatuses: platformStatusOptions
         }
         postPlatformStatusFilterRequest(request);
     };
@@ -127,7 +141,7 @@ export const Platforms = () => {
                                             style={{fontSize: "10px"}}
                                             key={key}
                                             control={
-                                                <Checkbox checked={locationFilterList[key]} onChange={handleChangeFilter} name={key} />
+                                                <Checkbox checked={locationFilterList[key]} onChange={handleChangeLocationFilter} name={key} />
                                             }
                                             label={<Typography style={{fontSize: "13px"}}>{key}</Typography>}
                                         />
@@ -144,7 +158,7 @@ export const Platforms = () => {
                                             style={{fontSize: "10px"}}
                                             key={key}
                                             control={
-                                                <Checkbox checked={platformStatusFilterList[key]} onChange={handleChangeFilter} name={key} />
+                                                <Checkbox checked={platformStatusFilterList[key]} onChange={handleChangePlatformStatusFilter} name={key} />
                                             }
                                             label={<Typography style={{fontSize: "13px"}}>{key}</Typography>}
                                         />
