@@ -33,12 +33,12 @@ const AddPart = () => {
         {label:"Quad Arm", id:10},
         {label:"Gimble", id:11}];
 
-    
-    //when submit button is pressed this method is called, it adds the part to the database using a post request and displays a result alert. 
+
+    //when submit button is pressed this method is called, it adds the part to the database using a post request and displays a result alert.
     const handleSubmission = (e) => {
         //prevents reloading on form submission
-        e.preventDefault(); 
-        
+        e.preventDefault();
+
         //part which is turned into json for the post request
         const part = {partType, aircraft, location, manufacture, partStatus};
 
@@ -62,7 +62,7 @@ const AddPart = () => {
                 setAlert(true);
                 setTimeout(() => { setAlert(false) }, 3000);
             }
-        }).catch(error => { 
+        }).catch(error => {
             //catches error for not being able to communicate with the server and displays an alert to the user.
             setAlertMessage("Error communicating with server, part not saved");
             setAlertSeverity("error");
@@ -72,14 +72,14 @@ const AddPart = () => {
     }
 
     return (
-        <div className="addPart">   
+        <div className="addPart">
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             <div className="formBody">
-                
+
                 {/*paper is used to contain the input form to display it*/}
                 <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%" }}>
                     <h1>Add Part</h1>
-                    <Divider/> 
+                    <Divider/>
                     <FormControl>
                         <br/>
                         {/*Part Type autocomplete text field */}
@@ -90,10 +90,10 @@ const AddPart = () => {
                         {/* Aircraft text field this isnt required in submission*/}
                         <TextField label="Aircraft Tailnumber (if applicable)" onChange={(e) => setAircraft(e.target.value)}/>
                         <br/>
-                        <Divider/>            
+                        <Divider/>
                         <br/>
                         {/*Location autocomplete text field */}
-                        <Autocomplete onChange={(event, newValue) => {setLocation(newValue);}} id="locationSearchField" options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/> 
+                        <Autocomplete onChange={(event, newValue) => {setLocation(newValue);}} id="locationSearchField" options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/>
                         <br/>
                         <Divider/>
                         <br/>
@@ -106,7 +106,7 @@ const AddPart = () => {
                             <FormControlLabel value="BEYOND_REPAIR" control={<Radio color="primary"/>} label="Beyond Repair"/>
                         </RadioGroup>
                         <br/>
-                        <Button variant="contained" color="primary" size="small" onClick={handleSubmission}>Submit</Button>
+                        <Button style={{backgroundColor: "#004789"}} variant="contained" color="primary" size="small" onClick={handleSubmission}>Submit</Button>
                     </FormControl>
                 </Paper>
             </div>

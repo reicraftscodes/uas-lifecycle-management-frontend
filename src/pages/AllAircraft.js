@@ -13,34 +13,34 @@ import {
 } from "@mui/material";
 import PlatformsTable from "../components/PlatformsTable";
 import AircraftService from "../services/AircraftService";
+import AllAircraftTable from "../components/AllAircraftTable";
 
-export const Platforms = () => {
+export const AllAircraft = () => {
 
     const [isLoading, setLoading] = React.useState(true);
-    const [platformList, setPlatformList] = React.useState([]);
+    const [aircraftList, setAircraftList] = React.useState([]);
     const [locationFilterList, setLocationFilterList] = React.useState({});
     const [platformStatusFilterList, setPlatformFilterList] = React.useState({});
 
     useEffect(() => {
         console.log("use effect");
-        getPlatforms().then(() => {
+        getAllAircraft().then(() => {
             setLoading(false);
         });
         getLocations();
         getPlatformStatusOptions();
-       ;
     }, []);
 
-    const getPlatforms = async () => {
-        console.log("get platforms");
-        const res = await AircraftService.getPlatformStatus()
+    const getAllAircraft = async () => {
+        console.log("get aircraft");
+        const res = await AircraftService.getAllAircraft()
             .then(response => response.json())
             .then(data => {
-                console.log("Successfully retrieved platform statuses: ", data);
-                setPlatformList(data);
+                console.log("Successfully retrieved all aircraft: ", data);
+                setAircraftList(data);
             })
             .catch(error => {
-                console.log("Error when retrieving platform statuses: ", error);
+                console.log("Error when retrieving all aircraft: ", error);
             })
     }
 
@@ -97,19 +97,19 @@ export const Platforms = () => {
             locations: locations,
             platformStatuses: platformStatusOptions
         }
-        postPlatformStatusFilterRequest(request);
+        postAircraftFilterRequest(request);
     };
 
-    const postPlatformStatusFilterRequest = (myData) => {
+    const postAircraftFilterRequest = (myData) => {
         console.log("post filter platforms");
-        AircraftService.getFilterPlatformStatus(myData)
+        AircraftService.getFilteredAircraft(myData)
             .then(response => response.json())
             .then(data => {
-                console.log("Successfully retrieved filtered platform statuses: ", data);
-                setPlatformList(data);
+                console.log("Successfully retrieved filtered aircraft: ", data);
+                setAircraftList(data);
             })
             .catch(error => {
-                console.log("Error when retrieving filtered platform statuses: ", error);
+                console.log("Error when retrieving filtered aircraft: ", error);
             })
     };
 
@@ -121,16 +121,17 @@ export const Platforms = () => {
     return (
         <div>
             <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%"}}>
-                <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem', paddingBottom: "10px"}}>Platforms</Typography>
+                <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem', paddingBottom: "10px"}}>All Aircraft</Typography>
                 <Divider style={{marginBottom: "10px"}}/>
-                <Grid container>
-                    <Grid item xs={10}>
-                        <Paper elevation={3} sx={{height: "100%", m: 1, p: "1%", flexGrow: 1}}>
-                            <PlatformsTable data={platformList} style={{alignSelf: "center"}}/>
+                <div style={{display: "flex", justifyContent: "center"}}>
+                    <div>
+
+                        <Paper elevation={1} sx={{height: "100%", m: 1, p: "1%", flexGrow: 1}}>
+                            <AllAircraftTable data={aircraftList} style={{alignSelf: "center"}}/>
                         </Paper>
 
-                    </Grid>
-                    <Grid item xs={2}>
+                    </div>
+                    <div style={{minWidth: "250px"}}>
                         <Paper elevation={3} sx={{height: "100%", m: 1, p: "1%", display: 'flex', flexDirection: 'column', marginBottom: "25px"}}>
                             <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
                                 <FormLabel component="legend">Location</FormLabel>
@@ -166,10 +167,13 @@ export const Platforms = () => {
                                 </FormGroup>
                             </FormControl>
                             <Divider style={{marginLeft: "10px", marginRight: "5px"}}/>
-                            <Button style={{margin: "20px"}} variant="contained" onClick={() => filter()}>Filter</Button>
+                            <Button style={{margin: "20px", backgroundColor: "#004789"}} variant="contained" onClick={() => filter()}>Filter</Button>
                         </Paper>
-                    </Grid>
-                </Grid>
+                    </div>
+                </div>
+
+
+
             </Paper>
         </div>
     )
