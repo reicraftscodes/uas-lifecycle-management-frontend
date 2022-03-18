@@ -1,7 +1,6 @@
 import './App.css';
 import React, {useEffect, useState} from "react";
 import {Route, Routes, useNavigate} from 'react-router-dom';
-import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
 import Locations from "./pages/Locations";
