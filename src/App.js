@@ -26,6 +26,7 @@ import CeoDashboard from "./pages/Ceo/CeoDashboard";
 import {CooDashboard} from "./pages/Coo/CooDashboard";
 import {UserDashboard} from "./pages/Users/UserDashboard";
 import AverageFailureTimes from "./pages/Cto/AverageFailureTimes";
+import {AllAircraft} from "./pages/AllAircraft";
 
 function App() {
 
@@ -67,6 +68,7 @@ function App() {
                     {/*<Route path="/drones/:droneId" element={<Drone/>}/>*/}
                     {/*<Route path="/parts/:partId" element={<Part/>}/>*/}
                     {/*<Route path="/stock-lookup" element={<StockLookup/>}/>*/}
+                    <Route path="/aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AllAircraft/></ProtectedRoute>}/>
                     <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
                     <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
                     <Route path="/user-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserAircraft/></ProtectedRoute>}/>
