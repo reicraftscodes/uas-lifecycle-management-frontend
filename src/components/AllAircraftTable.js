@@ -119,7 +119,7 @@ export default function AllAircraftTable({data}) {
                                         {row.flyTimeHours}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        <Button style={{width: 100}} variant="contained" >View</Button>
+                                        <Button style={{width: 100, backgroundColor: "#004789"}} variant="contained" >View</Button>
                                     </TableCell>
                                 </StyledTableRow>
                             );

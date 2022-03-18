@@ -167,7 +167,7 @@ export const AllAircraft = () => {
                                 </FormGroup>
                             </FormControl>
                             <Divider style={{marginLeft: "10px", marginRight: "5px"}}/>
-                            <Button style={{margin: "20px"}} variant="contained" onClick={() => filter()}>Filter</Button>
+                            <Button style={{margin: "20px", backgroundColor: "#004789"}} variant="contained" onClick={() => filter()}>Filter</Button>
                         </Paper>
                     </div>
                 </div>
