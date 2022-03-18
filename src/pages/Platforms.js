@@ -125,13 +125,13 @@ export const Platforms = () => {
                 <Divider style={{marginBottom: "10px"}}/>
                 <Grid container>
                     <Grid item xs={10}>
-                        <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%", flexGrow: 1}}>
+                        <Paper elevation={3} sx={{height: "100%", m: 1, p: "1%", flexGrow: 1}}>
                             <PlatformsTable data={platformList} style={{alignSelf: "center"}}/>
                         </Paper>
 
                     </Grid>
                     <Grid item xs={2}>
-                        <Paper elevation={3} sx={{height: "95%", m: 1, p: "1%", display: 'flex', flexDirection: 'column', marginBottom: "25px"}}>
+                        <Paper elevation={3} sx={{height: "100%", m: 1, p: "1%", display: 'flex', flexDirection: 'column', marginBottom: "25px"}}>
                             <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
                                 <FormLabel component="legend">Location</FormLabel>
                                 <FormGroup>

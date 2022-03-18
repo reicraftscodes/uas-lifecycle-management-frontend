@@ -86,7 +86,7 @@ export default function AllAircraftTable({data}) {
     }));
 
     return (
-        <TableContainer sx={{width: "auto", height: "100%"}} style={{
+        <TableContainer sx={{width: "auto"}} style={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center"}}>

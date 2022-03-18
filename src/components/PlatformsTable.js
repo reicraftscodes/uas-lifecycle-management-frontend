@@ -60,7 +60,6 @@ export default function PlatformsTable({data}) {
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [order, setOrder] = React.useState('asc');
     const [orderBy, setOrderBy] = React.useState('location');
-    const [originalRows, setOriginalRows] = React.useState(data);
     const [rows, setRows] = React.useState(data);
 
     React.useEffect(() => {
