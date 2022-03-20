@@ -53,7 +53,8 @@ class AircraftService {
     getCeoOverallAircraftCost(){
         return fetch(configData.API_URL + "/aircraft/ceo-aircraft-full-cost",{
             method: 'GET',
-            headers: {"Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json" ,
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         })
     }
 }
