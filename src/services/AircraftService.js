@@ -39,5 +39,19 @@ class AircraftService {
             body: JSON.stringify(request), 
         });
     }
+
+    getCeoAircraftCost(){
+        return fetch(configData.API_URL+ "/ceo-aircraft-cost",{
+            method: 'GET',
+            headers: {"Content-Type": "application/json" },
+        });
+    }
+
+    getCeoOverallAircraftCost(){
+        return fetch(configData.API_URL + "/ceo-aircraft-full-cost",{
+            method: 'GET',
+            headers: {"Content-Type": "application/json" },
+        })
+    }
 }
 export default new AircraftService();
