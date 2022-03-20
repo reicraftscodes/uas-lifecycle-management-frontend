@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import {
+    Button,
     Table,
     TableBody,
     TableCell,
@@ -17,6 +18,10 @@ import {getComparator, SortTableHead, stableSort} from "./SortTableHead";
 
 const headCells = [
     {
+        id: 'tailNumber',
+        label: 'Aircraft',
+    },
+    {
         id: 'location',
         label: 'Location',
     },
@@ -29,37 +34,20 @@ const headCells = [
         label: 'Status',
     },
     {
-        id: 'tailNumber',
-        label: 'Aircraft',
-    },
-    {
         id: 'flyTimeHours',
         label: 'Flight hours',
     },
     {
-        id: 'partsCost',
-        label: 'Parts Cost',
-    },
-    {
-        id: 'repairsCount',
-        label: 'Total Repairs',
-    },
-    {
-        id: 'repairsCost',
-        label: 'Total Repairs Cost',
-    },
-    {
-        id: 'totalCost',
-        label: 'Total Cost',
-    },
-
+        id: 'viewButton',
+        label: '',
+    }
 ];
 
-export default function PlatformsTable({data}) {
+export default function AllAircraftTable({data}) {
     const [page, setPage] = React.useState(0);
     const [rowsPerPage, setRowsPerPage] = React.useState(10);
     const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('location');
+    const [orderBy, setOrderBy] = React.useState('tailNumber');
     const [rows, setRows] = React.useState(data);
 
     React.useEffect(() => {
@@ -102,7 +90,7 @@ export default function PlatformsTable({data}) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center"}}>
-            <Table style={{ width: "auto", tableLayout: "auto"}}>
+            <Table style={{ width: "auto", height: "auto", tableLayout: "auto"}}>
                 <SortTableHead
                     order={order}
                     orderBy={orderBy}
@@ -116,6 +104,9 @@ export default function PlatformsTable({data}) {
                             return (
                                 <StyledTableRow key={row.tailNumber}>
                                     <TableCell style={{ width: 160 }}>
+                                        {row.tailNumber}
+                                    </TableCell>
+                                    <TableCell style={{ width: 160 }}>
                                         {row.location}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
@@ -125,22 +116,10 @@ export default function PlatformsTable({data}) {
                                         {row.platformStatus}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {row.tailNumber}
-                                    </TableCell>
-                                    <TableCell style={{ width: 160 }}>
                                         {row.flyTimeHours}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        {row.partsCost}
-                                    </TableCell>
-                                    <TableCell style={{ width: 160 }}>
-                                        {row.repairsCount}
-                                    </TableCell>
-                                    <TableCell style={{ width: 160 }}>
-                                        {row.repairsCost}
-                                    </TableCell>
-                                    <TableCell style={{ width: 160 }}>
-                                        {row.totalCost}
+                                        <Button style={{width: 100, backgroundColor: "#004789"}} variant="contained" >View</Button>
                                     </TableCell>
                                 </StyledTableRow>
                             );
@@ -152,12 +131,12 @@ export default function PlatformsTable({data}) {
                         </TableRow>
                     )}
                 </TableBody>
-                <TableFooter>
+                <TableFooter style={{marginBottom: "0px"}}>
                     <TableRow>
                         <TablePagination
                             rowsPerPageOptions={[5, 10, 15, 20, { label: 'All', value: -1 }]}
-                            colSpan={9}
-                            count={data.length}
+                            colSpan={6}
+                            count={rows.length}
                             rowsPerPage={rowsPerPage}
                             page={page}
                             SelectProps={{

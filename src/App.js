@@ -1,7 +1,6 @@
 import './App.css';
 import React, {useEffect, useState} from "react";
 import {Route, Routes, useNavigate} from 'react-router-dom';
-import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
 import Locations from "./pages/Locations";
@@ -27,6 +26,7 @@ import {CooDashboard} from "./pages/Coo/CooDashboard";
 import {UserDashboard} from "./pages/Users/UserDashboard";
 import AverageFailureTimes from "./pages/Cto/AverageFailureTimes";
 import ModifyAircraft from "./pages/Logistic/ModifyAircraft";
+import {AllAircraft} from "./pages/AllAircraft";
 
 function App() {
 
@@ -69,6 +69,9 @@ function App() {
                     {/*<Route path="/parts/:partId" element={<Part/>}/>*/}
                     {/*<Route path="/stock-lookup" element={<StockLookup/>}/>*/}
 
+                    <Route path="/aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AllAircraft/></ProtectedRoute>}/>
+                    <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
+                    <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
                     <Route path="/user-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserAircraft/></ProtectedRoute>}/>
                     <Route path="/parts-failure" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><PartsFailure/></ProtectedRoute>}/>
                     <Route path="/failing-times" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><AverageFailureTimes/></ProtectedRoute>}/>

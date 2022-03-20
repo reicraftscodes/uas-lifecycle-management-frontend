@@ -36,7 +36,22 @@ class AircraftService {
         return fetch(configData.API_URL+"/aircraft/add" , {
             method: "POST",
             headers: {"Content-Type":"application/json" },
-            body: JSON.stringify(request), 
+            body: JSON.stringify(request),
+        });
+    }
+
+    getAllAircraft() {
+        return fetch(configData.API_URL +'/aircraft/all', {
+            method: 'GET',
+            headers: {"Content-Type": "application/json" },
+        });
+    }
+
+    getFilteredAircraft(request){
+        return fetch(configData.API_URL+'/aircraft/all/filter', {
+            method: 'POST',
+            headers: {"Content-Type": "application/json" },
+            body: JSON.stringify(request),
         });
     }
 
