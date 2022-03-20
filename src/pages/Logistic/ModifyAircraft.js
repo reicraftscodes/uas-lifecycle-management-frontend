@@ -7,16 +7,22 @@ const ModifyAircraft = () => {
 
     const [tailNumber, setTailNumber] = useState("");
     const[parts, setParts] = useState([[]]);
-    const[aircraftStatus, setAircraftStatus] = useState("Design");
+    const[aircraftStatus, setAircraftStatus] = useState("");
+    const[newStatus, setNewStatus] = useState("");
 
     const onAircraftSearch = (e) => {
         console.log(tailNumber);
         AircraftService.getAircraftPartsStatus(tailNumber).then(response => response.json()).then(data => {
             setParts(data.parts);
+            setAircraftStatus("Aircraft status: "+data.status);
             
             
         });
         console.log(parts);
+    }
+
+    const updateStatus = (e) => {
+        console.log(newStatus);
     }
 
     return (
@@ -32,6 +38,8 @@ const ModifyAircraft = () => {
                             <br/>
                             <Button variant="contained" onClick={onAircraftSearch}>Search Aircraft</Button>
                         </FormControl>
+
+                        <p>{aircraftStatus}</p>
                     </Grid>
 
                     <Grid item xs={8}>
@@ -47,7 +55,7 @@ const ModifyAircraft = () => {
                                 </TableHead>
                                 <TableBody>
                                     {parts.map((row) => (
-                                        <TableRow key={row[0]}>
+                                        <TableRow key={row}>
                                             <TableCell sx={{fontSize: "0.7rem"}}>{row[0]}</TableCell>
                                             <TableCell sx={{fontSize: "0.7rem"}}>{row[1]}</TableCell>
                                             <TableCell sx={{fontSize: "0.7rem"}}>{row[2]}</TableCell>
@@ -65,9 +73,14 @@ const ModifyAircraft = () => {
                 <h3>Set Aircraft Status</h3>
                 <FormControl>
                     <InputLabel id="setStatusLabel">Aircraft Status</InputLabel>
-                    <Select labelId="setStatusLabel" value={aircraftStatus} onChange={(e) => setAircraftStatus(e.target.value)}>
+                    <Select labelId="setStatusLabel" value={aircraftStatus} onChange={(e) => setNewStatus(e.target.value)}>
                         <MenuItem value="Design">Design</MenuItem>
+                        <MenuItem value="Production">Production</MenuItem>
+                        <MenuItem value="Operational">Operational</MenuItem>
+                        <MenuItem value="Repair">Repair</MenuItem>
                     </Select>
+
+                    <Button variant="contained" onClick={updateStatus}>Update Status</Button>
                 </FormControl>
             </Paper>
             

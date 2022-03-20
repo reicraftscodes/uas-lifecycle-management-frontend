@@ -108,7 +108,7 @@ const AppNavbar = () => {
     const links = user.isLoggedIn ? userRoute
         .filter(route => user.info.roles.some((role) => route.roles.includes(role)))
         .map(route => {
-            return <NavItem>
+            return <NavItem key={route.id}>
                 <NavLink onClick={() => onNavigate(route)}>{route.title}</NavLink>
             </NavItem>
         }) : <></>;
