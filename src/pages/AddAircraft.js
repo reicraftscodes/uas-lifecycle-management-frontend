@@ -13,33 +13,33 @@ const AddAircraft = () => {
     const [platformStatus, setPlatformStatus] = useState("Design");
     const [platformType, setPlatformType] = useState("Platform A");
 
-    //state variables used for changing the alert colour and message aswell as displaying it. 
+    //state variables used for changing the alert colour and message aswell as displaying it.
     const [alert, setAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
     const [alertSeverity, setAlertSeverity] = useState('success');
 
-    //validation variables which stores the errors which highlight a field red if they have errors and an overall error variable to prevent 
-    // the fetch method being called if the input isn't valid. 
+    //validation variables which stores the errors which highlight a field red if they have errors and an overall error variable to prevent
+    // the fetch method being called if the input isn't valid.
     const [errorTailNumber, setErrorTailNumber] = useState(false);
     const [errorLocation, setErrorLocation] = useState(false);
 
     //used to validate the aircraft tailnumber and make sure location isn't blank, the other 2 fields are radio
-    // buttons and have a default so validation isn't needed there. 
+    // buttons and have a default so validation isn't needed there.
      const validateFields = () => {
         //One or two character prefix indicating the country of registration (e.g. "N" for the United States, "VH" for Australia
         //A dash "-" is normally (not always) used between the prefix and suffix
         //One to five character suffix indicating a particular aircraft within the country
-        //Created regular expression for capturing these requirements 
+        //Created regular expression for capturing these requirements
         //Requires capital letters
         // [A-Z]{1,2}-(\d|[A-Z]){1,5}
-        //Validates the tailnumber using regex and if it is not valid displays an error message. 
+        //Validates the tailnumber using regex and if it is not valid displays an error message.
         if (!/^([A-Z]{1,2}-(\d|[A-Z]){1,5})$/.test(tailNumber)) {
             setErrorTailNumber(true);
             setAlertMessage("Tail number must be in the form <Country identifier>-<Aircraft suffix> all uppercase.");
             setAlertSeverity("error");
             setAlert(true);
             setTimeout(() => { setAlert(false) }, 3000);
-            return false; 
+            return false;
         } else {
             setErrorTailNumber(false);
         }
@@ -57,8 +57,8 @@ const AddAircraft = () => {
         return true;
     }
 
-    //Method that is called on the submit button click which validates the input fields and if valid sends a 
-    // post request to the api information from the input fields. 
+    //Method that is called on the submit button click which validates the input fields and if valid sends a
+    // post request to the api information from the input fields.
     const handleSubmission = (e) => {
         const result = validateFields();
 
@@ -75,13 +75,13 @@ const AddAircraft = () => {
                     setAlert(true);
                     setTimeout(() => { setAlert(false) }, 3000);
                 } else {
-                    //If the response is unsuccessful then the response error is shown to the user in an alert. 
+                    //If the response is unsuccessful then the response error is shown to the user in an alert.
                     setAlertSeverity("error");
                     setAlertMessage(data["response"]);
                     setAlert(true);
                     setTimeout(() => { setAlert(false) }, 3000);
                 }
-            }).catch(error => { 
+            }).catch(error => {
                 //catches error for not being able to communicate with the server and displays an alert to the user.
                 setAlertMessage("Error communicating with server, part not saved");
                 setAlertSeverity("error");
@@ -96,9 +96,9 @@ const AddAircraft = () => {
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             {/* json takes tailNumber, location, platform status, platformType */}
             <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: 0 }}>
-                
-                
-                
+
+
+
                 {/*Alert to display to the user. By default it is hidden. */}
 
                 <h1>Add Aircraft</h1>
@@ -111,7 +111,7 @@ const AddAircraft = () => {
                     <Divider/>
                     <br/>
                     {/*Input for the aircraft location */}
-                    <Autocomplete options={locations} onChange={(event, newValue) => {setLocation(newValue);}} renderInput={(params) => <TextField error={errorLocation} {...params} label="Location" />}/> 
+                    <Autocomplete options={locations} onChange={(event, newValue) => {setLocation(newValue);}} renderInput={(params) => <TextField error={errorLocation} {...params} label="Location" />}/>
                     <br/>
                     <Divider/>
                     <Divider/>
@@ -134,10 +134,10 @@ const AddAircraft = () => {
                         <FormControlLabel value="Platform B" control={<Radio color="primary"/>} label="Platform B"/>
                     </RadioGroup>
 
-                    <Button variant="contained" onClick={handleSubmission}>Submit</Button>
+                    <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={handleSubmission}>Submit</Button>
                 </FormControl>
             </Paper>
-    
+
         </div>
     );
 }

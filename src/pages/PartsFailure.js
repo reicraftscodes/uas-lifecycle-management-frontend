@@ -3,7 +3,7 @@ import {
     Box,
     Grid,
     styled,
-    Paper, Typography
+    Paper, Typography, Divider
 } from '@mui/material';
 import PartsFailureTable from "../components/PartsFailureTable";
 import PartsFailureChart from "../components/PartsFailureChart";
@@ -35,11 +35,13 @@ const PartsFailure = () => {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
+        height: "100%"
     }));
 
     return (
         <div>
-            <h1>Most Common Failing Parts</h1>
+            <h1 style={{marginBottom: "20px"}}>Most Common Failing Parts</h1>
+            <Divider style={{marginBottom: "20px"}}/>
             <Box sx={{ flexGrow: 1 }} margin="10px">
                 <Grid container spacing={{ xs: 2, md: 3 }} rows={{  xs: 1, sm: 2, md: 3 }}>
                     <Grid item xs={6} >
