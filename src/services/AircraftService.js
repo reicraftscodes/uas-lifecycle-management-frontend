@@ -63,6 +63,14 @@ class AircraftService {
         });
     }
 
+    updateAircraftStatus(request){
+        return fetch(configData.API_URL+"/aircraft/update-aircraft-status", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(request),
+        });
+    }
+
 
 }
 export default new AircraftService();

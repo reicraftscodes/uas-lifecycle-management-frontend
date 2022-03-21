@@ -9,7 +9,11 @@ const ModifyAircraft = () => {
     const[parts, setParts] = useState([[]]);
     const[aircraftStatus, setAircraftStatus] = useState("");
 
-    const[newStatus, setNewStatus] = useState("Design");
+    const[status, setStatus] = useState("DESIGN");
+
+    const sort = () => {
+
+    }
 
     const onAircraftSearch = (e) => {
         console.log(tailNumber);
@@ -19,11 +23,14 @@ const ModifyAircraft = () => {
             
             
         });
-        console.log(parts);
     }
 
     const updateStatus = (e) => {
-        console.log(newStatus);
+        const request = {tailNumber,status};
+        console.log(request);
+        AircraftService.updateAircraftStatus(request).then(() => {
+            onAircraftSearch();
+        });
     }
 
     return (
@@ -74,15 +81,19 @@ const ModifyAircraft = () => {
                 <h3>Set Aircraft Status</h3>
                 <FormControl>
                     <InputLabel id="setStatusLabel">Aircraft Status</InputLabel>
-                    <Select labelId="setStatusLabel" value={newStatus} onChange={(e) => setNewStatus(e.target.value)}>
-                        <MenuItem value="Design">Design</MenuItem>
-                        <MenuItem value="Production">Production</MenuItem>
-                        <MenuItem value="Operational">Operational</MenuItem>
-                        <MenuItem value="Repair">Repair</MenuItem>
+                    <Select labelId="setStatusLabel" value={status} onChange={(e) => setStatus(e.target.value)}>
+                        <MenuItem value="DESIGN">Design</MenuItem>
+                        <MenuItem value="PRODUCTION">Production</MenuItem>
+                        <MenuItem value="OPERATION">Operational</MenuItem>
+                        <MenuItem value="REPAIR">Repair</MenuItem>
                     </Select>
 
                     <Button variant="contained" onClick={updateStatus}>Update Status</Button>
                 </FormControl>
+            </Paper>
+
+            <Paper elevation={3} sx={{width: "35%", margin: "auto", p: "3%", pt: "0%", mt: 2}}>
+                <h3>Assign Part</h3>
             </Paper>
             
 
