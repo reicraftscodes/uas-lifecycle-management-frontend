@@ -71,6 +71,14 @@ class AircraftService {
         });
     }
 
+    updateAircraftPart(request){
+        return fetch(configData.API_URL+"/aircraft/update-aircraft-part", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(request),
+        });
+    }
+
 
 }
 export default new AircraftService();

@@ -10,7 +10,10 @@ const ModifyAircraft = () => {
     const[parts, setParts] = useState([[]]);
     const[aircraftStatus, setAircraftStatus] = useState("");
     const[status, setStatus] = useState("DESIGN");
-    const[partNumber, setPartNumber] = useState();
+    const[newPartNumber, setPartNumber] = useState();
+    const[availableParts, setAvailableParts] = useState([""]);
+    const[display, setDisplay] = useState("none");
+
 
     const partCategories = ["Wing A","Wing B","Fuselage","Tail","Propeller","Motor","Communications Radio","Payload Electo Optical","Payload Infra-Red","Quad Arm","Gimble"];
     const partsWithIds = [
@@ -27,7 +30,7 @@ const ModifyAircraft = () => {
         {"id":11,"name":"Gimble"}
     ];
 
-    const[availableParts, setAvailableParts] = useState([""]);
+    
 
 
     const onAircraftSearch = (e) => {
@@ -35,6 +38,7 @@ const ModifyAircraft = () => {
         AircraftService.getAircraftPartsStatus(tailNumber).then(response => response.json()).then(data => {
             setParts(data.parts);
             setAircraftStatus("Aircraft status: "+data.status);
+            setDisplay("block");
             
             
         });
@@ -49,88 +53,104 @@ const ModifyAircraft = () => {
     }
 
     const getAvailableParts = (partType) => {
-        //console.log(partType);
-        //let obj = partsWithIds.find(part => part.name === partType);
-        //console.log(obj);
-        
         if(partType!=null){
             PartService.getAvailablePartsByType(partsWithIds.find(part => part.name === partType).id)
                 .then(response => response.json()).then(data => {
-                    setPartNumber(data[0]);
-                    console.log(partNumber);
                     setAvailableParts(data);
                 }); 
         }
     }
 
+    const updatePart = () => {
+        console.log(availableParts);
+        console.log(newPartNumber);
+
+        if (availableParts.includes(newPartNumber)){
+            let request = {tailNumber,newPartNumber};
+            console.log(request);
+            AircraftService.updateAircraftPart(request).then(() => {
+                onAircraftSearch();
+            });
+
+
+        } else {
+            console.log(false);
+        }
+    }
+
     return (
         <div>
-            <Paper elevation={3} sx={{width: "60%", margin: "auto", p: "3%", pt: "0%", mt: 2}}>
-                <h3>Select Aircraft</h3>
-                <br/>
-                <Grid container>
-                    
-                    <Grid item xs={4}>
-                        <FormControl sx={{mr: 4}}>
+            <Grid container>
+                <Grid item xs={6}>
+                    <Paper elevation={3} sx={{width: "97.5%", m: 2, p: "3%", pt: 0, mb: 0}}>
+                        <h5>Search for Aircraft</h5>
+                        <FormControl>
                             <TextField label="Aircraft tailnumber" onChange={(e) => setTailNumber(e.target.value)} ></TextField>
                             <br/>
                             <Button variant="contained" onClick={onAircraftSearch}>Search Aircraft</Button>
                         </FormControl>
+                    </Paper>
 
-                        <p>{aircraftStatus}</p>
-                    </Grid>
+                    <Grid container>
+                        <Grid item xs={6}>
+                            <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0,pb:0, height: "100%", display: {display}}}>
+                                <h5>Set Aircraft Status</h5>
+                                <br/>
+                                <FormControl>
+                                    <InputLabel id="setStatusLabel">Aircraft Status</InputLabel>
+                                    <Select labelId="setStatusLabel" value={status} onChange={(e) => setStatus(e.target.value)}>
+                                        <MenuItem value="DESIGN">Design</MenuItem>
+                                        <MenuItem value="PRODUCTION">Production</MenuItem>
+                                        <MenuItem value="OPERATION">Operational</MenuItem>
+                                        <MenuItem value="REPAIR">Repair</MenuItem>
+                                    </Select>
 
-                    <Grid item xs={8}>
-                                            
-                        <TableContainer sx={{width: "100%"}}>
-                            <Table size="small" aria-label="table label">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Part Number</TableCell>
-                                        <TableCell>Part Name</TableCell>
-                                        <TableCell>Part Status</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {parts.map((row) => (
-                                        <TableRow key={row}>
-                                            <TableCell sx={{fontSize: "0.7rem"}}>{row[0]}</TableCell>
-                                            <TableCell sx={{fontSize: "0.7rem"}}>{row[1]}</TableCell>
-                                            <TableCell sx={{fontSize: "0.7rem"}}>{row[2]}</TableCell>
-                                        </TableRow>
+                                    <Button variant="contained" onClick={updateStatus} sx={{mt: 8}}>Update Status</Button>
+                                </FormControl>
+                            </Paper>
+                        </Grid>
 
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                        <Grid item xs={6}>
+                            <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0,pb:0, height: "100%", display: {display}}}>
+                                <h5>Assign Part</h5>
+                                <Autocomplete onChange={(event, newValue) => {getAvailableParts(newValue);}} options={partCategories} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
+                                <br/>
+                                <Autocomplete onChange={(event, newValue) => {setPartNumber(newValue);}} options={availableParts} renderInput={(params) => <TextField {...params} label="Part Number" />}/>
+
+                                <Button variant="contained" onClick={updatePart} sx={{mt: 2}}>Assign</Button>
+                            </Paper>
+                        </Grid>
                     </Grid>
                 </Grid>
-            </Paper>
 
-            <Paper elevation={3} sx={{width: "35%", margin: "auto", p: "3%", pt: "0%", mt: 2}}>
-                <h3>Set Aircraft Status</h3>
-                <FormControl>
-                    <InputLabel id="setStatusLabel">Aircraft Status</InputLabel>
-                    <Select labelId="setStatusLabel" value={status} onChange={(e) => setStatus(e.target.value)}>
-                        <MenuItem value="DESIGN">Design</MenuItem>
-                        <MenuItem value="PRODUCTION">Production</MenuItem>
-                        <MenuItem value="OPERATION">Operational</MenuItem>
-                        <MenuItem value="REPAIR">Repair</MenuItem>
-                    </Select>
-
-                    <Button variant="contained" onClick={updateStatus}>Update Status</Button>
-                </FormControl>
-            </Paper>
-
-            <Paper elevation={3} sx={{width: "35%", margin: "auto", p: "3%", pt: "0%", mt: 2}}>
-                <h3>Assign Part</h3>
-                <Autocomplete onChange={(event, newValue) => {getAvailableParts(newValue);}} options={partCategories} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
-                <Autocomplete value={partNumber} options={availableParts} renderInput={(params) => <TextField {...params} label="Part Number" />}/>
-            </Paper>
+                <Grid item xs={6}>
+                    <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0, height: "91%"}}>
+                        <h5>Displayed Aircraft</h5>
+                        <p>{aircraftStatus}</p>
+                        <TableContainer sx={{width: "100%"}}>
+                                <Table size="small" aria-label="table label">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell>Part Number</TableCell>
+                                            <TableCell>Part Name</TableCell>
+                                            <TableCell>Part Status</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {parts.map((row) => (
+                                            <TableRow key={row}>
+                                                <TableCell sx={{fontSize: "0.7rem"}}>{row[0]}</TableCell>
+                                                <TableCell sx={{fontSize: "0.7rem"}}>{row[1]}</TableCell>
+                                                <TableCell sx={{fontSize: "0.7rem"}}>{row[2]}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+                    </Paper>
+                </Grid>
+            </Grid>
             
-
-
-
         </div>
     );
 }
