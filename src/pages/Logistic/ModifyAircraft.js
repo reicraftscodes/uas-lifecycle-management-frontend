@@ -8,7 +8,8 @@ const ModifyAircraft = () => {
     const [tailNumber, setTailNumber] = useState("");
     const[parts, setParts] = useState([[]]);
     const[aircraftStatus, setAircraftStatus] = useState("");
-    const[newStatus, setNewStatus] = useState("");
+
+    const[newStatus, setNewStatus] = useState("Design");
 
     const onAircraftSearch = (e) => {
         console.log(tailNumber);
@@ -73,7 +74,7 @@ const ModifyAircraft = () => {
                 <h3>Set Aircraft Status</h3>
                 <FormControl>
                     <InputLabel id="setStatusLabel">Aircraft Status</InputLabel>
-                    <Select labelId="setStatusLabel" value={aircraftStatus} onChange={(e) => setNewStatus(e.target.value)}>
+                    <Select labelId="setStatusLabel" value={newStatus} onChange={(e) => setNewStatus(e.target.value)}>
                         <MenuItem value="Design">Design</MenuItem>
                         <MenuItem value="Production">Production</MenuItem>
                         <MenuItem value="Operational">Operational</MenuItem>
