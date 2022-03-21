@@ -1,19 +1,34 @@
 
-import {Paper, Button, TextField, FormControl, TableRow, TableCell, TableContainer, Table, TableHead, TableBody, Grid, MenuItem, Select, InputLabel} from "@mui/material";
+import {Paper, Button, TextField, FormControl, TableRow, TableCell, TableContainer, Table, TableHead, TableBody, Grid, MenuItem, Select, InputLabel,Autocomplete} from "@mui/material";
 import React, {useState} from "react";
 import AircraftService from "../../services/AircraftService";
+import PartService from "../../services/PartsService";
 
 const ModifyAircraft = () => {
 
     const [tailNumber, setTailNumber] = useState("");
     const[parts, setParts] = useState([[]]);
     const[aircraftStatus, setAircraftStatus] = useState("");
-
     const[status, setStatus] = useState("DESIGN");
+    const[partNumber, setPartNumber] = useState();
 
-    const sort = () => {
+    const partCategories = ["Wing A","Wing B","Fuselage","Tail","Propeller","Motor","Communications Radio","Payload Electo Optical","Payload Infra-Red","Quad Arm","Gimble"];
+    const partsWithIds = [
+        {"id":1,"name":"Wing A"},
+        {"id":2,"name":"Wing B"},
+        {"id":3,"name":"Fuselage"},
+        {"id":4,"name":"Tail"},
+        {"id":5,"name":"Propeller"},
+        {"id":6,"name":"Motor"},
+        {"id":7,"name":"Communications Radio"},
+        {"id":8,"name":"Payload Electo Optical"},
+        {"id":9,"name":"Payload Infra-Red"},
+        {"id":10,"name":"Quad Arm"},
+        {"id":11,"name":"Gimble"}
+    ];
 
-    }
+    const[availableParts, setAvailableParts] = useState([""]);
+
 
     const onAircraftSearch = (e) => {
         console.log(tailNumber);
@@ -31,6 +46,21 @@ const ModifyAircraft = () => {
         AircraftService.updateAircraftStatus(request).then(() => {
             onAircraftSearch();
         });
+    }
+
+    const getAvailableParts = (partType) => {
+        //console.log(partType);
+        //let obj = partsWithIds.find(part => part.name === partType);
+        //console.log(obj);
+        
+        if(partType!=null){
+            PartService.getAvailablePartsByType(partsWithIds.find(part => part.name === partType).id)
+                .then(response => response.json()).then(data => {
+                    setPartNumber(data[0]);
+                    console.log(partNumber);
+                    setAvailableParts(data);
+                }); 
+        }
     }
 
     return (
@@ -94,6 +124,8 @@ const ModifyAircraft = () => {
 
             <Paper elevation={3} sx={{width: "35%", margin: "auto", p: "3%", pt: "0%", mt: 2}}>
                 <h3>Assign Part</h3>
+                <Autocomplete onChange={(event, newValue) => {getAvailableParts(newValue);}} options={partCategories} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
+                <Autocomplete value={partNumber} options={availableParts} renderInput={(params) => <TextField {...params} label="Part Number" />}/>
             </Paper>
             
 
