@@ -1,19 +1,21 @@
 
-import {Paper, Button, TextField, FormControl, TableRow, TableCell, TableContainer, Table, TableHead, TableBody, Grid, MenuItem, Select, InputLabel,Autocomplete} from "@mui/material";
+import {Paper, Button, TextField, FormControl, TableRow, TableCell, TableContainer, Table, TableHead, TableBody, Grid, MenuItem, Select, InputLabel,Autocomplete, Alert} from "@mui/material";
 import React, {useState} from "react";
 import AircraftService from "../../services/AircraftService";
 import PartService from "../../services/PartsService";
 
 const ModifyAircraft = () => {
-
-    const [tailNumber, setTailNumber] = useState("");
+    const[tailNumber, setTailNumber] = useState("");
     const[parts, setParts] = useState([[]]);
     const[aircraftStatus, setAircraftStatus] = useState("");
     const[status, setStatus] = useState("DESIGN");
     const[newPartNumber, setPartNumber] = useState();
     const[availableParts, setAvailableParts] = useState([""]);
     const[display, setDisplay] = useState("none");
-
+ 
+    const [alert, setAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertSeverity, setAlertSeverity] = useState('success');
 
     const partCategories = ["Wing A","Wing B","Fuselage","Tail","Propeller","Motor","Communications Radio","Payload Electo Optical","Payload Infra-Red","Quad Arm","Gimble"];
     const partsWithIds = [
@@ -30,18 +32,40 @@ const ModifyAircraft = () => {
         {"id":11,"name":"Gimble"}
     ];
 
-    
-
-
     const onAircraftSearch = (e) => {
-        console.log(tailNumber);
-        AircraftService.getAircraftPartsStatus(tailNumber).then(response => response.json()).then(data => {
+        AircraftService.getAircraftPartsStatus(tailNumber)
+        .then(response => {
+            console.log(response.status);
+            if (!response.ok){
+                if (response.status == "404"){
+                    setAlertSeverity("error");
+                    setAlertMessage("Aircraft not found!")
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                } else if (response.status == "400"){
+                    setAlertSeverity("error");
+                    setAlertMessage("Aircraft field cannot be blank!")
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                }
+            } else {
+                return response;
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
             setParts(data.parts);
             setAircraftStatus("Aircraft status: "+data.status);
-            setDisplay("block");
-            
-            
+            setDisplay("block");  
+        }).catch(error =>{
+            if(error.message.includes("Failed to fetch")) {
+                setAlertSeverity("error");
+                setAlertMessage("Error communicating with the server!")
+                setAlert(true);
+                setTimeout(() => { setAlert(false) }, 3000);
+            }
         });
+        
     }
 
     const updateStatus = (e) => {
@@ -71,8 +95,6 @@ const ModifyAircraft = () => {
             AircraftService.updateAircraftPart(request).then(() => {
                 onAircraftSearch();
             });
-
-
         } else {
             console.log(false);
         }
@@ -80,6 +102,7 @@ const ModifyAircraft = () => {
 
     return (
         <div>
+            {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             <Grid container>
                 <Grid item xs={6}>
                     <Paper elevation={3} sx={{width: "97.5%", m: 2, p: "3%", pt: 0, mb: 0}}>
@@ -87,7 +110,7 @@ const ModifyAircraft = () => {
                         <FormControl>
                             <TextField label="Aircraft tailnumber" onChange={(e) => setTailNumber(e.target.value)} ></TextField>
                             <br/>
-                            <Button variant="contained" onClick={onAircraftSearch}>Search Aircraft</Button>
+                            <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={onAircraftSearch}>Search Aircraft</Button>
                         </FormControl>
                     </Paper>
 
@@ -105,7 +128,7 @@ const ModifyAircraft = () => {
                                         <MenuItem value="REPAIR">Repair</MenuItem>
                                     </Select>
 
-                                    <Button variant="contained" onClick={updateStatus} sx={{mt: 8}}>Update Status</Button>
+                                    <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={updateStatus} sx={{mt: 8}}>Update Status</Button>
                                 </FormControl>
                             </Paper>
                         </Grid>
@@ -117,7 +140,7 @@ const ModifyAircraft = () => {
                                 <br/>
                                 <Autocomplete onChange={(event, newValue) => {setPartNumber(newValue);}} options={availableParts} renderInput={(params) => <TextField {...params} label="Part Number" />}/>
 
-                                <Button variant="contained" onClick={updatePart} sx={{mt: 2}}>Assign</Button>
+                                <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={updatePart} sx={{mt: 2}}>Assign</Button>
                             </Paper>
                         </Grid>
                     </Grid>
