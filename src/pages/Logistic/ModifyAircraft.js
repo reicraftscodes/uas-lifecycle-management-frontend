@@ -32,16 +32,18 @@ const ModifyAircraft = () => {
         {"id":11,"name":"Gimble"}
     ];
 
+    //used for displaying aircraft parts and their statuses
     const onAircraftSearch = (e) => {
         AircraftService.getAircraftPartsStatus(tailNumber)
         .then(response => {
-            console.log(response.status);
             if (!response.ok){
+                //checks for aircraft not found error
                 if (response.status == "404"){
                     setAlertSeverity("error");
                     setAlertMessage("Aircraft not found!")
                     setAlert(true);
                     setTimeout(() => { setAlert(false) }, 3000);
+                //checks for blank or invalid input. 
                 } else if (response.status == "400"){
                     setAlertSeverity("error");
                     setAlertMessage("Aircraft field cannot be blank!")
@@ -58,6 +60,7 @@ const ModifyAircraft = () => {
             setAircraftStatus("Aircraft status: "+data.status);
             setDisplay("block");  
         }).catch(error =>{
+            //catches failure to connect to api error
             if(error.message.includes("Failed to fetch")) {
                 setAlertSeverity("error");
                 setAlertMessage("Error communicating with the server!")
@@ -67,10 +70,9 @@ const ModifyAircraft = () => {
         });
         
     }
-
+    //Updates the status of the searched aircraft.
     const updateStatus = (e) => {
         const request = {tailNumber,status};
-        console.log(request);
         AircraftService.updateAircraftStatus(request).then(() => {
             onAircraftSearch();
 
@@ -79,6 +81,7 @@ const ModifyAircraft = () => {
             setAlert(true);
             setTimeout(() => { setAlert(false) }, 3000);
         }).catch(error => {
+            //catches any errors and displays them in an alert to the user.
             let errorMessage;
 
             if (error.message == "Failed to fetch"){
@@ -95,7 +98,9 @@ const ModifyAircraft = () => {
         });
     }
 
+    //gets all available parts for a specific part type.
     const getAvailableParts = (partType) => {
+        //checks that a part type has been selected.
         if(partType!=null){
             PartService.getAvailablePartsByType(partsWithIds.find(part => part.name === partType).id)
                 .then(response => response.json()).then(data => {
@@ -104,13 +109,16 @@ const ModifyAircraft = () => {
         }
     }
 
+    //update a part associated with the selected aircraft. 
     const updatePart = () => {
+        //checks that a part is selected.
         if(newPartNumber==null){
             setAlertSeverity("error");
             setAlertMessage("A part type and number must be selected!")
             setAlert(true);
             setTimeout(() => { setAlert(false) }, 3000);
         } else {
+            //checks that the part is available and from the correct part type. 
             if (availableParts.includes(newPartNumber)){
                 let request = {tailNumber,newPartNumber};
                 AircraftService.updateAircraftPart(request).then(() => {
@@ -191,9 +199,9 @@ const ModifyAircraft = () => {
 
                 <Grid item xs={6}>
                     <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0, height: "91%"}}>
-                        <h5>Displayed Aircraft</h5>
-                        <p>{aircraftStatus}</p>
-                        <TableContainer sx={{width: "100%"}}>
+                        <h5 style={{textAlign: "left", display: "inline"}}>{aircraftStatus}</h5>
+                        
+                        <TableContainer sx={{width: "100%",mt: "5%", mb: "5%"}}>
                                 <Table size="small" aria-label="table label">
                                     <TableHead>
                                         <TableRow>
