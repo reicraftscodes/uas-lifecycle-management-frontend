@@ -73,6 +73,25 @@ const ModifyAircraft = () => {
         console.log(request);
         AircraftService.updateAircraftStatus(request).then(() => {
             onAircraftSearch();
+
+            setAlertSeverity("success");
+            setAlertMessage("Successfully changed aircraft status!")
+            setAlert(true);
+            setTimeout(() => { setAlert(false) }, 3000);
+        }).catch(error => {
+            let errorMessage;
+
+            if (error.message == "Failed to fetch"){
+                errorMessage = "Error communicating with the server!";
+            } else {
+                errorMessage = error.message;
+            }
+
+            setAlertSeverity("error");
+            setAlertMessage(errorMessage)
+            setAlert(true);
+            setTimeout(() => { setAlert(false) }, 3000);
+            
         });
     }
 
