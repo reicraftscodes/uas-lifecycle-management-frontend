@@ -105,17 +105,41 @@ const ModifyAircraft = () => {
     }
 
     const updatePart = () => {
-        console.log(availableParts);
-        console.log(newPartNumber);
-
-        if (availableParts.includes(newPartNumber)){
-            let request = {tailNumber,newPartNumber};
-            console.log(request);
-            AircraftService.updateAircraftPart(request).then(() => {
-                onAircraftSearch();
-            });
+        if(newPartNumber==null){
+            setAlertSeverity("error");
+            setAlertMessage("A part type and number must be selected!")
+            setAlert(true);
+            setTimeout(() => { setAlert(false) }, 3000);
         } else {
-            console.log(false);
+            if (availableParts.includes(newPartNumber)){
+                let request = {tailNumber,newPartNumber};
+                AircraftService.updateAircraftPart(request).then(() => {
+                    onAircraftSearch();
+                    setAlertSeverity("success");
+                    setAlertMessage("Successfully assigned part!")
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                }).catch(error => {
+                    let errorMessage;
+
+                    if (error.message == "Failed to fetch"){
+                        errorMessage = "Error communicating with the server!";
+                    } else {
+                        errorMessage = error.message;
+                    }
+
+                    setAlertSeverity("error");
+                    setAlertMessage(errorMessage)
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+        
+                        });
+            } else {
+                setAlertSeverity("error");
+                setAlertMessage("Error in part number, please reselect a part number!")
+                setAlert(true);
+                setTimeout(() => { setAlert(false) }, 3000);
+            }
         }
     }
 
