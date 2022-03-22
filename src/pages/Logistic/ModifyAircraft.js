@@ -7,7 +7,7 @@ import PartService from "../../services/PartsService";
 const ModifyAircraft = () => {
     const[tailNumber, setTailNumber] = useState("");
     const[parts, setParts] = useState([[]]);
-    const[aircraftStatus, setAircraftStatus] = useState("");
+    const[aircraftStatus, setAircraftStatus] = useState("Aircraft Status: ");
     const[status, setStatus] = useState("DESIGN");
     const[newPartNumber, setPartNumber] = useState();
     const[availableParts, setAvailableParts] = useState([""]);
