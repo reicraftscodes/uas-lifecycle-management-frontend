@@ -145,7 +145,7 @@ function RepairCostTable({data}) {
         createStyles({
             root: {
                 "& .MuiDataGrid-columnHeaders": {
-                    backgroundColor: "#f1f5f6",
+                    backgroundColor: "#808080",
                     fontSize: 16
                 }
             }
