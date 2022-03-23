@@ -7,6 +7,8 @@ import {
     Paper,
     TextField
 } from "@mui/material";
+import PartsService from "../../services/PartsService";
+import AircraftService from "../../services/AircraftService";
 
 const AssignAircraft = () => {
 
@@ -27,11 +29,7 @@ const AssignAircraft = () => {
         const aircraft = {userID, tailNumber};
         console.log(aircraft);
         //Checks for validation errors before sending the post request using fetch.
-        fetch("http://localhost:8080/aircraft/assign-user" , {
-                method: "POST",
-                headers: {"Content-Type":"application/json" },
-                body: JSON.stringify(aircraft)
-            }).then(response => response.json()).then(data => {
+        AircraftService.assignAircraft(aircraft).then(response => response.json()).then(data => {
                 if (data["response"] == "Success"){
                     //If the response returns a success json body then an alert is sent to the user saying the aircraft has been added.
                     setAlertSeverity("success");
@@ -69,7 +67,7 @@ const AssignAircraft = () => {
                     <br/>
                     <Divider/>
                     <br/>
-                    {/*Input for the aircraft tailnumber */}
+                    {/*Input for the user id */}
                     <TextField label="User ID" onChange={(e) => setUserID(e.target.value)}></TextField>
                     <Button variant="contained" onClick={handleSubmission} id="submitButton">Submit</Button>
                 </FormControl>
