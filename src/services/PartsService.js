@@ -23,6 +23,14 @@ class PartsService {
             headers: {"Content-Type":"application/json" },
         });
     }
+
+    getAvailablePartsByType(type){
+        return fetch(configData.API_URL+"/parts/get-by-type", {
+            method: "POST",
+            headers: {"Content-Type":"application/json" },
+            body: type
+        });
+    }
 }
 
 export default new PartsService();
