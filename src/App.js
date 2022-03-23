@@ -25,9 +25,9 @@ import CeoDashboard from "./pages/Ceo/CeoDashboard";
 import {CooDashboard} from "./pages/Coo/CooDashboard";
 import {UserDashboard} from "./pages/Users/UserDashboard";
 import AverageFailureTimes from "./pages/Cto/AverageFailureTimes";
+import ModifyAircraft from "./pages/Logistic/ModifyAircraft";
 import {AllAircraft} from "./pages/AllAircraft";
 import RepairCost from "./pages/Ceo/RepairCost";
-import ModifyAircraft from "./pages/Logistic/ModifyAircraft";
 
 function App() {
 
