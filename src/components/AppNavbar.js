@@ -60,6 +60,14 @@ const AppNavbar = () => {
         },
 
         {
+            title: 'Modify Aircraft',
+            path: "/modify-aircraft",
+            roles: ["ROLE_USER_LOGISTIC"],
+            id: "",
+            type: "page"
+        },
+
+        {
             title: 'Add Part',
             path: "/add-part",
             roles: ["ROLE_USER_LOGISTIC"],
@@ -81,7 +89,8 @@ const AppNavbar = () => {
             roles: ["ROLE_USER_CTO", "ROLE_USER_COO", "ROLE_USER_CEO"],
             id: "",
             type: "page"
-        },
+        }
+
 
 
         // You can also change the type to anchor. An example of scenario is when a user click nav link,
@@ -108,7 +117,7 @@ const AppNavbar = () => {
     const links = user.isLoggedIn ? userRoute
         .filter(route => user.info.roles.some((role) => route.roles.includes(role)))
         .map(route => {
-            return <NavItem>
+            return <NavItem key={route.id}>
                 <NavLink onClick={() => onNavigate(route)}>{route.title}</NavLink>
             </NavItem>
         }) : <></>;
