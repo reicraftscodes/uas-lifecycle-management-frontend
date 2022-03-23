@@ -1,5 +1,6 @@
 import React from 'react'
 import configData from "../config/ApiConfig.json"
+import AuthService from "./AuthService";
 
 class AircraftService {
     getUserAircraft(user) {
@@ -54,5 +55,47 @@ class AircraftService {
             body: JSON.stringify(request),
         });
     }
+
+    getAircraftPartsStatus(request){
+        return fetch(configData.API_URL+"/aircraft/aircraft-parts-status", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"} ,
+            body: request,
+        });
+    }
+
+    updateAircraftStatus(request){
+        return fetch(configData.API_URL+"/aircraft/update-aircraft-status", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(request),
+        });
+    }
+
+    updateAircraftPart(request){
+        return fetch(configData.API_URL+"/aircraft/update-aircraft-part", {
+            method: "POST",
+            headers: {"Content-Type":"application/json"},
+            body: JSON.stringify(request),
+        });
+    }
+
+    getCeoAircraftCost(){
+        return fetch(configData.API_URL+ "/aircraft/ceo-aircraft-cost",{
+            method: 'GET',
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`
+            },
+        });
+    }
+
+    getCeoOverallAircraftCost(){
+        return fetch(configData.API_URL + "/aircraft/ceo-aircraft-full-cost",{
+            method: 'GET',
+            headers: {"Content-Type": "application/json" ,
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
+        })
+    }
+
 }
 export default new AircraftService();

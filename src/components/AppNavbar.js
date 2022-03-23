@@ -89,7 +89,7 @@ const AppNavbar = () => {
             roles: ["ROLE_USER_CTO", "ROLE_USER_COO", "ROLE_USER_CEO"],
             id: "",
             type: "page"
-        }
+        },
 
 
         {
