@@ -41,6 +41,14 @@ class AircraftService {
         });
     }
 
+    assignAircraft(request){
+        return fetch(configData.API_URL+"/aircraft/assign-user" , {
+            method: "POST",
+            headers: {"Content-Type":"application/json" },
+            body: JSON.stringify(request),
+        });
+    }
+
     getAllAircraft() {
         return fetch(configData.API_URL +'/aircraft/all', {
             method: 'GET',
