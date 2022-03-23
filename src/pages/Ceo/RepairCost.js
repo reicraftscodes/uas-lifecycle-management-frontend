@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import AircraftService from "../../services/AircraftService";
 import RepairCostTable from "./RepairCostTable";
 import {Box, Grid, Paper, styled, Typography} from "@mui/material";
+import RepairCostStats from "./RepairCostStats";
 
 
 function RepairCost() {
@@ -39,7 +40,7 @@ function RepairCost() {
             <Typography variant="h3"> Repair Costs</Typography>
             <Box sx={1} margin="10px">
                 <Grid container spacing={3}>
-                    <Grid item xs={6}>
+                    <Grid item xs={12}>
                         <Item>
                             <RepairCostTable data={repairAirCraftCost}/>
                         </Item>
