@@ -51,7 +51,7 @@ function RepairCostStats({data}) {
                     <RepairCostCard icon={<SettingsIcon sx={iconStyle}/>} value={formatMoney(totalParts)} footer="Total Spent On Parts"/>
                 </Grid>
                 <Grid item xs={4}>
-                    <RepairCostCard icon={<CurrencyPoundIcon sx={iconStyle}/>} value={formatMoney(totalSpent)} footer="Total Spent"/>
+                    <RepairCostCard icon={<CurrencyPoundIcon sx={iconStyle}/>} value={formatMoney(totalSpent)} footer="Total Amount Money Spent"/>
                 </Grid>
             </Grid>
         </Box>

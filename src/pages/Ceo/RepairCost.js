@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import AircraftService from "../../services/AircraftService";
 import RepairCostTable from "./RepairCostTable";
-import {Box, Grid, Paper, styled, Typography} from "@mui/material";
+import {Box, Grid, Paper, styled} from "@mui/material";
 import RepairCostStats from "./RepairCostStats";
 
 
