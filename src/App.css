@@ -24,6 +24,9 @@
   margin-top: 10px;
   font-size: 1.2em;
 }
+#submitButton {
+  margin-top: 20px;
+}
 #cardText {
   margin-top: 10px;
   font-size: 1.1em;

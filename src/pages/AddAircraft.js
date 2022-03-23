@@ -97,8 +97,6 @@ const AddAircraft = () => {
             {/* json takes tailNumber, location, platform status, platformType */}
             <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: 0 }}>
 
-
-
                 {/*Alert to display to the user. By default it is hidden. */}
 
                 <h1>Add Aircraft</h1>

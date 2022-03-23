@@ -75,6 +75,16 @@ const AppNavbar = () => {
             type: "page"
         },
 
+
+        {
+            title: 'Assign User',
+            path: "/assign-user",
+            roles: ["ROLE_USER_LOGISTIC"],
+            id: "aircraft",
+            type: "page"
+        },
+
+
         {
             title: "Stock Levels",
             path: "/locations",
