@@ -26,6 +26,7 @@ import CeoDashboard from "./pages/Ceo/CeoDashboard";
 import {CooDashboard} from "./pages/Coo/CooDashboard";
 import {UserDashboard} from "./pages/Users/UserDashboard";
 import AverageFailureTimes from "./pages/Cto/AverageFailureTimes";
+import AssignAircraft from "./pages/Logistic/AssignAircraft";
 
 function App() {
 
@@ -69,9 +70,11 @@ function App() {
                     {/*<Route path="/stock-lookup" element={<StockLookup/>}/>*/}
                     <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
                     <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
+                    <Route path="/assign-user" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AssignAircraft/></ProtectedRoute>}/>
                     <Route path="/user-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserAircraft/></ProtectedRoute>}/>
                     <Route path="/parts-failure" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><PartsFailure/></ProtectedRoute>}/>
                     <Route path="/failing-times" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><AverageFailureTimes/></ProtectedRoute>}/>
+
                     <Route path="/platforms" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Platforms/></ProtectedRoute>}/>
 
                     <Route path="/user-dashboard"element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserDashboard/></ProtectedRoute>}/>
