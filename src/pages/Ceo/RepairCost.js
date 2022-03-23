@@ -37,7 +37,7 @@ function RepairCost() {
 
     return (
         <div>
-            <Typography variant="h3"> Repair Costs</Typography>
+            <RepairCostStats data={repairAirCraftCost}/>
             <Box sx={1} margin="10px">
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
