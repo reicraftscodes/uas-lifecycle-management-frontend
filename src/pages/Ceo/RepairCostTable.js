@@ -108,7 +108,7 @@ function RepairCostTable({data}) {
         },
         {
             field: 'totalCost',
-            headerName: 'Total Repairs Cost (£)',
+            headerName: 'Total Cost (£)',
             type: 'number',
             flex: 1,
             headerClassName: 'super-app-theme--header'
