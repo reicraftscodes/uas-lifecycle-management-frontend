@@ -1,7 +1,6 @@
 import './App.css';
 import React, {useEffect, useState} from "react";
 import {Route, Routes, useNavigate} from 'react-router-dom';
-import Dashboard from "./pages/Dashboard";
 import StockLevels from "./pages/StockLevels";
 import AppNavbar from "./components/AppNavbar";
 import Locations from "./pages/Locations";
@@ -26,7 +25,10 @@ import CeoDashboard from "./pages/Ceo/CeoDashboard";
 import {CooDashboard} from "./pages/Coo/CooDashboard";
 import {UserDashboard} from "./pages/Users/UserDashboard";
 import AverageFailureTimes from "./pages/Cto/AverageFailureTimes";
+
 import AssignAircraft from "./pages/Logistic/AssignAircraft";
+import ModifyAircraft from "./pages/Logistic/ModifyAircraft";
+import {AllAircraft} from "./pages/AllAircraft";
 
 function App() {
 
@@ -68,6 +70,8 @@ function App() {
                     {/*<Route path="/drones/:droneId" element={<Drone/>}/>*/}
                     {/*<Route path="/parts/:partId" element={<Part/>}/>*/}
                     {/*<Route path="/stock-lookup" element={<StockLookup/>}/>*/}
+
+                    <Route path="/aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AllAircraft/></ProtectedRoute>}/>
                     <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
                     <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
                     <Route path="/assign-user" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AssignAircraft/></ProtectedRoute>}/>
@@ -81,7 +85,12 @@ function App() {
                     <Route path="/coo-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_COO"]}><CooDashboard/></ProtectedRoute>}/>
                     <Route path="/ceo-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><CeoDashboard/></ProtectedRoute>}/>
                     <Route path="/cto-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
+
                     <Route path="/logistic-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><LODashboard/></ProtectedRoute>}/>
+                    <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
+                    <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
+                    <Route path="/modify-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ModifyAircraft/></ProtectedRoute>}/>
+
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
                     <Route path="/login" element={<UserLogin/>}/>
                 </Routes>
