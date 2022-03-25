@@ -82,6 +82,7 @@ function UserLogin() {
                         value={email}
                         id="outlined-error"
                         error={isEmailInvalid}
+                        data-cy="email"
                         helperText={isEmailInvalid && "Email is required."}
                     />
                     <br/>
@@ -92,18 +93,21 @@ function UserLogin() {
                         type='password'
                         onChange={onChangePassword}
                         value={password}
+                        data-cy="password"
                         id="outlined-error"
                         error={isPasswordInvalid}
                         helperText={isPasswordInvalid && "Password is required."}
                     />
                     <br/>
-                    <Button type='submit' _disabled={loading} color='primary' variant="contained" onClick={handleLogin}
+                    <Button type='submit' data-cy="login-button" _disabled={loading} color='primary' variant="contained" onClick={handleLogin}
                             isLoading={loading}> Login </Button><br/>
                     {message && (
                         <Box
                             sx={{width: 1}}
                             className="alert alert-danger uas"
                             role="alert"
+                            data-cy="login-error"
+
                         >
                             <b>{message}</b>
                         </Box>
