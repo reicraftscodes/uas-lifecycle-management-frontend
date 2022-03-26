@@ -149,9 +149,9 @@ const AppNavbar = () => {
     const links = user.isLoggedIn ? userRoute
         .filter(route => user.info.roles.some((role) => route.roles.includes(role)))
         .map(route => {
-            return <MenuItem key={route.id}>
+            return <div key={route.id}>
                 <MenuItem onClick={() => onNavigate(route)}>{route.title}</MenuItem>
-            </MenuItem>
+            </div>
         }) : <></>;
 
     const classes = useStyles();
