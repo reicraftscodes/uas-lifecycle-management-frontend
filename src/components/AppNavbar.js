@@ -16,6 +16,8 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: "1",
     },
 
+    background : '#111111',
+
 }));
 
 const AppNavbar = () => {
@@ -157,7 +159,7 @@ const AppNavbar = () => {
     const classes = useStyles();
 
     return (
-        <AppBar position="static" elevation={4}>
+        <AppBar position="static" elevation={4} style={{ background: '#111111' }}>
             <Toolbar>
                 <Typography className={classes.logo} style={{textAlign: "left"}}>
                     Sierra Nevada Corporation
