@@ -4,7 +4,7 @@ import {logOut} from "../actions/actions";
 import {useNavigate} from "react-router-dom"
 import {AppBar, MenuItem, Toolbar, Typography} from "@mui/material";
 import {makeStyles} from '@material-ui/core/styles';
-
+import {useLocation} from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     navigationLinks: {
@@ -25,11 +25,15 @@ const useStyles = makeStyles((theme) => ({
 
 const AppNavbar = () => {
 
-    const user = useSelector((state) => state.user)
+    const location = useLocation();
+
+    const user = useSelector((state) => state.user);
 
     const dispatch = useDispatch();
 
     const navigate = useNavigate();
+
+    const classes = useStyles();
 
     const logout = () => {
         localStorage.removeItem("user");
@@ -159,7 +163,10 @@ const AppNavbar = () => {
             </div>
         }) : <></>;
 
-    const classes = useStyles();
+
+    if (location.pathname === '/login') {
+        return null;
+    }
 
     return (
         <AppBar position="static" elevation={3} style={{background: '#111111'}}>
