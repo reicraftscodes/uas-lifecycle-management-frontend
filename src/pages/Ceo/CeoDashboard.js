@@ -1,8 +1,8 @@
-import {Platforms} from "../Platforms";
+import RepairCost from "./RepairCost";
 
 const CeoDashboard = () => {
     return (
-        <Platforms/>
+        <RepairCost/>
     );
 }
 

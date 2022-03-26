@@ -26,6 +26,11 @@ import {CooDashboard} from "./pages/Coo/CooDashboard";
 import {UserDashboard} from "./pages/Users/UserDashboard";
 import AverageFailureTimes from "./pages/Cto/AverageFailureTimes";
 
+import AssignAircraft from "./pages/Logistic/AssignAircraft";
+import ModifyAircraft from "./pages/Logistic/ModifyAircraft";
+import {AllAircraft} from "./pages/AllAircraft";
+import RepairCost from "./pages/Ceo/RepairCost";
+
 function App() {
 
     const user = useSelector((state) => state.user);
@@ -66,20 +71,33 @@ function App() {
                     {/*<Route path="/drones/:droneId" element={<Drone/>}/>*/}
                     {/*<Route path="/parts/:partId" element={<Part/>}/>*/}
                     {/*<Route path="/stock-lookup" element={<StockLookup/>}/>*/}
+
+                    <Route path="/aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AllAircraft/></ProtectedRoute>}/>
                     <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
                     <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
+                    <Route path="/assign-user" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AssignAircraft/></ProtectedRoute>}/>
                     <Route path="/user-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserAircraft/></ProtectedRoute>}/>
                     <Route path="/parts-failure" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><PartsFailure/></ProtectedRoute>}/>
                     <Route path="/failing-times" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><AverageFailureTimes/></ProtectedRoute>}/>
+
                     <Route path="/platforms" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO", "ROLE_USER_COO", "ROLE_USER_CTO"]}><Platforms/></ProtectedRoute>}/>
 
                     <Route path="/user-dashboard"element={<ProtectedRoute user={user} roles={["ROLE_USER"]}><UserDashboard/></ProtectedRoute>}/>
                     <Route path="/coo-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_COO"]}><CooDashboard/></ProtectedRoute>}/>
                     <Route path="/ceo-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><CeoDashboard/></ProtectedRoute>}/>
                     <Route path="/cto-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_CTO"]}><CtoDashboard/></ProtectedRoute>}/>
+
                     <Route path="/logistic-dashboard" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><LODashboard/></ProtectedRoute>}/>
+                    <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
+                    <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
+                    <Route path="/modify-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ModifyAircraft/></ProtectedRoute>}/>
+
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
-                    <Route path="/login" element={<UserLogin/>}/>
+                    <Route exact={true} path="/login" element={<UserLogin/>}/>
+
+                    <Route path="/aircraft-cost" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><RepairCost/></ProtectedRoute>}/>
+
+
                 </Routes>
             </div>
         )

@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 #name {
@@ -9,161 +9,184 @@
 #value {
 
 }
+
 #rep-flex-container {
-  display: flex;
+    display: flex;
 }
+
 #alertText {
-  font-size: 1.4em;
+    font-size: 1.4em;
 }
 
 #stockLink {
-  text-decoration: none;
-  color: black;
+    text-decoration: none;
+    color: black;
 }
+
 #cardTitle {
-  margin-top: 10px;
-  font-size: 1.2em;
+    margin-top: 10px;
+    font-size: 1.2em;
 }
+
+#submitButton {
+    margin-top: 20px;
+}
+
 #cardText {
-  margin-top: 10px;
-  font-size: 1.1em;
+    margin-top: 10px;
+    font-size: 1.1em;
 }
+
 #partCard {
-  border: 2px solid blue;
-  margin: 10px;
-  width: 200px;
+    border: 2px solid blue;
+    margin: 10px;
+    width: 200px;
 }
+
 #stockPercentage {
-  margin: 10px 0;
-  color: red;
-  font-size: 1.5em;
+    margin: 10px 0;
+    color: red;
+    font-size: 1.5em;
 }
+
 #icon {
-  font-size: 2em;
+    font-size: 2em;
 }
 
 #name {
-  font-size: 1.25em;
-  font-weight: bold;
+    font-size: 1.25em;
+    font-weight: bold;
 }
 
 #value {
-  font-size: 1.5em;
-  font-weight: bold;
-  margin-top: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 10px;
 }
+
 #loDashboardFlexContainer {
-  display: flex;
+    display: flex;
 }
+
 #repairs, #alert {
-  width: 50%;
-  box-sizing: border-box;
-  box-shadow: 3px 3px 15px 0px rgba(215, 215, 215, 0.35);
-  margin-top: 10%;
+    width: 50%;
+    box-sizing: border-box;
+    box-shadow: 3px 3px 15px 0px rgba(215, 215, 215, 0.35);
+    margin-top: 10%;
 }
+
 #alertContainer {
-  box-shadow: 3px 3px 15px 0px rgba(215, 215, 215, 0.35);
+    box-shadow: 3px 3px 15px 0px rgba(215, 215, 215, 0.35);
 }
+
 #flex-container {
-  display: flex;
-  width: 800px;
-  margin: auto;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
+    display: flex;
+    width: 800px;
+    margin: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #view-location {
-  width: 120px;
-  height: 30px;
-  padding: 2px 2px 2px 2px;
-  border-radius: 5px;
-  border: none;
-  background-color: #1e98d7;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-  color: #ffffff;
-  text-align: center;
-  line-height: normal;
-  float: right;
+    width: 120px;
+    height: 30px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1e98d7;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    line-height: normal;
+    float: right;
 }
 
 #iconDiv {
-  margin-left: 10px;
+    margin-left: 10px;
 }
+
 #warningCard {
-  border: 2px solid black;
-  display: flex;
-  flex-grow: 1;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+    border: 2px solid black;
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
+
 #warningText {
-  padding-top: 1em;
-  font-size: 1.2em;
+    padding-top: 1em;
+    font-size: 1.2em;
 }
+
 #buttonContainer {
-  margin-right: 10px;
+    margin-right: 10px;
 }
+
 #warningIcon {
-  height: 60px;
-  width: 60px;
+    height: 60px;
+    width: 60px;
 }
 
 .chartDiv {
-  margin-top: 20px;
-  margin-right: 10px;
-  width: 50%;
-  height: 100%;
+    margin-top: 20px;
+    margin-right: 10px;
+    width: 50%;
+    height: 100%;
 }
 
 .chartsContainer {
-  display: flex;
+    display: flex;
 }
 
 .chartTitle {
-  font-size: 1.5em;
-  font-weight: bold;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 #details-container {
-  display: flex;
-  width: 80%;
-  margin: 10px 20px;
-  padding: 10px;
+    display: flex;
+    width: 80%;
+    margin: 10px 20px;
+    padding: 10px;
 }
 
 #card {
-  width: 25%;
+    width: 25%;
 }
 
 #repairTitle {
-  font-weight: 700;
-  text-align: center;
-  padding-top: 4%;
-  font-size: 1.5em;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 4%;
+    font-size: 1.5em;
 }
 
 
 #view-aircraft {
-  width: 200px;
-  height: 30px;
-  padding: 2px 2px 2px 2px;
-  border-radius: 5px;
-  border: none;
-  background-color: #1e98d7;
-  box-sizing: border-box;
-  font-family: 'Arial', sans-serif;
-  color: #ffffff;
-  text-align: center;
-  line-height: normal;
-  margin: 0 auto;
+    width: 200px;
+    height: 30px;
+    padding: 2px 2px 2px 2px;
+    border-radius: 5px;
+    border: none;
+    background-color: #1e98d7;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+    color: #ffffff;
+    text-align: center;
+    line-height: normal;
+    margin: 0 auto;
 }
 
 #handymanIcon {
-  width: 40%;
-  height: 40%;
-  margin: 0 auto;
-  padding-bottom: 4%;
+    width: 40%;
+    height: 40%;
+    margin: 0 auto;
+    padding-bottom: 4%;
+}
+
+.navbar{
+    float: right;
 }
