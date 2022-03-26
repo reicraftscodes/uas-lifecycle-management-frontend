@@ -16,8 +16,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: "1",
     },
 
-    background : '#111111',
+    background: '#111111',
 
+    minHeight: {
+        minHeight: "50px !important",
+    }
 }));
 
 const AppNavbar = () => {
@@ -159,8 +162,8 @@ const AppNavbar = () => {
     const classes = useStyles();
 
     return (
-        <AppBar position="static" elevation={4} style={{ background: '#111111' }}>
-            <Toolbar>
+        <AppBar position="static" elevation={3} style={{background: '#111111'}}>
+            <Toolbar className={classes.minHeight}>
                 <Typography className={classes.logo} style={{textAlign: "left"}}>
                     Sierra Nevada Corporation
                 </Typography>
