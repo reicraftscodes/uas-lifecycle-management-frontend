@@ -7,7 +7,6 @@ import {
     Paper,
     TextField
 } from "@mui/material";
-import PartsService from "../../services/PartsService";
 import AircraftService from "../../services/AircraftService";
 
 const AssignAircraft = () => {
@@ -30,38 +29,43 @@ const AssignAircraft = () => {
         console.log(aircraft);
         //Checks for validation errors before sending the post request using fetch.
         AircraftService.assignAircraft(aircraft).then(response => response.json()).then(data => {
-                if (data["response"] == "Success"){
-                    //If the response returns a success json body then an alert is sent to the user saying the aircraft has been added.
-                    setAlertSeverity("success");
-                    setAlertMessage(data["response"]+" assigned aircraft!");
-                    setAlert(true);
-                    setTimeout(() => { setAlert(false) }, 3000);
-                } else {
-                    //If the response is unsuccessful then the response error is shown to the user in an alert.
-                    setAlertSeverity("error");
-                    setAlertMessage(data["response"]);
-                    setAlert(true);
-                    setTimeout(() => { setAlert(false) }, 3000);
-                }
-            }).catch(error => {
-                //catches error for not being able to communicate with the server and displays an alert to the user.
-                setAlertMessage("Error communicating with server, part not saved");
-                setAlertSeverity("error");
+            if (data["response"] === "Success") {
+                //If the response returns a success json body then an alert is sent to the user saying the aircraft has been added.
+                setAlertSeverity("success");
+                setAlertMessage(data["response"] + " assigned aircraft!");
                 setAlert(true);
-                setTimeout(() => { setAlert(false) }, 3000);
-            })
-        }
+                setTimeout(() => {
+                    setAlert(false)
+                }, 3000);
+            } else {
+                //If the response is unsuccessful then the response error is shown to the user in an alert.
+                setAlertSeverity("error");
+                setAlertMessage(data["response"]);
+                setAlert(true);
+                setTimeout(() => {
+                    setAlert(false)
+                }, 3000);
+            }
+        }).catch(error => {
+            //catches error for not being able to communicate with the server and displays an alert to the user.
+            setAlertMessage("Error communicating with server, part not saved");
+            setAlertSeverity("error");
+            setAlert(true);
+            setTimeout(() => {
+                setAlert(false)
+            }, 3000);
+        })
+    }
 
-    return(
+    return (
         <div className="main">
-            {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
+            {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></>}
             {/* json takes tailNumber, location, platform status, platformType */}
-            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: 0 }}>
-
+            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%"}}>
                 <h1>Assign Aircraft</h1>
                 <Divider/>
                 <br/>
-                <FormControl >
+                <FormControl>
                     {/*Input for the aircraft tailnumber */}
                     <TextField label="Aircraft tailnumber" onChange={(e) => setTailNumber(e.target.value)}></TextField>
                     <br/>

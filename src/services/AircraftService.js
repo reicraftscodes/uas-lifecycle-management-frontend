@@ -1,5 +1,6 @@
 import React from 'react'
 import configData from "../config/ApiConfig.json"
+import AuthService from "./AuthService";
 
 class AircraftService {
     getUserAircraft(user) {
@@ -87,6 +88,22 @@ class AircraftService {
         });
     }
 
+    getCeoAircraftCost(){
+        return fetch(configData.API_URL+ "/aircraft/ceo-aircraft-cost",{
+            method: 'GET',
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`
+            },
+        });
+    }
+
+    getCeoOverallAircraftCost(){
+        return fetch(configData.API_URL + "/aircraft/ceo-aircraft-full-cost",{
+            method: 'GET',
+            headers: {"Content-Type": "application/json" ,
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
+        })
+    }
 
 }
 export default new AircraftService();

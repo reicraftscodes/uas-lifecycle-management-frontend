@@ -1,15 +1,39 @@
-import {Nav, Navbar, NavbarBrand, NavItem, NavLink,} from 'reactstrap';
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {logOut} from "../actions/actions";
 import {useNavigate} from "react-router-dom"
+import {AppBar, MenuItem, Toolbar, Typography} from "@mui/material";
+import {makeStyles} from '@material-ui/core/styles';
+import {useLocation} from 'react-router-dom';
+
+const useStyles = makeStyles((theme) => ({
+    navigationLinks: {
+        marginLeft: theme.spacing(10),
+        display: "flex",
+    },
+    logo: {
+        cursor: "pointer",
+        flexGrow: "1",
+    },
+
+    background: '#111111',
+
+    minHeight: {
+        minHeight: "50px !important",
+    }
+}));
 
 const AppNavbar = () => {
 
-    const user = useSelector((state) => state.user)
+    const location = useLocation();
+
+    const user = useSelector((state) => state.user);
 
     const dispatch = useDispatch();
+
     const navigate = useNavigate();
+
+    const classes = useStyles();
 
     const logout = () => {
         localStorage.removeItem("user");
@@ -17,7 +41,6 @@ const AppNavbar = () => {
         navigate('/login');
     }
 
-    // this is the main user navigation link you can see from the Navigation bar
     const userRoute = [
         {
             title: "",
@@ -99,8 +122,16 @@ const AppNavbar = () => {
             roles: ["ROLE_USER_CTO", "ROLE_USER_COO", "ROLE_USER_CEO"],
             id: "",
             type: "page"
-        }
+        },
 
+
+        {
+            title: 'Repair Cost Chart',
+            path: "/aircraft-cost",
+            roles: ["ROLE_USER_CEO"],
+            id: "",
+            type: "page"
+        },
 
 
         // You can also change the type to anchor. An example of scenario is when a user click nav link,
@@ -116,10 +147,10 @@ const AppNavbar = () => {
     ]
 
     const onNavigate = (route) => {
-        if(route.type === "anchor") {
+        if (route.type === "anchor") {
             const anchor = document.querySelector("#" + route.id);
             anchor.scrollIntoView({behavior: 'smooth', block: 'center'});
-        } else if (route.type === "page"){
+        } else if (route.type === "page") {
             navigate(route.path)
         }
     }
@@ -127,41 +158,36 @@ const AppNavbar = () => {
     const links = user.isLoggedIn ? userRoute
         .filter(route => user.info.roles.some((role) => route.roles.includes(role)))
         .map(route => {
-            return <NavItem key={route.id}>
-                <NavLink onClick={() => onNavigate(route)}>{route.title}</NavLink>
-            </NavItem>
+            return <div key={route.id}>
+                <MenuItem onClick={() => onNavigate(route)}>{route.title}</MenuItem>
+            </div>
         }) : <></>;
 
+    if(["/", "/login"].includes(location.pathname)) {
+        return null;
+    }
+
     return (
-        <div>
-            <Navbar color="dark" dark expand="md">
-                <NavbarBrand>Sierra Nevada Corporation</NavbarBrand>
-                <Nav className="ml-auto" navbar>
-                    {
-                        user.isLoggedIn &&
-                        <NavItem>
-                            <NavLink>{user.info.username}</NavLink>
-                        </NavItem>
-                    }
+        <AppBar position="static" elevation={3} style={{background: '#111111'}}>
+            <Toolbar className={classes.minHeight}>
+                <Typography className={classes.logo} style={{textAlign: "left"}}>
+                    Sierra Nevada Corporation
+                </Typography>
+                <div className={classes.navigationLinks}>
                     {
                         !user.isLoggedIn &&
-                        <NavItem>
-                            <NavLink onClick={() => navigate("/login")}>Login</NavLink>
-                        </NavItem>
+                        <MenuItem onClick={() => navigate("/login")}>Login</MenuItem>
                     }
 
                     {links}
 
                     {
                         user.isLoggedIn &&
-                        <NavItem>
-                            <NavLink onClick={logout}>Logout</NavLink>
-                        </NavItem>
+                        <MenuItem onClick={logout}>Logout</MenuItem>
                     }
-
-                </Nav>
-            </Navbar>
-        </div>
+                </div>
+            </Toolbar>
+        </AppBar>
     );
 
 }

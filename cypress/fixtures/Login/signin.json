@@ -1,0 +1,9 @@
+{
+  "token": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJjZW9AdGVzdC5jb20iLCJpYXQiOjE2NDgyMTkwMTUsImV4cCI6MTY0OTA4MzAxNX0.sB61d0v4l1xn642eS_yoBAfeAAfH5jkZ8huy2G6DaVzbtFDRBf02UwDVLQ72rtYcz-bqNEEEdIRoTPIWKPnahQ",
+  "id": 3,
+  "username": "ceo@test.com",
+  "email": "ceo@test.com",
+  "roles": [
+    "ROLE_USER_CEO"
+  ]
+}
