@@ -1,14 +1,29 @@
-import {Nav, Navbar, NavbarBrand, NavItem, NavLink,} from 'reactstrap';
 import React from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {logOut} from "../actions/actions";
 import {useNavigate} from "react-router-dom"
+import {AppBar, MenuItem, Toolbar, Typography} from "@mui/material";
+import { makeStyles } from '@material-ui/core/styles';
+
+
+const useStyles = makeStyles((theme) => ({
+    navigationLinks: {
+        marginLeft: theme.spacing(10),
+        display: "flex",
+    },
+    logo: {
+        cursor: "pointer",
+        flexGrow: "1",
+    },
+
+}));
 
 const AppNavbar = () => {
 
     const user = useSelector((state) => state.user)
 
     const dispatch = useDispatch();
+
     const navigate = useNavigate();
 
     const logout = () => {
@@ -17,7 +32,6 @@ const AppNavbar = () => {
         navigate('/login');
     }
 
-    // this is the main user navigation link you can see from the Navigation bar
     const userRoute = [
         {
             title: "",
@@ -111,7 +125,6 @@ const AppNavbar = () => {
         },
 
 
-
         // You can also change the type to anchor. An example of scenario is when a user click nav link,
         // it will NOT direct to the new page, it stays on the same page but it will scroll down smoothly for you and direct you the "id" of a specific thing like
         // for an example an id tag for a specific chart, then it will take you to that chart.
@@ -125,10 +138,10 @@ const AppNavbar = () => {
     ]
 
     const onNavigate = (route) => {
-        if(route.type === "anchor") {
+        if (route.type === "anchor") {
             const anchor = document.querySelector("#" + route.id);
             anchor.scrollIntoView({behavior: 'smooth', block: 'center'});
-        } else if (route.type === "page"){
+        } else if (route.type === "page") {
             navigate(route.path)
         }
     }
@@ -136,41 +149,38 @@ const AppNavbar = () => {
     const links = user.isLoggedIn ? userRoute
         .filter(route => user.info.roles.some((role) => route.roles.includes(role)))
         .map(route => {
-            return <NavItem key={route.id}>
-                <NavLink onClick={() => onNavigate(route)}>{route.title}</NavLink>
-            </NavItem>
+            return <MenuItem key={route.id}>
+                <MenuItem onClick={() => onNavigate(route)}>{route.title}</MenuItem>
+            </MenuItem>
         }) : <></>;
 
+    const classes = useStyles();
+
     return (
-        <div>
-            <Navbar color="dark" dark expand="md">
-                <NavbarBrand>Sierra Nevada Corporation</NavbarBrand>
-                <Nav className="ml-auto" navbar>
-                    {
-                        user.isLoggedIn &&
-                        <NavItem>
-                            <NavLink>{user.info.username}</NavLink>
-                        </NavItem>
-                    }
+        <AppBar position="static" elevation={4}>
+            <Toolbar>
+                <Typography  className={classes.logo}>
+                    Sierra Nevada Corporation
+                </Typography>
+                <div className={classes.navigationLinks}>
+                    {/*{*/}
+                    {/*    user.isLoggedIn &&*/}
+                    {/*    <MenuItem className={classes.link}>{user.info.username}</MenuItem>*/}
+                    {/*}*/}
                     {
                         !user.isLoggedIn &&
-                        <NavItem>
-                            <NavLink onClick={() => navigate("/login")}>Login</NavLink>
-                        </NavItem>
+                        <MenuItem onClick={() => navigate("/login")}>Login</MenuItem>
                     }
 
                     {links}
 
                     {
                         user.isLoggedIn &&
-                        <NavItem>
-                            <NavLink onClick={logout}>Logout</NavLink>
-                        </NavItem>
+                        <MenuItem onClick={logout} >Logout</MenuItem>
                     }
-
-                </Nav>
-            </Navbar>
-        </div>
+                </div>
+            </Toolbar>
+        </AppBar>
     );
 
 }
