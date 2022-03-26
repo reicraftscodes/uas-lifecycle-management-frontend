@@ -93,9 +93,10 @@ function App() {
                     <Route path="/modify-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ModifyAircraft/></ProtectedRoute>}/>
 
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
-                    <Route path="/login" element={<UserLogin/>}/>
+                    <Route exact={true} path="/login" element={<UserLogin/>}/>
 
                     <Route path="/aircraft-cost" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><RepairCost/></ProtectedRoute>}/>
+
 
                 </Routes>
             </div>

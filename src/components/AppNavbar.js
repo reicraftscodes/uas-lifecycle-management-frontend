@@ -163,8 +163,7 @@ const AppNavbar = () => {
             </div>
         }) : <></>;
 
-
-    if (location.pathname === '/login') {
+    if(["/", "/login"].includes(location.pathname)) {
         return null;
     }
 
@@ -175,10 +174,6 @@ const AppNavbar = () => {
                     Sierra Nevada Corporation
                 </Typography>
                 <div className={classes.navigationLinks}>
-                    {/*{*/}
-                    {/*    user.isLoggedIn &&*/}
-                    {/*    <MenuItem className={classes.link}>{user.info.username}</MenuItem>*/}
-                    {/*}*/}
                     {
                         !user.isLoggedIn &&
                         <MenuItem onClick={() => navigate("/login")}>Login</MenuItem>
