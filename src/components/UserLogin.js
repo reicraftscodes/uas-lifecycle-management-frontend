@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Box, Button, FormControl, Grid, Link, Paper, TextField, Typography} from "@mui/material";
+import {Box, Button, FormControl, Grid, Paper, TextField, Typography} from "@mui/material";
 import Logo from '../assets/images/logo.png';
 import AuthService from '../services/AuthService';
 import {useDispatch} from 'react-redux'
@@ -10,7 +10,7 @@ import {getUserDashboard} from "../util/util";
 
 function UserLogin() {
 
-    const paperStyle = {padding: 20, height: '70vh', width: 380, margin: "20px auto"}
+    const paperStyle = {padding: 20, height: '55vh', width: 380, margin: "20px auto"}
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
@@ -67,11 +67,11 @@ function UserLogin() {
 
     };
     return (
-        <Grid>
+        <Grid container justify = "center">
             <Paper elevation={4} style={paperStyle}>
                 <Grid align='center'>
                     <img src={Logo} id="sncLogo" height="50px" width="160px" margin="20px" alt="Sierra Nevada Corporation Logo"/>
-                    <h4>Sign In</h4>
+                    <Typography variant="h5">Sign In</Typography>
                 </Grid>
                 <FormControl>
                     <TextField
@@ -112,11 +112,6 @@ function UserLogin() {
                             <b>{message}</b>
                         </Box>
                     )}
-                    <Typography>
-                        <Link href="#">
-                            Forgot password ?
-                        </Link>
-                    </Typography>
                 </FormControl>
             </Paper>
         </Grid>
