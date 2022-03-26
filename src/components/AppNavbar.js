@@ -3,7 +3,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {logOut} from "../actions/actions";
 import {useNavigate} from "react-router-dom"
 import {AppBar, MenuItem, Toolbar, Typography} from "@mui/material";
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -159,7 +159,7 @@ const AppNavbar = () => {
     return (
         <AppBar position="static" elevation={4}>
             <Toolbar>
-                <Typography  className={classes.logo}>
+                <Typography className={classes.logo} style={{textAlign: "left"}}>
                     Sierra Nevada Corporation
                 </Typography>
                 <div className={classes.navigationLinks}>
@@ -176,7 +176,7 @@ const AppNavbar = () => {
 
                     {
                         user.isLoggedIn &&
-                        <MenuItem onClick={logout} >Logout</MenuItem>
+                        <MenuItem onClick={logout}>Logout</MenuItem>
                     }
                 </div>
             </Toolbar>
