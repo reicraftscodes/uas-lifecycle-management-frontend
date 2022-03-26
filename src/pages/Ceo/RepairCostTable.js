@@ -113,32 +113,32 @@ function RepairCostTable({data}) {
             flex: 1,
             headerClassName: 'super-app-theme--header'
         },
-        {
-            field: "action",
-            headerName: "Parts",
-            sortable: false,
-            flex: 1,
-            renderCell: (params) => {
-                const onClick = (e) => {
-                    e.stopPropagation();
-
-                    const api: GridApi = params.api;
-                    const thisRow: Record<string, GridCellValue> = {};
-
-                    api
-                        .getAllColumns()
-                        .filter((c) => c.field !== "__check__" && !!c)
-                        .forEach(
-                            (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
-                        );
-
-                    return alert(JSON.stringify(thisRow, null, 4));
-                };
-
-                return <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View Parts
-                    Cost</Button>;
-            }
-        },
+        // {
+        //     field: "action",
+        //     headerName: "Parts",
+        //     sortable: false,
+        //     flex: 1,
+        //     renderCell: (params) => {
+        //         const onClick = (e) => {
+        //             e.stopPropagation();
+        //
+        //             const api: GridApi = params.api;
+        //             const thisRow: Record<string, GridCellValue> = {};
+        //
+        //             api
+        //                 .getAllColumns()
+        //                 .filter((c) => c.field !== "__check__" && !!c)
+        //                 .forEach(
+        //                     (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
+        //                 );
+        //
+        //             return alert(JSON.stringify(thisRow, null, 4));
+        //         };
+        //
+        //         return <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View Parts
+        //             Cost</Button>;
+        //     }
+        // },
     ];
 
     const useStyles = makeStyles((theme) =>
