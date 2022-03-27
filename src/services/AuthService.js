@@ -15,7 +15,7 @@ class AuthService {
 
     getJwtInfo = () => {
         return fetch(configData.API_URL + '/api/auth/getJwtInfo', {
-            method: 'POST',
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization' : `Bearer ${this.getCurrentUser().token}`
