@@ -73,7 +73,7 @@ const AssignAircraft = () => {
                     <br/>
                     {/*Input for the user id */}
                     <TextField label="User ID" onChange={(e) => setUserID(e.target.value)}></TextField>
-                    <Button variant="contained" onClick={handleSubmission} id="submitButton">Submit</Button>
+                    <Button variant="contained" style={{backgroundColor: "#004789"}} onClick={handleSubmission} id="submitButton">Submit</Button>
                 </FormControl>
             </Paper>
 

@@ -1,70 +1,121 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# UAS Lifecycle Management: Frontend Documentation
+UAS Lifecycle Management Frontend is a Web Application project.
 
-## Available Scripts
+# Contents
 
-In the project directory, you can run:
+- [Set Up Instructions](#Set Up)
+- [How to run the project](#How to run the project)
+- [Libraries and Tools Used](#Libraries and Tools Used)
+- [Testing](#Testing)
+- [Deployment](#Deployment)
+# Set Up
+Before running the project, please make sure you have the following installed on your machine:
 
-### `npm start`
+- IntelliJ
+- Node v14.17.3
+- Npm v8.5.4
+- Java 11
+- MySQL Workbench and/or MySQL Client
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## IntelliJ
+IntelliJ is used to modify the code base, start, or run tests via terminal. 
+IntelliJ can be downloaded [here](https://www.jetbrains.com/idea/download/#section=windows) where you can also find the set up instructions. 
 
-### `npm test`
+## JavaScript
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+avaScript is one of the most widely used programming languages. It is the language that
+was used to develop the frontend of the UAS Lifecycle Management because React is JavaScript library.
+## React
+[React Documentation](https://reactjs.org/docs/getting-started.html )
 
-### `npm run build`
+React (Runs on Node.js) was used for the frontend of the UAS Lifecycle Management system.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+##Npm (Package Manager tool for Node.js)
+[npm documentation](https://docs.npmjs.com/)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Npm is the default package manager for the JavaScript runtime environment Node.js. It was
+used as a command-line utility for interacting with said repository that aids in package
+installation, version management, and dependency management. In addition, it was used to
+build and start the project.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Material UI 
+[Material UI Documentation](https://mui.com/)
 
-### `npm run eject`
+Material-UI is a components library which used as User Interface for React in UAS Lifecycle Management System.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# How to run the project
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The project was build/start/run/compile successfully using:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- Node 14.17.3
+- npm 8.5.4
 
-## Learn More
+To start/run/compile the project please follow the steps below:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+###Step 1: : Clone the repository
+```bash
+  git clone https://git.cardiff.ac.uk/c1947381/uas-lifecycle-management-frontend.git
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+###Step 2: Run Backend Server 
 
-### Code Splitting
+Before you run backend server, you must run it first. It can be followed by clicking [here](https://git.cardiff.ac.uk/c1989132/uas-lifecycle-management/-/tree/dev/api).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Step 3: Open an IntelliJ terminal
 
-### Analyzing the Bundle Size
+1. Open the project in intellij.
+2. Click the terminal at the bottom left, or you can simply press ALT+12 to open the terminal
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Step 4: Buind and Run the frontend Server
+To Install dependencies and run project, from the terminal type the following.
 
-### Making a Progressive Web App
+```bash
+npm install "&&" npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Run the cypress end-to-end test.
 
-### Advanced Configuration
+```bash
+npm run cypress:open 
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Mock Users
+There are 5 users in database which will allow you to log on the web application and experience the application.
 
-### Deployment
+Account Type | Email | Password |
+--- | --- | --- |
+CEO | ceo@test.com | password
+COO | coo@test.com | password |
+CTO | cto@test.com | password |
+LO | logistic@test.com | password |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+# Libraries and Tools Used
+- React (Runs on Node.js)
+    - [Redux](https://react-redux.js.org/) State Management
+    - React Validation
+    - React Spinners
+- Material UI React Libary
+    - Icons Material
+- [JavaScript Chart.js](https://www.chartjs.org/docs/latest/)
+- React Developer Tool- this react developer tool is downloadable from google extension and can be found [here](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en).
+- Redux Developer Tool- this redux developer tool is downloadable from google extension and can be found here [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+---
+# Testing
+
+### End-to-End testing
+[Cypress Documentation](https://www.cypress.io/)
+
+Cypress is used for End-to-End Testing. Cypress is a JavaScript test automation solution used for web automation. It enables teams to create web test automation scripts
+
+---
+
+# Deployment
+

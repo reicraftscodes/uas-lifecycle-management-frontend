@@ -99,7 +99,7 @@ function UserLogin() {
                         helperText={isPasswordInvalid && "Password is required."}
                     />
                     <br/>
-                    <Button type='submit' data-cy="login-button" _disabled={loading} color='primary' variant="contained" onClick={handleLogin}
+                    <Button type='submit' data-cy="login-button" _disabled={loading} style={{backgroundColor: "#004789"}} variant="contained" onClick={handleLogin}
                             isLoading={loading}> Login </Button><br/>
                     {message && (
                         <Box

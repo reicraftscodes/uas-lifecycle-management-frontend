@@ -1,7 +1,8 @@
 import React from 'react';
-import {Button, Card, CardText, CardTitle} from 'reactstrap';
 import {Link} from "react-router-dom";
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
+import {Button, Grid, Paper, Typography} from "@mui/material";
+import PartsService from "../services/PartsService";
 
 export default class StockAlert extends React.Component {
 
@@ -13,7 +14,7 @@ export default class StockAlert extends React.Component {
 
     componentDidMount() {
         //fetch api used to send get request
-        fetch('http://localhost:8080/parts/low-stock')
+        PartsService.getLowStackParts()
             .then(response => response.json()).then(data => {
             this.setState({lowStockParts: data})
         }).catch(error => {
@@ -39,25 +40,29 @@ export default class StockAlert extends React.Component {
 
         const warningList = lowStockParts.map(count => {
             return (
-                <div id="warningCard" key={count.location}>
+                <div id="warningCard" key={count.location} padding="10px">
                     <div id="iconDiv">
                         <WarningAmberIcon id="warningIcon"></WarningAmberIcon>
                     </div>
                     <div id="warningTextContainer">
-                    <p id="warningText">{count.lowStockParts} Low stock parts at the {count.location} location</p>
+                        <Typography variant="subtitle1" id="warningText">{count.lowStockParts} Low stock parts at
+                            the {count.location} location</Typography>
                     </div>
                     <div id="buttonContainer">
-                        <Link to={`/locations/${count.location}`}><Button id="view-location">View Location</Button></Link>
+                        <Link to={`/locations/${count.location}`}><Button variant="contained" style={{backgroundColor: "#004789"}} id="view-location">View
+                            Location</Button></Link>
                     </div>
                 </div>
             )
         });
 
         return (
-            <div id="alertContainer">
-                <div><h3 id="alertTitle">Stock Level Warning</h3>
-                    {warningList}</div>
-            </div>
-    );
+            <Grid item xs={6}>
+                <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0,pb:0, height: "100%"}}>
+                    <Typography variant="h6">Stock Level Warning</Typography>
+                    {warningList}
+                </Paper>
+            </Grid>
+        );
     }
 }
