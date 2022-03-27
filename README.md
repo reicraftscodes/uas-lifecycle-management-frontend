@@ -25,10 +25,10 @@ IntelliJ can be downloaded [here](https://www.jetbrains.com/idea/download/#secti
 
 ## JavaScript
 
-avaScript is one of the most widely used programming languages. It is the language that
+JavaScript is one of the most widely used programming languages. It is the language that
 was used to develop the frontend of the UAS Lifecycle Management because React is JavaScript library.
 ## React
-[React Documentation](https://reactjs.org/docs/getting-started.html )
+[React Documentation](https://reactjs.org/docs/getting-started.html)
 
 React (Runs on Node.js) was used for the frontend of the UAS Lifecycle Management system.
 
@@ -56,12 +56,12 @@ The project was build/start/run/compile successfully using:
 
 To start/run/compile the project please follow the steps below:
 
-###Step 1: : Clone the repository
+### Step 1: : Clone the repository
 ```bash
   git clone https://git.cardiff.ac.uk/c1947381/uas-lifecycle-management-frontend.git
 ```
 
-###Step 2: Run Backend Server 
+### Step 2: Run Backend Server 
 
 Before you run backend server, you must run it first. It can be followed by clicking [here](https://git.cardiff.ac.uk/c1989132/uas-lifecycle-management/-/tree/dev/api).
 
