@@ -105,5 +105,12 @@ class AircraftService {
         })
     }
 
+    getNeedAircraftRepair(){
+        return fetch(configData.API_URL + "/aircraft/needing-repair", {
+            method: "GET",
+            headers: {"Content-Type":"application/json" },
+        });
+    }
+
 }
 export default new AircraftService();

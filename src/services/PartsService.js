@@ -31,6 +31,13 @@ class PartsService {
             body: type
         });
     }
+
+    getLowStackParts(){
+        return fetch(configData.API_URL + "/parts/low-stock", {
+            method: "GET",
+            headers: {"Content-Type":"application/json" },
+        });
+    }
 }
 
 export default new PartsService();
