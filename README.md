@@ -4,12 +4,11 @@ UAS Lifecycle Management Frontend is a Web Application project.
 
 # Contents
 
-- [Set Up Instructions](#set-up)
-- [How to run the project](#run-project)
-- [Libraries and Tools Used](#libraries-and-tools-used)
-- [Project Architecture Diagrams](#project-diagrams)
-- [Testing](#testing)
-
+- [Set Up Instructions](#Set Up)
+- [How to run the project](#How to run the project)
+- [Libraries and Tools Used](#Libraries and Tools Used)
+- [Testing](#Testing)
+- [Deployment](#Deployment)
 # Set Up
 Before running the project, please make sure you have the following installed on your machine:
 
@@ -44,8 +43,9 @@ build and start the project.
 ## Material UI 
 [Material UI Documentation](https://mui.com/)
 
-Material-UI is a popular components library and used as User Interface for React.
+Material-UI is a components library which used as User Interface for React in UAS Lifecycle Management System.
 
+---
 
 # How to run the project
 
@@ -70,13 +70,14 @@ Before you run backend server, you must run it first. It can be followed by clic
 1. Open the project in intellij.
 2. Click the terminal at the bottom left, or you can simply press ALT+12 to open the terminal
 
-### Step 4: Build the frontend Server
-To Install dependencies and start project, from the terminal type the following. 
+### Step 4: Buind and Run the frontend Server
+To Install dependencies and run project, from the terminal type the following.
+
 ```bash
 npm install "&&" npm start
 ```
 
-Run the end to end test
+Run the cypress end-to-end test.
 
 ```bash
 npm run cypress:open 
@@ -92,6 +93,7 @@ COO | coo@test.com | password |
 CTO | cto@test.com | password |
 LO | logistic@test.com | password |
 
+---
 
 # Libraries and Tools Used
 - React (Runs on Node.js)
@@ -101,17 +103,19 @@ LO | logistic@test.com | password |
 - Material UI React Libary
     - Icons Material
 - [JavaScript Chart.js](https://www.chartjs.org/docs/latest/)
-- React Developer Tools
-- Redux Developer Tools
+- React Developer Tool- this react developer tool is downloadable from google extension and can be found [here](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en).
+- Redux Developer Tool- this redux developer tool is downloadable from google extension and can be found here [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en).
 
 
+---
 # Testing
 
-## End-to-End testing
+### End-to-End testing
 [Cypress Documentation](https://www.cypress.io/)
 
 Cypress is used for End-to-End Testing. Cypress is a JavaScript test automation solution used for web automation. It enables teams to create web test automation scripts
 
+---
 
 # Deployment
 
