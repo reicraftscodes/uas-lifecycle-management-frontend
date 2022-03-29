@@ -12,10 +12,8 @@ install:
   stage: install
   tags:
     - general-docker
-  before_script:
-    - npm install
   script:
-    - npm run build
+    - npm install
 
 
 deploy-to-uat:
