@@ -6,28 +6,23 @@ cache:
 
 stages:
   - install
-  # - test
   - deploy
 
-Install:
+install:
   stage: install
   tags:
-    - node
+    - general-docker
   before_script:
     - npm install
   script:
     - npm run build
 
-# Test:
-#   stage: test
-#   script:
-#    - npm test
 
-Deploy to UAT:
+deploy-to-uat:
   image: ruby:3.1.1
   stage: connect
   tags:
-    - node
+    - general-docker
   before_script:
     - gem install dpl
     - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
