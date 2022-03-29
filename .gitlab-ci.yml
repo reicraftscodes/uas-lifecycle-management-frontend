@@ -28,7 +28,7 @@ deploy-to-uat:
     - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
   script:
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY --skip_cleanup
-      - export HEROKU_API_KEY=$HEROKU_API_KEY
+    - export HEROKU_API_KEY=$HEROKU_API_KEY
   after_script:
     - echo "UAT Web Application Deployed"
   only:
