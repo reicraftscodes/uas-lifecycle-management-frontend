@@ -36,13 +36,16 @@ export default class StockAlert extends React.Component {
         const lowStock1 = {lowStockParts: 1, location: "Bristol"}
         const lowStock2 = {lowStockParts: 2, location: "St Athen"}
 
+        const iconStyle = {color: '#efae40'}
+
+
         lowStockParts = [lowStock, lowStock1, lowStock2]
 
         const warningList = lowStockParts.map(count => {
             return (
                 <div id="warningCard" key={count.location} padding="10px">
                     <div id="iconDiv">
-                        <WarningAmberIcon id="warningIcon"></WarningAmberIcon>
+                        <WarningAmberIcon style={iconStyle} id="warningIcon"></WarningAmberIcon>
                     </div>
                     <div id="warningTextContainer">
                         <Typography variant="subtitle1" id="warningText">{count.lowStockParts} Low stock parts at
