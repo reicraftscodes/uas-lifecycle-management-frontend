@@ -20,7 +20,7 @@ install:
 
 deploy-to-uat:
   image: ruby:3.1.1
-  stage: connect
+  stage: deploy
   tags:
     - general-docker
   before_script:
@@ -30,12 +30,13 @@ deploy-to-uat:
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY --skip_cleanup
     - export HEROKU_API_KEY=$HEROKU_API_KEY
     - export NODE_OPTIONS=--max_old_space_size=4096
+  after_script:
+    - echo "UAT Web Application Deployed"
   only:
     - uat
   environment:
     name: uat
     url: $HEROKU_APP_HOST
 
-after_script:
-  - echo "UAT Web Application Deployed"
+
 
