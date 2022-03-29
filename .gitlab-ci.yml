@@ -19,7 +19,7 @@ Install:
 #   script:
 #    - npm test
 
-Production:
+UAT:
   image: ruby:3.1.1
   stage: deploy
   before_script:
@@ -30,7 +30,7 @@ Production:
     - export HEROKU_API_KEY=$HEROKU_API_KEY
     - export NODE_OPTIONS=--max_old_space_size=4096
   only:
-    - master
+    - uat
   environment:
     name: production
     url: $HEROKU_APP_HOST
