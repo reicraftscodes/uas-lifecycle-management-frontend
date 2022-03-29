@@ -29,6 +29,7 @@ deploy-to-uat:
   script:
     - dpl --provider=heroku --app=$HEROKU_APP_NAME --api-key=$HEROKU_API_KEY --skip_cleanup
     - export HEROKU_API_KEY=$HEROKU_API_KEY
+    - export NODE_OPTIONS=--max_old_space_size=5120
   after_script:
     - echo "UAT Web Application Deployed"
   only:
