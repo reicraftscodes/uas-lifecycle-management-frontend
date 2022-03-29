@@ -11,17 +11,23 @@ stages:
 
 Install:
   stage: install
-  script:
+  tags:
+    - node
+  before_script:
     - npm install
+  script:
+    - npm run build
 
 # Test:
 #   stage: test
 #   script:
 #    - npm test
 
-UAT:
+Deploy to UAT:
   image: ruby:3.1.1
-  stage: deploy
+  stage: connect
+  tags:
+    - node
   before_script:
     - gem install dpl
     - wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh
@@ -32,8 +38,10 @@ UAT:
   only:
     - uat
   environment:
-    name: production
+    name: uat
     url: $HEROKU_APP_HOST
 
 after_script:
-  - echo "Application Deployed"
+  - echo "UAT Web Application Deployed"
+
+
