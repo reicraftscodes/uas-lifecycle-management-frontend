@@ -9,6 +9,9 @@ import SearchIcon from '@mui/icons-material/Search';
 import {Button} from "@mui/material";
 import {createStyles, makeStyles} from "@mui/styles";
 import {GridApi} from "@material-ui/data-grid";
+import Typography from "@mui/material/Typography";
+import {Grid} from "@material-ui/core";
+import {useNavigate} from "react-router-dom";
 
 function QuickSearchToolbar(props) {
     return (
@@ -63,6 +66,8 @@ QuickSearchToolbar.propTypes = {
 };
 
 function RepairCostTable({data}) {
+    const navigate = useNavigate();
+
     function escapeRegExp(value) {
         return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     }
@@ -97,14 +102,73 @@ function RepairCostTable({data}) {
             headerName: 'Repair Cost (£)',
             type: 'number',
             flex: 1,
-            headerClassName: 'grid-header-mui'
+            headerClassName: 'grid-header-mui',
+            renderCell: (params) => {
+                console.log(params)
+                const onClick = (e) => {
+                    e.stopPropagation();
+
+                    const api: GridApi = params.api;
+                    const thisRow: Record<string, GridCellValue> = {};
+
+                    api
+                        .getAllColumns()
+                        .filter((c) => c.field !== "__check__" && !!c)
+                        .forEach(
+                            (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
+                        );
+
+                    navigate("/aircraft-cost/repair/" + thisRow.tailNumber)
+                };
+
+                return <>
+                    <Grid container spacing={1}>
+                        <Grid item xs={9}>
+                            <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View
+                                Repairs</Button>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography>{params.formattedValue}</Typography>
+                        </Grid>
+                    </Grid>
+                </>
+            }
         },
         {
             field: 'partCost',
             headerName: 'Part Cost (£)',
             type: 'number',
             flex: 1,
-            headerClassName: 'grid-header-mui'
+            headerClassName: 'grid-header-mui',
+            renderCell: (params) => {
+                console.log(params)
+                const onClick = (e) => {
+                    e.stopPropagation();
+
+                    const api: GridApi = params.api;
+                    const thisRow: Record<string, GridCellValue> = {};
+
+                    api
+                        .getAllColumns()
+                        .filter((c) => c.field !== "__check__" && !!c)
+                        .forEach(
+                            (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
+                        );
+                    navigate("/aircraft-cost/part/" + thisRow.tailNumber)
+                };
+
+                return <>
+                    <Grid container spacing={1}>
+                        <Grid item xs={9}>
+                            <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View
+                                Parts</Button>
+                        </Grid>
+                        <Grid item xs={3}>
+                            <Typography>{params.formattedValue}</Typography>
+                        </Grid>
+                    </Grid>
+                </>
+            }
         },
         {
             field: 'totalCost',
@@ -112,33 +176,7 @@ function RepairCostTable({data}) {
             type: 'number',
             flex: 1,
             headerClassName: 'super-app-theme--header'
-        },
-        // {
-        //     field: "action",
-        //     headerName: "Parts",
-        //     sortable: false,
-        //     flex: 1,
-        //     renderCell: (params) => {
-        //         const onClick = (e) => {
-        //             e.stopPropagation();
-        //
-        //             const api: GridApi = params.api;
-        //             const thisRow: Record<string, GridCellValue> = {};
-        //
-        //             api
-        //                 .getAllColumns()
-        //                 .filter((c) => c.field !== "__check__" && !!c)
-        //                 .forEach(
-        //                     (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
-        //                 );
-        //
-        //             return alert(JSON.stringify(thisRow, null, 4));
-        //         };
-        //
-        //         return <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View Parts
-        //             Cost</Button>;
-        //     }
-        // },
+        }
     ];
 
     const useStyles = makeStyles((theme) =>
