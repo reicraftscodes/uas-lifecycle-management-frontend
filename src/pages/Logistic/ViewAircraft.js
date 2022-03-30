@@ -1,5 +1,23 @@
 
-import {Paper, Button, TextField, FormControl, TableRow, TableCell, TableContainer, Table, TableHead, TableBody, Grid, MenuItem, Select, InputLabel,Autocomplete, Alert} from "@mui/material";
+import {
+    Paper,
+    Button,
+    TextField,
+    FormControl,
+    TableRow,
+    TableCell,
+    TableContainer,
+    Table,
+    TableHead,
+    TableBody,
+    Grid,
+    MenuItem,
+    Select,
+    InputLabel,
+    Autocomplete,
+    Alert,
+    Stack, Card, CardContent, Typography, List, ListItem, ListItemText, Divider
+} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import AircraftService from "../../services/AircraftService";
 import PartService from "../../services/PartsService";
@@ -8,7 +26,7 @@ import {useLocation, useParams} from "react-router-dom";
 const ViewAircraft = () => {
     const {tailNumber} = useParams();
 
-    const[tailNumber1, setTailNumber1] = useState("");
+    const[aircraft, setAircraft] = useState({});
     const[parts, setParts] = useState([[]]);
     const[aircraftStatus, setAircraftStatus] = useState("Aircraft Status: ");
     const[status, setStatus] = useState("DESIGN");
@@ -37,12 +55,45 @@ const ViewAircraft = () => {
 
     useEffect(() => {
         console.log("use effect");
+        getAircraft();
         getAircraftData();
     }, []);
 
     console.log(tailNumber);
 
-    //used for displaying aircraft parts and their statuses
+    const getAircraft = () => {
+        AircraftService.getAircraft(tailNumber)
+            .then(response => {
+                if (!response.ok) {
+                    //checks for aircraft not found error
+                    setAlertSeverity("error");
+                    setAlertMessage("Aircraft not found!")
+                    setAlert(true);
+                    setTimeout(() => {
+                        setAlert(false)
+                    }, 3000);
+                } else {
+                    return response;
+                }
+            })
+            .then(response => response.json())
+            .then(data => {
+                setAircraft(data);
+            }).catch(error => {
+            //catches failure to connect to api error
+            if (error.message.includes("Failed to fetch")) {
+                setAlertSeverity("error");
+                setAlertMessage("Error communicating with the server!")
+                setAlert(true);
+                setTimeout(() => {
+                    setAlert(false)
+                }, 3000);
+            }
+        });
+    }
+
+
+        //used for displaying aircraft parts and their statuses
     const getAircraftData = () => {
         AircraftService.getAircraftPartsStatus(tailNumber)
         .then(response => {
@@ -165,6 +216,42 @@ const ViewAircraft = () => {
         <div>
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             <Grid container>
+                <Grid item xs={8}>
+                    <Paper elevation={3} sx={{width: "97%",height: "90%", m: 2, p: "1%", pt: "0%" }}>
+                            <Card sx={{ width: '40%', maxWidth: 340, minWidth: 360, bgcolor: 'background.paper', marginTop: 2, marginBottom: 2}}>
+                                <CardContent>
+                                    <Typography sx={{ fontWeight: 'bold', marginTop: '10px', fontSize: '1.5rem'}}>Aircraft</Typography>
+                                    <List sx={{ maxWidth: 360, bgcolor: 'background.paper'}}>
+                                        <ListItem>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Tail number:</ListItemText>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.tailNumber}</ListItemText>
+                                        </ListItem>
+                                        <Divider />
+                                        <ListItem>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Location:</ListItemText>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.location}</ListItemText>
+                                        </ListItem>
+                                        <Divider />
+                                        <ListItem>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform:</ListItemText>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.platformType}</ListItemText>
+                                        </ListItem>
+                                        <Divider />
+                                        <ListItem>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform status:</ListItemText>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.platformStatus}</ListItemText>
+                                        </ListItem>
+                                        <Divider />
+                                        <ListItem>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Total flight time:</ListItemText>
+                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.flyTimeHours}h</ListItemText>
+                                        </ListItem>
+                                    </List>
+                                </CardContent>
+                            </Card>
+
+                    </Paper>
+                </Grid>
                 <Grid item xs={6}>
                     <Grid container>
                         <Grid item xs={6}>

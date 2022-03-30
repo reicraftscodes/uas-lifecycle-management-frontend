@@ -99,9 +99,9 @@ export default function AllAircraftTable({data}) {
 
     }
 
-    const onClick = (params) => {
-        console.log(params);
-        navigate(`/view-aircraft/${params}`)
+    const onClick = (tailNumber) => {
+        console.log(tailNumber);
+        navigate(`/view-aircraft/${tailNumber}`)
     };
 
     return (
