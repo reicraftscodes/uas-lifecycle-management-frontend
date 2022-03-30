@@ -46,6 +46,15 @@ class PartsService {
         });
     }
 
+    getOrderHistory(){
+        return fetch(configData.API_URL + "/parts/stock-order/all", {
+            method: "GET",
+            headers: {"Content-Type":"application/json" },
+        });
+
+
+    }
+
 }
 
 export default new PartsService();
