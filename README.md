@@ -118,4 +118,6 @@ Cypress is used for End-to-End Testing. Cypress is a JavaScript test automation 
 ---
 
 # Deployment
+# UAT
+
 
