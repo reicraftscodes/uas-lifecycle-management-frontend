@@ -18,7 +18,6 @@ function VieListParts() {
             .then(data => {
                 console.log("Successfully retrieved view parts list", data);
                 setlistOfParts(data);
-                console.log(data);
             })
             .catch(error => {
                 console.log("Error retrieving view parts list ", error);

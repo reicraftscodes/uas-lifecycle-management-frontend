@@ -9,9 +9,13 @@ import SearchIcon from '@mui/icons-material/Search';
 import {Button} from "@mui/material";
 import {createStyles, makeStyles} from "@mui/styles";
 import {GridApi} from "@material-ui/data-grid";
+import StockPartsLocation from "../../components/StockPartsLocation";
+import {useEffect, useState} from "react";
+import {useNavigate} from "react-router-dom";
 
 
 function partsQuickSearchToolbar(props) {
+
     return (
         <Box
             sx={{
@@ -64,6 +68,9 @@ partsQuickSearchToolbar.propTypes = {
 };
 
 function ViewListPartsTable({data}) {
+
+
+    const navigate = useNavigate();
 
     function escapeRegExp(value) {
         return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
@@ -119,6 +126,13 @@ function ViewListPartsTable({data}) {
         },
 
         {
+            field: 'compatiblePlatforms',
+            headerName: 'Compatible Platforms',
+            flex: 1,
+            headerClassName: 'grid-header-mui'
+        },
+
+        {
             field: "action",
             headerName: "Stock Locations",
             sortable: false,
@@ -137,6 +151,7 @@ function ViewListPartsTable({data}) {
                             (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
                         );
 
+                    navigate(`/view-parts/${thisRow.partNumber}`)
                 };
 
                 return <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View
@@ -158,21 +173,22 @@ function ViewListPartsTable({data}) {
 
     const classes = useStyles();
 
+
     return (
         <Box sx={{height: 700, width: '100%'}}>
             <DataGrid
-                components={{Toolbar: partsQuickSearchToolbar}}
-                rows={rows}
-                columns={columns}
-                componentsProps={{
-                    toolbar: {
-                        value: searchText,
-                        onChange: (event) => requestSearch(event.target.value),
-                        clearSearch: () => requestSearch(''),
-                    },
-                }}
-                className={classes.root}
-            />
+            components={{Toolbar: partsQuickSearchToolbar}}
+            rows={rows}
+            columns={columns}
+            componentsProps={{
+                toolbar: {
+                    value: searchText,
+                    onChange: (event) => requestSearch(event.target.value),
+                    clearSearch: () => requestSearch(''),
+                },
+            }}
+            className={classes.root}
+        />
         </Box>
     );
 }
