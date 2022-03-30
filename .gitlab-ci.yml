@@ -6,7 +6,6 @@ cache:
 
 stages:
   - install
-  - deploy
 
 install:
   stage: install
