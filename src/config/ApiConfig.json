@@ -1,3 +1,3 @@
 {
-  "API_URL": "https://uastest.herokuapp.com"
+  "API_URL": "http://localhost:8080"
 }
