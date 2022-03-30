@@ -32,7 +32,6 @@ const ViewAircraft = () => {
     const[status, setStatus] = useState("DESIGN");
     const[newPartNumber, setPartNumber] = useState();
     const[availableParts, setAvailableParts] = useState([""]);
-    const[display, setDisplay] = useState("none");
 
     const [alert, setAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
@@ -119,7 +118,6 @@ const ViewAircraft = () => {
         .then(data => {
             setParts(data.parts);
             setAircraftStatus("Aircraft status: "+data.status);
-            setDisplay("block");
         }).catch(error =>{
             //catches failure to connect to api error
             if(error.message.includes("Failed to fetch")) {
@@ -136,7 +134,7 @@ const ViewAircraft = () => {
         const request = {tailNumber,status};
         AircraftService.updateAircraftStatus(request).then(() => {
             getAircraftData();
-
+            getAircraft();
             setAlertSeverity("success");
             setAlertMessage("Successfully changed aircraft status!")
             setAlert(true);
@@ -184,6 +182,7 @@ const ViewAircraft = () => {
                 let request = {tailNumber,newPartNumber};
                 AircraftService.updateAircraftPart(request).then(() => {
                     getAircraftData();
+                    getAircraft();
                     setAlertSeverity("success");
                     setAlertMessage("Successfully assigned part!")
                     setAlert(true);
@@ -215,104 +214,97 @@ const ViewAircraft = () => {
     return (
         <div>
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
-            <Grid container>
-                <Grid item xs={8}>
-                    <Paper elevation={3} sx={{width: "97%",height: "90%", m: 2, p: "1%", pt: "0%" }}>
-                            <Card sx={{ width: '40%', maxWidth: 340, minWidth: 360, bgcolor: 'background.paper', marginTop: 2, marginBottom: 2}}>
-                                <CardContent>
-                                    <Typography sx={{ fontWeight: 'bold', marginTop: '10px', fontSize: '1.5rem'}}>Aircraft</Typography>
-                                    <List sx={{ maxWidth: 360, bgcolor: 'background.paper'}}>
-                                        <ListItem>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Tail number:</ListItemText>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.tailNumber}</ListItemText>
-                                        </ListItem>
-                                        <Divider />
-                                        <ListItem>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Location:</ListItemText>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.location}</ListItemText>
-                                        </ListItem>
-                                        <Divider />
-                                        <ListItem>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform:</ListItemText>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.platformType}</ListItemText>
-                                        </ListItem>
-                                        <Divider />
-                                        <ListItem>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform status:</ListItemText>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.platformStatus}</ListItemText>
-                                        </ListItem>
-                                        <Divider />
-                                        <ListItem>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Total flight time:</ListItemText>
-                                            <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.flyTimeHours}h</ListItemText>
-                                        </ListItem>
-                                    </List>
-                                </CardContent>
-                            </Card>
+            <Grid container spacing={1}>
+                <Grid item xs={4}>
+                    <Paper elevation={3} sx={{width: "95%",height: "100%", m: 2, p: "1%", pt: "0%", maxWidth: 380, minWidth: 320, bgcolor: 'background.paper'}}>
+                        <Typography sx={{ fontWeight: 'bold', marginTop: '10px', fontSize: '1.5rem'}}>Aircraft</Typography>
+                        <List sx={{ maxWidth: 360, bgcolor: 'background.paper', margin: 2}}>
+                            <ListItem>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Tail number:</ListItemText>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.tailNumber}</ListItemText>
+                            </ListItem>
+                            <Divider />
+                            <ListItem>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Location:</ListItemText>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.location}</ListItemText>
+                            </ListItem>
+                            <Divider />
+                            <ListItem>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform:</ListItemText>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.platformType}</ListItemText>
+                            </ListItem>
+                            <Divider />
+                            <ListItem>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Platform status:</ListItemText>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.platformStatus}</ListItemText>
+                            </ListItem>
+                            <Divider />
+                            <ListItem>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>Total flight time:</ListItemText>
+                                <ListItemText sx={{ width: '50%', minWidth: '150px'}}>{aircraft.flyTimeHours}h</ListItemText>
+                            </ListItem>
+                        </List>
+                    </Paper>
+                </Grid>
+
+                <Grid item xs={3}>
+                    <Paper elevation={2} sx={{width: "95%", m: 2, p: "3%", pt: 0, height: "100%"}}>
+                        <h5>Set Status</h5>
+                        <br/>
+                        <div style={{padding: 0, minWidth: "200px"}}>
+                            <FormControl  >
+                                <InputLabel id="setStatusLabel">Aircraft Status</InputLabel>
+                                <Select labelId="setStatusLabel" value={status} onChange={(e) => setStatus(e.target.value)}>
+                                    <MenuItem value="DESIGN">Design</MenuItem>
+                                    <MenuItem value="PRODUCTION">Production</MenuItem>
+                                    <MenuItem value="OPERATION">Operational</MenuItem>
+                                    <MenuItem value="REPAIR">Repair</MenuItem>
+                                </Select>
+                                <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={updateStatus} sx={{mt: 2}}>Update Status</Button>
+                            </FormControl>
+                        </div>
+
+                        <br/>
+                        <br/>
+                        <h5>Assign Part</h5>
+                        <dix style={{display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
+                            <Autocomplete style={{minWidth: "70%"}} onChange={(event, newValue) => {getAvailableParts(newValue);}} options={partCategories} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
+                            <br/>
+                            <Autocomplete style={{minWidth: "70%"}} onChange={(event, newValue) => {setPartNumber(newValue);}} options={availableParts} renderInput={(params) => <TextField {...params} label="Part Number" />}/>
+
+                            <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={updatePart} sx={{mt: 2}}>Assign</Button>
+                        </dix>
 
                     </Paper>
                 </Grid>
-                <Grid item xs={6}>
-                    <Grid container>
-                        <Grid item xs={6}>
-                            <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0,pb:0, height: "100%", display: {display}}}>
-                                <h5>Set Aircraft Status</h5>
-                                <br/>
-                                <FormControl>
-                                    <InputLabel id="setStatusLabel">Aircraft Status</InputLabel>
-                                    <Select labelId="setStatusLabel" value={status} onChange={(e) => setStatus(e.target.value)}>
-                                        <MenuItem value="DESIGN">Design</MenuItem>
-                                        <MenuItem value="PRODUCTION">Production</MenuItem>
-                                        <MenuItem value="OPERATION">Operational</MenuItem>
-                                        <MenuItem value="REPAIR">Repair</MenuItem>
-                                    </Select>
 
-                                    <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={updateStatus} sx={{mt: 8}}>Update Status</Button>
-                                </FormControl>
-                            </Paper>
-                        </Grid>
-
-                        <Grid item xs={6}>
-                            <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0,pb:0, height: "100%", display: {display}}}>
-                                <h5>Assign Part</h5>
-                                <Autocomplete onChange={(event, newValue) => {getAvailableParts(newValue);}} options={partCategories} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
-                                <br/>
-                                <Autocomplete onChange={(event, newValue) => {setPartNumber(newValue);}} options={availableParts} renderInput={(params) => <TextField {...params} label="Part Number" />}/>
-
-                                <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={updatePart} sx={{mt: 2}}>Assign</Button>
-                            </Paper>
-                        </Grid>
-                    </Grid>
-                </Grid>
-
-                <Grid item xs={6}>
-                    <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0, height: "91%"}}>
+                <Grid item xs={5}>
+                    <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0, height: "100%"}}>
                         <h5 style={{textAlign: "left", display: "inline"}}>{aircraftStatus}</h5>
 
                         <TableContainer sx={{width: "100%",mt: "5%", mb: "5%"}}>
-                                <Table size="small" aria-label="table label">
-                                    <TableHead>
-                                        <TableRow>
-                                            <TableCell>Part Number</TableCell>
-                                            <TableCell>Part Name</TableCell>
-                                            <TableCell>Part Status</TableCell>
+                            <Table size="small" aria-label="table label">
+                                <TableHead>
+                                    <TableRow>
+                                        <TableCell>Part Number</TableCell>
+                                        <TableCell>Part Name</TableCell>
+                                        <TableCell>Part Status</TableCell>
+                                    </TableRow>
+                                </TableHead>
+                                <TableBody>
+                                    {parts.map((row) => (
+                                        <TableRow key={row}>
+                                            <TableCell sx={{fontSize: "0.7rem"}}>{row[0]}</TableCell>
+                                            <TableCell sx={{fontSize: "0.7rem"}}>{row[1]}</TableCell>
+                                            <TableCell sx={{fontSize: "0.7rem"}}>{row[2]}</TableCell>
                                         </TableRow>
-                                    </TableHead>
-                                    <TableBody>
-                                        {parts.map((row) => (
-                                            <TableRow key={row}>
-                                                <TableCell sx={{fontSize: "0.7rem"}}>{row[0]}</TableCell>
-                                                <TableCell sx={{fontSize: "0.7rem"}}>{row[1]}</TableCell>
-                                                <TableCell sx={{fontSize: "0.7rem"}}>{row[2]}</TableCell>
-                                            </TableRow>
-                                        ))}
-                                    </TableBody>
-                                </Table>
-                            </TableContainer>
+                                    ))}
+                                </TableBody>
+                            </Table>
+                        </TableContainer>
                     </Paper>
-                </Grid>
+                 </Grid>
             </Grid>
-
         </div>
     );
 }
