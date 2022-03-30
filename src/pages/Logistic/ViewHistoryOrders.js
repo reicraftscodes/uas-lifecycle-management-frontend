@@ -18,12 +18,25 @@ function ViewHistoryOrders() {
             .then(response => response.json())
             .then(data => {
                 console.log("Successfully retrieved stock history", data);
-                setHistoryOrders(data);
+                setOrderHistoryWithFormattedDate(data);
                 console.log(data);
             })
             .catch(error => {
                 console.log("Error retrieving stock history", error);
             })
+    }
+
+    const setOrderHistoryWithFormattedDate = (data) => {
+        data.map(order => {
+            let oldDate = order.orderDateTime;
+            order.orderDateTime = getFormattedDateString(oldDate);
+        });
+        setHistoryOrders(data);
+    }
+
+    const getFormattedDateString = (dateString) => {
+        var date = new Date(dateString);
+        return date.toLocaleDateString() + " " + date.toLocaleTimeString();
     }
 
     const Item = styled(Paper)(({theme}) => ({
