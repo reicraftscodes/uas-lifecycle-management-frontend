@@ -30,6 +30,7 @@ import AssignAircraft from "./pages/Logistic/AssignAircraft";
 import ModifyAircraft from "./pages/Logistic/ModifyAircraft";
 import {AllAircraft} from "./pages/AllAircraft";
 import RepairCost from "./pages/Ceo/RepairCost";
+import ViewListParts from "./pages/Logistic/ViewListParts";
 
 function App() {
 
@@ -96,7 +97,7 @@ function App() {
                     <Route exact={true} path="/login" element={<UserLogin/>}/>
 
                     <Route path="/aircraft-cost" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><RepairCost/></ProtectedRoute>}/>
-
+                    <Route path="/view-parts" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ViewListParts/></ProtectedRoute>}/>
 
                 </Routes>
             </div>
