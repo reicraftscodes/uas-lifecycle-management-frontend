@@ -1,4 +1,3 @@
-import React from 'react'
 import configData from "../config/ApiConfig.json"
 
 class PartsService {

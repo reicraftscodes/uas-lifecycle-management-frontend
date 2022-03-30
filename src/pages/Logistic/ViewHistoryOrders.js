@@ -37,7 +37,7 @@ function ViewHistoryOrders() {
     return (
         <div>
             <Box sx={1} margin="10px">
-                <Typography variant="h3">Order History</Typography>
+                <Typography variant="h4">Order History</Typography>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Item>

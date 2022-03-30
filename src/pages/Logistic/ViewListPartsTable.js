@@ -9,8 +9,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import {Button} from "@mui/material";
 import {createStyles, makeStyles} from "@mui/styles";
 import {GridApi} from "@material-ui/data-grid";
-import StockPartsLocation from "../../components/StockPartsLocation";
-import {useEffect, useState} from "react";
 import {useNavigate} from "react-router-dom";
 
 
