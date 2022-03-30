@@ -98,6 +98,22 @@ const AppNavbar = () => {
             type: "page"
         },
 
+        {
+            title: 'View Parts',
+            path: "/view-parts",
+            roles: ["ROLE_USER_LOGISTIC"],
+            id: "",
+            type: "page"
+        },
+
+        {
+            title: 'Assign Part',
+            path: "/assign-part",
+            roles: ["ROLE_USER_LOGISTIC"],
+            id: "",
+            type: "page"
+        },
+
 
         {
             title: 'Assign User',
@@ -133,13 +149,9 @@ const AppNavbar = () => {
             type: "page"
         },
 
-        {
-            title: 'View Parts',
-            path: "/view-parts",
-            roles: ["ROLE_USER_LOGISTIC"],
-            id: "",
-            type: "page"
-        },
+
+
+
 
 
         // You can also change the type to anchor. An example of scenario is when a user click nav link,

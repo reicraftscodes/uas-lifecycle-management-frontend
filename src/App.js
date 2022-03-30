@@ -32,6 +32,7 @@ import {AllAircraft} from "./pages/AllAircraft";
 import RepairCost from "./pages/Ceo/RepairCost";
 import ViewListParts from "./pages/Logistic/ViewListParts";
 import ViewPartsStockLocations from "./pages/Logistic/ViewPartsStockLocations";
+import AssignPartToAircraft from './pages/Logistic/AssignPartToAircraft';
 
 function App() {
 
@@ -93,6 +94,7 @@ function App() {
                     <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
                     <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
                     <Route path="/modify-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ModifyAircraft/></ProtectedRoute>}/>
+                    <Route path="/assign-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AssignPartToAircraft/></ProtectedRoute>}/>
 
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
                     <Route exact={true} path="/login" element={<UserLogin/>}/>
