@@ -33,6 +33,8 @@ import RepairCost from "./pages/Ceo/RepairCost";
 import ViewListParts from "./pages/Logistic/ViewListParts";
 import ViewPartsStockLocations from "./pages/Logistic/ViewPartsStockLocations";
 import ViewHistoryOrders from "./pages/Logistic/ViewHistoryOrders";
+import AircraftPartCostPage from "./pages/Ceo/AircraftPartCostPage";
+import AircraftRepairCostPage from "./pages/Ceo/AircraftRepairCostPage";
 
 function App() {
 
@@ -104,6 +106,8 @@ function App() {
 
                     <Route path="/order-history" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ViewHistoryOrders/></ProtectedRoute>}/>
 
+                    <Route path="/aircraft-cost/part/:tailNumber" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><AircraftPartCostPage/></ProtectedRoute>}/>
+                    <Route path="/aircraft-cost/repair/:tailNumber" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><AircraftRepairCostPage/></ProtectedRoute>}/>
 
                 </Routes>
             </div>
