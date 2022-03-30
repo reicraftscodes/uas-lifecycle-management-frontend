@@ -32,13 +32,10 @@ import {AllAircraft} from "./pages/AllAircraft";
 import RepairCost from "./pages/Ceo/RepairCost";
 import ViewListParts from "./pages/Logistic/ViewListParts";
 import ViewPartsStockLocations from "./pages/Logistic/ViewPartsStockLocations";
-<<<<<<< HEAD
 import AssignPartToAircraft from './pages/Logistic/AssignPartToAircraft';
-=======
 import ViewHistoryOrders from "./pages/Logistic/ViewHistoryOrders";
 import AircraftPartCostPage from "./pages/Ceo/AircraftPartCostPage";
 import AircraftRepairCostPage from "./pages/Ceo/AircraftRepairCostPage";
->>>>>>> dev
 
 function App() {
 
