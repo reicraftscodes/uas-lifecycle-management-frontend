@@ -88,6 +88,7 @@ class AircraftService {
         });
     }
 
+
     getCeoAircraftCost(){
         return fetch(configData.API_URL+ "/aircraft/ceo-aircraft-cost",{
             method: 'GET',
@@ -98,12 +99,13 @@ class AircraftService {
     }
 
     getCeoOverallAircraftCost(){
-        return fetch(configData.API_URL + "/aircraft/ceo-aircraft-full-cost",{
+        return fetch(configData.API_URL + "/aircraft/ceo-aircraft-cost-full",{
             method: 'GET',
             headers: {"Content-Type": "application/json" ,
                 'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         })
     }
+
 
     getNeedAircraftRepair(){
         return fetch(configData.API_URL + "/aircraft/needing-repair", {

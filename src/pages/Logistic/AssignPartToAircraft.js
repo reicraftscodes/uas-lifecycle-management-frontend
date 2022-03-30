@@ -11,10 +11,6 @@ const AssignPartToAircraft = () => {
     const [alertSeverity, setAlertSeverity] = useState('success');
 
         const assignPart = () => {
-
-            console.log(tailNumber);
-            console.log(newPartNumber);
-
             const request ={tailNumber,newPartNumber};
 
             AircraftService.updateAircraftPart(request).then(response => {
@@ -48,7 +44,6 @@ const AssignPartToAircraft = () => {
                 {alert ? <Alert sx={{mb: 2}} className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             </div>
             
-            
             <Paper elevation={3} sx={{width: "60%", m: "auto", p: "3%", mt: 1}}>
                 <h3>Assign Part To Aircraft</h3>
                 <Divider></Divider>
@@ -60,15 +55,7 @@ const AssignPartToAircraft = () => {
                     <br/>
                     <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={assignPart} sx={{mt: 2}}>Assign Part</Button>
                 </FormControl>
-
-
-
             </Paper>
-            
-
-            
-
-
         </div>
     );
 }
