@@ -45,10 +45,7 @@ class PartsService {
         });
     }
 
-<<<<<<< HEAD
 
-
-=======
     getOrderHistory() {
         return fetch(configData.API_URL + "/parts/stock-order/all", {
             method: "GET",
@@ -58,7 +55,7 @@ class PartsService {
 
     }
 
->>>>>>> dev
+
 }
 
 export default new PartsService();
