@@ -70,7 +70,7 @@ Before you run backend server, you must run it first. It can be followed by clic
 1. Open the project in intellij.
 2. Click the terminal at the bottom left, or you can simply press ALT+12 to open the terminal
 
-### Step 4: Buind and Run the frontend Server
+### Step 4: Build and Run the frontend Server
 To Install dependencies and run project, from the terminal type the following.
 
 ```bash
