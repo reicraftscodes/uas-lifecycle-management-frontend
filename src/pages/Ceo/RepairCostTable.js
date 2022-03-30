@@ -124,7 +124,7 @@ function RepairCostTable({data}) {
                 return <>
                     <Grid container spacing={1}>
                         <Grid item xs={9}>
-                            <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View
+                            <Button variant="contained" style={{backgroundColor: '#004789'}} onClick={onClick}>View
                                 Repairs</Button>
                         </Grid>
                         <Grid item xs={3}>
@@ -160,7 +160,7 @@ function RepairCostTable({data}) {
                 return <>
                     <Grid container spacing={1}>
                         <Grid item xs={9}>
-                            <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View
+                            <Button variant="contained" style={{backgroundColor: '#004789'}} onClick={onClick}>View
                                 Parts</Button>
                         </Grid>
                         <Grid item xs={3}>

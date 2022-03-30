@@ -88,6 +88,7 @@ class AircraftService {
         });
     }
 
+
     getCeoAircraftCost(){
         return fetch(configData.API_URL+ "/aircraft/ceo-aircraft-cost",{
             method: 'GET',
@@ -104,6 +105,7 @@ class AircraftService {
                 'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         })
     }
+
 
     getNeedAircraftRepair(){
         return fetch(configData.API_URL + "/aircraft/needing-repair", {
