@@ -38,6 +38,14 @@ class PartsService {
             headers: {"Content-Type":"application/json" },
         });
     }
+
+    getViewListParts(){
+        return fetch(configData.API_URL + "/parts/all", {
+            method: "GET",
+            headers: {"Content-Type":"application/json" },
+        });
+    }
+
 }
 
 export default new PartsService();

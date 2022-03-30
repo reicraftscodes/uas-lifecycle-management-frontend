@@ -25,14 +25,14 @@ IntelliJ can be downloaded [here](https://www.jetbrains.com/idea/download/#secti
 
 ## JavaScript
 
-avaScript is one of the most widely used programming languages. It is the language that
+JavaScript is one of the most widely used programming languages. It is the language that
 was used to develop the frontend of the UAS Lifecycle Management because React is JavaScript library.
 ## React
-[React Documentation](https://reactjs.org/docs/getting-started.html )
+[React Documentation](https://reactjs.org/docs/getting-started.html)
 
 React (Runs on Node.js) was used for the frontend of the UAS Lifecycle Management system.
 
-##Npm (Package Manager tool for Node.js)
+## Npm (Package Manager tool for Node.js)
 [npm documentation](https://docs.npmjs.com/)
 
 Npm is the default package manager for the JavaScript runtime environment Node.js. It was
@@ -56,12 +56,12 @@ The project was build/start/run/compile successfully using:
 
 To start/run/compile the project please follow the steps below:
 
-###Step 1: : Clone the repository
+### Step 1: : Clone the repository
 ```bash
   git clone https://git.cardiff.ac.uk/c1947381/uas-lifecycle-management-frontend.git
 ```
 
-###Step 2: Run Backend Server 
+### Step 2: Run Backend Server 
 
 Before you run backend server, you must run it first. It can be followed by clicking [here](https://git.cardiff.ac.uk/c1989132/uas-lifecycle-management/-/tree/dev/api).
 
@@ -70,7 +70,7 @@ Before you run backend server, you must run it first. It can be followed by clic
 1. Open the project in intellij.
 2. Click the terminal at the bottom left, or you can simply press ALT+12 to open the terminal
 
-### Step 4: Buind and Run the frontend Server
+### Step 4: Build and Run the frontend Server
 To Install dependencies and run project, from the terminal type the following.
 
 ```bash
