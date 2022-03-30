@@ -1,14 +1,14 @@
 
 import {Paper, Button, TextField, FormControl, TableRow, TableCell, TableContainer, Table, TableHead, TableBody, Grid, MenuItem, Select, InputLabel,Autocomplete, Alert} from "@mui/material";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import AircraftService from "../../services/AircraftService";
 import PartService from "../../services/PartsService";
 import {useLocation, useParams} from "react-router-dom";
 
-const ViewAircraft = (props) => {
-    const {tailNumberParam} = useParams();
+const ViewAircraft = () => {
+    const {tailNumber} = useParams();
 
-    const[tailNumber, setTailNumber] = useState("");
+    const[tailNumber1, setTailNumber1] = useState("");
     const[parts, setParts] = useState([[]]);
     const[aircraftStatus, setAircraftStatus] = useState("Aircraft Status: ");
     const[status, setStatus] = useState("DESIGN");
@@ -35,11 +35,15 @@ const ViewAircraft = (props) => {
         {"id":11,"name":"Gimble"}
     ];
 
+    useEffect(() => {
+        console.log("use effect");
+        getAircraftData();
+    }, []);
 
-    console.log(tailNumberParam);
+    console.log(tailNumber);
 
     //used for displaying aircraft parts and their statuses
-    const onAircraftSearch = (e) => {
+    const getAircraftData = () => {
         AircraftService.getAircraftPartsStatus(tailNumber)
         .then(response => {
             if (!response.ok){
@@ -80,7 +84,7 @@ const ViewAircraft = (props) => {
     const updateStatus = (e) => {
         const request = {tailNumber,status};
         AircraftService.updateAircraftStatus(request).then(() => {
-            onAircraftSearch();
+            getAircraftData();
 
             setAlertSeverity("success");
             setAlertMessage("Successfully changed aircraft status!")
@@ -128,7 +132,7 @@ const ViewAircraft = (props) => {
             if (availableParts.includes(newPartNumber)){
                 let request = {tailNumber,newPartNumber};
                 AircraftService.updateAircraftPart(request).then(() => {
-                    onAircraftSearch();
+                    getAircraftData();
                     setAlertSeverity("success");
                     setAlertMessage("Successfully assigned part!")
                     setAlert(true);
@@ -162,15 +166,6 @@ const ViewAircraft = (props) => {
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             <Grid container>
                 <Grid item xs={6}>
-                    <Paper elevation={3} sx={{width: "97.5%", m: 2, p: "3%", pt: 0, mb: 0}}>
-                        <h5>Search for Aircraft</h5>
-                        <FormControl>
-                            <TextField label="Aircraft tailnumber" onChange={(e) => setTailNumber(e.target.value)} ></TextField>
-                            <br/>
-                            <Button style={{backgroundColor: "#004789"}} variant="contained" onClick={onAircraftSearch}>Search Aircraft</Button>
-                        </FormControl>
-                    </Paper>
-
                     <Grid container>
                         <Grid item xs={6}>
                             <Paper elevation={3} sx={{width: "95%", m: 2, p: "3%", pt: 0,pb:0, height: "100%", display: {display}}}>

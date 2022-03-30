@@ -55,6 +55,7 @@ export default function AllAircraftTable({data}) {
 
     const navigate = useNavigate();
 
+
     React.useEffect(() => {
         setRows(data)
     }, [data]);
@@ -99,7 +100,8 @@ export default function AllAircraftTable({data}) {
     }
 
     const onClick = (params) => {
-        navigate(`/view-aircraft/${params.tailNumber}`)
+        console.log(params);
+        navigate(`/view-aircraft/${params}`)
     };
 
     return (
@@ -139,7 +141,7 @@ export default function AllAircraftTable({data}) {
                                         <Button
                                             style={{width: 100, backgroundColor: "#004789"}}
                                             variant="contained"
-                                            onClick={()=> onClick({row})}
+                                            onClick={()=> onClick(row.tailNumber)}
                                         >View</Button>
                                     </TableCell>
                                 </StyledTableRow>
