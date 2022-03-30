@@ -20,19 +20,19 @@ Before running the project, please make sure you have the following installed on
 
 
 ## IntelliJ
-IntelliJ is used to modify the code base, start, or run tests via terminal.
-IntelliJ can be downloaded [here](https://www.jetbrains.com/idea/download/#section=windows) where you can also find the set up instructions.
+IntelliJ is used to modify the code base, start, or run tests via terminal. 
+IntelliJ can be downloaded [here](https://www.jetbrains.com/idea/download/#section=windows) where you can also find the set up instructions. 
 
 ## JavaScript
 
-avaScript is one of the most widely used programming languages. It is the language that
+JavaScript is one of the most widely used programming languages. It is the language that
 was used to develop the frontend of the UAS Lifecycle Management because React is JavaScript library.
 ## React
-[React Documentation](https://reactjs.org/docs/getting-started.html )
+[React Documentation](https://reactjs.org/docs/getting-started.html)
 
 React (Runs on Node.js) was used for the frontend of the UAS Lifecycle Management system.
 
-##Npm (Package Manager tool for Node.js)
+## Npm (Package Manager tool for Node.js)
 [npm documentation](https://docs.npmjs.com/)
 
 Npm is the default package manager for the JavaScript runtime environment Node.js. It was
@@ -40,7 +40,7 @@ used as a command-line utility for interacting with said repository that aids in
 installation, version management, and dependency management. In addition, it was used to
 build and start the project.
 
-## Material UI
+## Material UI 
 [Material UI Documentation](https://mui.com/)
 
 Material-UI is a components library which used as User Interface for React in UAS Lifecycle Management System.
@@ -56,12 +56,12 @@ The project was build/start/run/compile successfully using:
 
 To start/run/compile the project please follow the steps below:
 
-###Step 1: : Clone the repository
+### Step 1: : Clone the repository
 ```bash
   git clone https://git.cardiff.ac.uk/c1947381/uas-lifecycle-management-frontend.git
 ```
 
-###Step 2: Run Backend Server
+### Step 2: Run Backend Server 
 
 Before you run backend server, you must run it first. It can be followed by clicking [here](https://git.cardiff.ac.uk/c1989132/uas-lifecycle-management/-/tree/dev/api).
 
@@ -97,11 +97,11 @@ LO | logistic@test.com | password |
 
 # Libraries and Tools Used
 - React (Runs on Node.js)
-  - [Redux](https://react-redux.js.org/) State Management
-  - React Validation
-  - React Spinners
+    - [Redux](https://react-redux.js.org/) State Management
+    - React Validation
+    - React Spinners
 - Material UI React Libary
-  - Icons Material
+    - Icons Material
 - [JavaScript Chart.js](https://www.chartjs.org/docs/latest/)
 - React Developer Tool- this react developer tool is downloadable from google extension and can be found [here](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=en).
 - Redux Developer Tool- this redux developer tool is downloadable from google extension and can be found here [here](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en).
@@ -118,6 +118,4 @@ Cypress is used for End-to-End Testing. Cypress is a JavaScript test automation 
 ---
 
 # Deployment
-# UAT
-
 
