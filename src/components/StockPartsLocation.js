@@ -6,11 +6,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Typography from "@mui/material/Typography";
 
 
 function StockPartsLocation({stockPartsLocations}) {
     return (
         <div>
+            <Typography variant="h4" >Stock Location details</Typography>
             <TableContainer component={Paper}>
                 <Table sx={{minWidth: 650}} aria-label="simple table">
                     <TableHead>
