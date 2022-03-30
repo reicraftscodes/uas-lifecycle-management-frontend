@@ -104,6 +104,9 @@ function App() {
                     <Route path="/view-parts/:partNumber" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ViewPartsStockLocations/></ProtectedRoute>}/>
 
 
+
+
+
                     <Route path="/aircraft-cost/part/:tailNumber" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><AircraftPartCostPage/></ProtectedRoute>}/>
                     <Route path="/aircraft-cost/repair/:tailNumber" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><AircraftRepairCostPage/></ProtectedRoute>}/>
 

@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {Typography} from "@mui/material";
+import {Paper, Typography} from "@mui/material";
 import AircraftPartCostTable from "./AircraftPartCostTable";
 import {Container} from "@material-ui/core";
 import Card from "@mui/material/Card";
@@ -47,11 +47,11 @@ function AircraftRepairCostPage(props) {
     }
 
     return <Container>
-        <Typography p={5} variant="h3" align="left">Repair Costs</Typography>
-        <Card elevation={6}>
+        <Typography p={6} variant="h5" align="left">Repair Costs</Typography>
+        <Paper elevation={3} sx={{height: "100%", m: 2, p: "1%"}}>
             <Typography p={5} variant="h4" align="left">Aircraft {tailNumber} - Repairs</Typography>
             <AircraftRepairCostTable repairs={repairs}/>
-        </Card>
+        </Paper>
     </Container>
 }
 
