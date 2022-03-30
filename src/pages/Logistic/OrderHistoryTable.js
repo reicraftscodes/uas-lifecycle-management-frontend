@@ -129,8 +129,7 @@ function OrderHistoryTable({data}) {
         createStyles({
             root: {
                 "& .MuiDataGrid-columnHeaders": {
-                    backgroundColor: "#808080",
-                    fontSize: 16
+                    fontSize: 16,
                 }
             }
         })
