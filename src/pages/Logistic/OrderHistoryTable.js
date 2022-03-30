@@ -6,14 +6,9 @@ import TextField from '@mui/material/TextField';
 import {DataGrid} from '@mui/x-data-grid';
 import ClearIcon from '@mui/icons-material/Clear';
 import SearchIcon from '@mui/icons-material/Search';
-import {Button} from "@mui/material";
 import {createStyles, makeStyles} from "@mui/styles";
-import {GridApi} from "@material-ui/data-grid";
-import {useNavigate} from "react-router-dom";
 
-
-function partsQuickSearchToolbar(props) {
-
+function HistoryQuickSearchToolbar(props) {
     return (
         <Box
             sx={{
@@ -59,17 +54,13 @@ function partsQuickSearchToolbar(props) {
     );
 }
 
-partsQuickSearchToolbar.propTypes = {
+HistoryQuickSearchToolbar.propTypes = {
     clearSearch: PropTypes.func.isRequired,
     onChange: PropTypes.func.isRequired,
     value: PropTypes.string.isRequired,
 };
 
-function ViewListPartsTable({data}) {
-
-
-    const navigate = useNavigate();
-
+function OrderHistoryTable({data}) {
     function escapeRegExp(value) {
         return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
     }
@@ -94,67 +85,43 @@ function ViewListPartsTable({data}) {
 
     const columns = [
         {
-            field: 'partNumber',
-            headerName: 'Part Number',
+            field: 'locationName',
+            headerName: 'Location Name',
+            flex: 1,
+            headerClassName: 'grid-header-mui'
+        },
+        {
+            field: 'supplierEmail',
+            headerName: 'Supplier Email',
+            flex: 1,
+            headerClassName: 'grid-header-mui'
+        },
+
+        {
+            field: 'totalCost',
+            headerName: 'Total Cost (£)',
+            flex: 1,
+            headerClassName: 'grid-header-mui'
+        },
+        {
+            field: 'orderDateTime',
+            headerName: 'Order Date Time',
+            flex: 1,
+            headerClassName: 'grid-header-mui'
+        },
+        {
+            field: 'partName',
+            headerName: 'Part Name',
+            flex: 1,
+            headerClassName: 'grid-header-mui'
+        },
+
+        {
+            field: 'quantity',
+            headerName: 'Quantity',
             type: 'number',
             flex: 1,
             headerClassName: 'grid-header-mui'
-        },
-        {
-            field: 'partType',
-            headerName: 'Part Type',
-            type: 'number',
-            flex: 1,
-            headerClassName: 'grid-header-mui'
-        },
-        {
-            field: 'cost',
-            headerName: 'Part Cost (£)',
-            type: 'number',
-            flex: 1,
-            headerClassName: 'grid-header-mui'
-        },
-
-        {
-            field: 'typicalFailureHours',
-            headerName: 'Typical Failure Hours',
-            type: 'number',
-            flex: 1,
-            headerClassName: 'grid-header-mui'
-        },
-
-        {
-            field: 'compatiblePlatforms',
-            headerName: 'Compatible Platforms',
-            flex: 1,
-            headerClassName: 'grid-header-mui'
-        },
-
-        {
-            field: "action",
-            headerName: "Stock Locations",
-            sortable: false,
-            flex: 1,
-            renderCell: (params) => {
-                const onClick = (e) => {
-                    e.stopPropagation();
-
-                    const api: GridApi = params.api;
-                    const thisRow: Record<string, GridCellValue> = {};
-
-                    api
-                        .getAllColumns()
-                        .filter((c) => c.field !== "__check__" && !!c)
-                        .forEach(
-                            (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
-                        );
-
-                    navigate(`/view-parts/${thisRow.partNumber}`)
-                };
-
-                return <Button variant="contained" style={{backgroundColor: '#004789'}} onClick={onClick}>View
-                    location</Button>;
-            }
         },
     ];
 
@@ -170,24 +137,23 @@ function ViewListPartsTable({data}) {
 
     const classes = useStyles();
 
-
     return (
         <Box sx={{height: 700, width: '100%'}}>
             <DataGrid
-            components={{Toolbar: partsQuickSearchToolbar}}
-            rows={rows}
-            columns={columns}
-            componentsProps={{
-                toolbar: {
-                    value: searchText,
-                    onChange: (event) => requestSearch(event.target.value),
-                    clearSearch: () => requestSearch(''),
-                },
-            }}
-            className={classes.root}
-        />
+                components={{Toolbar: HistoryQuickSearchToolbar}}
+                rows={rows}
+                columns={columns}
+                componentsProps={{
+                    toolbar: {
+                        value: searchText,
+                        onChange: (event) => requestSearch(event.target.value),
+                        clearSearch: () => requestSearch(''),
+                    },
+                }}
+                className={classes.root}
+            />
         </Box>
     );
 }
 
-export default ViewListPartsTable;
+export default OrderHistoryTable;
