@@ -152,7 +152,7 @@ function ViewListPartsTable({data}) {
                     navigate(`/view-parts/${thisRow.partNumber}`)
                 };
 
-                return <Button variant="contained" style={{backgroundColor: '#161144'}} onClick={onClick}>View
+                return <Button variant="contained" style={{backgroundColor: '#004789'}} onClick={onClick}>View
                     location</Button>;
             }
         },
