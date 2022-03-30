@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import ViewListPartsTable from "../ViewPartsStockLocation]/ViewListPartsTable";
 import PartsService from "../../services/PartsService";
 import StockPartsLocation from "../../components/StockPartsLocation";
 import Box from "@mui/material/Box";
