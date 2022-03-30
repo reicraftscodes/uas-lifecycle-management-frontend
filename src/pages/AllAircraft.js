@@ -48,7 +48,7 @@ export const AllAircraft = () => {
     const getLocations = () => {
 
         const locations = ["Ankara", "Cardiff", "Dublin", "Edinburgh", "London", "Nevada", "St Athen", "Manchester"];
-        const locationFilter = locations.reduce((o, key) => ({ ...o, [key]: true}), {})
+        const locationFilter = locations.reduce((o, key) => ({...o, [key]: true}), {})
         console.log(locationFilter);
 
         setLocationFilterList(locationFilter);
@@ -58,7 +58,7 @@ export const AllAircraft = () => {
     const getPlatformStatusOptions = () => {
 
         const platformStatusOptions = ["Design", "Production", "Operational", "Repair"];
-        const platformStatusFilter = platformStatusOptions.reduce((o, key) => ({ ...o, [key]: true}), {})
+        const platformStatusFilter = platformStatusOptions.reduce((o, key) => ({...o, [key]: true}), {})
         console.log(platformStatusFilter);
 
         setPlatformFilterList(platformStatusFilter);
@@ -81,14 +81,14 @@ export const AllAircraft = () => {
     const filter = () => {
         const locations = [];
         const platformStatusOptions = []
-        Object.keys(locationFilterList).forEach(function(locationKey, i) {
-            if(locationFilterList[locationKey]){
+        Object.keys(locationFilterList).forEach(function (locationKey, i) {
+            if (locationFilterList[locationKey]) {
                 locations.push(locationKey);
             }
         });
         console.log("locations: " + locations);
-        Object.keys(platformStatusFilterList).forEach(function(platformStatusKey, i) {
-            if(platformStatusFilterList[platformStatusKey]){
+        Object.keys(platformStatusFilterList).forEach(function (platformStatusKey, i) {
+            if (platformStatusFilterList[platformStatusKey]) {
                 platformStatusOptions.push(platformStatusKey);
             }
         });
@@ -121,7 +121,7 @@ export const AllAircraft = () => {
     return (
         <div>
             <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%"}}>
-                <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem', paddingBottom: "10px"}}>All Aircraft</Typography>
+                <Typography sx={{fontWeight: 600, fontSize: '1.5rem', paddingBottom: "10px"}}>All Aircraft</Typography>
                 <Divider style={{marginBottom: "10px"}}/>
                 <div style={{display: "flex", justifyContent: "center"}}>
                     <div>
@@ -132,8 +132,15 @@ export const AllAircraft = () => {
 
                     </div>
                     <div style={{minWidth: "250px"}}>
-                        <Paper elevation={3} sx={{height: "100%", m: 1, p: "1%", display: 'flex', flexDirection: 'column', marginBottom: "25px"}}>
-                            <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+                        <Paper elevation={3} sx={{
+                            height: "100%",
+                            m: 1,
+                            p: "1%",
+                            display: 'flex',
+                            flexDirection: 'column',
+                            marginBottom: "25px"
+                        }}>
+                            <FormControl sx={{m: 3}} component="fieldset" variant="standard">
                                 <FormLabel component="legend">Location</FormLabel>
                                 <FormGroup>
                                     {Object.keys(locationFilterList).map((key, i) => (
@@ -141,7 +148,8 @@ export const AllAircraft = () => {
                                             style={{fontSize: "10px"}}
                                             key={key}
                                             control={
-                                                <Checkbox checked={locationFilterList[key]} onChange={handleChangeLocationFilter} name={key} />
+                                                <Checkbox checked={locationFilterList[key]}
+                                                          onChange={handleChangeLocationFilter} name={key}/>
                                             }
                                             label={<Typography style={{fontSize: "13px"}}>{key}</Typography>}
                                         />
@@ -150,15 +158,16 @@ export const AllAircraft = () => {
                                 </FormGroup>
                             </FormControl>
                             <Divider style={{marginLeft: "10px", marginRight: "5px"}}/>
-                            <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
+                            <FormControl sx={{m: 3}} component="fieldset" variant="standard">
                                 <FormLabel component="legend">Platform Status</FormLabel>
                                 <FormGroup>
-                                    {Object.keys(platformStatusFilterList).map((key, i)  => (
+                                    {Object.keys(platformStatusFilterList).map((key, i) => (
                                         <FormControlLabel
                                             style={{fontSize: "10px"}}
                                             key={key}
                                             control={
-                                                <Checkbox checked={platformStatusFilterList[key]} onChange={handleChangePlatformStatusFilter} name={key} />
+                                                <Checkbox checked={platformStatusFilterList[key]}
+                                                          onChange={handleChangePlatformStatusFilter} name={key}/>
                                             }
                                             label={<Typography style={{fontSize: "13px"}}>{key}</Typography>}
                                         />
@@ -167,11 +176,11 @@ export const AllAircraft = () => {
                                 </FormGroup>
                             </FormControl>
                             <Divider style={{marginLeft: "10px", marginRight: "5px"}}/>
-                            <Button style={{margin: "20px", backgroundColor: "#004789"}} variant="contained" onClick={() => filter()}>Filter</Button>
+                            <Button style={{margin: "20px", backgroundColor: "#004789"}} variant="contained"
+                                    onClick={() => filter()}>Filter</Button>
                         </Paper>
                     </div>
                 </div>
-
 
 
             </Paper>
