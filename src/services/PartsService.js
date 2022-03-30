@@ -45,6 +45,7 @@ class PartsService {
         });
     }
 
+
     getOrderHistory() {
         return fetch(configData.API_URL + "/parts/stock-order/all", {
             method: "GET",
@@ -53,6 +54,7 @@ class PartsService {
 
 
     }
+
 
 }
 
