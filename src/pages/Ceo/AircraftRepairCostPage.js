@@ -47,7 +47,7 @@ function AircraftRepairCostPage(props) {
     }
 
     return <Container>
-        <Typography p={6} variant="h5" align="left">Repair Costs</Typography>
+        <Typography p={4} variant="h5" align="left">Repair Costs</Typography>
         <Paper elevation={3} sx={{height: "100%", m: 2, p: "1%"}}>
             <Typography p={5} variant="h4" align="left">Aircraft {tailNumber} - Repairs</Typography>
             <AircraftRepairCostTable repairs={repairs}/>
