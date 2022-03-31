@@ -1,4 +1,5 @@
 import configData from "../config/ApiConfig.json"
+import AuthService from "./AuthService";
 
 class PartsService {
 
@@ -24,10 +25,10 @@ class PartsService {
     }
 
     getAvailablePartsByType(type) {
-        return fetch(configData.API_URL + "/parts/get-by-type", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: type
+        return fetch(configData.API_URL + "/parts/get-by-type/"+ type , {
+            method: "GET",
+            headers: {"Content-Type": "application/json",
+            'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`}
         });
     }
 
