@@ -70,12 +70,12 @@ class PartsService {
     }
 
     addPart(request) {
-        return fetch(configData.API_URL + "/parts/add"), {
-            method: 'POST',
+        return fetch(configData.API_URL + "/parts/add", {
+            method: "POST",
             headers: {"Content-Type": "application/json",
             'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
-            body: JSON.stringify(request)
-        }
+            body: JSON.stringify(request),
+        });
     }
 
 
