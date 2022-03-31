@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {Paper, Typography, Grid, Autocomplete,TextField,Button, FormControl, Divider} from "@mui/material";
+import {Paper, Typography, Grid, Autocomplete,TextField,Button, FormControl, Divider, TableContainer, Table, TableHead, TableRow, TableCell,TableBody, Alert} from "@mui/material";
 import {Bar} from 'react-chartjs-2';
 import {useParams} from "react-router-dom";
 import PartsService from '../services/PartsService';
@@ -21,6 +21,17 @@ const Location = () => {
         ]
     });
 
+    const [partID, setPartID] = useState("");
+    const [quantity, setQuantity] = useState("");
+    const [partIDs, setPartIds] = useState([]);
+    const [quantities, setQuantities] = useState([]);
+    const [supplierEmail, setEmail] = useState("");
+    const [order,setOrder] = useState([]);
+
+    const [alert, setAlert] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
+    const [alertSeverity, setAlertSeverity] = useState('success');
+
     useEffect(() => {
         PartsService.getLocationStock(location).then(response => response.json()).then(data => {
             for(const dataObj of data){
@@ -40,11 +51,27 @@ const Location = () => {
             });
         });
     }, []);
+
+    const addOrderItem = () => {
+        if (partID == null) {
+
+        }
+        partIDs.push(partID);
+        quantities.push(quantity);
+        setOrder(order => [...order, [partID,quantity]]);
+    }
+
+    const submitOrder = () => {
+        const request = {location, supplierEmail,partIDs,quantities};
+
+        console.log(request);
+    }
     
     return(
         <div>
+            {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
             <Grid container>
-                <Grid item xs={8}>
+                <Grid item xs={7}>
                     <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%"}}>
                         <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem'}}>Stock at {location}</Typography>
                         <Bar 
@@ -77,22 +104,48 @@ const Location = () => {
                             }} />     
                     </Paper>
                 </Grid> 
-                <Grid item xs={4}>
+                <Grid item xs={5}>
                     <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%", pt: "2%" }}>
                         <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem'}}>Request Stock</Typography>
                         
                         <Divider/>
                         <br/>
                         <FormControl>
-                            <Autocomplete options={parts} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
-                            <br/>
+                            <TextField required label="Supplier Email" onChange={(e) => setEmail(e.target.value)}></TextField>
+
+
+                            <TableContainer sx={{width: "100%",mt: 1, mb: 2}}>
+                                <Table size="small" aria-label="table label">
+                                    <TableHead>
+                                        <TableRow>
+                                            <TableCell sx={{fontSize: "0.7rem", pt:0, pb:0}}>PartID</TableCell>
+                                            <TableCell sx={{fontSize: "0.7rem", pt:0, pb:0}}>Quantity</TableCell>
+                                        </TableRow>
+                                    </TableHead>
+                                    <TableBody>
+                                        {order.map((row) => (
+                                            <TableRow key={row}>
+                                                <TableCell sx={{fontSize: "0.7rem", pt:0, pb:0}}>{row[0]}</TableCell>
+                                                <TableCell sx={{fontSize: "0.7rem", pt:0, pb:0}}>{row[1]}</TableCell>
+                                            </TableRow>
+                                        ))}
+                                    </TableBody>
+                                </Table>
+                            </TableContainer>
+
+                            <Grid container>
+                                <Grid item xs={6}>
+                                    <TextField required sx={{m:0.5, mt: 2}} type="number" label="PartID" onChange={(e) => setPartID(e.target.value)}></TextField>
+                                </Grid>
+                                <Grid item xs={6}>
+                                    <TextField required sx={{m:0.5, mt: 2}} type="number" label="Quantity" onChange={(e) => setQuantity(e.target.value)}></TextField>
+                                </Grid>
+                            </Grid>
+
+                            
+                            <Button onClick={addOrderItem} variant="contained" sx={{mt: 0.5, mb: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Add part and quantity</Button>
                             <Divider/>
-                            <br/>
-                            <TextField type="number" label="Quantity"></TextField>
-                            <br/>
-                            <Divider/>
-                            <br/>
-                            <Button variant="contained" sx={{bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit</Button>
+                            <Button onClick={submitOrder} variant="contained" sx={{mt: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit Invoice</Button>
                         </FormControl>
                     </Paper>
                 </Grid>   
