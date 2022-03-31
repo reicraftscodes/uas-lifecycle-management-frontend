@@ -53,18 +53,37 @@ const Location = () => {
     }, []);
 
     const addOrderItem = () => {
-        if (partID == null) {
-
+        if (partID == "") {
+            setAlertSeverity("error");
+            setAlertMessage("PartID must be selected!");
+            setAlert(true);
+            setTimeout(() => { setAlert(false) }, 3000);
+        } else if (quantity == "") {
+            setAlertSeverity("error");
+            setAlertMessage("Quantity must be selected!");
+            setAlert(true);
+            setTimeout(() => { setAlert(false) }, 3000);
+        } else {
+            partIDs.push(partID);
+            quantities.push(quantity);
+            setOrder(order => [...order, [partID,quantity]]);
         }
-        partIDs.push(partID);
-        quantities.push(quantity);
-        setOrder(order => [...order, [partID,quantity]]);
     }
 
     const submitOrder = () => {
-        const request = {location, supplierEmail,partIDs,quantities};
-
-        console.log(request);
+        if (supplierEmail == ""){
+            setAlertSeverity("error");
+            setAlertMessage("Supplier email must be selected!");
+            setAlert(true);
+            setTimeout(() => { setAlert(false) }, 3000);
+        } else if (order == "") {
+            setAlertSeverity("error");
+            setAlertMessage("A minimum of 1 part must be added to the order!");
+            setAlert(true);
+            setTimeout(() => { setAlert(false) }, 3000);
+        } else {
+            const request = {location, supplierEmail,partIDs,quantities};
+        }
     }
     
     return(
