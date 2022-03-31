@@ -125,11 +125,9 @@ export const AllAircraft = () => {
                 <Divider style={{marginBottom: "10px"}}/>
                 <div style={{display: "flex", justifyContent: "center"}}>
                     <div>
-
                         <Paper elevation={1} sx={{height: "100%", m: 1, p: "1%", flexGrow: 1}}>
                             <AllAircraftTable data={aircraftList} style={{alignSelf: "center"}}/>
                         </Paper>
-
                     </div>
                     <div style={{minWidth: "250px", display: "flex", flexDirection: "column"}}>
                         <Paper elevation={1} sx={{height: "100%", m: 1, p: "1%", flexGrow: 1}}>
