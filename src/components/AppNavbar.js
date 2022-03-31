@@ -75,26 +75,10 @@ const AppNavbar = () => {
         },
 
         {
-            title: 'Add Aircraft',
-            path: "/add-aircraft",
-            roles: ["ROLE_USER_LOGISTIC"],
-            id: "add-aircraft",
-            type: "page"
-        },
-
-        {
             title: 'Modify Aircraft',
             path: "/modify-aircraft",
             roles: ["ROLE_USER_LOGISTIC"],
             id: "",
-            type: "page"
-        },
-
-        {
-            title: 'Add Part',
-            path: "/add-part",
-            roles: ["ROLE_USER_LOGISTIC"],
-            id: "add-part",
             type: "page"
         },
 
