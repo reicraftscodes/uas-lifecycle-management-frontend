@@ -191,7 +191,7 @@ const Location = () => {
                             
                             <Button onClick={addOrderItem} variant="contained" sx={{mt: 0.5, mb: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Add part and quantity</Button>
                             <Divider/>
-                            <Button onClick={submitOrder} variant="contained" sx={{mt: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit Invoice</Button>
+                            <Button onClick={submitOrder} variant="contained" sx={{mt: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit Order</Button>
                         </FormControl>
                     </Paper>
                 </Grid>   
