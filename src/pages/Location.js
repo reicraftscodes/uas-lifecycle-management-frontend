@@ -83,6 +83,25 @@ const Location = () => {
             setTimeout(() => { setAlert(false) }, 3000);
         } else {
             const request = {location, supplierEmail,partIDs,quantities};
+            PartsService.requestStock(request).then(response => {
+                if (response.status == "200"){
+                    setAlertSeverity("success");
+                    setAlertMessage("Successfully sent stock request!");
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                } else {
+                    setAlertSeverity("error");
+                    setAlertMessage("Invalid Stock request!");
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                }
+
+            }).catch(error => {
+                setAlertSeverity("error");
+                setAlertMessage("Error communicating with the server!");
+                setAlert(true);
+                setTimeout(() => { setAlert(false) }, 3000);
+            })
         }
     }
     
@@ -130,7 +149,7 @@ const Location = () => {
                         <Divider/>
                         <br/>
                         <FormControl>
-                            <TextField required label="Supplier Email" onChange={(e) => setEmail(e.target.value)}></TextField>
+                            <TextField type="email" required label="Supplier Email" onChange={(e) => setEmail(e.target.value)}></TextField>
 
 
                             <TableContainer sx={{width: "100%",mt: 1, mb: 2}}>

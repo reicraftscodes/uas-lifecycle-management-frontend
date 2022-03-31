@@ -52,8 +52,15 @@ class PartsService {
             method: "GET",
             headers: {"Content-Type": "application/json"},
         });
+    }
 
-
+    requestStock(request) {
+        return fetch(configData.API_URL + "/stockrequest", {
+            method: "POST",
+            headers: {"Content-Type": "application/json",
+            'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
+            body: JSON.stringify(request),
+        });
     }
 
 
