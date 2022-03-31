@@ -90,14 +90,6 @@ const AppNavbar = () => {
             type: "page"
         },
 
-        {
-            title: 'Assign Part',
-            path: "/assign-part",
-            roles: ["ROLE_USER_LOGISTIC"],
-            id: "",
-            type: "page"
-        },
-
 
         {
             title: 'Assign User',
