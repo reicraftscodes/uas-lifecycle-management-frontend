@@ -58,8 +58,15 @@ class PartsService {
             headers: {"Content-Type": "application/json",
                 'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         });
+    }
 
-
+    requestStock(request) {
+        return fetch(configData.API_URL + "/parts/stockrequest", {
+            method: "POST",
+            headers: {"Content-Type": "application/json",
+            'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
+            body: JSON.stringify(request),
+        });
     }
 
 
