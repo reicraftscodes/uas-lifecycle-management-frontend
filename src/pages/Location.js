@@ -32,6 +32,8 @@ const Location = () => {
     const [alertMessage, setAlertMessage] = useState('');
     const [alertSeverity, setAlertSeverity] = useState('success');
 
+    const emailValidator = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
     useEffect(() => {
         PartsService.getLocationStock(location).then(response => response.json()).then(data => {
             for(const dataObj of data){
@@ -81,8 +83,14 @@ const Location = () => {
             setAlertMessage("A minimum of 1 part must be added to the order!");
             setAlert(true);
             setTimeout(() => { setAlert(false) }, 3000);
+        } else if (!supplierEmail.match(emailValidator)) {
+            setAlertSeverity("error");
+            setAlertMessage("A valid email must be entered!");
+            setAlert(true);
+            setTimeout(() => { setAlert(false) }, 3000);
         } else {
             const request = {location, supplierEmail,partIDs,quantities};
+            console.log(JSON.stringify(request));
             PartsService.requestStock(request).then(response => {
                 if (response.status == "200"){
                     setAlertSeverity("success");

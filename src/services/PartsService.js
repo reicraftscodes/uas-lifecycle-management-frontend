@@ -61,7 +61,7 @@ class PartsService {
     }
 
     requestStock(request) {
-        return fetch(configData.API_URL + "/stockrequest", {
+        return fetch(configData.API_URL + "/parts/stockrequest", {
             method: "POST",
             headers: {"Content-Type": "application/json",
             'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
