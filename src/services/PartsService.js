@@ -6,21 +6,24 @@ class PartsService {
     getMostCommonFailingParts() {
         return fetch(configData.API_URL + "/parts/most-failing/5", {
             method: "GET",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         });
     }
 
     getLocationStock(location) {
         return fetch(configData.API_URL + "/parts/location/stock?location=" + location, {
             method: "GET",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         });
     }
 
     getFailingTime() {
         return fetch(configData.API_URL + "/parts/failuretime", {
             method: "GET",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         });
     }
 
@@ -35,14 +38,16 @@ class PartsService {
     getLowStackParts() {
         return fetch(configData.API_URL + "/parts/low-stock", {
             method: "GET",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         });
     }
 
     getViewListParts() {
         return fetch(configData.API_URL + "/parts/all", {
             method: "GET",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         });
     }
 
@@ -50,7 +55,8 @@ class PartsService {
     getOrderHistory() {
         return fetch(configData.API_URL + "/parts/stock-order/all", {
             method: "GET",
-            headers: {"Content-Type": "application/json"},
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         });
     }
 

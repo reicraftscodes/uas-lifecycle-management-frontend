@@ -248,6 +248,7 @@ const ViewAircraft = () => {
                 </Grid>
 
                 <Grid item xs={3}>
+
                     <Paper elevation={2} sx={{width: "95%", m: 2, p: "3%", pt: 0, height: "100%"}}>
                         <h5>Set Status</h5>
                         <br/>

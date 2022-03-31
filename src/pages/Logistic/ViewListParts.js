@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {Box, Grid, Paper, styled} from "@mui/material";
+import {Box, Button, Grid, Paper, styled} from "@mui/material";
 import ViewListPartsTable from "./ViewListPartsTable";
 import PartsService from "../../services/PartsService";
 import Typography from "@mui/material/Typography";
+import {useNavigate} from "react-router-dom";
 
 function VieListParts() {
 
     const [listOfParts, setlistOfParts] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         getViewListParts();
@@ -36,7 +39,11 @@ function VieListParts() {
     return (
         <div>
             <Box sx={1} margin="10px">
-                <Typography variant="h4" style={{ fontWeight: 600 }}>View Parts Details</Typography>
+                <Typography variant="h4" style={{ fontWeight: 600 , marginTop: "20px"}}>View Parts</Typography>
+                <div style={{display: "flex", justifyContent: "flex-end"}}>
+                    <Button style={{margin: "20px", backgroundColor: "#004789"}} variant="contained"
+                            onClick={() => navigate(`/add-part/`)}>Add Part</Button>
+                </div>
                 <Grid container spacing={3}>
                     <Grid item xs={12}>
                         <Item>
