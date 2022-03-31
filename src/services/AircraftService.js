@@ -65,10 +65,11 @@ class AircraftService {
     }
 
     getAircraftPartsStatus(request){
-        return fetch(configData.API_URL+"/aircraft/aircraft-parts-status", {
-            method: "POST",
-            headers: {"Content-Type":"application/json"} ,
-            body: request,
+        return fetch(configData.API_URL+"/aircraft/aircraft-parts-status/" + request, {
+            method: "GET",
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`
+            },
         });
     }
 
@@ -111,6 +112,15 @@ class AircraftService {
         return fetch(configData.API_URL + "/aircraft/needing-repair", {
             method: "GET",
             headers: {"Content-Type":"application/json" },
+        });
+    }
+
+    getAircraft(tailNumber){
+        return fetch(configData.API_URL+ "/aircraft/" + tailNumber,{
+            method: 'GET',
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`
+            },
         });
     }
 

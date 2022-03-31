@@ -12,6 +12,9 @@ import {
 } from "@mui/material";
 import {TablePaginationActions} from "./TablePaginationActions";
 import {getComparator, SortTableHead, stableSort} from "./SortTableHead";
+import {useNavigate} from "react-router-dom";
+import ViewAircraft from "../pages/Logistic/ViewAircraft";
+import {GridApi} from "@material-ui/data-grid";
 
 //Ref: https://mui.com/components/tables/
 
@@ -50,6 +53,9 @@ export default function AllAircraftTable({data}) {
     const [orderBy, setOrderBy] = React.useState('tailNumber');
     const [rows, setRows] = React.useState(data);
 
+    const navigate = useNavigate();
+
+
     React.useEffect(() => {
         setRows(data)
     }, [data]);
@@ -85,6 +91,19 @@ export default function AllAircraftTable({data}) {
         },
     }));
 
+    const viewAircraft = (data) => {
+        console.log("click");
+        return (
+            <ViewAircraft aircraftData={data}/>
+        )
+
+    }
+
+    const onClick = (tailNumber) => {
+        console.log(tailNumber);
+        navigate(`/view-aircraft/${tailNumber}`)
+    };
+
     return (
         <TableContainer sx={{width: "auto"}} style={{
             display: "flex",
@@ -119,7 +138,11 @@ export default function AllAircraftTable({data}) {
                                         {row.flyTimeHours}
                                     </TableCell>
                                     <TableCell style={{ width: 160 }}>
-                                        <Button style={{width: 100, backgroundColor: "#004789"}} variant="contained" >View</Button>
+                                        <Button
+                                            style={{width: 100, backgroundColor: "#004789"}}
+                                            variant="contained"
+                                            onClick={()=> onClick(row.tailNumber)}
+                                        >View</Button>
                                     </TableCell>
                                 </StyledTableRow>
                             );

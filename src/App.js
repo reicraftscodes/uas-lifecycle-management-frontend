@@ -34,6 +34,7 @@ import ViewListParts from "./pages/Logistic/ViewListParts";
 import ViewPartsStockLocations from "./pages/Logistic/ViewPartsStockLocations";
 import AssignPartToAircraft from './pages/Logistic/AssignPartToAircraft';
 import ViewHistoryOrders from "./pages/Logistic/ViewHistoryOrders";
+import ViewAircraft from "./pages/Logistic/ViewAircraft";
 import AircraftPartCostPage from "./pages/Ceo/AircraftPartCostPage";
 import AircraftRepairCostPage from "./pages/Ceo/AircraftRepairCostPage";
 
@@ -97,7 +98,9 @@ function App() {
                     <Route path="/add-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddPart/></ProtectedRoute>}/>
                     <Route path="/add-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AddAircraft/></ProtectedRoute>}/>
                     <Route path="/modify-aircraft" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ModifyAircraft/></ProtectedRoute>}/>
+                    <Route path="/view-aircraft/:tailNumber" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ViewAircraft/></ProtectedRoute>}/>
                     <Route path="/assign-part" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><AssignPartToAircraft/></ProtectedRoute>}/>
+
 
                     <Route path="/unauthorized" element={<Unauthorized/>}/>
                     <Route exact={true} path="/login" element={<UserLogin/>}/>
