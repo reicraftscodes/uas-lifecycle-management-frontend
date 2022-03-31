@@ -11,9 +11,9 @@ import {
     Paper,
     Typography
 } from "@mui/material";
-import PlatformsTable from "../components/PlatformsTable";
 import AircraftService from "../services/AircraftService";
 import AllAircraftTable from "../components/AllAircraftTable";
+import {useNavigate} from "react-router-dom";
 
 export const AllAircraft = () => {
 
@@ -21,6 +21,8 @@ export const AllAircraft = () => {
     const [aircraftList, setAircraftList] = React.useState([]);
     const [locationFilterList, setLocationFilterList] = React.useState({});
     const [platformStatusFilterList, setPlatformFilterList] = React.useState({});
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         console.log("use effect");
@@ -44,7 +46,6 @@ export const AllAircraft = () => {
             })
     }
 
-    //todo - get this from api
     const getLocations = () => {
 
         const locations = ["Ankara", "Cardiff", "Dublin", "Edinburgh", "London", "Nevada", "St Athen", "Manchester"];
@@ -54,7 +55,6 @@ export const AllAircraft = () => {
         setLocationFilterList(locationFilter);
     }
 
-    //todo - get this from api
     const getPlatformStatusOptions = () => {
 
         const platformStatusOptions = ["Design", "Production", "Operational", "Repair"];
@@ -131,7 +131,11 @@ export const AllAircraft = () => {
                         </Paper>
 
                     </div>
-                    <div style={{minWidth: "250px"}}>
+                    <div style={{minWidth: "250px", display: "flex", flexDirection: "column"}}>
+                        <Paper elevation={1} sx={{height: "100%", m: 1, p: "1%", flexGrow: 1}}>
+                            <Button style={{margin: "20px", backgroundColor: "#004789", width: "85%"}} variant="contained"
+                                    onClick={() => navigate(`/add-aircraft/`)}>Add Aircraft</Button>
+                        </Paper>
                         <Paper elevation={3} sx={{
                             height: "100%",
                             m: 1,
