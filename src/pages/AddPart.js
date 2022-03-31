@@ -2,21 +2,25 @@ import { useState } from "react";
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { FormControl, RadioGroup, FormControlLabel, Radio, Alert, Divider, Paper, FormLabel, Button} from "@mui/material";
-import '../css/AddPart.css'
+import '../css/AddPart.css';
+import PartsService from '../services/PartsService';
 
 const AddPart = () => {
     //state variables using hooks which store the input field data
     const [partTypeName, setPartTypeName] = useState('');
     const [partType, setPartType] = useState('0');
     const [aircraft, setAircraft] = useState('');
-    const [location, setLocation] = useState('');
+    const [locationName, setLocation] = useState('');
+    const [weight, setWeight] = useState("");
+    const [price, setPrice] = useState("");
+    const [partName, setPartName] = useState("");
     const [partStatus, setPartStatus] = useState('OPERATIONAL');
 
     //used for displaying errors and messages associated with them
     const [alert, setAlert] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
     const [alertSeverity, setAlertSeverity] = useState('success');
-    const manufacture = "";
+    let manufacture = "";
 
     //locations and part types used in auto complete text fields
     const locations = ["Ankara", "Cardiff","Dublin","Edinburgh","London","Nevada","St Athen"];
@@ -38,37 +42,43 @@ const AddPart = () => {
     const handleSubmission = (e) => {
         //prevents reloading on form submission
         e.preventDefault();
-
+        //sets datetime 
+        var date = new Date();
+        manufacture = date.toISOString().slice(0, 19).replace('T', ' ');
         //part which is turned into json for the post request
-        const part = {partType, aircraft, location, manufacture, partStatus};
-
-        //fetch api used to send post request
-        fetch('http://localhost:8080/parts/add', {
-            method: 'POST',
-            headers: {"Content-Type": "application/json" },
-            body: JSON.stringify(part)
-        }).then(response => response.json()).then(data => {
-            if(data["response"] === "Success") {
-                //if the request is successful an alert is shown with a success message
-                setAlertMessage("Part added successfully!");
-                setAlertSeverity("success");
-                setAlert(true);
-                //hides the alert after displaying for 3 seconds
-                setTimeout(() => { setAlert(false) }, 3000);
-            } else {
-                //if the request is unsuccessful it displays the response in an alert
-                setAlertMessage(data["response"]);
+        const request = {partType, partName, locationName, manufacture, price, weight, aircraft, partStatus};
+        if (partName=="") {
+            setAlertMessage("Please enter a part name!");
+            setAlertSeverity("error");
+            setAlert(true);
+            //hides the alert after displaying for 3 seconds
+            setTimeout(() => { setAlert(false) }, 3000);
+        } else {
+            //fetch api used to send post request
+            PartsService.addPart(request).then(response => response.json()).then(data => {
+                if(data["response"] === "Success") {
+                    //if the request is successful an alert is shown with a success message
+                    setAlertMessage("Part added successfully!");
+                    setAlertSeverity("success");
+                    setAlert(true);
+                    //hides the alert after displaying for 3 seconds
+                    setTimeout(() => { setAlert(false) }, 3000);
+                } else {
+                    //if the request is unsuccessful it displays the response in an alert
+                    setAlertMessage("Please check input fields, error adding part!");
+                    setAlertSeverity("error");
+                    setAlert(true);
+                    setTimeout(() => { setAlert(false) }, 3000);
+                }
+            }).catch(error => {
+                //catches error for not being able to communicate with the server and displays an alert to the user.
+                setAlertMessage("Error communicating with server, part not saved");
                 setAlertSeverity("error");
                 setAlert(true);
                 setTimeout(() => { setAlert(false) }, 3000);
-            }
-        }).catch(error => {
-            //catches error for not being able to communicate with the server and displays an alert to the user.
-            setAlertMessage("Error communicating with server, part not saved");
-            setAlertSeverity("error");
-            setAlert(true);
-            setTimeout(() => { setAlert(false) }, 3000);
-        })
+            })
+        }
+
     }
 
     return (
@@ -85,17 +95,17 @@ const AddPart = () => {
                         {/*Part Type autocomplete text field */}
                         <Autocomplete isOptionEqualToValue={(option, value) => option.id === value.id}  onChange={(event, newValue) => {setPartType(newValue.id);}} id="partTypeSearchField" options={partTypes} renderInput={(params) => <TextField {...params} label="Part Type" />}/>
                         <br/>
-                        <Divider/>
+                        <TextField label="Part Name" onChange={(e) => setPartName(e.target.value)}/>
                         <br/>
                         {/* Aircraft text field this isnt required in submission*/}
                         <TextField label="Aircraft Tailnumber (if applicable)" onChange={(e) => setAircraft(e.target.value)}/>
                         <br/>
-                        <Divider/>
+                        <TextField type="number" label="Part Price (£)" onChange={(e) => setPrice(e.target.value)}/>
                         <br/>
                         {/*Location autocomplete text field */}
                         <Autocomplete onChange={(event, newValue) => {setLocation(newValue);}} id="locationSearchField" options={locations} renderInput={(params) => <TextField {...params} label="Location" />}/>
                         <br/>
-                        <Divider/>
+                        <TextField type="number" label="Part Weight (g)" onChange={(e) => setWeight(e.target.value)}/>
                         <br/>
                         {/*Part status radio group */}
                         <FormLabel sx={{textAlign: "left", p: "1%"}}>Part Status</FormLabel>
