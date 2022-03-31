@@ -6,14 +6,16 @@ class AircraftService {
     getUserAircraft(user) {
         return fetch(configData.API_URL +'/aircraft/user/'+user, {
             method: 'GET',
-            headers: {"Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
         });
     }
 
     setAircraftFlytime(request){
         return fetch(configData.API_URL+'/aircraft/log-flight', {
             method: 'POST',
-            headers: {"Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json" ,
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
             body: JSON.stringify(request),
         });
     }
@@ -21,14 +23,16 @@ class AircraftService {
     getPlatformStatus() {
         return fetch(configData.API_URL +'/aircraft/platform-status/', {
             method: 'GET',
-            headers: {"Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json" ,
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
         });
     }
 
     getFilterPlatformStatus(request){
         return fetch(configData.API_URL+'/aircraft/platform-status/filter', {
             method: 'POST',
-            headers: {"Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
             body: JSON.stringify(request),
         });
     }
@@ -36,7 +40,8 @@ class AircraftService {
     addAircraft(request){
         return fetch(configData.API_URL+"/aircraft/add" , {
             method: "POST",
-            headers: {"Content-Type":"application/json" },
+            headers: {"Content-Type":"application/json" ,
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
             body: JSON.stringify(request),
         });
     }
@@ -44,7 +49,8 @@ class AircraftService {
     assignAircraft(request){
         return fetch(configData.API_URL+"/aircraft/assign-user" , {
             method: "POST",
-            headers: {"Content-Type":"application/json" },
+            headers: {"Content-Type":"application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
             body: JSON.stringify(request),
         });
     }
@@ -52,14 +58,16 @@ class AircraftService {
     getAllAircraft() {
         return fetch(configData.API_URL +'/aircraft/all', {
             method: 'GET',
-            headers: {"Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
         });
     }
 
     getFilteredAircraft(request){
         return fetch(configData.API_URL+'/aircraft/all/filter', {
             method: 'POST',
-            headers: {"Content-Type": "application/json" },
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
             body: JSON.stringify(request),
         });
     }
@@ -76,7 +84,8 @@ class AircraftService {
     updateAircraftStatus(request){
         return fetch(configData.API_URL+"/aircraft/update-aircraft-status", {
             method: "POST",
-            headers: {"Content-Type":"application/json"},
+            headers: {"Content-Type":"application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
             body: JSON.stringify(request),
         });
     }
@@ -84,7 +93,8 @@ class AircraftService {
     updateAircraftPart(request){
         return fetch(configData.API_URL+"/aircraft/update-aircraft-part", {
             method: "POST",
-            headers: {"Content-Type":"application/json"},
+            headers: {"Content-Type":"application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
             body: JSON.stringify(request),
         });
     }
@@ -111,7 +121,8 @@ class AircraftService {
     getNeedAircraftRepair(){
         return fetch(configData.API_URL + "/aircraft/needing-repair", {
             method: "GET",
-            headers: {"Content-Type":"application/json" },
+            headers: {"Content-Type":"application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}` },
         });
     }
 
