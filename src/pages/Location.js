@@ -36,12 +36,15 @@ const Location = () => {
 
     useEffect(() => {
         PartsService.getLocationStock(location).then(response => response.json()).then(data => {
+            let labelList = []
             for(const dataObj of data){
                 stockPercentage.push(parseFloat(dataObj.stockLevelPercentage));
+                labelList.push(dataObj.partName);
             }
-            //sets chart data to data from api 
+
+            //sets chart data to data from api
             setChartData({
-                labels: parts,
+                labels: labelList,
                 datasets: [
                     {
                         label: "Percentage of Stock",
@@ -112,7 +115,7 @@ const Location = () => {
             })
         }
     }
-    
+
     return(
         <div>
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></> }
@@ -120,7 +123,7 @@ const Location = () => {
                 <Grid item xs={7}>
                     <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%"}}>
                         <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem'}}>Stock at {location}</Typography>
-                        <Bar 
+                        <Bar
                             data={chartData}
                             options={{
                                 title:{
@@ -131,10 +134,10 @@ const Location = () => {
                                 scales: {
                                     y: {
                                         min: 0,
-                                        max: 100, 
+                                        max: 100,
                                         title: {
                                             display: true,
-                                            text: "% Stock" 
+                                            text: "% Stock"
                                         },
                                     },
                                     x: {
@@ -147,13 +150,13 @@ const Location = () => {
                                 legend:{
                                     display:false
                                 }
-                            }} />     
+                            }} />
                     </Paper>
-                </Grid> 
+                </Grid>
                 <Grid item xs={5}>
                     <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%", pt: "2%" }}>
                         <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem'}}>Request Stock</Typography>
-                        
+
                         <Divider/>
                         <br/>
                         <FormControl>
@@ -188,13 +191,13 @@ const Location = () => {
                                 </Grid>
                             </Grid>
 
-                            
+
                             <Button onClick={addOrderItem} variant="contained" sx={{mt: 0.5, mb: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Add part and quantity</Button>
                             <Divider/>
                             <Button onClick={submitOrder} variant="contained" sx={{mt: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit Order</Button>
                         </FormControl>
                     </Paper>
-                </Grid>   
+                </Grid>
             </Grid>
         </div>
     );
