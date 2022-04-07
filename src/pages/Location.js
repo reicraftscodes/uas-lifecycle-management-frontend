@@ -144,7 +144,7 @@ const Location = () => {
                                     x: {
                                         title: {
                                             display: true,
-                                            text: "Part Type"
+                                            text: "Part Name"
                                         },
                                     },
                                 },
@@ -198,7 +198,7 @@ const Location = () => {
                             <Button onClick={submitOrder} variant="contained" sx={{mt: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit Order</Button>
                         </FormControl>
                     </Paper>
-                    <TransferPart />
+                    <TransferPart defaultLocation={location}/>
                 </Grid>
             </Grid>
         </div>

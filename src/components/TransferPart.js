@@ -10,7 +10,7 @@ import {
 
 import PartsService from "../services/PartsService";
 
-const TransferPart = () => {
+const TransferPart = (defaultLocation) => {
 
     //state variables used for changing the alert colour and message as well as displaying it.
     const [alert, setAlert] = useState(false);
@@ -71,7 +71,7 @@ const TransferPart = () => {
                 <br/>
                 <FormControl>
                     {/*Input for the location */}
-                    <TextField label="Location to transfer from" onChange={(e) => setLocation(e.target.value)}></TextField>
+                    <TextField label="Location to transfer from" defaultValue={defaultLocation.defaultLocation} onChange={(e) => setLocation(e.target.value)}></TextField>
                     <br/>
                     <Divider/>
                     <br/>
