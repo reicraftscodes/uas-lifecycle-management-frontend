@@ -3,6 +3,7 @@ import {useParams} from "react-router-dom";
 import PartsService from "../../services/PartsService";
 import StockPartsLocation from "../../components/StockPartsLocation";
 import {Paper} from "@mui/material";
+import TransferPart from "../../components/TransferPart";
 
 function ViewPartsStockLocations() {
 
@@ -33,6 +34,7 @@ function ViewPartsStockLocations() {
             <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%"}}>
                 <StockPartsLocation stockPartsLocations={stockLocation}/>
             </Paper>
+            <TransferPart />
         </div>
 
     );
