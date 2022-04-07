@@ -78,6 +78,14 @@ class PartsService {
         });
     }
 
+    transferPart(transferPart) {
+        const url = "/parts/transfer/" + transferPart[0] + "/" + transferPart[1] + "/" + transferPart[2] + "/" + transferPart[3];
+        return fetch(configData.API_URL + url, {
+            method: "GET",
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
+        });
+    }
 
 }
 

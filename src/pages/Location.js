@@ -3,6 +3,7 @@ import {Paper, Typography, Grid, Autocomplete,TextField,Button, FormControl, Div
 import {Bar} from 'react-chartjs-2';
 import {useParams} from "react-router-dom";
 import PartsService from '../services/PartsService';
+import TransferPart from "../components/TransferPart";
 
 const Location = () => {
     //Make location equal to the location passed via route
@@ -143,7 +144,7 @@ const Location = () => {
                                     x: {
                                         title: {
                                             display: true,
-                                            text: "Part Type"
+                                            text: "Part Name"
                                         },
                                     },
                                 },
@@ -154,7 +155,7 @@ const Location = () => {
                     </Paper>
                 </Grid>
                 <Grid item xs={5}>
-                    <Paper elevation={3} sx={{height: "95%", m: 2, p: "1%", pt: "2%" }}>
+                    <Paper elevation={3} sx={{height: "42%", m: 2, p: "1%", pt: "2%" }}>
                         <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem'}}>Request Stock</Typography>
 
                         <Divider/>
@@ -197,6 +198,7 @@ const Location = () => {
                             <Button onClick={submitOrder} variant="contained" sx={{mt: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit Order</Button>
                         </FormControl>
                     </Paper>
+                    <TransferPart defaultLocation={location}/>
                 </Grid>
             </Grid>
         </div>
