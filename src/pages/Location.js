@@ -22,9 +22,9 @@ const Location = () => {
         ]
     });
 
-    const [partID, setPartID] = useState("");
+    const [partName, setPartName] = useState("");
     const [quantity, setQuantity] = useState("");
-    const [partIDs, setPartIds] = useState([]);
+    const [partNames, setPartNames] = useState([]);
     const [quantities, setQuantities] = useState([]);
     const [supplierEmail, setEmail] = useState("");
     const [order,setOrder] = useState([]);
@@ -59,9 +59,9 @@ const Location = () => {
     }, []);
 
     const addOrderItem = () => {
-        if (partID == "") {
+        if (partName == "") {
             setAlertSeverity("error");
-            setAlertMessage("PartID must be selected!");
+            setAlertMessage("PartName must be selected!");
             setAlert(true);
             setTimeout(() => { setAlert(false) }, 3000);
         } else if (quantity == "") {
@@ -70,9 +70,9 @@ const Location = () => {
             setAlert(true);
             setTimeout(() => { setAlert(false) }, 3000);
         } else {
-            partIDs.push(partID);
+            partNames.push(partName);
             quantities.push(quantity);
-            setOrder(order => [...order, [partID,quantity]]);
+            setOrder(order => [...order, [partName,quantity]]);
         }
     }
 
@@ -93,7 +93,7 @@ const Location = () => {
             setAlert(true);
             setTimeout(() => { setAlert(false) }, 3000);
         } else {
-            const request = {location, supplierEmail,partIDs,quantities};
+            const request = {location, supplierEmail,partNames,quantities};
             console.log(JSON.stringify(request));
             PartsService.requestStock(request).then(response => {
                 if (response.status == "200"){
@@ -168,7 +168,7 @@ const Location = () => {
                                 <Table size="small" aria-label="table label">
                                     <TableHead>
                                         <TableRow>
-                                            <TableCell sx={{fontSize: "0.7rem", pt:0, pb:0}}>PartID</TableCell>
+                                            <TableCell sx={{fontSize: "0.7rem", pt:0, pb:0}}>PartName</TableCell>
                                             <TableCell sx={{fontSize: "0.7rem", pt:0, pb:0}}>Quantity</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -185,7 +185,7 @@ const Location = () => {
 
                             <Grid container>
                                 <Grid item xs={6}>
-                                    <TextField required sx={{m:0.5, mt: 2}} type="number" label="PartID" onChange={(e) => setPartID(e.target.value)}></TextField>
+                                    <TextField type="text" required label="Part Name" onChange={(e) => setPartName(e.target.value)}></TextField>
                                 </Grid>
                                 <Grid item xs={6}>
                                     <TextField required sx={{m:0.5, mt: 2}} type="number" label="Quantity" onChange={(e) => setQuantity(e.target.value)}></TextField>
