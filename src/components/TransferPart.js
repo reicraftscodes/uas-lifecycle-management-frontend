@@ -1,4 +1,4 @@
-import {useState} from "react";
+import React, {useState} from "react";
 import {
     Alert,
     Button,
@@ -18,10 +18,10 @@ const TransferPart = (defaultLocation) => {
     const [alertSeverity, setAlertSeverity] = useState('success');
 
     //user input state variables
-    const [location, setLocation] = useState("");
+    const [location, setLocation] = useState(defaultLocation.defaultLocation);
     const [newLocation, setNewLocation] = useState("");
     const [partName, setPartName] = useState("");
-    const [quantity, setQuantity] = useState("");
+    const [quantity, setQuantity] = useState(0);
 
 
     //Method that is called on the submit button click which validates the input fields and if valid sends a
@@ -76,15 +76,16 @@ const TransferPart = (defaultLocation) => {
                     <Divider/>
                     <br/>
                     {/*Input for the new location */}
-                    <TextField label="New location" onChange={(e) => setNewLocation(e.target.value)}></TextField>
+                    <TextField required label="New location" onChange={(e) => setNewLocation(e.target.value)}></TextField>
                     <Divider/>
                     <br/>
                     {/*Input for the part name */}
-                    <TextField label="Part Name" onChange={(e) => setPartName(e.target.value)}></TextField>
+                    <TextField required label="Part Name" onChange={(e) => setPartName(e.target.value)}></TextField>
                     <Divider/>
                     <br/>
                     {/*Input for the quantity */}
-                    <TextField label="Quantity" onChange={(e) => setQuantity(e.target.value)}></TextField>
+                    <TextField required type="number" label="Quantity" onChange={(e) => setQuantity(e.target.value)}></TextField>
+                    <Divider/>
                     <Button variant="contained" style={{backgroundColor: "#004789"}} onClick={handleSubmission} id="submitButton">Submit</Button>
                 </FormControl>
             </Paper>

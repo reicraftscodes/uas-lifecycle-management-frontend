@@ -149,7 +149,7 @@ function ViewListPartsTable({data}) {
                             (c) => (thisRow[c.field] = params.getValue(params.id, c.field))
                         );
 
-                    navigate(`/view-parts/${thisRow.partNumber}`)
+                    navigate(`/view-parts/${thisRow.partType}/${thisRow.partNumber}`)
                 };
 
                 return <Button variant="contained" style={{backgroundColor: '#004789'}} onClick={onClick}>View

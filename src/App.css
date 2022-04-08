@@ -22,7 +22,10 @@
     text-decoration: none;
     color: black;
 }
-
+#partLabel {
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
 #cardTitle {
     margin-top: 10px;
     font-size: 1.2em;
