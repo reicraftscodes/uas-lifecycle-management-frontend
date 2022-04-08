@@ -18,14 +18,14 @@ const AssignAircraft = () => {
 
     //user input state variables
     const [tailNumber, setTailNumber] = useState("");
-    const [userID, setUserID] = useState("");
+    const [email, setEmail] = useState("");
 
 
     //Method that is called on the submit button click which validates the input fields and if valid sends a
     // post request to the api information from the input fields.
     const handleSubmission = (e) => {
 
-        const aircraft = {userID, tailNumber};
+        const aircraft = {email, tailNumber};
         console.log(aircraft);
         //Checks for validation errors before sending the post request using fetch.
         AircraftService.assignAircraft(aircraft).then(response => response.json()).then(data => {
@@ -72,7 +72,7 @@ const AssignAircraft = () => {
                     <Divider/>
                     <br/>
                     {/*Input for the user id */}
-                    <TextField label="User ID" onChange={(e) => setUserID(e.target.value)}></TextField>
+                    <TextField label="Email" onChange={(e) => setEmail(e.target.value)}></TextField>
                     <Button variant="contained" style={{backgroundColor: "#004789"}} onClick={handleSubmission} id="submitButton">Submit</Button>
                 </FormControl>
             </Paper>

@@ -7,8 +7,7 @@ import TransferPart from "../../components/TransferPart";
 
 function ViewPartsStockLocations() {
 
-    const {partNumber} = useParams();
-
+    const {partNumber, partType} = useParams();
 
     const [stockLocation, setStockLocation] = useState([]);
 
@@ -31,10 +30,10 @@ function ViewPartsStockLocations() {
 
     return (
         <div>
+            <h1 id="partLabel">{partType}</h1>
             <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%"}}>
                 <StockPartsLocation stockPartsLocations={stockLocation}/>
             </Paper>
-            <TransferPart />
         </div>
 
     );

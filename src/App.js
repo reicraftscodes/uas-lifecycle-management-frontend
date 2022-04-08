@@ -106,7 +106,7 @@ function App() {
 
                     <Route path="/aircraft-cost" element={<ProtectedRoute user={user} roles={["ROLE_USER_CEO"]}><RepairCost/></ProtectedRoute>}/>
                     <Route path="/view-parts" exact={true} element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ViewListParts/></ProtectedRoute>}/>
-                    <Route path="/view-parts/:partNumber" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ViewPartsStockLocations/></ProtectedRoute>}/>
+                    <Route path="/view-parts/:partType/:partNumber" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ViewPartsStockLocations/></ProtectedRoute>}/>
 
                     <Route path="/order-history" element={<ProtectedRoute user={user} roles={["ROLE_USER_LOGISTIC"]}><ViewHistoryOrders/></ProtectedRoute>}/>
 
