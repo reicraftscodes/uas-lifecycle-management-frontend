@@ -17,7 +17,9 @@
 #alertText {
     font-size: 1.4em;
 }
-
+#removePart {
+    margin-top: 70px;
+}
 #stockLink {
     text-decoration: none;
     color: black;

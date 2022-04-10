@@ -4,6 +4,8 @@ import {Bar} from 'react-chartjs-2';
 import {useParams} from "react-router-dom";
 import PartsService from '../services/PartsService';
 import TransferPart from "../components/TransferPart";
+import RemovePart from "../components/RemovePart";
+import {blue} from "@material-ui/core/colors";
 
 const Location = () => {
     //Make location equal to the location passed via route
@@ -22,6 +24,7 @@ const Location = () => {
         ]
     });
 
+    const [clicked, setClick] = useState(false);
     const [partName, setPartName] = useState("");
     const [quantity, setQuantity] = useState("");
     const [partNames, setPartNames] = useState([]);
@@ -57,6 +60,14 @@ const Location = () => {
             });
         });
     }, []);
+
+    const handleClick = () => {
+        if (clicked === true){
+            setClick(false)
+        } else {
+            setClick(true)
+        }
+    }
 
     const addOrderItem = () => {
         if (partName == "") {
@@ -198,7 +209,13 @@ const Location = () => {
                             <Button onClick={submitOrder} variant="contained" sx={{mt: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit Order</Button>
                         </FormControl>
                     </Paper>
-                    <TransferPart defaultLocation={location}/>
+                    <div sx={{bgcolor:"#004789", border:"2px solid black"}}>
+                        {clicked === false && (
+                            <TransferPart defaultLocation={location}/>
+                        )}
+                        {clicked === true && <RemovePart defaultLocation={location}/>}
+                        <h3 onClick={handleClick}>Swap function</h3>
+                    </div>
                 </Grid>
             </Grid>
         </div>
