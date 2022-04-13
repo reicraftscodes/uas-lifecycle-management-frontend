@@ -87,6 +87,14 @@ class PartsService {
         });
     }
 
+    removePart(location, partName, quantity) {
+        const url = "/parts/delete/" + location + "/" + partName + "/" + quantity;
+        return fetch(configData.API_URL + url, {
+            method: "GET",
+            headers: {"Content-Type": "application/json",
+                'Authorization' : `Bearer ${AuthService.getCurrentUser().token}`},
+        });
+    }
 }
 
 export default new PartsService();

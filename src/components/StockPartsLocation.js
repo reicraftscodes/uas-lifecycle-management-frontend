@@ -10,6 +10,7 @@ import Typography from "@mui/material/Typography";
 
 
 function StockPartsLocation({stockPartsLocations}) {
+
     return (
         <div>
             <Typography variant="h4" >Stock Location details</Typography>
@@ -38,7 +39,6 @@ function StockPartsLocation({stockPartsLocations}) {
                                     {row.stockCount}
                                 </TableCell>
                             </TableRow>
-
                         ))}
                     </TableBody>
                 </Table>
