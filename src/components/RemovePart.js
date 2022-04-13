@@ -56,26 +56,26 @@ const RemovePart = (defaultLocation) => {
     }
 
     return (
-        <div className="main" id="removePart">
+        <div className="main partForm" id="removePart">
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></>}
             {/* json takes tailNumber, location, platform status, platformType */}
-            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%"}}>
+            <Paper elevation={3} sx={{width: "100%", marginTop: "0", pb: "8%", pt: "0"}}>
                 <h1>Remove Parts</h1>
                 <Divider/>
                 <br/>
                 <FormControl>
                     {/*Input for the location */}
-                    <TextField label="Location to delete from" defaultValue={defaultLocation.defaultLocation} onChange={(e) => setLocation(e.target.value)}></TextField>
+                    <TextField className={"removePartTextFields"} label="Location to delete from" defaultValue={defaultLocation.defaultLocation} onChange={(e) => setLocation(e.target.value)}></TextField>
                     <br/>
                     <Divider/>
                     {/*Input for the part name */}
-                    <TextField required label="Part Name" onChange={(e) => setPartName(e.target.value)}></TextField>
+                    <TextField className={"removePartTextFields"} required label="Part Name" onChange={(e) => setPartName(e.target.value)}></TextField>
                     <Divider/>
                     <br/>
                     {/*Input for the quantity */}
-                    <TextField required type="number" label="Quantity" onChange={(e) => setQuantity(e.target.value)}></TextField>
+                    <TextField className={"removePartTextFields"} required type="number" label="Quantity" onChange={(e) => setQuantity(e.target.value)}></TextField>
                     <Divider/>
-                    <Button variant="contained" style={{backgroundColor: "#004789"}} onClick={handleSubmission} id="submitButton">Submit</Button>
+                    <Button variant="contained" style={{backgroundColor: "#004789"}} onClick={handleSubmission} id="removeSubmitButton">Submit</Button>
                 </FormControl>
             </Paper>
         </div>

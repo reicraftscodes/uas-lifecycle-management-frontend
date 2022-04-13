@@ -166,14 +166,13 @@ const Location = () => {
                     </Paper>
                 </Grid>
                 <Grid item xs={5}>
-                    <Paper elevation={3} sx={{height: "42%", m: 2, p: "1%", pt: "2%" }}>
+                    <Paper elevation={3} sx={{height: "41%", marginTop: 2, p: "1%", pt: "2%", pb: "0"}}>
                         <Typography sx={{ fontWeight: 'bold', fontSize: '1.5rem'}}>Request Stock</Typography>
 
                         <Divider/>
                         <br/>
                         <FormControl>
                             <TextField type="email" required label="Supplier Email" onChange={(e) => setEmail(e.target.value)}></TextField>
-
 
                             <TableContainer sx={{width: "100%",mt: 1, mb: 2}}>
                                 <Table size="small" aria-label="table label">
@@ -208,14 +207,24 @@ const Location = () => {
                             <Divider/>
                             <Button onClick={submitOrder} variant="contained" sx={{mt: 2, bgcolor:"#004789", ':hover':{bgcolor: "#0060ba"}}}>Submit Order</Button>
                         </FormControl>
+                        <Grid container>
+                            <Grid item xs={14}>
+                        <div sx={{bgcolor:"#004789", border:"2px solid black"}} id="partFormContainer">
+                            <div id="partFormDiv">
+                                {clicked === false && (
+                                    <TransferPart defaultLocation={location}/>
+                                )}
+                                {clicked === true && <RemovePart defaultLocation={location}/>}
+                            </div>
+                            <div id="buttonContainer">
+                                {clicked === true && <Button onClick={handleClick}>Transfer Part Instead</Button>}
+                                {clicked === false && <Button onClick={handleClick}>Remove Part Instead</Button>}
+                            </div>
+                        </div>
+                            </Grid>
+                        </Grid>
                     </Paper>
-                    <div sx={{bgcolor:"#004789", border:"2px solid black"}}>
-                        {clicked === false && (
-                            <TransferPart defaultLocation={location}/>
-                        )}
-                        {clicked === true && <RemovePart defaultLocation={location}/>}
-                        <h3 onClick={handleClick}>Swap function</h3>
-                    </div>
+
                 </Grid>
             </Grid>
         </div>

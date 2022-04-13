@@ -62,10 +62,10 @@ const TransferPart = (defaultLocation) => {
     }
 
     return (
-        <div className="main">
+        <div className="main" id="transferPart">
             {alert ? <Alert className="alertPos" severity={alertSeverity}>{alertMessage}</Alert> : <></>}
             {/* json takes tailNumber, location, platform status, platformType */}
-            <Paper elevation={3} sx={{width: "65%", margin: "auto", p: "3%", pt: "0%", mt: "1%"}}>
+            <Paper elevation={3} sx={{width: "100%", margin: "0", p: "3%", pt: "0%", mt: "6%"}}>
                 <h1>Transfer Parts</h1>
                 <Divider/>
                 <br/>
